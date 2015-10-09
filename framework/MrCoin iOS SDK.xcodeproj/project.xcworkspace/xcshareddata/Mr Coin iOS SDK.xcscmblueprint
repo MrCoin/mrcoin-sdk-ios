@@ -1,0 +1,36 @@
+{
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "B57FA402232A5F0E1AB83FEDA4525E2F67EC20D3" : 0,
+    "D3ABDB194B7C1179068DFBE95504EC85FFD2FB1F" : 0,
+    "1B3012F5DC05A51BD80A97C230EA67C12E9A5CE3" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "3A471B51-B4B7-43FC-B21F-A1B6B5CB7CE9",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "B57FA402232A5F0E1AB83FEDA4525E2F67EC20D3" : "SEffectText\/",
+    "D3ABDB194B7C1179068DFBE95504EC85FFD2FB1F" : "Rowo\/",
+    "1B3012F5DC05A51BD80A97C230EA67C12E9A5CE3" : "Focus\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "Mr Coin iOS SDK",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "Mr Coin iOS SDK.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "codebasehq.com:shellshaper\/ios\/focus.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "1B3012F5DC05A51BD80A97C230EA67C12E9A5CE3"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "codebasehq.com:shellshaper\/ios\/seffecttext.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "B57FA402232A5F0E1AB83FEDA4525E2F67EC20D3"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "codebasehq.com:shellshaper\/ios\/rowa.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "D3ABDB194B7C1179068DFBE95504EC85FFD2FB1F"
+    }
+  ]
+}
