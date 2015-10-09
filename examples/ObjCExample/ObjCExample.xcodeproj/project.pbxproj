@@ -1,0 +1,409 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		26FA7F581BC299EB0018B72C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 26FA7F571BC299EB0018B72C /* main.m */; };
+		26FA7F5B1BC299EB0018B72C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 26FA7F5A1BC299EB0018B72C /* AppDelegate.m */; };
+		26FA7F5E1BC299EB0018B72C /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26FA7F5D1BC299EB0018B72C /* ViewController.m */; };
+		26FA7F611BC299EB0018B72C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 26FA7F5F1BC299EB0018B72C /* Main.storyboard */; };
+		26FA7F631BC299EB0018B72C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 26FA7F621BC299EB0018B72C /* Assets.xcassets */; };
+		26FA7F661BC299EB0018B72C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 26FA7F641BC299EB0018B72C /* LaunchScreen.storyboard */; };
+		26FA7F7C1BC29A110018B72C /* libMrCoin.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 26FA7F771BC299F30018B72C /* libMrCoin.a */; };
+		26FA7F7D1BC29A290018B72C /* MrCoin.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 26FA7F791BC299F30018B72C /* MrCoin.bundle */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		26FA7F741BC299F30018B72C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 26FA7F6D1BC299F30018B72C /* MrCoin iOS SDK.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 26E479EC1BC1085B0003536C;
+			remoteInfo = "MrCoin iOS SDKTests";
+		};
+		26FA7F761BC299F30018B72C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 26FA7F6D1BC299F30018B72C /* MrCoin iOS SDK.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 2622ACD31BC290FD0017259E;
+			remoteInfo = MrCoin;
+		};
+		26FA7F781BC299F30018B72C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 26FA7F6D1BC299F30018B72C /* MrCoin iOS SDK.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 2610BC0C1BC2945800BFF784;
+			remoteInfo = MrCoinResources;
+		};
+		26FA7F7A1BC29A0E0018B72C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 26FA7F6D1BC299F30018B72C /* MrCoin iOS SDK.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 2622ACD21BC290FD0017259E;
+			remoteInfo = MrCoin;
+		};
+		26FA7F7E1BC29A450018B72C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 26FA7F6D1BC299F30018B72C /* MrCoin iOS SDK.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 2610BC011BC2937F00BFF784;
+			remoteInfo = Framework;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		26FA7F531BC299EB0018B72C /* ObjCExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ObjCExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		26FA7F571BC299EB0018B72C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		26FA7F591BC299EB0018B72C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		26FA7F5A1BC299EB0018B72C /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		26FA7F5C1BC299EB0018B72C /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		26FA7F5D1BC299EB0018B72C /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		26FA7F601BC299EB0018B72C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		26FA7F621BC299EB0018B72C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		26FA7F651BC299EB0018B72C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		26FA7F671BC299EB0018B72C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		26FA7F6D1BC299F30018B72C /* MrCoin iOS SDK.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "MrCoin iOS SDK.xcodeproj"; path = "../../framework/MrCoin iOS SDK.xcodeproj"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		26FA7F501BC299EB0018B72C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				26FA7F7C1BC29A110018B72C /* libMrCoin.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		26FA7F4A1BC299EB0018B72C = {
+			isa = PBXGroup;
+			children = (
+				26FA7F551BC299EB0018B72C /* ObjCExample */,
+				26FA7F6D1BC299F30018B72C /* MrCoin iOS SDK.xcodeproj */,
+				26FA7F541BC299EB0018B72C /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		26FA7F541BC299EB0018B72C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				26FA7F531BC299EB0018B72C /* ObjCExample.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		26FA7F551BC299EB0018B72C /* ObjCExample */ = {
+			isa = PBXGroup;
+			children = (
+				26FA7F591BC299EB0018B72C /* AppDelegate.h */,
+				26FA7F5A1BC299EB0018B72C /* AppDelegate.m */,
+				26FA7F5C1BC299EB0018B72C /* ViewController.h */,
+				26FA7F5D1BC299EB0018B72C /* ViewController.m */,
+				26FA7F5F1BC299EB0018B72C /* Main.storyboard */,
+				26FA7F621BC299EB0018B72C /* Assets.xcassets */,
+				26FA7F641BC299EB0018B72C /* LaunchScreen.storyboard */,
+				26FA7F671BC299EB0018B72C /* Info.plist */,
+				26FA7F561BC299EB0018B72C /* Supporting Files */,
+			);
+			path = ObjCExample;
+			sourceTree = "<group>";
+		};
+		26FA7F561BC299EB0018B72C /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				26FA7F571BC299EB0018B72C /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		26FA7F6E1BC299F30018B72C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				26FA7F751BC299F30018B72C /* MrCoin iOS SDKTests.xctest */,
+				26FA7F771BC299F30018B72C /* libMrCoin.a */,
+				26FA7F791BC299F30018B72C /* MrCoin.bundle */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		26FA7F521BC299EB0018B72C /* ObjCExample */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 26FA7F6A1BC299EB0018B72C /* Build configuration list for PBXNativeTarget "ObjCExample" */;
+			buildPhases = (
+				26FA7F4F1BC299EB0018B72C /* Sources */,
+				26FA7F501BC299EB0018B72C /* Frameworks */,
+				26FA7F511BC299EB0018B72C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				26FA7F7F1BC29A450018B72C /* PBXTargetDependency */,
+				26FA7F7B1BC29A0E0018B72C /* PBXTargetDependency */,
+			);
+			name = ObjCExample;
+			productName = ObjCExample;
+			productReference = 26FA7F531BC299EB0018B72C /* ObjCExample.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		26FA7F4B1BC299EB0018B72C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0700;
+				ORGANIZATIONNAME = MrCoin;
+				TargetAttributes = {
+					26FA7F521BC299EB0018B72C = {
+						CreatedOnToolsVersion = 7.0.1;
+						DevelopmentTeam = JKA4D59DM3;
+					};
+				};
+			};
+			buildConfigurationList = 26FA7F4E1BC299EB0018B72C /* Build configuration list for PBXProject "ObjCExample" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 26FA7F4A1BC299EB0018B72C;
+			productRefGroup = 26FA7F541BC299EB0018B72C /* Products */;
+			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 26FA7F6E1BC299F30018B72C /* Products */;
+					ProjectRef = 26FA7F6D1BC299F30018B72C /* MrCoin iOS SDK.xcodeproj */;
+				},
+			);
+			projectRoot = "";
+			targets = (
+				26FA7F521BC299EB0018B72C /* ObjCExample */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		26FA7F751BC299F30018B72C /* MrCoin iOS SDKTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "MrCoin iOS SDKTests.xctest";
+			remoteRef = 26FA7F741BC299F30018B72C /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		26FA7F771BC299F30018B72C /* libMrCoin.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libMrCoin.a;
+			remoteRef = 26FA7F761BC299F30018B72C /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		26FA7F791BC299F30018B72C /* MrCoin.bundle */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = MrCoin.bundle;
+			remoteRef = 26FA7F781BC299F30018B72C /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
+/* Begin PBXResourcesBuildPhase section */
+		26FA7F511BC299EB0018B72C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				26FA7F661BC299EB0018B72C /* LaunchScreen.storyboard in Resources */,
+				26FA7F631BC299EB0018B72C /* Assets.xcassets in Resources */,
+				26FA7F611BC299EB0018B72C /* Main.storyboard in Resources */,
+				26FA7F7D1BC29A290018B72C /* MrCoin.bundle in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		26FA7F4F1BC299EB0018B72C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				26FA7F5E1BC299EB0018B72C /* ViewController.m in Sources */,
+				26FA7F5B1BC299EB0018B72C /* AppDelegate.m in Sources */,
+				26FA7F581BC299EB0018B72C /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		26FA7F7B1BC29A0E0018B72C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = MrCoin;
+			targetProxy = 26FA7F7A1BC29A0E0018B72C /* PBXContainerItemProxy */;
+		};
+		26FA7F7F1BC29A450018B72C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Framework;
+			targetProxy = 26FA7F7E1BC29A450018B72C /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		26FA7F5F1BC299EB0018B72C /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				26FA7F601BC299EB0018B72C /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		26FA7F641BC299EB0018B72C /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				26FA7F651BC299EB0018B72C /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		26FA7F681BC299EB0018B72C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		26FA7F691BC299EB0018B72C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		26FA7F6B1BC299EB0018B72C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = ObjCExample/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = MrCoin.ObjCExample;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		26FA7F6C1BC299EB0018B72C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = ObjCExample/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = MrCoin.ObjCExample;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		26FA7F4E1BC299EB0018B72C /* Build configuration list for PBXProject "ObjCExample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				26FA7F681BC299EB0018B72C /* Debug */,
+				26FA7F691BC299EB0018B72C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		26FA7F6A1BC299EB0018B72C /* Build configuration list for PBXNativeTarget "ObjCExample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				26FA7F6B1BC299EB0018B72C /* Debug */,
+				26FA7F6C1BC299EB0018B72C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 26FA7F4B1BC299EB0018B72C /* Project object */;
+}
