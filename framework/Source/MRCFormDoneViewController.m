@@ -16,8 +16,13 @@
 
 @implementation MRCFormDoneViewController
 
+#pragma mark - Initialization
 - (void)viewDidLoad {
     [super viewDidLoad];
+}
+-(void)awakeFromNib
+{
+    self.nextButton.enabled = YES;
 }
 
 - (void)didReceiveMemoryWarning {

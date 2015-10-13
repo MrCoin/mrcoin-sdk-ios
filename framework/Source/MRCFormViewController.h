@@ -8,14 +8,30 @@
 
 #import <UIKit/UIKit.h>
 #import "MRCProgressView.h"
+#import "MRCAPI.h"
 
-@interface MRCFormViewController : UIViewController
+@interface MRCFormViewController : UIViewController <MRCProgressViewDelegate>
 
-@property (weak, nonatomic) IBOutlet MRCProgressView *progressView;
-@property (weak, nonatomic) IBOutlet UIView *contentView;
-//
+@property (strong, nonatomic) NSArray *pages;
+@property (strong, readonly) MRCAPI *api;
+
 - (void) nextPage;
 - (void) previousPage;
 
+- (void) nextPageWithObject:(id)object;
+- (void) previousPageWithObject:(id)object;
+
+- (void) showOverlay:(BOOL)show;
+
+- (IBAction)done:(id)sender;
+- (IBAction)cancel:(id)sender;
+
 @end
 
+@interface MRCFormViewOverlay : UIView
+
+@property BOOL documentMode;
+@property CGFloat topGradientSize;
+@property CGFloat bottomGradientSize;
+
+@end
