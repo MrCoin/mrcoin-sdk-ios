@@ -11,5 +11,6 @@
 @interface MrCoinViewController : UIViewController
 
 - (IBAction) showForm:(id)sender;
+- (IBAction) showSettings:(id)sender;
 
 @end

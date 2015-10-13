@@ -9,15 +9,17 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-#import "MrCoinView.h"
 #import "MrCoinViewController.h"
+
+#import "MRCFormViewController.h"
+#import "MRCFormPageViewController.h"
 
 #import "MRCEmptyViewController.h"
 #import "MRCTransferViewController.h"
-#import "MRCFormViewController.h"
 
-//#import "MRCPhoneViewController.h"
-//#import "MRCEmailViewController.h"
+#import "MRCPopUpViewController.h"
+#import "MRCTextViewController.h"
+#import "MRCCurrencyTableViewController.h"
 
 #import "MRCProgressView.h"
 #import "MRCTextInput.h"
@@ -31,9 +33,13 @@
 @interface MrCoin : NSObject
 
 @property MrCoinViewController* rootController;
+@property BOOL needsAcceptTerms;
 
 // Customizable
 + (void) customStoryboard:(UIStoryboard*)customStoryBoard;
+
++ (void)show:(id)target; // Valid target is window
++ (MRCTextViewController*)documentViewController:(MrCoinDocumentType)type;
 
 + (MrCoinViewController*) rootController;
 + (instancetype) sharedController;
@@ -46,5 +52,6 @@
 - (MRCSettings*) settings;
 
 + (NSBundle *)frameworkBundle;
++ (UIImage*) imageNamed:(NSString*)named;
 
 @end

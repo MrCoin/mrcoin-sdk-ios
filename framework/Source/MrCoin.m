@@ -22,9 +22,21 @@
 static MrCoin *_sharedController;
 static UIStoryboard *_sharedStoryboard;
 
++ (void)show:(id)target
+{
+    if([target isKindOfClass:[UIWindow class]])
+    {
+        UIWindow *w = (UIWindow*)target;
+        [w setRootViewController:[self viewController:@"MrCoin"]];
+        [w makeKeyAndVisible];
+    }
+}
 + (instancetype) sharedController
 {
-    if(!_sharedController) _sharedController = [[MrCoin alloc] init];
+    if(!_sharedController){
+        _sharedController = [[MrCoin alloc] init];
+        _sharedController.needsAcceptTerms = YES;
+    }
     return _sharedController;
 }
 
@@ -33,6 +45,7 @@ static UIStoryboard *_sharedStoryboard;
     return _sharedController.rootController;
 }
 
+#pragma mark - Settings
 + (MRCSettings*) settings
 {
     return [[self sharedController] settings];
@@ -41,8 +54,37 @@ static UIStoryboard *_sharedStoryboard;
 {
     if(!_userSettings){
         _userSettings = [[MRCSettings alloc] init];
+        _userSettings.showPopupOnError = YES;
+        _userSettings.showErrorOnTextField = YES;
+        [_userSettings loadSettings];
     }
     return _userSettings;
+}
+
+#pragma mark - Utilities
++ (MRCTextViewController*)documentViewController:(MrCoinDocumentType)type
+{
+    MRCTextViewController *vc = (MRCTextViewController*)[self viewController:@"DocumentViewer"];
+    vc.view.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+    UIWindow *w = [[[UIApplication sharedApplication] delegate] window];
+    vc.view.frame = w.frame;
+    [vc setMode:MRCShowDocuments];
+    [vc loadHTML:@""];
+    if(type == MrCoinDocumentTerms){
+        [vc setTitle:@"Terms"];
+    }else if(type == MrCoinDocumentShortTerms){
+        [vc setTitle:@"Terms"];
+    }else if(type == MrCoinDocumentSupport){
+        [vc setTitle:@"Support"];
+    }
+    return vc;
+}
++ (UIImage*) imageNamed:(NSString*)named
+{
+    UIImage* img = [UIImage imageNamed:named];   // non-CocoaPods
+    if (img == nil) img = [UIImage imageNamed:named inBundle:[self frameworkBundle] compatibleWithTraitCollection:nil];
+    if (img == nil) img = [UIImage imageNamed:[NSString stringWithFormat:@"MrCoin.bundle/@%.png",named]]; // CocoaPod
+    return img;
 }
 
 #pragma mark - Storyboard
