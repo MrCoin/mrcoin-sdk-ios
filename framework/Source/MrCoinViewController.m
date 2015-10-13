@@ -9,11 +9,12 @@
 #import "MrCoinViewController.h"
 #import "MrCoin.h"
 #import "MRCAPI.h"
+#import "MRCPopUpViewController.h"
 
 @interface MrCoinViewController ()
 
-@property (weak) UIViewController *page;
-@property (weak) UIViewController *unconfigured;
+@property (strong) UIViewController *page;
+@property (strong) UIViewController *unconfigured;
 
 @end
 
@@ -54,6 +55,13 @@
     [[self view] addSubview:_page.view];
     [self addChildViewController:_page];
 }
+- (void)_showForm
+{
+    _page = [MrCoin viewController:@"Form"];
+    _page.view.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+    [[self view] addSubview:_page.view];
+    [self addChildViewController:_page];
+}
 - (void)showUnconfigured
 {
     _unconfigured = [MrCoin viewController:@"Unconfigured"];
@@ -66,6 +74,15 @@
     UIViewController *form = [MrCoin viewController:@"Form"];
     [self presentViewController:form animated:YES completion:^{
     }];
+}
+- (IBAction) showSettings:(id)sender;
+{
+    UIViewController *settings = [MrCoin viewController:@"Settings"];
+    if(self.navigationController){
+        [self.navigationController pushViewController:settings animated:YES];
+    }
+//    [self presentViewController:form animated:YES completion:^{
+//    }];
 }
 
 - (void)didReceiveMemoryWarning {
