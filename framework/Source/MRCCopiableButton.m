@@ -7,6 +7,7 @@
 //
 
 #import "MRCCopiableButton.h"
+#import "MRCPopUpViewController.h"
 
 @interface MRCCopiableButton ()
 
@@ -50,6 +51,12 @@
     NSString *title = [actionSheet buttonTitleAtIndex:buttonIndex];
     if ([title isEqual:_alertLabel]){
         [UIPasteboard generalPasteboard].string = _value;
+        MRCPopUpViewController *popup = [MRCPopUpViewController sharedPopup];
+        [popup setStyle:MRCPopupDarkStyle];
+        [popup setMode:MRCPopupMessage];
+        [popup setTitle:@"Copied"];
+        [popup setMessage:@"The selected text successfully copied to the clipboard."];
+        [popup presentInViewController:nil hideAfterDelay:2.0f];
     }
 }
 @end

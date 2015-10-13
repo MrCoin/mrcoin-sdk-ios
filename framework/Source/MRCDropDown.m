@@ -23,6 +23,7 @@
 {
     self = [super initWithCoder:coder];
     if (self) {
+        self.hasPasteButton = NO;
         self.selectedRow = -1;
         self.placeholder = TAP_TO_CHOOSE;
         
@@ -54,23 +55,53 @@
 #pragma mark - Functions
 -(void)showPicker
 {
+    if(!self.items) return;
+    if(self.items.count == 0) return;
     picker = [[UIPickerView alloc] init];
     picker.dataSource = self;
     picker.delegate = self;
     self.inputView = picker;
+    if(_selectedItem){
+        [picker selectRow:_selectedRow inComponent:0 animated:NO];
+    }else{
+        self.text = _items[0];
+    }
+
 }
 - (IBAction)doneEditing:(id)sender
 {
+    _selectedRow = [picker selectedRowInComponent:0];
+    _selectedItem = _items[_selectedRow];
+
     [super doneEditing:sender];
 }
 - (IBAction)cancelEditing:(id)sender
 {
     [super cancelEditing:sender];
-    self.placeholder = TAP_TO_CHOOSE;
+    if(_selectedItem)
+    {
+        self.text = _selectedItem;
+    }else{
+        self.placeholder = TAP_TO_CHOOSE;
+    }
 }
 
 
 #pragma mark - Loading view
+@synthesize fetching = _fetching;
+-(void)setFetching:(BOOL)fetching
+{
+    if(fetching == YES){
+        [self showLoading];
+    }else{
+        [self hideLoading];
+    }
+    _fetching = fetching;
+}
+-(BOOL)isFetching
+{
+    return _fetching;
+}
 - (void) showLoading
 {
     UIActivityIndicatorView *loading = (UIActivityIndicatorView*)self.leftView;
@@ -108,22 +139,38 @@
 }
 -(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
 {
-    _selectedRow = row;
-    _selectedItem = _items[row];
-    self.text = _selectedItem;
+    self.text = _items[row];
 }
+
 
 #pragma mark - Textfield delegate
 -(BOOL)textFieldShouldBeginEditing:(UITextField *)textField
 {
+    if(!self.items || self.items.count == 0){
+        [self showPicker];
+        [super textFieldDidBeginEditing:textField];
+        return NO;
+    }
     self.userInteractionEnabled = NO;
     return YES;
 }
 -(void)textFieldDidBeginEditing:(UITextField *)textField
 {
-    [self showLoading];
     [self showPicker];
     [super textFieldDidBeginEditing:textField];
+//    //
+//    BOOL isValid;
+//    if(self.textInputDelegate){
+//        if(![self.textInputDelegate respondsToSelector:@selector(textInputIsValid:)])
+//        {
+//            if(doneBarButton && _selectedRow >= 0){
+//                doneBarButton.enabled = YES;
+//             }else{
+//                doneBarButton.enabled = NO;
+//             }
+//        }
+//    }
+
 }
 -(void)textFieldDidEndEditing:(UITextField *)textField
 {
@@ -133,6 +180,7 @@
     self.userInteractionEnabled = YES;
     [super textFieldDidEndEditing:textField];
 }
+
 -(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
     return NO;

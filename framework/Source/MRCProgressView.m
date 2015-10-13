@@ -7,6 +7,7 @@
 //
 
 #import "MRCProgressView.h"
+#import "MrCoin.h"
 
 #define TOP_MARGIN 60.0f
 #define GRAY_COLOR          [UIColor colorWithWhite:0.5 alpha:1.0]
@@ -15,12 +16,13 @@
 @interface MRCProgressItemView : UIView
 
 @property (nonatomic, getter=isSelected) BOOL selected;
-@property (nonatomic) NSString  *title;
 @property (nonatomic, readwrite) NSInteger itemIndex;
 
+@property (nonatomic) NSString  *title;
 @property (nonatomic) UILabel *titleLabel;
+@property (nonatomic) UIButton *closeImage;
 
-- (instancetype)initWithFrame:(CGRect)frame index:(NSInteger)anIndex title:(NSString*)aTitle selected:(BOOL)isSelected;
+- (instancetype)initWithFrame:(CGRect)frame index:(NSInteger)anIndex title:(NSString*)aTitle selected:(BOOL)isSelected closeTarget:(id)target;
 
 @end
 
@@ -32,8 +34,9 @@
     self = [super initWithCoder:coder];
     if (self) {
         self.backgroundColor = [UIColor clearColor];
-//        UIColor *globalTint = [[[UIApplication sharedApplication] delegate] window].tintColor;
-//        self.tintColor = globalTint;
+        self.userInteractionEnabled = YES;
+        //        UIColor *globalTint = [[[UIApplication sharedApplication] delegate] window].tintColor;
+        //        self.tintColor = globalTint;
     }
     return self;
 }
@@ -42,22 +45,35 @@
     self = [super initWithFrame:frame];
     if (self) {
         self.backgroundColor = [UIColor clearColor];
-//        UIColor *globalTint = [[[UIApplication sharedApplication] delegate] window].tintColor;
+        //        UIColor *globalTint = [[[UIApplication sharedApplication] delegate] window].tintColor;
     }
     return self;
 }
--(void)setSteps:(NSArray *)steps
+-(void)setStepLabels:(NSArray *)steps
 {
-    _steps = steps;
-    for (int i=0; i<self.maxSteps; i++) {
-        MRCProgressItemView *item = [[MRCProgressItemView alloc] initWithFrame:CGRectMake(0, 0, 20, 20) index:i title:_steps[i] selected:(i==_activeStep-1)];
+    [self setActiveStep:0];
+    _stepLabels = steps;
+    if(self.showCloseButton){
+        MRCProgressItemView *item = [[MRCProgressItemView alloc] initWithFrame:CGRectMake(0, 0, 20, 20) index:NSIntegerMax title:nil selected:true closeTarget:self];
+        item.tintColor = self.tintColor;
+        [self addSubview:item];
+    }
+    for (int i=0; i<_stepLabels.count; i++) {
+        MRCProgressItemView *item = [[MRCProgressItemView alloc] initWithFrame:CGRectMake(0, 0, 20, 20) index:i title:_stepLabels[i] selected:(i==_activeStep-1) closeTarget:nil];
         item.tintColor = self.tintColor;
         [self addSubview:item];
     }
 }
+- (IBAction) closePressed:(id)sender
+{
+    if(self.delegate){
+        [self.delegate progressViewClosed:self];
+    }
+}
 - (NSInteger) maxSteps
 {
-    return _steps.count;
+    if(self.showCloseButton) return _stepLabels.count+1;
+    return _stepLabels.count;
 }
 
 - (void)setActiveStep:(NSInteger)activeStep
@@ -65,42 +81,40 @@
     _activeStep = activeStep;
     for (UIView *view in self.subviews) {
         MRCProgressItemView *v = (MRCProgressItemView*)view;
-        if(v) v.selected = (v.itemIndex == activeStep-1);
-        [v setNeedsDisplay];
+        if(v.itemIndex >= 0){
+            if(v) v.selected = (v.itemIndex == activeStep-1);
+            [v setNeedsDisplay];
+        }
     }
+    [self layoutSubviews];
+}
+- (void)setActiveStepByName:(NSString*)name
+{
+    NSInteger activeStep = 0;
+    for (int i=0; i<_stepLabels.count; i++) {
+        if([name isEqualToString:(NSString*)_stepLabels[i]])
+        {
+            activeStep = i+1;
+            break;
+        }
+    }
+    [self setActiveStep:activeStep];
 }
 
 - (void)drawRect:(CGRect)rect {
     CGContextRef context = UIGraphicsGetCurrentContext();
-    
-    // Create a gradient
-    CGFloat colors [] = {
-        1.0, 1.0, 1.0, 1.0,
-        1.0, 1.0, 1.0, 0.0
-    };
-    CGFloat locations [] = {
-        0.5, 1.0
-    };
-    
-    CGColorSpaceRef baseSpace = CGColorSpaceCreateDeviceRGB();
-    CGGradientRef gradient = CGGradientCreateWithColorComponents(baseSpace, colors, locations, 2);
-    CGColorSpaceRelease(baseSpace), baseSpace = NULL;
-    
     CGContextSaveGState(context);
     
-    // Gradient
-    CGPoint startPoint = CGPointMake(CGRectGetMidX(rect), CGRectGetMinY(rect));
-    CGPoint endPoint = CGPointMake(CGRectGetMidX(rect), CGRectGetMaxY(rect));
-    
-    CGContextDrawLinearGradient(context, gradient, startPoint, endPoint, 0);
-    CGGradientRelease(gradient), gradient = NULL;
-    
-    // Line
-//    rect.size.height -= 25;
     CGContextSetStrokeColorWithColor(context, [LIGHTGRAY_COLOR CGColor]);
-    CGContextSetLineWidth(context, 5.0);
-    CGContextMoveToPoint(context, 0, TOP_MARGIN);
-    CGContextAddLineToPoint(context, rect.size.width, TOP_MARGIN);
+    
+//    CGFloat h = 100.0f;
+//    CGFloat y = TOP_MARGIN+(2.5f);
+    CGFloat h = 5.0f;
+    CGFloat y = TOP_MARGIN-(2.5f);
+    
+    CGContextSetLineWidth(context, h);
+    CGContextMoveToPoint(context, 0, y);
+    CGContextAddLineToPoint(context, rect.size.width, y);
     CGContextDrawPath(context, kCGPathStroke);
     
     CGContextRestoreGState(context);
@@ -109,15 +123,26 @@
 {
     CGRect rect = CGRectInset(self.bounds, 40, 0);
     CGRect itemSize = CGRectZero;
-    CGFloat h = rect.size.height*0.33f;//rect.size.width/self.maxSteps;
-//    h *= 0.5f;
+    CGFloat h = rect.size.height*0.5f;//rect.size.width/self.maxSteps;
+    //    h *= 0.5f;
     if(h > rect.size.height) h = rect.size.height;
     CGFloat w = rect.size.width/self.maxSteps;
     int i = 0;
+    CGFloat diff = 0;
+    if(self.activeStep > 0){
+        diff = -8;
+    }
     for (UIView *view in self.subviews) {
+        MRCProgressItemView *itemView = (MRCProgressItemView*)view;
         itemSize.size = CGSizeMake(h, h);
-        itemSize.origin.x = (w*i)+rect.origin.x+((w-h)*.5f);
+        if(itemView.selected){
+            diff = 0;
+        }
+        itemSize.origin.x = (w*i)+rect.origin.x+((w-h)*.5f)+diff;
         itemSize.origin.y = TOP_MARGIN-(h*.5f);
+        if(itemView.selected){
+            diff = 8;
+        }
         view.frame = itemSize;
         [view setNeedsDisplay];
         i++;
@@ -127,7 +152,11 @@
 @end
 
 @implementation MRCProgressItemView
-- (instancetype)initWithFrame:(CGRect)frame index:(NSInteger)anIndex title:(NSString*)aTitle selected:(BOOL)isSelected
+{
+    CAShapeLayer  *shapeLayer;
+    UILabel       *shapeText;
+}
+- (instancetype)initWithFrame:(CGRect)frame index:(NSInteger)anIndex title:(NSString*)aTitle selected:(BOOL)isSelected closeTarget:(id)target
 {
     self = [super initWithFrame:frame];
     if (self) {
@@ -136,65 +165,115 @@
         self.title = aTitle;
         self.itemIndex = anIndex;
         //
-        UIFont *titleFont = [UIFont fontWithName:@"HelveticaNeue" size:11.0f];
-        UIColor *textColor = self.tintColor;
-        _titleLabel = [[UILabel alloc] init];
-        _titleLabel.font = titleFont;
-        _titleLabel.textColor = textColor;
-        [self addSubview:_titleLabel];
+        shapeLayer = [CAShapeLayer layer];
+        shapeLayer.lineWidth = 2.0;
+        shapeLayer.fillRule = kCAFillRuleNonZero;
+        [self.layer addSublayer:shapeLayer];
+        //
+
+        if(self.title){
+            UIFont *shapeFont = [UIFont fontWithName:@"HelveticaNeue" size:24.0f];
+            UIColor *textColor = self.tintColor;
+            shapeText = [[UILabel alloc] init];
+            shapeText.font = shapeFont;
+            shapeText.textColor = textColor;
+            [self addSubview:shapeText];
+            //
+            UIFont *titleFont = [UIFont fontWithName:@"HelveticaNeue" size:11.0f];
+            _titleLabel = [[UILabel alloc] init];
+            _titleLabel.font = titleFont;
+            _titleLabel.textColor = textColor;
+            [self addSubview:_titleLabel];
+        }else{
+            shapeLayer.lineWidth = 4.0;
+            self.userInteractionEnabled = YES;
+            
+            _closeImage = [UIButton buttonWithType:UIButtonTypeCustom];
+            [_closeImage setImage:[[MrCoin imageNamed:@"close"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
+            _closeImage.tintColor = [UIColor whiteColor];
+            CGSize s = _closeImage.imageView.image.size;
+            _closeImage.frame = CGRectMake(0, 0, s.width, s.height);
+            [_closeImage addTarget:target action:@selector(closePressed:) forControlEvents:UIControlEventTouchUpInside];
+            [self addSubview:_closeImage];
+        }
     }
     return self;
 }
-- (void)drawRect:(CGRect)rect {
-    CGFloat fontSize = 24.0f;
-    if(_selected){
-        rect = CGRectInset(rect, 3, 3);
-    }else{
-        rect = CGRectInset(rect, 15, 15);
-        fontSize = 12.0f;
-    }
-    CGFloat h = rect.size.height;
-    CGContextRef context = UIGraphicsGetCurrentContext();
-    CGContextAddEllipseInRect(context, rect);
-    CGContextSetLineWidth(context, 2.0);
 
+
+@synthesize selected = _selected;
+-(void)setSelected:(BOOL)selected
+{
+    _selected = selected;
+    if(selected){
+        shapeLayer.transform = CATransform3DMakeScale(1, 1, 1);
+    }else{
+        if(self.title){
+            shapeLayer.transform = CATransform3DMakeScale(0.75, 0.75, 1);
+        }else{
+            shapeLayer.transform = CATransform3DMakeScale(0.75, 0.75, 1);
+        }
+    }
+    [self updateView:self.bounds];
+}
+-(BOOL)isSelected
+{
+    return _selected;
+}
+- (void)updateView:(CGRect)rect {
+    rect = CGRectInset(rect, 3, 3);
+    
     // Selected
-    UIColor *textColor;
+    CGRect shapeFrame = rect;
+    shapeFrame.origin.x = -rect.size.width*0.5f;
+    shapeFrame.origin.y = -rect.size.height*0.5f;
+    shapeLayer.path = [UIBezierPath bezierPathWithOvalInRect:shapeFrame].CGPath;
+    shapeLayer.frame = CGRectMake(shapeFrame.size.width*0.5f, shapeFrame.size.height*0.5f, shapeFrame.size.width, shapeFrame.size.height);
     if(_selected){
-        CGContextSetFillColorWithColor(context, [self.tintColor CGColor]);
-        CGContextDrawPath(context, kCGPathFill);
-        textColor = [UIColor whiteColor];
+        shapeLayer.fillColor = [self.tintColor CGColor];
+        shapeLayer.strokeColor = [[UIColor clearColor] CGColor];
     }else{
-        CGContextSetStrokeColorWithColor(context, [GRAY_COLOR CGColor]);
-        CGContextSetFillColorWithColor(context, [[UIColor whiteColor] CGColor]);
-        CGContextDrawPath(context, kCGPathFillStroke);
-        textColor = GRAY_COLOR;
+        if(self.title){
+            shapeLayer.strokeColor = [GRAY_COLOR CGColor];
+            shapeLayer.fillColor = [[UIColor whiteColor] CGColor];
+        }else{
+            shapeLayer.strokeColor = [GRAY_COLOR CGColor];
+            shapeLayer.fillColor = [GRAY_COLOR CGColor];
+        }
+    }
+    if(self.title){
+        CGFloat fontSize = 18.0f;
+        UIColor *textColor;
+        if(_selected){
+            fontSize = 35.0f;
+            textColor = [UIColor whiteColor];
+        }else{
+            textColor = GRAY_COLOR;
+        }
+        // Number
+        NSString *stepString = [NSString stringWithFormat:@"%@",[NSNumber numberWithInteger:_itemIndex+1]];
+        UIFont *stepFont = [UIFont fontWithName:@"HelveticaNeue-Light" size:fontSize];
+        [shapeText setFont:stepFont];
+        [shapeText setTextColor:textColor];
+        [shapeText setText:stepString];
+        [shapeText sizeToFit];
+        [shapeText setCenter:CGPointMake(rect.size.width*0.5f, rect.size.height*0.5f)];
+        
+        // Title
+        if(_selected){
+            _titleLabel.textColor = self.tintColor;
+            _titleLabel.alpha = 1.0f;
+        }else{
+            _titleLabel.alpha = 0.0f;
+        }
+        _titleLabel.text = _title;
+        [_titleLabel sizeToFit];
+//        _titleLabel.center = CGPointMake(rect.origin.x+(rect.size.width*0.5f), rect.origin.y+rect.size.height+10);
+        _titleLabel.center = CGPointMake((rect.size.width*0.5f), (rect.size.height+10));
+    }else{
+        _closeImage.center = CGPointMake((rect.size.width*0.5f), (rect.size.height*0.5f));
     }
     
-    // Number
-    NSString *stepString = [NSString stringWithFormat:@"%@",[NSNumber numberWithInteger:_itemIndex+1]];
-    UIFont *stepFont = [UIFont fontWithName:@"HelveticaNeue-Light" size:fontSize];
-    NSDictionary *stepAttributes = [[NSDictionary alloc] initWithObjectsAndKeys: stepFont, NSFontAttributeName,
-                                     textColor,NSForegroundColorAttributeName,nil];
-    CGSize stepStringSize = [stepString sizeWithAttributes:stepAttributes];
-    CGRect stepItemSize = rect;
-    stepItemSize.origin.x += (rect.size.width-stepStringSize.width)*0.5f;
-    stepItemSize.origin.y += (rect.size.height-stepStringSize.height)*0.5f;
-    stepItemSize.origin.y -= 1.0f;
-    stepItemSize.size = stepStringSize;
-    [stepString drawInRect:stepItemSize withAttributes:stepAttributes];
-    
-    // Title
-    if(_selected){
-        _titleLabel.textColor = self.tintColor;
-        _titleLabel.alpha = 1.0f;
-    }else{
-        _titleLabel.alpha = 0.0f;
-    }
-    _titleLabel.text = _title;
-    [_titleLabel sizeToFit];
-    _titleLabel.center = CGPointMake(rect.origin.x+(rect.size.width*0.5f), 60.0f);
-
 }
 
 @end

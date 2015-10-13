@@ -8,10 +8,14 @@
 
 #import "MRCTextInput.h"
 
-@interface MRCDropDown : MRCTextInput <UIPickerViewDelegate, UIPickerViewDataSource>
+@interface MRCDropDown : MRCTextInput <UIPickerViewDelegate>
+
+@property (nonatomic,getter=isFetching) BOOL fetching;
 
 @property (nonatomic) NSArray *items;
 @property (nonatomic) NSInteger selectedRow;
 @property (nonatomic) id selectedItem;
+
+-(void)showPicker;
 
 @end

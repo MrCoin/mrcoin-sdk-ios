@@ -10,4 +10,8 @@
 
 @interface MRCButton : UIButton
 
+@property (nonatomic) IBInspectable BOOL bordered;
+
+- (void) setupControl;
+
 @end

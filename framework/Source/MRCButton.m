@@ -15,7 +15,6 @@
 {
     self = [super initWithCoder:coder];
     if (self) {
-        [self setupControl];
     }
     return self;
 }
@@ -23,14 +22,56 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        [self setupControl];
     }
     return self;
 }
+-(void)awakeFromNib
+{
+    [self setupControl];
+}
 - (void) setupControl
 {
-    self.layer.cornerRadius = 8;
-    self.layer.masksToBounds = 8;
+    if(_bordered){
+        self.layer.cornerRadius = 5;
+        self.layer.masksToBounds = YES;
+        [self setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    }else{
+        [self setTitleColor:self.tintColor forState:UIControlStateNormal];
+    }
+    [self setEnabled:self.enabled];
+}
+- (CGSize)intrinsicContentSize
+{
+    CGSize s = [super intrinsicContentSize];
+    if(self.hidden){
+        s.height = 0;
+        return s;
+    }
+    if(_bordered){
+        s.height += 14;
+        s.width += 20;
+    }
+    return s;
+}
+-(void)setEnabled:(BOOL)enabled
+{
+//    [self setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    if(enabled){
+        if(_bordered){
+            self.backgroundColor = self.tintColor;
+            self.alpha = 1.0f;
+        }else{
+            [self setTitleColor:self.tintColor forState:UIControlStateNormal];
+        }
+    }else{
+        if(_bordered){
+            self.backgroundColor = [UIColor lightGrayColor];
+            self.alpha = 0.5f;
+        }else{
+            [self setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+        }
+    }
+    [super setEnabled:enabled];
 }
 
 @end
