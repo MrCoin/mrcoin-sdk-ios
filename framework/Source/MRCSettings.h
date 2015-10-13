@@ -10,6 +10,21 @@
 
 @interface MRCSettings : NSObject
 
-@property (nonatomic,getter=isConfigured) BOOL configured;
+// User settings
+@property (nonatomic) NSString *bitcoinAddress;
+@property (nonatomic) NSString *userPhone;
+@property (nonatomic) NSString *userEmail;
+@property (nonatomic) NSString *sourceCurrency;
+@property (nonatomic,readonly) NSString *destinationCurrency;
+@property (readonly) BOOL isConfigured;
+
+- (void) loadSettings;
+- (void) saveSettings;
+- (void) resetSettings;
+
+// Framework settings
+@property (nonatomic) NSString *resellerKey;
+@property (nonatomic) BOOL showPopupOnError;
+@property (nonatomic) BOOL showErrorOnTextField;
 
 @end

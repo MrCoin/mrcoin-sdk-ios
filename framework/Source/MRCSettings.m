@@ -10,9 +10,31 @@
 
 @implementation MRCSettings
 
-+ (BOOL)isConfigured
+- (BOOL)isConfigured
 {
-    return NO;
+    return (_bitcoinAddress != nil && _userEmail != nil && _userPhone != nil && _sourceCurrency != nil);
+}
+- (NSString *)destinationCurrency
+{
+    return @"BTC";
+}
+- (void) saveSettings
+{
+    NSUserDefaults *d = [NSUserDefaults standardUserDefaults];
+    [d setObject:self.sourceCurrency forKey:@"MRCSourceCurrency"];
+    [d synchronize];
+}
+- (void) resetSettings
+{
+//    _bitcoinAddress = nil;
+    _userPhone = nil;
+    _userEmail = nil;
+    _sourceCurrency = nil;
+}
+- (void) loadSettings
+{
+    NSUserDefaults *d = [NSUserDefaults standardUserDefaults];
+    self.sourceCurrency = [d objectForKey:@"MRCSourceCurrency"];
 }
 
 @end
