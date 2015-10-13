@@ -7,13 +7,14 @@
 //
 
 #import "MRCAPI.h"
+#import "MrCoin.h"
 
 #define API_URL @"https://www.mrcoin.eu/api/v0/quick-transfer"
 
 @implementation MRCAPI
 
 #pragma mark - API methods 0.1
--(void) getWallet:(APIResponse)response error:(APIResponseError)error
+-(void) getMe:(APIResponse)response error:(APIResponseError)error
 {
     
 }
@@ -23,21 +24,33 @@
 }
 -(void) getAddress:(NSString*)address response:(APIResponse)response error:(APIResponseError)error
 {
-    NSDictionary *parameters = [self quickTransferDictionaryForAddress:@"1Fo2NXefxfEUayB3zFEMf4gHHAzMHWokBJ" phone:@"+442071234567" email:@"user@example.com" currencyCode:@"BTC" locale:@"en" timezone:@"Europe/London" reseller:@"Breadwallet"];
+//    NSString *phone = @"+442071234567";
+//    NSString *email = @"user@example.com";
+    NSString *phone = [[MrCoin settings] userPhone];
+    NSString *email = [[MrCoin settings] userEmail];
+    //
+    NSString *reseller = [[MrCoin settings] resellerKey];
+    NSString *btcAddress = [[MrCoin settings] bitcoinAddress];
+    NSString *timezone = [[NSTimeZone systemTimeZone] name];
+    NSString *locale = [[NSLocale currentLocale] objectForKey:NSLocaleLanguageCode];
+    NSString *destinationCurrency = [[MrCoin settings] destinationCurrency];
+    
+    NSDictionary *parameters = [self quickTransferDictionaryForAddress:btcAddress phone:phone email:email currencyCode:destinationCurrency locale:locale timezone:timezone reseller:reseller];
     [self call:parameters response:response error:error];
 }
 
 -(void) patchWallet:(NSDictionary*)patch response:(APIResponse)response error:(APIResponseError)error
 {
-    
+    response(nil);
 }
 -(void) requestVerificationCodeForCountry:(NSString*)country phone:(NSString*)phone response:(APIResponse)response error:(APIResponseError)error
 {
-    
+    response(nil);
 }
 -(void) verifyPhone:(NSString*)phone code:(NSString*)code response:(APIResponse)response error:(APIResponseError)error
 {
-    
+    response(nil);
+//    error([NSError errorWithDomain:@"MrCoin" code:0 userInfo:nil],MRCAPIGenericErrorType);
 }
 
 #pragma mark - Generic methods
@@ -83,7 +96,7 @@
     [request setValue:@"application/vnd.api+json" forHTTPHeaderField:@"Accept"];
     [request setValue:@"application/vnd.api+json" forHTTPHeaderField:@"Content-Type"];
     [request setHTTPBody:[json dataUsingEncoding:NSUTF8StringEncoding]];
-
+    
     // Response
     NSURLResponse *response;
     NSData *responseData = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];

@@ -12,7 +12,7 @@ typedef enum {
     MRCAPIGenericErrorType,         //
     MRCAPIMissingDataErrorType,     //
     MRCAPIMissingWalletErrorType,   //
-    MRCAPInternalErrorType          // 
+    MRCAPInternalErrorType          //
 } MRCAPIErrorType;
 
 typedef void (^APIResponse)(NSDictionary* dictionary);
@@ -20,7 +20,7 @@ typedef void (^APIResponseError)(NSError* error, MRCAPIErrorType errorType);
 
 @interface MRCAPI : NSObject
 
--(void) getWallet:(APIResponse)response error:(APIResponseError)error;
+-(void) getMe:(APIResponse)response error:(APIResponseError)error;
 -(void) getCountries:(APIResponse)response error:(APIResponseError)error;
 -(void) getAddress:(NSString*)address response:(APIResponse)response error:(APIResponseError)error;
 
