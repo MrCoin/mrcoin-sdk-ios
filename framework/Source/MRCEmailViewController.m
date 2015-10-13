@@ -8,6 +8,8 @@
 
 #import "MRCEmailViewController.h"
 #import "MRCFormViewController.h"
+#import "MrCoin.h"
+#import "MRCEmailData.h"
 
 @interface MRCEmailViewController ()
 
@@ -15,13 +17,30 @@
 
 @implementation MRCEmailViewController
 
+#pragma mark - Initialization
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    _emailTextInput.textInputDelegate = self;
+    _emailTextInput.dataType = (MRCInputDataType*)[MRCEmailData dataType];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
+
+#pragma mark - Navigation
+- (void)nextPage:(id)sender
+{
+    [_emailTextInput endEditing:YES];
+    [[MrCoin settings] setUserEmail:_emailTextInput.text];
+    [super nextPage:sender];
+}
+
+#pragma mark - Text Input
+- (void) textInput:(MRCTextInput *)textInput isValid:(BOOL)valid
+{
+    self.nextButton.enabled = valid;
+}
+
+
 @end

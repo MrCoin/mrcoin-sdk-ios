@@ -13,6 +13,5 @@
 @interface MRCEmailViewController : MRCFormPageViewController
 
 @property (weak, nonatomic) IBOutlet MRCTextInput *emailTextInput;
-@property (weak, nonatomic) IBOutlet UIButton *sendButton;
 
 @end

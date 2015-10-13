@@ -10,13 +10,9 @@
 #import "MRCFormPageViewController.h"
 #import "MRCDropDown.h"
 
-@interface MRCPhoneViewController : MRCFormPageViewController
+@interface MRCPhoneViewController : MRCFormPageViewController 
 
 @property (weak, nonatomic) IBOutlet MRCDropDown *countrySelector;
 @property (weak, nonatomic) IBOutlet MRCTextInput *phoneTextInput;
-@property (weak, nonatomic) IBOutlet UIButton *sendButton;
-
-//- (IBAction)countrySelectorChanged:(id)sender;
-//- (IBAction)phoneInputChanged:(id)sender;
 
 @end

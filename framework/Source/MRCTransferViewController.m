@@ -19,6 +19,7 @@
 //#define MESSAGE @"MQ34712371"
 
 #import "MRCAPI.h"
+#import "MrCoin.h"
 
 
 @interface MRCTransferViewController ()
@@ -42,13 +43,16 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+}
+- (void)viewWillAppear:(BOOL)animated
+{
     MRCAPI *api = [[MRCAPI alloc] init];
     [api getAddress:@"" response:^(NSDictionary *dictionary) {
-        [self setupView:dictionary currency:@"EUR"]; //HUF
+        [self setupView:dictionary currency:[[MrCoin settings]sourceCurrency]]; //HUF
     } error:^(NSError *error, MRCAPIErrorType errorType) {
         NSLog(@"ERROR %@",error);
     }];
+    [super viewWillAppear:animated];
 }
 
 -(void)setupView:(NSDictionary*)dictionary currency:(NSString*)currency
@@ -87,10 +91,18 @@
 
 #pragma mark - Button Actions
 - (IBAction)help:(id)sender {
+    MRCTextViewController *text = [MrCoin documentViewController:MrCoinDocumentSupport];
+    [text.navigationItem setLeftBarButtonItem:[[UIBarButtonItem alloc] initWithImage:[MrCoin imageNamed:@"close"] style:UIBarButtonItemStylePlain target:text action:@selector(close:)]];
+     //[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:text action:@selector(close:)]];
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:text];
+    nav.modalPresentationStyle = UIModalTransitionStyleFlipHorizontal;
+    [self presentViewController:nav animated:YES completion:^{
+        
+    }];
 //    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:HELP_URL]];
 }
 - (IBAction)serviceProvider:(id)sender {
-//    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:SERVICE_URL]];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://www.mrcoin.eu"]];
 }
 
 @end

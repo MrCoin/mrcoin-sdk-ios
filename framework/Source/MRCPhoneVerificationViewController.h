@@ -10,12 +10,13 @@
 #import "MRCFormPageViewController.h"
 #import "MRCTextInput.h"
 
-@interface MRCPhoneVerificationViewController : MRCFormPageViewController
+@interface MRCPhoneVerificationViewController : MRCFormPageViewController 
 
 @property (weak, nonatomic) IBOutlet MRCTextInput *codeTextInput;
 @property (weak, nonatomic) IBOutlet UIButton *resendButton;
+@property (weak, nonatomic) IBOutlet UIButton *reenterPhoneButton;
 
-//- (IBAction)resendVerificationCode:(id)sender;
-
+- (IBAction)reenterPhoneNumber:(id)sender;
+- (IBAction)resendVerificationCode:(id)sender;
 
 @end
