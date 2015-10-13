@@ -10,4 +10,14 @@
 
 @interface MRCInputDataType : NSObject
 
++ (instancetype) dataType;
+
+- (BOOL) isValid:(NSString*)string;
+
+- (NSString*) format:(NSString*)string;
+- (NSString*) unformat:(NSString*)string;
+
+- (NSInteger) minimumLength;
+- (NSInteger) maximumLength;
+
 @end

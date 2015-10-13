@@ -10,4 +10,8 @@
 
 @interface MRCErrorView : UIView
 
++ (instancetype) error:(NSString*)error inView:(UIView*)view frame:(CGRect)rect backgroundColor:(UIColor*)color;
+
+- (void) dismiss:(void (^)(void))complete;
+
 @end

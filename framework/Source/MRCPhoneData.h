@@ -6,7 +6,7 @@
 //  Copyright © 2015 MrCoin. All rights reserved.
 //
 
-#import <MrCoin/MrCoin.h>
+#import "MRCInputDataType.h"
 
 @interface MRCPhoneData : MRCInputDataType
 

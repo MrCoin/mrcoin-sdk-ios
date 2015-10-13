@@ -2,17 +2,12 @@
 
 ## Overview ##
 
-…
+### Swift Example ###
 
-## License ##
-
-…
-
-## Technical requirements ##
-
-- iOS 7.0 as a deployment target
-- iOS 8.0 SDK to build
-- The framework uses automatic reference counting (ARC).
+        MrCoin.settings().walletKey = "1Fo2NXefxfEUayB3zFEMf4gHHAzMHWokBJ"
+        MrCoin.settings().resellerKey = "Breadwallet"
+        MrCoin.settings().sourceCurrency = "EUR"
+        MrCoin.show(window);
 
 ## Adding the static library to your iOS project ##
 
@@ -26,20 +21,26 @@ To use the MrCoin classes within your application, simply include the core frame
 
 Additionally, this is an ARC-enabled framework, so if you want to use this within a manual reference counted application targeting iOS 4.x, you'll need to add -fobjc-arc to your Other Linker Flags as well.
 
-### Building a static library at the command line ###
 
-If you don't want to include the project as a dependency in your application's Xcode project, you can build a universal static library for the iOS Simulator or device. To do this, run `build.sh` at the command line. The resulting library and header files will be located at `build/Release-iphone`. You may also change the version of the iOS SDK by changing the `IOSSDK_VER` variable in `build.sh` (all available versions can be found using `xcodebuild -showsdks`).
-
-## Adding this as a framework (module) to your Mac or iOS project ##
+## Adding this as a framework (module) to your iOS project ##
 
 Xcode 6 and iOS 8 support the use of full frameworks, as does the Mac, which simplifies the process of adding this to your application. To add this to your application, I recommend dragging the .xcodeproj project file into your application's project (as you would in the static library target).
 
-For your application, go to its target build settings and choose the Build Phases tab. Under the Target Dependencies grouping, add MrCoinFramework on iOS (not MrCoinSDK, which builds the static library)
+For your application, go to its target build settings and choose the Build Phases tab. Under the Target Dependencies grouping, add MrCoinFramework to the list (not MrCoin, which builds the static library).
 
 This should cause MrCoin to build as a framework. Under Xcode 6, this will also build as a module, which will allow you to use this in Swift projects. When set up as above, you should just need to use 
 
-    import MrCoin
+    import MrCoinFramework
 
 to pull it in.
 
 
+## License ##
+
+…
+
+## Technical requirements ##
+
+- iOS 7.0 as a deployment target
+- minimum iOS 8.0 SDK to build
+- The framework uses automatic reference counting (ARC).
