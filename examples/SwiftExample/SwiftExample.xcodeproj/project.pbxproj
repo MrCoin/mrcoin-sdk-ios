@@ -13,6 +13,7 @@
 		26FA7F491BC2994C0018B72C /* MrCoin.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 26FA7F451BC298E00018B72C /* MrCoin.bundle */; };
 		26FA7F9A1BC2A2B20018B72C /* MrCoinFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26FA7F971BC2A29B0018B72C /* MrCoinFramework.framework */; };
 		26FA7F9B1BC2A2B20018B72C /* MrCoinFramework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 26FA7F971BC2A29B0018B72C /* MrCoinFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		26FEB7F01BCA673F00DDA046 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 26FEB7EF1BCA673F00DDA046 /* Main.storyboard */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -88,6 +89,7 @@
 		26FA7F0C1BC2972C0018B72C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		26FA7F0E1BC2972C0018B72C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		26FA7F391BC298E00018B72C /* MrCoin iOS SDK.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "MrCoin iOS SDK.xcodeproj"; path = "../../framework/MrCoin iOS SDK.xcodeproj"; sourceTree = "<group>"; };
+		26FEB7EF1BCA673F00DDA046 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +128,7 @@
 				26FA7F091BC2972C0018B72C /* Assets.xcassets */,
 				26FA7F0B1BC2972C0018B72C /* LaunchScreen.storyboard */,
 				26FA7F0E1BC2972C0018B72C /* Info.plist */,
+				26FEB7EF1BCA673F00DDA046 /* Main.storyboard */,
 			);
 			path = SwiftExample;
 			sourceTree = "<group>";
@@ -243,6 +246,7 @@
 				26FA7F0D1BC2972C0018B72C /* LaunchScreen.storyboard in Resources */,
 				26FA7F0A1BC2972C0018B72C /* Assets.xcassets in Resources */,
 				26FA7F491BC2994C0018B72C /* MrCoin.bundle in Resources */,
+				26FEB7F01BCA673F00DDA046 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

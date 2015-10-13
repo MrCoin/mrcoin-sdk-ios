@@ -16,14 +16,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
-        self.window?.backgroundColor = UIColor.whiteColor()
+        window?.backgroundColor = UIColor.grayColor()
         
-        let vc = MrCoin.viewController("MrCoin")
+        let settings = MrCoin.settings()
+        // Framework Settings
+        settings.showErrorOnTextField = true
+        settings.showPopupOnError = false
+        settings.resellerKey = "Breadwallet"
+        
+        settings.sourceCurrency = "EUR"
+        settings.bitcoinAddress = "1Fo2NXefxfEUayB3zFEMf4gHHAzMHWokBJ"
+        MrCoin.sharedController().needsAcceptTerms = false;
+//        settings.userEmail = "email@domain.com"
+//        settings.userPhone = "+36307086085";
 
-        self.window?.rootViewController = vc
-        self.window?.makeKeyAndVisible()
-        
         return true
     }
 
