@@ -23,7 +23,6 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
-		2610BC121BC2950200BFF784 /* MrCoin.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2622ACF91BC2913E0017259E /* MrCoin.storyboard */; };
 		2622ACEA1BC2911B0017259E /* MRCEmptyViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 2622ACDC1BC2911B0017259E /* MRCEmptyViewController.h */; settings = {ASSET_TAGS = (); }; };
 		2622ACEB1BC2911B0017259E /* MRCEmptyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2622ACDD1BC2911B0017259E /* MRCEmptyViewController.m */; settings = {ASSET_TAGS = (); }; };
 		2622ACEC1BC2911B0017259E /* MRCFormViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 2622ACDE1BC2911B0017259E /* MRCFormViewController.h */; settings = {ASSET_TAGS = (); }; };
@@ -44,6 +43,8 @@
 		2622AD071BC2917E0017259E /* MrCoin.h in Headers */ = {isa = PBXBuildFile; fileRef = 2622ACE01BC2911B0017259E /* MrCoin.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2622AD091BC2917E0017259E /* MRCProgressView.h in Headers */ = {isa = PBXBuildFile; fileRef = 2622ACE41BC2911B0017259E /* MRCProgressView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2622AD0B1BC2917E0017259E /* MRCTextInput.h in Headers */ = {isa = PBXBuildFile; fileRef = 2622ACE81BC2911B0017259E /* MRCTextInput.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2642D2541BCFA0CD00C79A13 /* flags in Resources */ = {isa = PBXBuildFile; fileRef = 2642D2531BCFA0CD00C79A13 /* flags */; settings = {ASSET_TAGS = (); }; };
+		2642D25A1BD0233000C79A13 /* welcome_background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2642D2591BD0233000C79A13 /* welcome_background@2x.png */; settings = {ASSET_TAGS = (); }; };
 		266C3FB61BC3C0BB00C0948E /* RMPhoneFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = 266C3FB41BC3C0BB00C0948E /* RMPhoneFormat.m */; settings = {ASSET_TAGS = (); }; };
 		266C3FB71BC3C0BB00C0948E /* RMPhoneFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = 266C3FB41BC3C0BB00C0948E /* RMPhoneFormat.m */; settings = {ASSET_TAGS = (); }; };
 		266C3FB81BC3C0BB00C0948E /* RMPhoneFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = 266C3FB41BC3C0BB00C0948E /* RMPhoneFormat.m */; settings = {ASSET_TAGS = (); }; };
@@ -60,6 +61,8 @@
 		266C3FDF1BC43AE400C0948E /* MRCPhoneVerificationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 266C3FDB1BC43AE400C0948E /* MRCPhoneVerificationViewController.m */; settings = {ASSET_TAGS = (); }; };
 		266C3FE01BC43AE400C0948E /* MRCPhoneVerificationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 266C3FDB1BC43AE400C0948E /* MRCPhoneVerificationViewController.m */; settings = {ASSET_TAGS = (); }; };
 		266C3FE11BC43AE400C0948E /* MRCPhoneVerificationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 266C3FDB1BC43AE400C0948E /* MRCPhoneVerificationViewController.m */; settings = {ASSET_TAGS = (); }; };
+		266FC5561BCDAECA00D3A1A0 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 266FC5581BCDAECA00D3A1A0 /* Localizable.strings */; };
+		266FC5661BCDB47000D3A1A0 /* MrCoin.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 266FC5641BCDB47000D3A1A0 /* MrCoin.storyboard */; settings = {ASSET_TAGS = (); }; };
 		26755B9F1BC10E610093EC98 /* MrCoinTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 26755B9E1BC10E610093EC98 /* MrCoinTests.m */; settings = {ASSET_TAGS = (); }; };
 		26D65CF21BC70B6C00DFF489 /* mrcoin.png in Resources */ = {isa = PBXBuildFile; fileRef = 26D65CF01BC70B6C00DFF489 /* mrcoin.png */; settings = {ASSET_TAGS = (); }; };
 		26D65CF31BC70B6C00DFF489 /* mrcoin@2.png in Resources */ = {isa = PBXBuildFile; fileRef = 26D65CF11BC70B6C00DFF489 /* mrcoin@2.png */; settings = {ASSET_TAGS = (); }; };
@@ -220,7 +223,8 @@
 		2622ACE51BC2911B0017259E /* MRCProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MRCProgressView.m; path = Source/MRCProgressView.m; sourceTree = SOURCE_ROOT; };
 		2622ACE81BC2911B0017259E /* MRCTextInput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MRCTextInput.h; path = Source/MRCTextInput.h; sourceTree = SOURCE_ROOT; };
 		2622ACE91BC2911B0017259E /* MRCTextInput.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MRCTextInput.m; path = Source/MRCTextInput.m; sourceTree = SOURCE_ROOT; };
-		2622ACF91BC2913E0017259E /* MrCoin.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = MrCoin.storyboard; path = Resources/MrCoin.storyboard; sourceTree = "<group>"; };
+		2642D2531BCFA0CD00C79A13 /* flags */ = {isa = PBXFileReference; lastKnownFileType = folder; path = flags; sourceTree = "<group>"; };
+		2642D2591BD0233000C79A13 /* welcome_background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "welcome_background@2x.png"; sourceTree = "<group>"; };
 		266C3FB41BC3C0BB00C0948E /* RMPhoneFormat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RMPhoneFormat.m; path = Source/RMPhoneFormat.m; sourceTree = SOURCE_ROOT; };
 		266C3FB51BC3C0BB00C0948E /* RMPhoneFormat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RMPhoneFormat.h; path = Source/RMPhoneFormat.h; sourceTree = SOURCE_ROOT; };
 		266C3FC31BC3C39C00C0948E /* PhoneFormats.dat */ = {isa = PBXFileReference; lastKnownFileType = file; name = PhoneFormats.dat; path = Resources/PhoneFormats.dat; sourceTree = "<group>"; };
@@ -229,6 +233,9 @@
 		266C3FD01BC3FCFE00C0948E /* downArrow@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "downArrow@3x.png"; path = "Resources/downArrow@3x.png"; sourceTree = "<group>"; };
 		266C3FDA1BC43AE400C0948E /* MRCPhoneVerificationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MRCPhoneVerificationViewController.h; path = Source/MRCPhoneVerificationViewController.h; sourceTree = SOURCE_ROOT; };
 		266C3FDB1BC43AE400C0948E /* MRCPhoneVerificationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MRCPhoneVerificationViewController.m; path = Source/MRCPhoneVerificationViewController.m; sourceTree = SOURCE_ROOT; };
+		266FC5591BCDAECD00D3A1A0 /* hu */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hu; path = hu.lproj/Localizable.strings; sourceTree = "<group>"; };
+		266FC55A1BCDAF1C00D3A1A0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		266FC56C1BCDB4A700D3A1A0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Resources/Base.lproj/MrCoin.storyboard; sourceTree = "<group>"; };
 		26755B9E1BC10E610093EC98 /* MrCoinTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MrCoinTests.m; path = UnitTests/MrCoinTests.m; sourceTree = SOURCE_ROOT; };
 		267BBDC91BC27BA900FA2399 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		26D65CF01BC70B6C00DFF489 /* mrcoin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = mrcoin.png; path = Resources/mrcoin.png; sourceTree = "<group>"; };
@@ -330,6 +337,7 @@
 		2622ACF81BC2912C0017259E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				2642D2531BCFA0CD00C79A13 /* flags */,
 				26DF33AA1BCC3326004454A3 /* close.png */,
 				26DF33AB1BCC3326004454A3 /* close@2x.png */,
 				26FEB80F1BCADADB00DDA046 /* error.png */,
@@ -339,8 +347,10 @@
 				266C3FD01BC3FCFE00C0948E /* downArrow@3x.png */,
 				26D65CF01BC70B6C00DFF489 /* mrcoin.png */,
 				26D65CF11BC70B6C00DFF489 /* mrcoin@2.png */,
+				2642D2591BD0233000C79A13 /* welcome_background@2x.png */,
 				266C3FC31BC3C39C00C0948E /* PhoneFormats.dat */,
-				2622ACF91BC2913E0017259E /* MrCoin.storyboard */,
+				266FC5641BCDB47000D3A1A0 /* MrCoin.storyboard */,
+				266FC5581BCDAECA00D3A1A0 /* Localizable.strings */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -754,6 +764,7 @@
 			knownRegions = (
 				en,
 				Base,
+				hu,
 			);
 			mainGroup = 26E479CA1BC1085B0003536C;
 			productRefGroup = 26E479D41BC1085B0003536C /* Products */;
@@ -774,14 +785,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2610BC121BC2950200BFF784 /* MrCoin.storyboard in Resources */,
+				266FC5561BCDAECA00D3A1A0 /* Localizable.strings in Resources */,
 				26FEB8121BCADADB00DDA046 /* error@2x.png in Resources */,
 				266C3FC41BC3C39C00C0948E /* PhoneFormats.dat in Resources */,
+				2642D25A1BD0233000C79A13 /* welcome_background@2x.png in Resources */,
 				266C3FD81BC3FD0200C0948E /* downArrow@2x.png in Resources */,
+				266FC5661BCDB47000D3A1A0 /* MrCoin.storyboard in Resources */,
 				266C3FD71BC3FD0200C0948E /* downArrow.png in Resources */,
 				26FEB8111BCADADB00DDA046 /* error.png in Resources */,
 				26D65CF31BC70B6C00DFF489 /* mrcoin@2.png in Resources */,
 				266C3FD91BC3FD0200C0948E /* downArrow@3x.png in Resources */,
+				2642D2541BCFA0CD00C79A13 /* flags in Resources */,
 				26DF33AC1BCC3326004454A3 /* close.png in Resources */,
 				26D65CF21BC70B6C00DFF489 /* mrcoin.png in Resources */,
 				26DF33AD1BCC3326004454A3 /* close@2x.png in Resources */,
@@ -947,6 +961,27 @@
 			targetProxy = 2610BC141BC2953000BFF784 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		266FC5581BCDAECA00D3A1A0 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				266FC5591BCDAECD00D3A1A0 /* hu */,
+				266FC55A1BCDAF1C00D3A1A0 /* en */,
+			);
+			name = Localizable.strings;
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		266FC5641BCDB47000D3A1A0 /* MrCoin.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				266FC56C1BCDB4A700D3A1A0 /* Base */,
+			);
+			name = MrCoin.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		2610BC021BC2937F00BFF784 /* Debug */ = {

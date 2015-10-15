@@ -1,0 +1,150 @@
+
+/* Class = "UILabel"; text = "Your account isn't configured yet"; ObjectID = "1yf-cA-fzT"; */
+"1yf-cA-fzT.text" = "Your account isn't configured yet";
+
+/* Class = "UILabel"; text = "Enter your email address"; ObjectID = "3A9-r9-l9e"; */
+"3A9-r9-l9e.text" = "Enter your email address";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "3Bo-b0-lxy"; */
+"3Bo-b0-lxy.text" = "Label";
+
+/* Class = "UIButton"; normalTitle = "Continue"; ObjectID = "5Ls-bY-tCJ"; */
+"5Ls-bY-tCJ.normalTitle" = "Continue";
+
+/* Class = "UILabel"; text = "Name"; ObjectID = "6G1-HD-Kjn"; */
+"6G1-HD-Kjn.text" = "Name";
+
+/* Class = "UIButton"; normalTitle = "Change phone number"; ObjectID = "6OM-8R-wjy"; */
+"6OM-8R-wjy.normalTitle" = "Change phone number";
+
+/* Class = "UIButton"; normalTitle = "OK"; ObjectID = "6T3-1s-yTX"; */
+"6T3-1s-yTX.normalTitle" = "OK";
+
+/* Class = "UITextField"; placeholder = "Select country"; ObjectID = "AJI-Cl-vB8"; */
+"AJI-Cl-vB8.placeholder" = "Select country";
+
+/* Class = "UILabel"; text = "You will receive a verification code shortly...\n\nPlease enter it below when you receive it"; ObjectID = "BPN-ch-rXX"; */
+"BPN-ch-rXX.text" = "You will receive a verification code shortly...\n\nPlease enter it below when you receive it";
+
+/* Class = "UILabel"; text = "SWIFT (BIC)"; ObjectID = "C65-iM-4dE"; */
+"C65-iM-4dE.text" = "SWIFT (BIC)";
+
+/* Class = "UIButton"; normalTitle = "Close"; ObjectID = "CdC-ne-iWZ"; */
+"CdC-ne-iWZ.normalTitle" = "Close";
+
+/* Class = "UIButton"; normalTitle = "Continue"; ObjectID = "DUf-XS-6GU"; */
+"DUf-XS-6GU.normalTitle" = "Continue";
+
+/* Class = "UILabel"; text = "IBAN"; ObjectID = "FFY-03-AlO"; */
+"FFY-03-AlO.text" = "IBAN";
+
+/* Class = "UIButton"; normalTitle = "---"; ObjectID = "FVH-2M-Mrq"; */
+"FVH-2M-Mrq.normalTitle" = "---";
+
+/* Class = "UILabel"; text = "Top-up your wallet with SEPA and SWIFT.  \n  \nWhatever amount you transfer (up to 1,000 EUR) will be converted to Bitcoin and sent directly into your wallet.  \n  \nTo set up QuickTransfer for your wallet we need a phone number and your email address."; ObjectID = "FlV-wS-RMP"; */
+"FlV-wS-RMP.text" = "Top-up your wallet with SEPA and SWIFT.  \n  \nWhatever amount you transfer (up to 1,000 EUR) will be converted to Bitcoin and sent directly into your wallet.  \n  \nTo set up QuickTransfer for your wallet we need a phone number and your email address.";
+
+/* Class = "UILabel"; text = "PopUp Title"; ObjectID = "I42-uO-fKn"; */
+"I42-uO-fKn.text" = "PopUp Title";
+
+/* Class = "UIButton"; normalTitle = "Service provided by MrCoin"; ObjectID = "J03-bA-adh"; */
+"J03-bA-adh.normalTitle" = "Service provided by MrCoin";
+
+/* Class = "UILabel"; text = "PopUp Message"; ObjectID = "L1M-If-NcG"; */
+"L1M-If-NcG.text" = "PopUp Message";
+
+/* Class = "UILabel"; text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi blandit imperdiet nibh vel tincidunt. Aenean posuere magna dui, sed vestibulum odio rhoncus id."; ObjectID = "L1Z-bU-xH8"; */
+"L1Z-bU-xH8.text" = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi blandit imperdiet nibh vel tincidunt. Aenean posuere magna dui, sed vestibulum odio rhoncus id.";
+
+/* Class = "UILabel"; text = "Please enter your email below.  \n  \nWe only use your email to let you know when you successfully transferred fiat to your bitcoin wallet and to be able to give you support should there be an issue with your order. We will not share your email with third parties.\n\nPlease see MrCoin's Privacy Policy if in doubt."; ObjectID = "LPJ-jW-qEQ"; */
+"LPJ-jW-qEQ.text" = "Please enter your email below.  \n  \nWe only use your email to let you know when you successfully transferred fiat to your bitcoin wallet and to be able to give you support should there be an issue with your order. We will not share your email with third parties.\n\nPlease see MrCoin's Privacy Policy if in doubt.";
+
+/* Class = "UIButton"; normalTitle = "Decline"; ObjectID = "N3g-uz-E2a"; */
+"N3g-uz-E2a.normalTitle" = "Decline";
+
+/* Class = "UIButton"; normalTitle = "Continue"; ObjectID = "NVo-sY-R3r"; */
+"NVo-sY-R3r.normalTitle" = "Continue";
+
+/* Class = "UIButton"; normalTitle = "---"; ObjectID = "OYr-22-eRD"; */
+"OYr-22-eRD.normalTitle" = "---";
+
+/* Class = "UITextField"; placeholder = "Select currency"; ObjectID = "OtA-KB-CKC"; */
+"OtA-KB-CKC.placeholder" = "Select currency";
+
+/* Class = "UILabel"; text = "Phone number verification"; ObjectID = "PCd-vK-NNr"; */
+"PCd-vK-NNr.text" = "Phone number verification";
+
+/* Class = "UILabel"; text = "Enter your phone number"; ObjectID = "PKD-Jn-Z8m"; */
+"PKD-Jn-Z8m.text" = "Enter your phone number";
+
+/* Class = "UILabel"; text = "Enter your address"; ObjectID = "R1E-4q-6hf"; */
+"R1E-4q-6hf.text" = "Enter your address";
+
+/* Class = "UIButton"; normalTitle = "Help me, I have a problem!"; ObjectID = "VoE-dv-l0f"; */
+"VoE-dv-l0f.normalTitle" = "Help me, I have a problem!";
+
+/* Class = "UILabel"; text = "Select Currency"; ObjectID = "W9B-YZ-VGu"; */
+"W9B-YZ-VGu.text" = "Select Currency";
+
+/* Class = "UIButton"; normalTitle = "Accept and continue"; ObjectID = "X5S-8g-Qph"; */
+"X5S-8g-Qph.normalTitle" = "Accept and continue";
+
+/* Class = "UIButton"; normalTitle = "Start"; ObjectID = "YGM-lF-B7E"; */
+"YGM-lF-B7E.normalTitle" = "Start";
+
+/* Class = "UITableViewController"; title = "Settings"; ObjectID = "cwK-IS-0HR"; */
+"cwK-IS-0HR.title" = "Settings";
+
+/* Class = "UILabel"; text = "Message (reference)  \nre"; ObjectID = "dAC-Ce-Esu"; */
+"dAC-Ce-Esu.text" = "Message (reference)  \nre";
+
+/* Class = "UITextField"; placeholder = "Enter your email"; ObjectID = "fyQ-tR-s6U"; */
+"fyQ-tR-s6U.placeholder" = "Enter your email";
+
+/* Class = "UIButton"; normalTitle = "---"; ObjectID = "giL-jJ-ygB"; */
+"giL-jJ-ygB.normalTitle" = "---";
+
+/* Class = "UITableViewController"; title = "Settings"; ObjectID = "jB8-ty-BAc"; */
+"jB8-ty-BAc.title" = "Settings";
+
+/* Class = "UITextField"; placeholder = "Bitcoin address"; ObjectID = "jmf-02-an8"; */
+"jmf-02-an8.placeholder" = "Bitcoin address";
+
+/* Class = "UIButton"; normalTitle = "Continue"; ObjectID = "kgg-Aw-Sec"; */
+"kgg-Aw-Sec.normalTitle" = "Continue";
+
+/* Class = "UILabel"; text = "Please enter your destination bitcoin address below."; ObjectID = "m8j-qr-gBr"; */
+"m8j-qr-gBr.text" = "Please enter your destination bitcoin address below.";
+
+/* Class = "UITextField"; placeholder = "Enter verification code"; ObjectID = "mzi-R9-E8e"; */
+"mzi-R9-E8e.placeholder" = "Enter verification code";
+
+/* Class = "UILabel"; text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi eu dictum orci. Quisque accumsan tellus lectus, et cursus felis maximus at. Vestibulum lacus nisi, ornare in lacinia vel, pellentesque vitae tellus. Nullam libero leo, tincidunt et metus non, faucibus sollicitudin libero"; ObjectID = "oHR-7v-hXr"; */
+"oHR-7v-hXr.text" = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi eu dictum orci. Quisque accumsan tellus lectus, et cursus felis maximus at. Vestibulum lacus nisi, ornare in lacinia vel, pellentesque vitae tellus. Nullam libero leo, tincidunt et metus non, faucibus sollicitudin libero";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "qis-b9-6iC"; */
+"qis-b9-6iC.text" = "Label";
+
+/* Class = "UILabel"; text = "Please enter your phone number below.  To set up QuickTransfer for your wallet we need to verify your phone number."; ObjectID = "qlQ-fX-bDJ"; */
+"qlQ-fX-bDJ.text" = "Please enter your phone number below.  To set up QuickTransfer for your wallet we need to verify your phone number.";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "qrv-iI-2ZQ"; */
+"qrv-iI-2ZQ.text" = "Label";
+
+/* Class = "UILabel"; text = "Whatever amount you transfer (up to 1,000 EUR),\nit will be converted to Bitcoin and sent directly into your wallet.\n\nPlease allow 12-48 banking hours for the transfer to clear in the Plan Old Banking System."; ObjectID = "rz2-up-4Yf"; */
+"rz2-up-4Yf.text" = "Whatever amount you transfer (up to 1,000 EUR),\nit will be converted to Bitcoin and sent directly into your wallet.\n\nPlease allow 12-48 banking hours for the transfer to clear in the Plan Old Banking System.";
+
+/* Class = "UIButton"; normalTitle = "---"; ObjectID = "tDX-x8-lKb"; */
+"tDX-x8-lKb.normalTitle" = "---";
+
+/* Class = "UILabel"; text = "Loading"; ObjectID = "utx-zn-Thx"; */
+"utx-zn-Thx.text" = "Loading";
+
+/* Class = "UIButton"; normalTitle = "Resend verification code"; ObjectID = "uvt-hW-lT3"; */
+"uvt-hW-lT3.normalTitle" = "Resend verification code";
+
+/* Class = "UIButton"; normalTitle = "Continue"; ObjectID = "weg-gb-Sej"; */
+"weg-gb-Sej.normalTitle" = "Continue";
+
+/* Class = "UILabel"; text = "Setup complete"; ObjectID = "yKB-Fv-H2v"; */
+"yKB-Fv-H2v.text" = "Setup complete";
