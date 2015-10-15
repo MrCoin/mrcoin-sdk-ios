@@ -7,13 +7,16 @@
 //
 
 #import "MRCDropDown.h"
+#import "MrCoin.h"
 
-#define FETCHING       @"Fetching data..."
-#define PLEASE_WAIT    @"Please Wait..."
-#define TAP_TO_CHOOSE  @"Tap to choose"
+//#define FETCHING       @"Fetching data..."
+//#define PLEASE_WAIT    @"Please Wait..."
+//#define TAP_TO_CHOOSE  @"Tap to choose"
 
 @implementation MRCDropDown
 {
+    NSString *_originalPlaceholder;
+    
     UIPickerView *picker;
     BOOL isLoading;
 }
@@ -23,9 +26,14 @@
 {
     self = [super initWithCoder:coder];
     if (self) {
+        if(self.placeholder){
+            _originalPlaceholder = self.placeholder;
+        }else{
+            _originalPlaceholder = NSLocalizedString(@"Tap to choose", nil);
+        }
+        self.placeholder = _originalPlaceholder;
         self.hasPasteButton = NO;
         self.selectedRow = -1;
-        self.placeholder = TAP_TO_CHOOSE;
         
         // hide the caret and its blinking
         [[self valueForKey:@"textInputTraits"]
@@ -64,7 +72,7 @@
     if(_selectedItem){
         [picker selectRow:_selectedRow inComponent:0 animated:NO];
     }else{
-        self.text = _items[0];
+        [self pickerView:picker didSelectRow:0 inComponent:0];
     }
 
 }
@@ -82,7 +90,10 @@
     {
         self.text = _selectedItem;
     }else{
-        self.placeholder = TAP_TO_CHOOSE;
+        self.placeholder = _originalPlaceholder;
+        if(_iconItems && self.leftView && [self.leftView isKindOfClass:[UIImageView class]]){
+            self.leftView = nil;
+        }
     }
 }
 
@@ -107,15 +118,19 @@
     UIActivityIndicatorView *loading = (UIActivityIndicatorView*)self.leftView;
     [loading startAnimating];
     self.leftViewMode = UITextFieldViewModeAlways;
-    self.placeholder = FETCHING;
+    self.placeholder = NSLocalizedString(@"Fetching...", nil);
     picker.showsSelectionIndicator = NO;
 }
 - (void) hideLoading
 {
-    UIActivityIndicatorView *loading = (UIActivityIndicatorView*)self.leftView;
-    [loading stopAnimating];
-    self.placeholder = TAP_TO_CHOOSE;
-    self.leftViewMode = UITextFieldViewModeNever;
+    if(self.leftView){
+        if(![self.leftView isKindOfClass:[UIImageView class]]){
+            UIActivityIndicatorView *loading = (UIActivityIndicatorView*)self.leftView;
+            [loading stopAnimating];
+            self.placeholder = _originalPlaceholder;
+            self.leftViewMode = UITextFieldViewModeNever;
+        }
+    }
 }
 
 #pragma mark - Picker View
@@ -135,13 +150,74 @@
     if(_items){
         return _items[row];
     }
-    return PLEASE_WAIT;
+    return NSLocalizedString(@"Please wait...", nil);
+}
+- (UIView *)pickerView:(UIPickerView *)pickerView viewForRow:(NSInteger)row forComponent:(NSInteger)component reusingView:(nullable UIView *)view
+{
+    if (!view)
+    {
+        view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 280, 30)];
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(35, 3, 245, 24)];
+        label.backgroundColor = [UIColor clearColor];
+        label.tag = 1;
+        if(_iconItems){
+            UIImageView *flagView = [[UIImageView alloc] initWithFrame:CGRectMake(3, 3, 24, 24)];
+            flagView.contentMode = UIViewContentModeScaleAspectFit;
+            flagView.tag = 2;
+            [view addSubview:flagView];
+        }else{
+            label.frame = CGRectMake(3, 3, 277, 24);
+        }
+        label.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+        [view addSubview:label];
+    }
+    
+    //        ((UILabel *)[view viewWithTag:1]).text = [[self class] countryNames][(NSUInteger)row];
+    if(_items){
+        ((UILabel *)[view viewWithTag:1]).text = _items[row];
+    }
+    if(_iconItems){
+        ((UIImageView *)[view viewWithTag:2]).image = [MrCoin imageNamed:_iconItems[row]];
+    }
+    return view;
 }
 -(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
 {
     self.text = _items[row];
+    UIImageView *v;
+    UIImage *img = [MrCoin imageNamed:_iconItems[row]];
+    if(_iconItems){
+        if(!self.leftView){
+            v = [[UIImageView alloc] initWithImage:img];
+        }else{
+            if(![self.leftView isKindOfClass:[UIImageView class]]){
+                [self.leftView removeFromSuperview];
+                v = [[UIImageView alloc] initWithImage:img];
+            }else{
+                v = (UIImageView*)self.leftView;
+            }
+            [v setImage:[MrCoin imageNamed:_iconItems[row]]];
+        }
+        v.layer.shouldRasterize = YES;
+        v.layer.rasterizationScale = 2;
+        v.frame = CGRectMake(0, 0, 24, 24);
+        v.contentMode = UIViewContentModeScaleAspectFit;
+        self.leftViewMode = UITextFieldViewModeAlways;
+        self.leftView = v;
+    }else{
+        self.leftView = nil;
+    }
 }
-
+- (CGRect)leftViewRectForBounds:(CGRect)bounds
+{
+    if(self.leftView){
+        CGRect r = self.leftView.bounds;
+        r.origin.x = 10.0f;
+        r.origin.y = (bounds.size.height-r.size.height)*0.5f;
+        return r;
+    }
+    return CGRectZero;
+}
 
 #pragma mark - Textfield delegate
 -(BOOL)textFieldShouldBeginEditing:(UITextField *)textField
@@ -158,19 +234,6 @@
 {
     [self showPicker];
     [super textFieldDidBeginEditing:textField];
-//    //
-//    BOOL isValid;
-//    if(self.textInputDelegate){
-//        if(![self.textInputDelegate respondsToSelector:@selector(textInputIsValid:)])
-//        {
-//            if(doneBarButton && _selectedRow >= 0){
-//                doneBarButton.enabled = YES;
-//             }else{
-//                doneBarButton.enabled = NO;
-//             }
-//        }
-//    }
-
 }
 -(void)textFieldDidEndEditing:(UITextField *)textField
 {

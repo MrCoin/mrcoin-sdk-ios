@@ -15,6 +15,7 @@
 
 -(void) textInputStartEditing:(MRCTextInput*)textInput;
 -(void) textInputEndEditing:(MRCTextInput*)textInput;
+-(void) textInputFinishedEditing:(MRCTextInput*)textInput;
 -(void) textInputDone:(MRCTextInput*)textInput;
 
 @optional

@@ -13,6 +13,7 @@
 @property (nonatomic,getter=isFetching) BOOL fetching;
 
 @property (nonatomic) NSArray *items;
+@property (nonatomic) NSArray *iconItems;
 @property (nonatomic) NSInteger selectedRow;
 @property (nonatomic) id selectedItem;
 

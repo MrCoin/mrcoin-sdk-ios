@@ -16,6 +16,8 @@
 
 @implementation MRCTextInput
 {
+    BOOL endEditing;
+    
     CGRect _originalFrame;
     UIBarButtonItem *doneBarButton;
     
@@ -36,17 +38,34 @@
     }
     return self;
 }
-
+#pragma mark - Layout
+-(CGRect)placeholderRectForBounds:(CGRect)bounds
+{
+    CGRect r = CGRectInset(bounds, 10, 0);
+    return r;
+}
+- (CGRect)textRectForBounds:(CGRect)bounds {
+    return [self editingRectForBounds:bounds];
+}
+- (CGRect)editingRectForBounds:(CGRect)bounds {
+    CGRect r = CGRectInset(bounds, 10, 0);
+    CGRect lr = [self leftViewRectForBounds:self.bounds];
+    r.origin.x = lr.size.width+lr.origin.x+5;
+    r.size.width -= lr.size.width+lr.origin.x;
+    //
+    return r;
+}
 #pragma mark - Functions
+
+
 - (IBAction)doneEditing:(id)sender
 {
-    if(self.textInputDelegate){
-        [self.textInputDelegate textInputDone:self];
-    }
+    endEditing = YES;
     [self endEditing:YES];
 }
 - (IBAction)cancelEditing:(id)sender
 {
+    endEditing = NO;
     self.text = @"";
     BOOL isValid = [self _validateText:@""];
     if(isValid){
@@ -87,11 +106,13 @@
 }
 -(void)show
 {
+    endEditing = NO;
     if(self.superview)
     {
         _originalFrame = self.superview.frame;
         CGPoint p = [self.window convertPoint:CGPointZero fromView:self];
-        CGFloat bottomY = p.y+self.intrinsicContentSize.height;
+        //        CGFloat bottomY = p.y+self.intrinsicContentSize.height;
+        CGFloat bottomY = p.y+self.bounds.size.height;
         CGFloat contentH = self.window.bounds.size.height-280.f;//
         CGFloat yDiff = contentH-bottomY;
 
@@ -113,7 +134,13 @@
             [UIView animateWithDuration:0.3f delay:0.0f options:UIViewAnimationOptionCurveEaseOut animations:^{
                 self.superview.frame = _originalFrame;
             } completion:^(BOOL finished) {
-                
+                if(self.textInputDelegate){
+                    [self.textInputDelegate textInputFinishedEditing:self];
+                    if(endEditing){
+                        [self.textInputDelegate textInputDone:self];
+                        endEditing = NO;
+                    }
+                }
             }];
         }
     }
@@ -136,6 +163,9 @@
     if(self.textInputDelegate){
         [self.textInputDelegate textInputStartEditing:self];
     }
+    if(self.dataType.defaultValue){
+        self.text = self.dataType.defaultValue;
+    }
     [self show];
 }
 -(void)textFieldDidEndEditing:(UITextField *)textField
@@ -150,8 +180,16 @@
     BOOL isChanged = YES;
     if(self.dataType){
         NSString *newString = [textField.text stringByReplacingCharactersInRange:range withString:string];
-        newString = [self.dataType unformat:newString];
-        self.text = [self.dataType format:newString];
+        if(self.dataType.defaultValue){
+            if(self.dataType.defaultValue.length <= newString.length)
+            {
+                newString = [self.dataType unformat:newString];
+                self.text = [self.dataType format:newString];
+            }
+        }else{
+            newString = [self.dataType unformat:newString];
+            self.text = [self.dataType format:newString];
+        }
         isChanged = NO;
     }else{
         if(self.textInputDelegate){
