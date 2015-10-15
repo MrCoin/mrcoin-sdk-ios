@@ -55,7 +55,6 @@
 }
 -(void)setEnabled:(BOOL)enabled
 {
-//    [self setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     if(enabled){
         if(_bordered){
             self.backgroundColor = self.tintColor;

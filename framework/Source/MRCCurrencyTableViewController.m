@@ -20,7 +20,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"Select currency";
+    self.title = NSLocalizedString(@"Select currency",nil);
     _currencies = @[@"HUF",@"EUR"];
     _currencyNames = @[@"Hungarian Forint",@"Eurozone Euro"];
 }

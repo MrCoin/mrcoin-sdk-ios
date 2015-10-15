@@ -32,8 +32,14 @@
 - (void)nextPage:(id)sender
 {
     [_emailTextInput endEditing:YES];
-    [[MrCoin settings] setUserEmail:_emailTextInput.text];
-    [super nextPage:sender];
+    //
+    [self showActivityIndicator:NSLocalizedString(@"Sending data to MrCoin...",nil)];
+    //
+    [[MrCoin api] email:_emailTextInput.text success:^(NSDictionary *dictionary) {
+        [[MrCoin settings] setUserEmail:_emailTextInput.text];
+        [super nextPage:sender];
+    } error:^(NSError *error, MRCAPIErrorType errorType) {
+    }];
 }
 
 #pragma mark - Text Input

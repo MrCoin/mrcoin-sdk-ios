@@ -13,6 +13,7 @@
 #import "MRCButton.h"
 #import "MRCVerificationCode.h"
 #import "MRCPopUpViewController.h"
+#import "MrCoin.h"
 
 @interface MRCPhoneVerificationViewController ()
 
@@ -27,9 +28,9 @@
     _codeTextInput.font = [UIFont systemFontOfSize:70.0f];
     _codeTextInput.dataType = [[MRCVerificationCode alloc] init];
     
-//    [[_codeTextInput valueForKey:@"textInputTraits"]
-//     setValue:[UIColor clearColor]
-//     forKey:@"insertionPointColor"];
+    [[_codeTextInput valueForKey:@"textInputTraits"]
+     setValue:[UIColor clearColor]
+     forKey:@"insertionPointColor"];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -47,13 +48,26 @@
 {
     _codeTextInput.text = @"";
     [_codeTextInput hideError];
-    [[self view] setNeedsLayout];
+    
+    [self showActivityIndicator:NSLocalizedString(@"Sending data to MrCoin...",nil)];
     //
-    [self.api requestVerificationCodeForCountry:@"" phone:@"" response:^(NSDictionary *dictionary) {
-        
+    [[MrCoin api] phone:[[MrCoin settings] userPhone] country:[[MrCoin settings] userCountry] success:^(NSDictionary *dictionary) {
+        MRCPopUpViewController *popup = [MRCPopUpViewController sharedPopup];
     } error:^(NSError *error, MRCAPIErrorType errorType) {
-        
     }];
+    [[self view] setNeedsLayout];
+//    MRCPopUpViewController *popup = [MRCPopUpViewController sharedPopup];
+//    [popup setStyle:MRCPopupLightStyle];
+//    [popup setMode:MRCPopupActivityIndicator];
+//    [popup setTitle:NSLocalizedString(@"Resend verification code...",nil)];
+//    [popup presentInViewController:self.parentViewController];
+//
+//    //
+//    [self.api phone:[[MrCoin settings] userPhone] country:[[MrCoin settings] userCountry] success:^(NSDictionary *dictionary) {
+//        [popup dismissViewController];
+//    } error:^(NSError *error, MRCAPIErrorType errorType) {
+//        
+//    }];
 }
 - (IBAction)reenterPhoneNumber:(id)sender
 {
@@ -62,26 +76,15 @@
 #pragma mark - Navigation
 - (void)nextPage:(id)sender
 {
-    MRCPopUpViewController *popup = [MRCPopUpViewController sharedPopup];
-    [popup setStyle:MRCPopupLightStyle];
-    [popup setMode:MRCPopupActivityIndicator];
-    [popup setTitle:@"Checking verification code..."];
-    [popup presentInViewController:self.parentViewController hideAfterDelay:2.0f];
+    [self.codeTextInput endEditing:YES];
+    [self showActivityIndicator:NSLocalizedString(@"Sending data to MrCoin...",nil)];
     //
-    [self performSelector:@selector(fakeDelay2) withObject:nil afterDelay:2.0f];
-    //
-    [self.api verifyPhone:@"" code:_codeTextInput.text response:^(NSDictionary *dictionary) {
-        [self.codeTextInput endEditing:YES];
+    [[MrCoin api] verifyPhone:_codeTextInput.text success:^(NSDictionary *dictionary) {
+        MRCPopUpViewController *popup = [MRCPopUpViewController sharedPopup];
+        [popup dismissViewController];
+        [super nextPage:self];
     } error:^(NSError *error, MRCAPIErrorType errorType) {
-        [self showErrorPopup:@"Invalid verification code" message:[NSString stringWithFormat:@"Verification code: '%@' is incorrect.",self.codeTextInput.text]];
-        self.nextButton.enabled = NO;
-        _codeTextInput.text = @"";
-        [[self view] setNeedsLayout];
     }];
-}
-- (void) fakeDelay2
-{
-    [super nextPage:self];
 }
 
 @end

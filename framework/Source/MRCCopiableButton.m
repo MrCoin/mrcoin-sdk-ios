@@ -37,7 +37,7 @@
     UIActionSheet *actionSheet = [UIActionSheet new];
     //"UIActionSheet is deprecated. Use UIAlertController with a preferredStyle of UIAlertControllerStyleActionSheet instead")
     actionSheet.title = _alertTitle;
-    [actionSheet addButtonWithTitle:NSLocalizedString(_alertLabel, nil)];
+    [actionSheet addButtonWithTitle:_alertLabel];
     [actionSheet addButtonWithTitle:NSLocalizedString(@"cancel", nil)];
     actionSheet.cancelButtonIndex = actionSheet.numberOfButtons - 1;
     actionSheet.delegate = self;
@@ -54,8 +54,8 @@
         MRCPopUpViewController *popup = [MRCPopUpViewController sharedPopup];
         [popup setStyle:MRCPopupDarkStyle];
         [popup setMode:MRCPopupMessage];
-        [popup setTitle:@"Copied"];
-        [popup setMessage:@"The selected text successfully copied to the clipboard."];
+        [popup setTitle:NSLocalizedString(@"Copied.",nil)];
+        [popup setMessage:NSLocalizedString(@"The selected text successfully copied to the clipboard.", nil)];
         [popup presentInViewController:nil hideAfterDelay:2.0f];
     }
 }

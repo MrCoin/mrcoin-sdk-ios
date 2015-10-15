@@ -24,9 +24,14 @@
 
 @property (nonatomic) BOOL isPresenting;
 
+- (void)_presentInViewController:(UIViewController *)viewController;
+
 @end
 
 @implementation MRCPopUpViewController
+{
+    BOOL present;
+}
 static MRCPopUpViewController *popup;
 
 - (void)viewDidLoad {
@@ -113,15 +118,20 @@ static MRCPopUpViewController *popup;
 }
 -(void)presentInViewController:(UIViewController *)viewController hideAfterDelay:(NSTimeInterval)delay
 {
+    present = YES;
     if(delay == 0.0){
-        [self _presentInViewController:viewController];
+        //        [self _presentInViewController:viewController];
+        [self performSelector:@selector(_presentInViewController:) withObject:viewController afterDelay:1.0f];
+        [self performSelector:@selector(dismissViewController) withObject:nil afterDelay:1.0f];
     }else{
-        [self _presentInViewController:viewController];
-        [self performSelector:@selector(dismissViewController) withObject:nil afterDelay:delay];
+//        [self _presentInViewController:viewController];
+        [self performSelector:@selector(_presentInViewController:) withObject:viewController afterDelay:1.0f];
+        [self performSelector:@selector(dismissViewController) withObject:nil afterDelay:delay+1.0f];
     }
 }
 - (void)_presentInViewController:(UIViewController *)viewController
 {
+    if(!present) return;
     if(self.mode == MRCPopupActivityIndicator){
         self.loadingTitleLabel.text = self.title;
     }else{
@@ -157,6 +167,8 @@ static MRCPopUpViewController *popup;
 }
 -(void)dismissViewController
 {
+    if(!present) return;
+    present = NO;
     [UIView animateWithDuration:0.3f animations:^{
         self.view.alpha = 0;
         self.view.transform = CGAffineTransformMakeScale(1.2f, 1.2f);

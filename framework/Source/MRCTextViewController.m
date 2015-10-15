@@ -39,7 +39,7 @@
             _overlayView.backgroundColor = self.view.backgroundColor;
             _overlayView.documentMode = YES;
             _overlayView.topGradientSize = 20;
-            _overlayView.bottomGradientSize = 120;
+            _overlayView.bottomGradientSize = 80;
             _overlayView.hidden = NO;
             _declineButton.hidden = NO;
             _acceptButton.hidden = NO;
@@ -48,11 +48,11 @@
             _overlayView.backgroundColor = self.view.backgroundColor;
             _overlayView.documentMode = YES;
             _overlayView.topGradientSize = 20;
-            _overlayView.bottomGradientSize = 100;
+            _overlayView.bottomGradientSize = 80;
             _overlayView.hidden = NO;
             _declineButton.hidden = NO;
             _acceptButton.hidden = NO;
-            [_acceptButton setTitle:@"Accept" forState:UIControlStateNormal];
+            [_acceptButton setTitle:NSLocalizedString(@"Accept",nil) forState:UIControlStateNormal];
             break;
         case MRCShowDocuments:
 //            _textView.backgroundColor = [UIColor redColor];
@@ -119,8 +119,8 @@
         default:
         case MRCTermsUserNeedsAcceptForm:
         case MRCTermsUserNeedsAccept:
-            _textView.textContainerInset = UIEdgeInsetsMake(20, 10, 80, 10);
-            _textView.scrollIndicatorInsets = UIEdgeInsetsMake(20, 0, 100, 0);
+            _textView.textContainerInset = UIEdgeInsetsMake(20, 10, 50, 10);
+            _textView.scrollIndicatorInsets = UIEdgeInsetsMake(50, 0, 70, 0);
             break;
         case MRCShowDocuments:
             _textView.textContainerInset = UIEdgeInsetsMake(0, 0, 0, 0);

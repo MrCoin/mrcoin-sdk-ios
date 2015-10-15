@@ -56,13 +56,13 @@
         if(label)
         {
             if(indexPath.row == 0){
-                label.text = @"Phone";
+                label.text = NSLocalizedString(@"Phone",nil);
             }else if(indexPath.row == 1){
-                label.text = @"Email";
+                label.text = NSLocalizedString(@"Email",nil);
             }else if(indexPath.row == 2){
-                label.text = @"Currency";
+                label.text = NSLocalizedString(@"Currency",nil);
             }else if(indexPath.row == 3){
-                label.text = @"Reset settings";
+                label.text = NSLocalizedString(@"Reset settings",nil);
             }
         }
         label = (UILabel*)[cell viewWithTag:202];
@@ -86,11 +86,11 @@
         if(label)
         {
             if(indexPath.row == 0){
-                label.text = @"Support";
+                label.text = NSLocalizedString(@"Support",nil);
             }else if(indexPath.row == 1){
-                label.text = @"Terms of Service";
+                label.text = NSLocalizedString(@"Terms of Service",nil);
             }else if(indexPath.row == 2){
-                label.text = @"Terms of Service (short)";
+                label.text = NSLocalizedString(@"Terms of Service (short)",nil);
             }
         }
     }
@@ -128,9 +128,9 @@
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
     if(section == 0){
-        return @"Settings";
+        return NSLocalizedString(@"Settings",nil);
     }
-    return @"Documents";
+    return NSLocalizedString(@"Documents",nil);
 
 }
 

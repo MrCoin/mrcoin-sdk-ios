@@ -15,28 +15,30 @@
 #import "MrCoin.h"
 #import "MRCPhoneData.h"
 
-@interface MRCPhoneViewController ()
-
-@property RMPhoneFormat *formater;
-
-@end
-
 @implementation MRCPhoneViewController
 
 #pragma mark - Initialization
 - (void)viewDidLoad {
     [super viewDidLoad];
-    _formater = [[RMPhoneFormat alloc] initWithDefaultCountry:@"hu"];
-    //
     _countrySelector.textInputDelegate = self;
     //
     _phoneTextInput.textInputDelegate = self;
     _phoneTextInput.dataType = (MRCInputDataType*)[MRCPhoneData dataType];
-    
+    _phoneTextInput.placeholder = @"Your phone number";
+
     if(self.object){
         _countrySelector.text = [self.object objectForKey:@"country"];
         _phoneTextInput.text = [self.object objectForKey:@"phone"];
     }
+    
+    if(!_countrySelector.items){
+        [[MrCoin api] getCountries:^(NSDictionary *dictionary) {
+            [self configureDropdown:dictionary];
+        } error:^(NSError *error, MRCAPIErrorType errorType) {
+            NSLog(@"%@",error);
+        }];
+    }
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -48,7 +50,24 @@
 - (IBAction)countrySelectorChanged:(id)sender
 {
     if(self.countrySelector.selectedRow >= 0){
-//        NSLog(@"Country selected: %@",(NSString*)self.countrySelector.selectedItem);
+        // Change country, update API settings
+        NSInteger index = self.countrySelector.selectedRow;
+        [[MrCoin api] setCountry:[[[MrCoin api] countries] objectAtIndex:index]];
+        //
+        NSString *prefix = [[[MrCoin api] country] valueForKeyPath:@"attributes.phone_prefix"];
+        NSString *countryCode = [[[[MrCoin api] country] valueForKeyPath:@"attributes.code2"] lowercaseString];
+        NSLog(@"Country selected: %@",[[MrCoin api] country]);
+        
+        // Configure validator
+        MRCPhoneData* phoneData = (MRCPhoneData*)_phoneTextInput.dataType;
+        [phoneData setPrefix:prefix];
+//        [phoneData setCountryCode:<#(NSString *)#>]
+        
+        // Reset text input
+        _phoneTextInput.placeholder = [NSString stringWithFormat:@"%@ (Your Phone number) ",prefix];
+        _phoneTextInput.text = @"";
+        
+        // Reset navigation
         _phoneTextInput.enabled = YES;
         self.nextButton.enabled = NO;
     }else{
@@ -62,43 +81,45 @@
 {
     [self.phoneTextInput endEditing:YES];
     //
-    MRCPopUpViewController *popup = [MRCPopUpViewController sharedPopup];
-    [popup setStyle:MRCPopupLightStyle];
-    [popup setMode:MRCPopupActivityIndicator];
-    [popup setTitle:@"Sending data to MrCoin..."];
-    [popup presentInViewController:self.parentViewController hideAfterDelay:2.0f];
+    [self showActivityIndicator:NSLocalizedString(@"Sending data to MrCoin...",nil)];
     //
-    [self performSelector:@selector(fakeDelay2) withObject:nil afterDelay:2.0f];
-    //
-    [self.api requestVerificationCodeForCountry:_countrySelector.text phone:_phoneTextInput.text response:^(NSDictionary *dictionary) {
+    [[MrCoin api] phone:[_phoneTextInput text] country:[_countrySelector text] success:^(NSDictionary *dictionary) {
+        MRCPopUpViewController *popup = [MRCPopUpViewController sharedPopup];
+        [popup dismissViewController];
+        [[MrCoin settings] setUserPhone:self.phoneTextInput.text];
+        [[MrCoin settings] setUserCountry:self.countrySelector.text];
+        [super nextPage:self withObject:@{@"phone":_phoneTextInput.text,@"country":_countrySelector.text}];
     } error:^(NSError *error, MRCAPIErrorType errorType) {
-        
+        //        [self showErrorPopup:@"Invalid verification code" message:[NSString stringWithFormat:@"Verification code: '%@' is incorrect.",self.codeTextInput.text]];
+        //        self.nextButton.enabled = NO;
+        //        _codeTextInput.text = @"";
+        //        [[self view] setNeedsLayout];
+
     }];
 }
-- (void) fakeDelay2
+- (void) configureDropdown:(NSDictionary*)dictionary
 {
-    [[MrCoin settings] setUserPhone:self.phoneTextInput.text];
-    [super nextPage:self withObject:@{@"phone":_phoneTextInput.text,@"country":_countrySelector.text}];
+    NSArray *countries = [dictionary objectForKey:@"data"];
+    NSMutableArray *names = [NSMutableArray array];
+    NSMutableArray *flags = [NSMutableArray array];
+    for (NSDictionary *country in countries) {
+//            NSLog(@"%@",country);
+        [names addObject:[country valueForKeyPath:@"attributes.localized_name"]];
+        [flags addObject:[NSString stringWithFormat:@"flags/%@",[[country valueForKeyPath:@"attributes.code2"] lowercaseString]]];
+    }
+    _countrySelector.items = names;
+    _countrySelector.iconItems = flags;
+//    [_countrySelector becomeFirstResponder];
 }
+
 #pragma mark - Text Input
 -(void)textInputStartEditing:(MRCTextInput *)textInput
 {
-    if(!_countrySelector.items){
-        MRCPopUpViewController *popup = [MRCPopUpViewController sharedPopup];
-        [popup setStyle:MRCPopupLightStyle];
-        [popup setMode:MRCPopupActivityIndicator];
-        [popup setTitle:@"Fetching country list..."];
-        [popup presentInViewController:self.parentViewController hideAfterDelay:2.0f];
-        //
-        [self performSelector:@selector(fakeDelay) withObject:nil afterDelay:2.0f];
-    }
     [super textInputStartEditing:textInput];
 }
-- (void) fakeDelay
+-(void)textInputFinishedEditing:(MRCTextInput *)textInput
 {
-    _countrySelector.items = @[@"United Kingdom",@"Hungary"];
-    [_countrySelector becomeFirstResponder];
-//    [_countrySelector showPicker];
+    
 }
 - (void) textInput:(MRCTextInput *)textInput isValid:(BOOL)valid
 {
