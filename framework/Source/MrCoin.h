@@ -32,6 +32,15 @@
 
 @interface MrCoin : NSObject
 
+#define MRCOIN_URL      @"http://www.mrcoin.eu"
+#define MRCOIN_SUPPORT  @"support@mrcoin.eu"
+
+//#define MRCLocalizedString(key) \
+//[[MrCoin frameworkBundle] localizedStringForKey:(key) value:@"" table:nil]
+//
+//#define MRCFormatedLocalizedString(key, value) \
+
+@property (strong, readonly) MRCAPI *api;
 @property MrCoinViewController* rootController;
 @property BOOL needsAcceptTerms;
 
@@ -54,4 +63,5 @@
 + (NSBundle *)frameworkBundle;
 + (UIImage*) imageNamed:(NSString*)named;
 
++ (MRCAPI *)api;
 @end

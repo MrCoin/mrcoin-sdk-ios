@@ -13,7 +13,6 @@
 @interface MRCFormViewController : UIViewController <MRCProgressViewDelegate>
 
 @property (strong, nonatomic) NSArray *pages;
-@property (strong, readonly) MRCAPI *api;
 
 - (void) nextPage;
 - (void) previousPage;

@@ -80,6 +80,10 @@
 
 -(UIColor*) clearColor:(UIColor*)uicolor
 {
+    return [self color:uicolor alpha:0.0f];
+}
+-(UIColor*) color:(UIColor*)uicolor alpha:(CGFloat)alpha
+{
     CGColorRef color = [uicolor CGColor];
     int numComponents = CGColorGetNumberOfComponents(color);
     
@@ -90,25 +94,24 @@
         CGFloat red = components[0];
         CGFloat green = components[1];
         CGFloat blue = components[2];
-        newColor = [UIColor colorWithRed: red green: green blue: blue alpha: 0.0f];
+        newColor = [UIColor colorWithRed: red green: green blue: blue alpha: alpha];
     }
     return newColor;
 }
-
 - (void)drawRect:(CGRect)rect {
     CGContextRef context = UIGraphicsGetCurrentContext();
     
     // Create a gradient
-    NSArray *colors = [NSArray arrayWithObjects:(id)_backgroundColor.CGColor, (id)[self clearColor:_backgroundColor].CGColor, nil];
+    NSArray *colors = [NSArray arrayWithObjects:(id)[self color:_backgroundColor alpha:1.0].CGColor,(id)[self color:_backgroundColor alpha:0.5].CGColor, (id)[self clearColor:_backgroundColor].CGColor, nil];
 //    CGFloat colors [] = {
 //        1.0, 1.0, 1.0, 1.0,
 //        1.0, 1.0, 1.0, 0.0
 //    };
     CGFloat locations [] = {
-        0.5, 1.0
+        0.7, 0.9, 1.0
     };
     CGFloat locations2 [] = {
-        0.0, 1.0
+        0.0, 0.5, 1.0
     };
     
     CGColorSpaceRef baseSpace = CGColorSpaceCreateDeviceRGB();
@@ -185,26 +188,47 @@
     NSMutableArray *pages = [NSMutableArray array];
     if([[MrCoin sharedController] needsAcceptTerms])
     {
-        [pages addObject:[MRCFormPage pageWithTitle:@"Terms of Service" storyboardID:@"DocumentViewer" showInProgressView:NO]];
+        [pages addObject:[MRCFormPage
+                          pageWithTitle:NSLocalizedString(@"Terms of Service",nil)
+                          storyboardID:@"DocumentViewer"
+                          showInProgressView:NO]];
     }
     if(![[MrCoin settings] bitcoinAddress])
     {
-        [pages addObject:[MRCFormPage pageWithTitle:@"Wallet key" storyboardID:@"Form_Wallet" showInProgressView:YES]];
+        [pages addObject:[MRCFormPage
+                          pageWithTitle:NSLocalizedString(@"Bitcoin address",nil)
+                          storyboardID:@"Form_Wallet"
+                          showInProgressView:YES]];
     }
     if(![[MrCoin settings] userPhone])
     {
-        [pages addObject:[MRCFormPage pageWithTitle:@"Phone number" storyboardID:@"Form_Phone" showInProgressView:YES]];
-        [pages addObject:[MRCFormPage pageWithTitle:@"Phone verification" storyboardID:@"Form_VerifyPhone" showInProgressView:YES]];
+        [pages addObject:[MRCFormPage
+                          pageWithTitle:NSLocalizedString(@"Phone number",nil)
+                          storyboardID:@"Form_Phone"
+                          showInProgressView:YES]];
+        [pages addObject:[MRCFormPage
+                          pageWithTitle:NSLocalizedString(@"Phone verification",nil)
+                          storyboardID:@"Form_VerifyPhone"
+                          showInProgressView:YES]];
     }
     if(![[MrCoin settings] userEmail])
     {
-        [pages addObject:[MRCFormPage pageWithTitle:@"Email" storyboardID:@"Form_Email" showInProgressView:YES]];
+        [pages addObject:[MRCFormPage
+                          pageWithTitle:NSLocalizedString(@"Email",nil)
+                          storyboardID:@"Form_Email"
+                          showInProgressView:YES]];
     }
     if(![[MrCoin settings] sourceCurrency])
     {
-        [pages addObject:[MRCFormPage pageWithTitle:@"Currency" storyboardID:@"Form_Currency" showInProgressView:YES]];
+        [pages addObject:[MRCFormPage
+                          pageWithTitle:NSLocalizedString(@"Currency",nil)
+                          storyboardID:@"Form_Currency"
+                          showInProgressView:YES]];
     }
-    [pages addObject:[MRCFormPage pageWithTitle:@"Done" storyboardID:@"Form_Done" showInProgressView:NO]];
+    [pages addObject:[MRCFormPage
+                      pageWithTitle:NSLocalizedString(@"Done",nil)
+                      storyboardID:@"Form_Done"
+                      showInProgressView:NO]];
     _pages = pages;
     
     self.view.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
@@ -227,7 +251,7 @@
     _overlay = [[MRCFormViewOverlay alloc] initWithFrame:self.view.bounds];
     _overlay.alpha = 0;
     _overlay.documentMode = NO;
-    _overlay.topGradientSize = 250.0f;
+    _overlay.topGradientSize = 160.0f;
     _overlay.bottomGradientSize = 0.0f;
     _overlay.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
     [self.view insertSubview:_overlay aboveSubview:_contentView];
@@ -247,22 +271,13 @@
 {
     [self _closeForm];
 }
-#pragma mark - API
-@synthesize api = _api;
--(MRCAPI *)api
-{
-    if(!_api){
-        _api = [[MRCAPI alloc] init];
-    }
-    return _api;
-}
 #pragma mark - Handle pages
 - (void) _showPage:(id)object reverse:(BOOL)reverse
 {
     MRCFormPage *page = _pages[_page];
     if(page.showInProgressView){
         _progressTop.constant = -10;
-        _contentTop.constant = 90;
+        _contentTop.constant = 120;
         _progressView.hidden = NO;
     }else{
         _progressTop.constant = -130;

@@ -33,13 +33,6 @@
 {
     return (MRCFormViewController*)self.parentViewController;
 }
--(MRCAPI *)api
-{
-    if(self.formController){
-        return self.formController.api;
-    }
-    return nil;
-}
 
 #pragma mark - Navigation
 - (IBAction)nextPage:(id)sender
@@ -68,6 +61,10 @@
 {
     [[self formController] showOverlay:NO];
 }
+-(void)textInputFinishedEditing:(MRCTextInput *)textInput
+{
+    
+}
 -(void)textInputDone:(MRCTextInput*)textInput
 {
     if(self.nextButton.enabled)
@@ -91,7 +88,7 @@
     MRCPopUpViewController *popup = [MRCPopUpViewController sharedPopup];
     [popup setStyle:MRCPopupLightStyle];
     [popup setMode:MRCPopupMessage];
-    [popup setOkLabel:@"OK"];
+    [popup setOkLabel:NSLocalizedString(@"OK",nil)];
     [popup setTitle:title];
     [popup setMessage:message];
     [popup presentInViewController:self.parentViewController];
@@ -100,6 +97,13 @@
 {
     [textInput showError:title];
 }
-
+- (void)showActivityIndicator:(NSString*)message
+{
+    MRCPopUpViewController *popup = [MRCPopUpViewController sharedPopup];
+    [popup setStyle:MRCPopupLightStyle];
+    [popup setMode:MRCPopupActivityIndicator];
+    [popup setTitle:message];
+    [popup presentInViewController:self.parentViewController];
+}
 
 @end

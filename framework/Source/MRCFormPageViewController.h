@@ -30,6 +30,6 @@
 - (void)showErrorPopup:(NSString*)title message:(NSString*)message;
 - (void)showErrorTextInput:(MRCTextInput*)textInput error:(NSString*)title;
 
-- (MRCAPI *)api;
+- (void)showActivityIndicator:(NSString*)message;
 
 @end

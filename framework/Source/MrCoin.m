@@ -19,7 +19,6 @@
 
 @implementation MrCoin
 
-static MrCoin *_sharedController;
 static UIStoryboard *_sharedStoryboard;
 
 + (void)show:(id)target
@@ -33,18 +32,34 @@ static UIStoryboard *_sharedStoryboard;
 }
 + (instancetype) sharedController
 {
-    if(!_sharedController){
+    static MrCoin *_sharedController;
+    static dispatch_once_t predicate;
+    dispatch_once(&predicate, ^{
         _sharedController = [[MrCoin alloc] init];
         _sharedController.needsAcceptTerms = YES;
-    }
+    });
     return _sharedController;
 }
 
 + (MrCoinViewController*) rootController
 {
-    return _sharedController.rootController;
+    return [[MrCoin sharedController] rootController];
 }
 
+#pragma mark - API
++(MRCAPI *)api
+{
+    return [[self sharedController] api];
+}
+-(MRCAPI *)api
+{
+    static MRCAPI* _api = nil;
+    static dispatch_once_t predicate;
+    dispatch_once(&predicate, ^{
+        _api = [[MRCAPI alloc] init];
+    });
+    return _api;
+}
 #pragma mark - Settings
 + (MRCSettings*) settings
 {

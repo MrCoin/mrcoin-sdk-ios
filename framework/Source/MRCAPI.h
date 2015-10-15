@@ -15,19 +15,30 @@ typedef enum {
     MRCAPInternalErrorType          //
 } MRCAPIErrorType;
 
+typedef void (^APIResponseData)(NSData* response);
 typedef void (^APIResponse)(NSDictionary* dictionary);
 typedef void (^APIResponseError)(NSError* error, MRCAPIErrorType errorType);
 
 @interface MRCAPI : NSObject
 
--(void) getMe:(APIResponse)response error:(APIResponseError)error;
--(void) getCountries:(APIResponse)response error:(APIResponseError)error;
--(void) getAddress:(NSString*)address response:(APIResponse)response error:(APIResponseError)error;
+@property (nonatomic) NSString* language;
+@property (nonatomic) NSDictionary* country;
+;
 
--(void) patchWallet:(NSDictionary*)patch response:(APIResponse)response error:(APIResponseError)error;
+- (void) authenticate:(APIResponse)responseBlock error:(APIResponseError)errorBlock;
+- (void) getCountries:(APIResponse)responseBlock error:(APIResponseError)errorBlock;
+- (void) email:(NSString*)emailAddress success:(APIResponse)responseBlock error:(APIResponseError)errorBlock;
+- (void) getEmail:(APIResponse)responseBlock error:(APIResponseError)errorBlock;
+- (void) getUserDetails:(APIResponse)responseBlock error:(APIResponseError)errorBlock;
+- (void) updateUserDetails:(NSString*)currency success:(APIResponse)responseBlock error:(APIResponseError)errorBlock;
+- (void) updateUserDetails:(NSString*)currency timezone:(NSTimeZone*)timezone  locale:(NSLocale*)locale success:(APIResponse)responseBlock error:(APIResponseError)errorBlock;
+- (void) phone:(NSString*)number country:(NSString*)countryCode success:(APIResponse)responseBlock error:(APIResponseError)errorBlock;
+- (void) getPhone:(APIResponse)responseBlock error:(APIResponseError)errorBlock;
+- (void) verifyPhone:(NSString*)verificationCode success:(APIResponse)responseBlock error:(APIResponseError)errorBlock;
+- (void) quickTransfers:(NSString*)destAddress currency:(NSString*)currency resellerID:(NSString*)resellerID success:(APIResponse)responseBlock error:(APIResponseError)errorBlock;
 
--(void) requestVerificationCodeForCountry:(NSString*)country phone:(NSString*)phone response:(APIResponse)response error:(APIResponseError)error;
--(void) verifyPhone:(NSString*)phone code:(NSString*)code response:(APIResponse)response error:(APIResponseError)error;
+- (void) getPriceTicker:(APIResponse)responseBlock error:(APIResponseError)errorBlock;
 
+- (NSArray*) countries;
 
 @end
