@@ -15,9 +15,21 @@
 }
 - (BOOL) isValid:(NSString*)string
 {
-    if(!_format) _format = [[RMPhoneFormat alloc] init];
     return [_format isPhoneNumberValid:string];
 }
+
+@synthesize countryCode = _countryCode;
+-(void)setCountryCode:(NSString *)countryCode
+{
+    _format = nil;
+    _format = [[RMPhoneFormat alloc] initWithDefaultCountry:countryCode];
+    _countryCode = countryCode;
+}
+-(NSString *)countryCode
+{
+    return _countryCode;
+}
+
 
 - (NSString*) format:(NSString*)string
 {
@@ -36,6 +48,10 @@
 - (NSInteger) maximumLength
 {
     return -1;
+}
+- (NSString*) defaultValue
+{
+    return self.prefix;
 }
 
 @end

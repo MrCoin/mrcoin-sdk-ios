@@ -37,5 +37,8 @@
 {
     return -1;
 }
-
+- (NSString*) defaultValue
+{
+    return nil;
+}
 @end

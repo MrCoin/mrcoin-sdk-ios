@@ -10,4 +10,7 @@
 
 @interface MRCPhoneData : MRCInputDataType
 
+@property (nonatomic) NSString* prefix;
+@property (nonatomic) NSString* countryCode;
+
 @end

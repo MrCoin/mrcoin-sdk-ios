@@ -20,4 +20,6 @@
 - (NSInteger) minimumLength;
 - (NSInteger) maximumLength;
 
+- (NSString*) defaultValue;
+
 @end
