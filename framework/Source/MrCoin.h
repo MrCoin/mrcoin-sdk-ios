@@ -30,18 +30,26 @@
 #import "MRCAPI.h"
 #import "MRCSettings.h"
 
-@interface MrCoin : NSObject
 
 #define MRCOIN_URL      @"http://www.mrcoin.eu"
 #define MRCOIN_SUPPORT  @"support@mrcoin.eu"
 
-//#define MRCLocalizedString(key) \
-//[[MrCoin frameworkBundle] localizedStringForKey:(key) value:@"" table:nil]
-//
-//#define MRCFormatedLocalizedString(key, value) \
+@protocol MrCoinDelegate <NSObject>
+
+//(nonce + request method + request path + post data)
+- (NSString*) requestSignatureFor:(NSString*)message privateKey:(NSString*)privateKey;
+
+@optional
+- (void) openURL:(NSURL*)url;
+- (void) sendMail:(NSString*)to subject:(NSString*)subject;
+
+@end
+
+@interface MrCoin : NSObject
 
 @property (strong, readonly) MRCAPI *api;
 @property MrCoinViewController* rootController;
+@property id <MrCoinDelegate> delegate;
 @property BOOL needsAcceptTerms;
 
 // Customizable
@@ -60,8 +68,14 @@
 - (UIViewController*) viewController:(NSString*)named;
 - (MRCSettings*) settings;
 
-+ (NSBundle *)frameworkBundle;
 + (UIImage*) imageNamed:(NSString*)named;
 
 + (MRCAPI *)api;
+
+- (void) openURL:(NSURL*)url;
+- (void) sendMail:(NSString*)to subject:(NSString*)subject;
+
++ (NSBundle *)frameworkBundle;
+- (NSString*) localizedString:(NSString*)key;
+
 @end

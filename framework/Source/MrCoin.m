@@ -40,7 +40,7 @@ static UIStoryboard *_sharedStoryboard;
     });
     return _sharedController;
 }
-
+#pragma mark - Root view controller
 + (MrCoinViewController*) rootController
 {
     return [[MrCoin sharedController] rootController];
@@ -76,7 +76,7 @@ static UIStoryboard *_sharedStoryboard;
     return _userSettings;
 }
 
-#pragma mark - Utilities
+#pragma mark - Document Viewer
 + (MRCTextViewController*)documentViewController:(MrCoinDocumentType)type
 {
     MRCTextViewController *vc = (MRCTextViewController*)[self viewController:@"DocumentViewer"];
@@ -94,11 +94,17 @@ static UIStoryboard *_sharedStoryboard;
     }
     return vc;
 }
+
+#pragma mark - Utilities
 + (UIImage*) imageNamed:(NSString*)named
 {
     UIImage* img = [UIImage imageNamed:named];   // non-CocoaPods
     if (img == nil) img = [UIImage imageNamed:named inBundle:[self frameworkBundle] compatibleWithTraitCollection:nil];
     if (img == nil) img = [UIImage imageNamed:[NSString stringWithFormat:@"MrCoin.bundle/@%.png",named]]; // CocoaPod
+    if (img == nil){
+        NSString *throwMessage = [NSString stringWithFormat:@"The image '%@' not found. Check framework or main bunddle.",named];
+        NSAssert(_sharedStoryboard, throwMessage);
+    }
     return img;
 }
 
@@ -116,6 +122,9 @@ static UIStoryboard *_sharedStoryboard;
     if(!_sharedStoryboard){
         _sharedStoryboard = [UIStoryboard storyboardWithName:MRC_STORYBOARD bundle:[MrCoin frameworkBundle]];
     }
+    NSString *throwMessage = [NSString stringWithFormat:@"The storyboard '%@' not found. See the README.",MRC_STORYBOARD];
+    NSAssert(_sharedStoryboard, throwMessage);
+
     return _sharedStoryboard;
 }
 + (NSBundle *)frameworkBundle
@@ -126,7 +135,15 @@ static UIStoryboard *_sharedStoryboard;
         NSString* mainBundlePath = [[NSBundle mainBundle] resourcePath];
         NSString* frameworkBundlePath = [mainBundlePath stringByAppendingPathComponent:MRC_BUNDLE];
         frameworkBundle = [NSBundle bundleWithPath:frameworkBundlePath];
+        
+        if(!frameworkBundle){
+            NSString *path = [[[[NSBundle bundleForClass:[self class]] resourcePath] stringByDeletingLastPathComponent] stringByAppendingPathComponent:MRC_BUNDLE];
+            frameworkBundle = [NSBundle bundleWithPath:path];
+        }
     });
+    NSString *throwMessage = [NSString stringWithFormat:@"The resource file '%@' not found. See the README.",MRC_BUNDLE];
+    NSAssert(frameworkBundle, throwMessage);
+
     return frameworkBundle;
 }
 #pragma mark - View Controllers
@@ -141,5 +158,49 @@ static UIStoryboard *_sharedStoryboard;
     }
     return nil;
 }
+#pragma mark - URL Related
+- (void) openURL:(NSURL*)url
+{
+    if(self.delegate){
+        if([self.delegate respondsToSelector:@selector(openURL:)]){
+            [self.delegate openURL:url];
+            return;
+        }
+    }
+    [[UIApplication sharedApplication] openURL:url];
+}
+- (void) sendMail:(NSString*)to subject:(NSString*)subject
+{
+    if(self.delegate){
+        if([self.delegate respondsToSelector:@selector(sendMail:subject:)]){
+            [self.delegate sendMail:to subject:subject];
+            return;
+        }
+    }
+    /* create mail subject */
+    NSURL *url = [[NSURL alloc] initWithString:[NSString stringWithFormat:@"mailto:%@?subject=%@",
+                                                [to stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding],
+                                                [subject stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding]]];
+    [[UIApplication sharedApplication] openURL:url];
+}
+- (NSString*) localizedString:(NSString*)key
+{
+    static NSBundle* languageBundle = nil;
+    static dispatch_once_t predicate;
+    dispatch_once(&predicate, ^{
+        NSString* path= [[MrCoin frameworkBundle] pathForResource:@"en" ofType:@"lproj"];
+        languageBundle = [NSBundle bundleWithPath:path];
+    });
+    return [languageBundle localizedStringForKey:key value:@"" table:nil];
+}
+
+
+//    MRCTextViewController *text = [MrCoin documentViewController:MrCoinDocumentSupport];
+//    [text.navigationItem setLeftBarButtonItem:[[UIBarButtonItem alloc] initWithImage:[MrCoin imageNamed:@"close"] style:UIBarButtonItemStylePlain target:text action:@selector(close:)]];
+//    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:text];
+//    nav.modalPresentationStyle = UIModalTransitionStyleFlipHorizontal;
+//    [self presentViewController:nav animated:YES completion:^{
+//
+//    }];
 
 @end

@@ -118,15 +118,19 @@ static MRCPopUpViewController *popup;
 }
 -(void)presentInViewController:(UIViewController *)viewController hideAfterDelay:(NSTimeInterval)delay
 {
+    if(present) return;
+    NSTimeInterval t = 0.0f;
+    if(self.mode == MRCPopupActivityIndicator){
+        t = 1.0f;
+    }
     present = YES;
     if(delay == 0.0){
         //        [self _presentInViewController:viewController];
-        [self performSelector:@selector(_presentInViewController:) withObject:viewController afterDelay:1.0f];
-        [self performSelector:@selector(dismissViewController) withObject:nil afterDelay:1.0f];
+        [self performSelector:@selector(_presentInViewController:) withObject:viewController afterDelay:t];
     }else{
 //        [self _presentInViewController:viewController];
-        [self performSelector:@selector(_presentInViewController:) withObject:viewController afterDelay:1.0f];
-        [self performSelector:@selector(dismissViewController) withObject:nil afterDelay:delay+1.0f];
+        [self performSelector:@selector(_presentInViewController:) withObject:viewController afterDelay:t];
+        [self performSelector:@selector(dismissViewController) withObject:nil afterDelay:delay+t];
     }
 }
 - (void)_presentInViewController:(UIViewController *)viewController
