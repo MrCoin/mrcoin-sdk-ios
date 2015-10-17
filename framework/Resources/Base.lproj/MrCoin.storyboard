@@ -628,7 +628,7 @@ re</string>
                         <viewControllerLayoutGuide type="top" id="THe-vC-CoG"/>
                         <viewControllerLayoutGuide type="bottom" id="FEC-Ng-cD7"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="FcV-LP-s9a" customClass="MrCoinView">
+                    <view key="view" contentMode="scaleToFill" id="FcV-LP-s9a">
                         <rect key="frame" x="0.0" y="0.0" width="400" height="200"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <animations/>
