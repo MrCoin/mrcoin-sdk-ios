@@ -23,16 +23,6 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
-		2622ACEA1BC2911B0017259E /* MRCEmptyViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 2622ACDC1BC2911B0017259E /* MRCEmptyViewController.h */; settings = {ASSET_TAGS = (); }; };
-		2622ACEB1BC2911B0017259E /* MRCEmptyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2622ACDD1BC2911B0017259E /* MRCEmptyViewController.m */; settings = {ASSET_TAGS = (); }; };
-		2622ACEC1BC2911B0017259E /* MRCFormViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 2622ACDE1BC2911B0017259E /* MRCFormViewController.h */; settings = {ASSET_TAGS = (); }; };
-		2622ACED1BC2911B0017259E /* MRCFormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2622ACDF1BC2911B0017259E /* MRCFormViewController.m */; settings = {ASSET_TAGS = (); }; };
-		2622ACEE1BC2911B0017259E /* MrCoin.h in Headers */ = {isa = PBXBuildFile; fileRef = 2622ACE01BC2911B0017259E /* MrCoin.h */; settings = {ASSET_TAGS = (); }; };
-		2622ACEF1BC2911B0017259E /* MrCoin.m in Sources */ = {isa = PBXBuildFile; fileRef = 2622ACE11BC2911B0017259E /* MrCoin.m */; settings = {ASSET_TAGS = (); }; };
-		2622ACF21BC2911B0017259E /* MRCProgressView.h in Headers */ = {isa = PBXBuildFile; fileRef = 2622ACE41BC2911B0017259E /* MRCProgressView.h */; settings = {ASSET_TAGS = (); }; };
-		2622ACF31BC2911B0017259E /* MRCProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2622ACE51BC2911B0017259E /* MRCProgressView.m */; settings = {ASSET_TAGS = (); }; };
-		2622ACF61BC2911B0017259E /* MRCTextInput.h in Headers */ = {isa = PBXBuildFile; fileRef = 2622ACE81BC2911B0017259E /* MRCTextInput.h */; settings = {ASSET_TAGS = (); }; };
-		2622ACF71BC2911B0017259E /* MRCTextInput.m in Sources */ = {isa = PBXBuildFile; fileRef = 2622ACE91BC2911B0017259E /* MRCTextInput.m */; settings = {ASSET_TAGS = (); }; };
 		2622ACFD1BC2916C0017259E /* MRCEmptyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2622ACDD1BC2911B0017259E /* MRCEmptyViewController.m */; settings = {ASSET_TAGS = (); }; };
 		2622ACFE1BC2916C0017259E /* MRCFormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2622ACDF1BC2911B0017259E /* MRCFormViewController.m */; settings = {ASSET_TAGS = (); }; };
 		2622ACFF1BC2916C0017259E /* MrCoin.m in Sources */ = {isa = PBXBuildFile; fileRef = 2622ACE11BC2911B0017259E /* MrCoin.m */; settings = {ASSET_TAGS = (); }; };
@@ -45,25 +35,21 @@
 		2622AD0B1BC2917E0017259E /* MRCTextInput.h in Headers */ = {isa = PBXBuildFile; fileRef = 2622ACE81BC2911B0017259E /* MRCTextInput.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2642D2541BCFA0CD00C79A13 /* flags in Resources */ = {isa = PBXBuildFile; fileRef = 2642D2531BCFA0CD00C79A13 /* flags */; settings = {ASSET_TAGS = (); }; };
 		2642D25A1BD0233000C79A13 /* welcome_background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2642D2591BD0233000C79A13 /* welcome_background@2x.png */; settings = {ASSET_TAGS = (); }; };
-		266C3FB61BC3C0BB00C0948E /* RMPhoneFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = 266C3FB41BC3C0BB00C0948E /* RMPhoneFormat.m */; settings = {ASSET_TAGS = (); }; };
 		266C3FB71BC3C0BB00C0948E /* RMPhoneFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = 266C3FB41BC3C0BB00C0948E /* RMPhoneFormat.m */; settings = {ASSET_TAGS = (); }; };
 		266C3FB81BC3C0BB00C0948E /* RMPhoneFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = 266C3FB41BC3C0BB00C0948E /* RMPhoneFormat.m */; settings = {ASSET_TAGS = (); }; };
-		266C3FB91BC3C0BB00C0948E /* RMPhoneFormat.h in Headers */ = {isa = PBXBuildFile; fileRef = 266C3FB51BC3C0BB00C0948E /* RMPhoneFormat.h */; settings = {ASSET_TAGS = (); }; };
 		266C3FBA1BC3C0BB00C0948E /* RMPhoneFormat.h in Headers */ = {isa = PBXBuildFile; fileRef = 266C3FB51BC3C0BB00C0948E /* RMPhoneFormat.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		266C3FBB1BC3C0BB00C0948E /* RMPhoneFormat.h in Headers */ = {isa = PBXBuildFile; fileRef = 266C3FB51BC3C0BB00C0948E /* RMPhoneFormat.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		266C3FC41BC3C39C00C0948E /* PhoneFormats.dat in Resources */ = {isa = PBXBuildFile; fileRef = 266C3FC31BC3C39C00C0948E /* PhoneFormats.dat */; settings = {ASSET_TAGS = (); }; };
 		266C3FD71BC3FD0200C0948E /* downArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 266C3FCE1BC3FCFE00C0948E /* downArrow.png */; settings = {ASSET_TAGS = (); }; };
 		266C3FD81BC3FD0200C0948E /* downArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 266C3FCF1BC3FCFE00C0948E /* downArrow@2x.png */; settings = {ASSET_TAGS = (); }; };
 		266C3FD91BC3FD0200C0948E /* downArrow@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 266C3FD01BC3FCFE00C0948E /* downArrow@3x.png */; settings = {ASSET_TAGS = (); }; };
-		266C3FDC1BC43AE400C0948E /* MRCPhoneVerificationViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 266C3FDA1BC43AE400C0948E /* MRCPhoneVerificationViewController.h */; settings = {ASSET_TAGS = (); }; };
 		266C3FDD1BC43AE400C0948E /* MRCPhoneVerificationViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 266C3FDA1BC43AE400C0948E /* MRCPhoneVerificationViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		266C3FDE1BC43AE400C0948E /* MRCPhoneVerificationViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 266C3FDA1BC43AE400C0948E /* MRCPhoneVerificationViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		266C3FDF1BC43AE400C0948E /* MRCPhoneVerificationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 266C3FDB1BC43AE400C0948E /* MRCPhoneVerificationViewController.m */; settings = {ASSET_TAGS = (); }; };
 		266C3FE01BC43AE400C0948E /* MRCPhoneVerificationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 266C3FDB1BC43AE400C0948E /* MRCPhoneVerificationViewController.m */; settings = {ASSET_TAGS = (); }; };
 		266C3FE11BC43AE400C0948E /* MRCPhoneVerificationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 266C3FDB1BC43AE400C0948E /* MRCPhoneVerificationViewController.m */; settings = {ASSET_TAGS = (); }; };
 		266FC5561BCDAECA00D3A1A0 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 266FC5581BCDAECA00D3A1A0 /* Localizable.strings */; };
 		266FC5661BCDB47000D3A1A0 /* MrCoin.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 266FC5641BCDB47000D3A1A0 /* MrCoin.storyboard */; settings = {ASSET_TAGS = (); }; };
-		26755B9F1BC10E610093EC98 /* MrCoinTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 26755B9E1BC10E610093EC98 /* MrCoinTests.m */; settings = {ASSET_TAGS = (); }; };
+		26D2E3521BD19B1A0075CBA0 /* mrcoin_masked@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 26D2E3511BD19B1A0075CBA0 /* mrcoin_masked@2x.png */; settings = {ASSET_TAGS = (); }; };
 		26D65CF21BC70B6C00DFF489 /* mrcoin.png in Resources */ = {isa = PBXBuildFile; fileRef = 26D65CF01BC70B6C00DFF489 /* mrcoin.png */; settings = {ASSET_TAGS = (); }; };
 		26D65CF31BC70B6C00DFF489 /* mrcoin@2.png in Resources */ = {isa = PBXBuildFile; fileRef = 26D65CF11BC70B6C00DFF489 /* mrcoin@2.png */; settings = {ASSET_TAGS = (); }; };
 		26D65CF61BC70BAE00DFF489 /* MRCDropDown.h in Headers */ = {isa = PBXBuildFile; fileRef = 26D65CF41BC70BAE00DFF489 /* MRCDropDown.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -95,18 +81,17 @@
 		26D65D1C1BC70BEB00DFF489 /* MRCFormDoneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26D65D151BC70BEB00DFF489 /* MRCFormDoneViewController.m */; settings = {ASSET_TAGS = (); }; };
 		26D65D1D1BC70BEB00DFF489 /* MRCFormDoneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26D65D151BC70BEB00DFF489 /* MRCFormDoneViewController.m */; settings = {ASSET_TAGS = (); }; };
 		26D65D1F1BC70E4D00DFF489 /* MrCoinFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = 26D65D1E1BC70E4D00DFF489 /* MrCoinFramework.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		26D956AA1BC2F53300B3810F /* MrCoinViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 26D956A81BC2F53300B3810F /* MrCoinViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		26D956AB1BC2F53300B3810F /* MrCoinViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 26D956A81BC2F53300B3810F /* MrCoinViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		26D956AC1BC2F53300B3810F /* MrCoinViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 26D956A81BC2F53300B3810F /* MrCoinViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		26D956AD1BC2F53300B3810F /* MrCoinViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26D956A91BC2F53300B3810F /* MrCoinViewController.m */; settings = {ASSET_TAGS = (); }; };
 		26D956AE1BC2F53300B3810F /* MrCoinViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26D956A91BC2F53300B3810F /* MrCoinViewController.m */; settings = {ASSET_TAGS = (); }; };
 		26D956AF1BC2F53300B3810F /* MrCoinViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26D956A91BC2F53300B3810F /* MrCoinViewController.m */; settings = {ASSET_TAGS = (); }; };
-		26D956B21BC2FF1100B3810F /* MRCPhoneViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 26D956B01BC2FF1100B3810F /* MRCPhoneViewController.h */; settings = {ASSET_TAGS = (); }; };
 		26D956B31BC2FF1100B3810F /* MRCPhoneViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 26D956B01BC2FF1100B3810F /* MRCPhoneViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		26D956B41BC2FF1100B3810F /* MRCPhoneViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 26D956B01BC2FF1100B3810F /* MRCPhoneViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		26D956B51BC2FF1100B3810F /* MRCPhoneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26D956B11BC2FF1100B3810F /* MRCPhoneViewController.m */; settings = {ASSET_TAGS = (); }; };
 		26D956B61BC2FF1100B3810F /* MRCPhoneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26D956B11BC2FF1100B3810F /* MRCPhoneViewController.m */; settings = {ASSET_TAGS = (); }; };
 		26D956B81BC2FF1100B3810F /* MRCPhoneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26D956B11BC2FF1100B3810F /* MRCPhoneViewController.m */; settings = {ASSET_TAGS = (); }; };
+		26D9F00F1BD237EE0016658B /* MrCoinTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 26D9F00E1BD237EE0016658B /* MrCoinTests.m */; };
+		26D9F0111BD237EE0016658B /* MrCoinFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26FA7F8D1BC2A2580018B72C /* MrCoinFramework.framework */; settings = {ASSET_TAGS = (); }; };
+		26D9F01A1BD23AF60016658B /* MrCoin.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 2610BC0C1BC2945800BFF784 /* MrCoin.bundle */; };
 		26DF33AC1BCC3326004454A3 /* close.png in Resources */ = {isa = PBXBuildFile; fileRef = 26DF33AA1BCC3326004454A3 /* close.png */; settings = {ASSET_TAGS = (); }; };
 		26DF33AD1BCC3326004454A3 /* close@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 26DF33AB1BCC3326004454A3 /* close@2x.png */; settings = {ASSET_TAGS = (); }; };
 		26DF33B61BCC6F25004454A3 /* MRCEmailData.h in Headers */ = {isa = PBXBuildFile; fileRef = 26DF33AE1BCC6F25004454A3 /* MRCEmailData.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -145,10 +130,8 @@
 		26DF33E11BCC6F7C004454A3 /* MRCSettingsViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 26DF33DE1BCC6F7C004454A3 /* MRCSettingsViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		26DF33E21BCC6F7C004454A3 /* MRCSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26DF33DF1BCC6F7C004454A3 /* MRCSettingsViewController.m */; settings = {ASSET_TAGS = (); }; };
 		26DF33E31BCC6F7C004454A3 /* MRCSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26DF33DF1BCC6F7C004454A3 /* MRCSettingsViewController.m */; settings = {ASSET_TAGS = (); }; };
-		26F37FAC1BC99F9C003EF687 /* MRCPopUpViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 26F37FAA1BC99F9C003EF687 /* MRCPopUpViewController.h */; settings = {ASSET_TAGS = (); }; };
 		26F37FAD1BC99F9C003EF687 /* MRCPopUpViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 26F37FAA1BC99F9C003EF687 /* MRCPopUpViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		26F37FAE1BC99F9C003EF687 /* MRCPopUpViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 26F37FAA1BC99F9C003EF687 /* MRCPopUpViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		26F37FAF1BC99F9C003EF687 /* MRCPopUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26F37FAB1BC99F9C003EF687 /* MRCPopUpViewController.m */; settings = {ASSET_TAGS = (); }; };
 		26F37FB01BC99F9C003EF687 /* MRCPopUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26F37FAB1BC99F9C003EF687 /* MRCPopUpViewController.m */; settings = {ASSET_TAGS = (); }; };
 		26F37FB11BC99F9C003EF687 /* MRCPopUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26F37FAB1BC99F9C003EF687 /* MRCPopUpViewController.m */; settings = {ASSET_TAGS = (); }; };
 		26FA7F9F1BC2A2D70018B72C /* MRCEmptyViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 2622ACDC1BC2911B0017259E /* MRCEmptyViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -161,14 +144,10 @@
 		26FA7FA81BC2A2DE0018B72C /* MrCoin.m in Sources */ = {isa = PBXBuildFile; fileRef = 2622ACE11BC2911B0017259E /* MrCoin.m */; settings = {ASSET_TAGS = (); }; };
 		26FA7FAA1BC2A2DE0018B72C /* MRCProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2622ACE51BC2911B0017259E /* MRCProgressView.m */; settings = {ASSET_TAGS = (); }; };
 		26FA7FAC1BC2A2DE0018B72C /* MRCTextInput.m in Sources */ = {isa = PBXBuildFile; fileRef = 2622ACE91BC2911B0017259E /* MRCTextInput.m */; settings = {ASSET_TAGS = (); }; };
-		26FA7FB41BC2A5F70018B72C /* MRCAPI.h in Headers */ = {isa = PBXBuildFile; fileRef = 26FA7FB21BC2A5F70018B72C /* MRCAPI.h */; settings = {ASSET_TAGS = (); }; };
-		26FA7FB51BC2A5F70018B72C /* MRCAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 26FA7FB31BC2A5F70018B72C /* MRCAPI.m */; settings = {ASSET_TAGS = (); }; };
 		26FA7FB61BC2A5F90018B72C /* MRCAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 26FA7FB31BC2A5F70018B72C /* MRCAPI.m */; settings = {ASSET_TAGS = (); }; };
 		26FA7FB81BC2A5FF0018B72C /* MRCAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 26FA7FB31BC2A5F70018B72C /* MRCAPI.m */; settings = {ASSET_TAGS = (); }; };
-		26FA7FBB1BC2A6210018B72C /* MRCSettings.h in Headers */ = {isa = PBXBuildFile; fileRef = 26FA7FB91BC2A6210018B72C /* MRCSettings.h */; settings = {ASSET_TAGS = (); }; };
 		26FA7FBC1BC2A6210018B72C /* MRCSettings.h in Headers */ = {isa = PBXBuildFile; fileRef = 26FA7FB91BC2A6210018B72C /* MRCSettings.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		26FA7FBD1BC2A6210018B72C /* MRCSettings.h in Headers */ = {isa = PBXBuildFile; fileRef = 26FA7FB91BC2A6210018B72C /* MRCSettings.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		26FA7FBE1BC2A6210018B72C /* MRCSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 26FA7FBA1BC2A6210018B72C /* MRCSettings.m */; settings = {ASSET_TAGS = (); }; };
 		26FA7FBF1BC2A6210018B72C /* MRCSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 26FA7FBA1BC2A6210018B72C /* MRCSettings.m */; settings = {ASSET_TAGS = (); }; };
 		26FA7FC01BC2A6210018B72C /* MRCSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 26FA7FBA1BC2A6210018B72C /* MRCSettings.m */; settings = {ASSET_TAGS = (); }; };
 		26FA7FC21BC2A6BB0018B72C /* MRCAPI.h in Headers */ = {isa = PBXBuildFile; fileRef = 26FA7FB21BC2A5F70018B72C /* MRCAPI.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -195,6 +174,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = 2610BC0B1BC2945800BFF784;
 			remoteInfo = MrCoinResources;
+		};
+		26D9F0121BD237EE0016658B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 26E479CB1BC1085B0003536C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 26FA7F8C1BC2A2580018B72C;
+			remoteInfo = MrCoinFramework;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -223,8 +209,8 @@
 		2622ACE51BC2911B0017259E /* MRCProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MRCProgressView.m; path = Source/MRCProgressView.m; sourceTree = SOURCE_ROOT; };
 		2622ACE81BC2911B0017259E /* MRCTextInput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MRCTextInput.h; path = Source/MRCTextInput.h; sourceTree = SOURCE_ROOT; };
 		2622ACE91BC2911B0017259E /* MRCTextInput.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MRCTextInput.m; path = Source/MRCTextInput.m; sourceTree = SOURCE_ROOT; };
-		2642D2531BCFA0CD00C79A13 /* flags */ = {isa = PBXFileReference; lastKnownFileType = folder; path = flags; sourceTree = "<group>"; };
-		2642D2591BD0233000C79A13 /* welcome_background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "welcome_background@2x.png"; sourceTree = "<group>"; };
+		2642D2531BCFA0CD00C79A13 /* flags */ = {isa = PBXFileReference; lastKnownFileType = folder; name = flags; path = Resources/flags; sourceTree = "<group>"; };
+		2642D2591BD0233000C79A13 /* welcome_background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "welcome_background@2x.png"; path = "Resources/welcome_background@2x.png"; sourceTree = "<group>"; };
 		266C3FB41BC3C0BB00C0948E /* RMPhoneFormat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RMPhoneFormat.m; path = Source/RMPhoneFormat.m; sourceTree = SOURCE_ROOT; };
 		266C3FB51BC3C0BB00C0948E /* RMPhoneFormat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RMPhoneFormat.h; path = Source/RMPhoneFormat.h; sourceTree = SOURCE_ROOT; };
 		266C3FC31BC3C39C00C0948E /* PhoneFormats.dat */ = {isa = PBXFileReference; lastKnownFileType = file; name = PhoneFormats.dat; path = Resources/PhoneFormats.dat; sourceTree = "<group>"; };
@@ -238,6 +224,7 @@
 		266FC56C1BCDB4A700D3A1A0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Resources/Base.lproj/MrCoin.storyboard; sourceTree = "<group>"; };
 		26755B9E1BC10E610093EC98 /* MrCoinTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MrCoinTests.m; path = UnitTests/MrCoinTests.m; sourceTree = SOURCE_ROOT; };
 		267BBDC91BC27BA900FA2399 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		26D2E3511BD19B1A0075CBA0 /* mrcoin_masked@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mrcoin_masked@2x.png"; sourceTree = "<group>"; };
 		26D65CF01BC70B6C00DFF489 /* mrcoin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = mrcoin.png; path = Resources/mrcoin.png; sourceTree = "<group>"; };
 		26D65CF11BC70B6C00DFF489 /* mrcoin@2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "mrcoin@2.png"; path = "Resources/mrcoin@2.png"; sourceTree = "<group>"; };
 		26D65CF41BC70BAE00DFF489 /* MRCDropDown.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MRCDropDown.h; path = Source/MRCDropDown.h; sourceTree = SOURCE_ROOT; };
@@ -259,6 +246,9 @@
 		26D956A91BC2F53300B3810F /* MrCoinViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MrCoinViewController.m; path = Source/MrCoinViewController.m; sourceTree = SOURCE_ROOT; };
 		26D956B01BC2FF1100B3810F /* MRCPhoneViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MRCPhoneViewController.h; path = Source/MRCPhoneViewController.h; sourceTree = SOURCE_ROOT; };
 		26D956B11BC2FF1100B3810F /* MRCPhoneViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MRCPhoneViewController.m; path = Source/MRCPhoneViewController.m; sourceTree = SOURCE_ROOT; };
+		26D9F00C1BD237EE0016658B /* MrCoinTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MrCoinTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		26D9F00E1BD237EE0016658B /* MrCoinTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MrCoinTests.m; sourceTree = "<group>"; };
+		26D9F0101BD237EE0016658B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		26DF33AA1BCC3326004454A3 /* close.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = close.png; path = Resources/close.png; sourceTree = "<group>"; };
 		26DF33AB1BCC3326004454A3 /* close@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "close@2x.png"; path = "Resources/close@2x.png"; sourceTree = "<group>"; };
 		26DF33AE1BCC6F25004454A3 /* MRCEmailData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MRCEmailData.h; path = Source/MRCEmailData.h; sourceTree = SOURCE_ROOT; };
@@ -279,7 +269,6 @@
 		26DF33D91BCC6F6F004454A3 /* MRCErrorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MRCErrorView.m; path = Source/MRCErrorView.m; sourceTree = SOURCE_ROOT; };
 		26DF33DE1BCC6F7C004454A3 /* MRCSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MRCSettingsViewController.h; path = Source/MRCSettingsViewController.h; sourceTree = SOURCE_ROOT; };
 		26DF33DF1BCC6F7C004454A3 /* MRCSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MRCSettingsViewController.m; path = Source/MRCSettingsViewController.m; sourceTree = SOURCE_ROOT; };
-		26E479EC1BC1085B0003536C /* MrCoin iOS SDKTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "MrCoin iOS SDKTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		26F37FAA1BC99F9C003EF687 /* MRCPopUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MRCPopUpViewController.h; path = Source/MRCPopUpViewController.h; sourceTree = SOURCE_ROOT; };
 		26F37FAB1BC99F9C003EF687 /* MRCPopUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MRCPopUpViewController.m; path = Source/MRCPopUpViewController.m; sourceTree = SOURCE_ROOT; };
 		26FA7F8D1BC2A2580018B72C /* MrCoinFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MrCoinFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -309,10 +298,11 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		26E479E91BC1085B0003536C /* Frameworks */ = {
+		26D9F0091BD237EE0016658B /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				26D9F0111BD237EE0016658B /* MrCoinFramework.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -337,6 +327,7 @@
 		2622ACF81BC2912C0017259E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				26D2E3511BD19B1A0075CBA0 /* mrcoin_masked@2x.png */,
 				2642D2531BCFA0CD00C79A13 /* flags */,
 				26DF33AA1BCC3326004454A3 /* close.png */,
 				26DF33AB1BCC3326004454A3 /* close@2x.png */,
@@ -441,6 +432,15 @@
 			name = "Terms of service";
 			sourceTree = "<group>";
 		};
+		26D9F00D1BD237EE0016658B /* MrCoinTests */ = {
+			isa = PBXGroup;
+			children = (
+				26D9F00E1BD237EE0016658B /* MrCoinTests.m */,
+				26D9F0101BD237EE0016658B /* Info.plist */,
+			);
+			path = MrCoinTests;
+			sourceTree = "<group>";
+		};
 		26E479CA1BC1085B0003536C = {
 			isa = PBXGroup;
 			children = (
@@ -448,6 +448,7 @@
 				26E479D51BC1085B0003536C /* SDK */,
 				26E479EF1BC1085B0003536C /* Unit Tests */,
 				26FEB8131BCAF37E00DDA046 /* Framework */,
+				26D9F00D1BD237EE0016658B /* MrCoinTests */,
 				2622ACCE1BC290E30017259E /* Frameworks */,
 				26E479D41BC1085B0003536C /* Products */,
 			);
@@ -456,10 +457,10 @@
 		26E479D41BC1085B0003536C /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				26E479EC1BC1085B0003536C /* MrCoin iOS SDKTests.xctest */,
 				2622ACD31BC290FD0017259E /* libMrCoin.a */,
 				2610BC0C1BC2945800BFF784 /* MrCoin.bundle */,
 				26FA7F8D1BC2A2580018B72C /* MrCoinFramework.framework */,
+				26D9F00C1BD237EE0016658B /* MrCoinTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -598,25 +599,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		267BBE421BC2903900FA2399 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				266C3FDC1BC43AE400C0948E /* MRCPhoneVerificationViewController.h in Headers */,
-				26F37FAC1BC99F9C003EF687 /* MRCPopUpViewController.h in Headers */,
-				2622ACEC1BC2911B0017259E /* MRCFormViewController.h in Headers */,
-				2622ACF61BC2911B0017259E /* MRCTextInput.h in Headers */,
-				266C3FB91BC3C0BB00C0948E /* RMPhoneFormat.h in Headers */,
-				26FA7FB41BC2A5F70018B72C /* MRCAPI.h in Headers */,
-				26FA7FBB1BC2A6210018B72C /* MRCSettings.h in Headers */,
-				2622ACF21BC2911B0017259E /* MRCProgressView.h in Headers */,
-				2622ACEA1BC2911B0017259E /* MRCEmptyViewController.h in Headers */,
-				26D956B21BC2FF1100B3810F /* MRCPhoneViewController.h in Headers */,
-				26D956AA1BC2F53300B3810F /* MrCoinViewController.h in Headers */,
-				2622ACEE1BC2911B0017259E /* MrCoin.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		26FA7F8A1BC2A2580018B72C /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -693,22 +675,22 @@
 			productReference = 2622ACD31BC290FD0017259E /* libMrCoin.a */;
 			productType = "com.apple.product-type.library.static";
 		};
-		26E479EB1BC1085B0003536C /* MrCoin iOS SDKTests */ = {
+		26D9F00B1BD237EE0016658B /* MrCoinTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 26E479F81BC1085B0003536C /* Build configuration list for PBXNativeTarget "MrCoin iOS SDKTests" */;
+			buildConfigurationList = 26D9F0141BD237EE0016658B /* Build configuration list for PBXNativeTarget "MrCoinTests" */;
 			buildPhases = (
-				26E479E81BC1085B0003536C /* Sources */,
-				26E479E91BC1085B0003536C /* Frameworks */,
-				26E479EA1BC1085B0003536C /* Resources */,
-				267BBE421BC2903900FA2399 /* Headers */,
+				26D9F0081BD237EE0016658B /* Sources */,
+				26D9F0091BD237EE0016658B /* Frameworks */,
+				26D9F00A1BD237EE0016658B /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				26D9F0131BD237EE0016658B /* PBXTargetDependency */,
 			);
-			name = "MrCoin iOS SDKTests";
-			productName = MrCoinIOSSDKTests;
-			productReference = 26E479EC1BC1085B0003536C /* MrCoin iOS SDKTests.xctest */;
+			name = MrCoinTests;
+			productName = MrCoinTests;
+			productReference = 26D9F00C1BD237EE0016658B /* MrCoinTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		26FA7F8C1BC2A2580018B72C /* MrCoinFramework */ = {
@@ -747,9 +729,8 @@
 					2622ACD21BC290FD0017259E = {
 						CreatedOnToolsVersion = 7.0.1;
 					};
-					26E479EB1BC1085B0003536C = {
+					26D9F00B1BD237EE0016658B = {
 						CreatedOnToolsVersion = 7.0.1;
-						TestTargetID = 26E479D21BC1085B0003536C;
 					};
 					26FA7F8C1BC2A2580018B72C = {
 						CreatedOnToolsVersion = 7.0.1;
@@ -772,10 +753,10 @@
 			projectRoot = "";
 			targets = (
 				2610BC011BC2937F00BFF784 /* Framework */,
-				26E479EB1BC1085B0003536C /* MrCoin iOS SDKTests */,
 				2622ACD21BC290FD0017259E /* MrCoin */,
 				2610BC0B1BC2945800BFF784 /* MrCoinResources */,
 				26FA7F8C1BC2A2580018B72C /* MrCoinFramework */,
+				26D9F00B1BD237EE0016658B /* MrCoinTests */,
 			);
 		};
 /* End PBXProject section */
@@ -786,6 +767,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				266FC5561BCDAECA00D3A1A0 /* Localizable.strings in Resources */,
+				26D2E3521BD19B1A0075CBA0 /* mrcoin_masked@2x.png in Resources */,
 				26FEB8121BCADADB00DDA046 /* error@2x.png in Resources */,
 				266C3FC41BC3C39C00C0948E /* PhoneFormats.dat in Resources */,
 				2642D25A1BD0233000C79A13 /* welcome_background@2x.png in Resources */,
@@ -802,10 +784,11 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		26E479EA1BC1085B0003536C /* Resources */ = {
+		26D9F00A1BD237EE0016658B /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				26D9F01A1BD23AF60016658B /* MrCoin.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -891,23 +874,11 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		26E479E81BC1085B0003536C /* Sources */ = {
+		26D9F0081BD237EE0016658B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				26FA7FB51BC2A5F70018B72C /* MRCAPI.m in Sources */,
-				2622ACF71BC2911B0017259E /* MRCTextInput.m in Sources */,
-				26755B9F1BC10E610093EC98 /* MrCoinTests.m in Sources */,
-				266C3FDF1BC43AE400C0948E /* MRCPhoneVerificationViewController.m in Sources */,
-				2622ACEB1BC2911B0017259E /* MRCEmptyViewController.m in Sources */,
-				2622ACED1BC2911B0017259E /* MRCFormViewController.m in Sources */,
-				26FA7FBE1BC2A6210018B72C /* MRCSettings.m in Sources */,
-				26F37FAF1BC99F9C003EF687 /* MRCPopUpViewController.m in Sources */,
-				26D956AD1BC2F53300B3810F /* MrCoinViewController.m in Sources */,
-				266C3FB61BC3C0BB00C0948E /* RMPhoneFormat.m in Sources */,
-				2622ACF31BC2911B0017259E /* MRCProgressView.m in Sources */,
-				26D956B51BC2FF1100B3810F /* MRCPhoneViewController.m in Sources */,
-				2622ACEF1BC2911B0017259E /* MrCoin.m in Sources */,
+				26D9F00F1BD237EE0016658B /* MrCoinTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -959,6 +930,11 @@
 			isa = PBXTargetDependency;
 			target = 2610BC0B1BC2945800BFF784 /* MrCoinResources */;
 			targetProxy = 2610BC141BC2953000BFF784 /* PBXContainerItemProxy */;
+		};
+		26D9F0131BD237EE0016658B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 26FA7F8C1BC2A2580018B72C /* MrCoinFramework */;
+			targetProxy = 26D9F0121BD237EE0016658B /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1060,6 +1036,31 @@
 			};
 			name = Release;
 		};
+		26D9F0151BD237EE0016658B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				INFOPLIST_FILE = MrCoinTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = MrCoin.MrCoinTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		26D9F0161BD237EE0016658B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				INFOPLIST_FILE = MrCoinTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = MrCoin.MrCoinTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		26E479F31BC1085B0003536C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1145,30 +1146,6 @@
 			};
 			name = Release;
 		};
-		26E479F91BC1085B0003536C /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				INFOPLIST_FILE = Source/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = MrCoin.MrCoinIOSSDKTests;
-				PRODUCT_NAME = "MrCoin iOS SDKTests";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MrCoin iOS SDK.app/MrCoin iOS SDK";
-			};
-			name = Debug;
-		};
-		26E479FA1BC1085B0003536C /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				INFOPLIST_FILE = Source/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = MrCoin.MrCoinIOSSDKTests;
-				PRODUCT_NAME = "MrCoin iOS SDKTests";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MrCoin iOS SDK.app/MrCoin iOS SDK";
-			};
-			name = Release;
-		};
 		26FA7F921BC2A2580018B72C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1244,20 +1221,19 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		26D9F0141BD237EE0016658B /* Build configuration list for PBXNativeTarget "MrCoinTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				26D9F0151BD237EE0016658B /* Debug */,
+				26D9F0161BD237EE0016658B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		26E479CE1BC1085B0003536C /* Build configuration list for PBXProject "MrCoin iOS SDK" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				26E479F31BC1085B0003536C /* Debug */,
 				26E479F41BC1085B0003536C /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		26E479F81BC1085B0003536C /* Build configuration list for PBXNativeTarget "MrCoin iOS SDKTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				26E479F91BC1085B0003536C /* Debug */,
-				26E479FA1BC1085B0003536C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

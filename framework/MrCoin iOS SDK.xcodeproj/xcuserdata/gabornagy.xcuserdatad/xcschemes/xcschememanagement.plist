@@ -29,6 +29,11 @@
 			<key>orderHint</key>
 			<integer>4</integer>
 		</dict>
+		<key>MrCoinTests.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>6</integer>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
@@ -53,6 +58,11 @@
 			<true/>
 		</dict>
 		<key>267BBE311BC28F7C00FA2399</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>26D9F00B1BD237EE0016658B</key>
 		<dict>
 			<key>primary</key>
 			<true/>
