@@ -10,7 +10,7 @@ import UIKit
 import MrCoinFramework
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, MrCoinDelegate {
 
     var window: UIWindow?
 
@@ -19,18 +19,37 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.backgroundColor = UIColor.grayColor()
         
         let settings = MrCoin.settings()
+
         // Framework Settings
         settings.showErrorOnTextField = true
         settings.showPopupOnError = false
-        settings.resellerKey = "Breadwallet"
         
-        settings.sourceCurrency = "EUR"
-        settings.bitcoinAddress = "1Fo2NXefxfEUayB3zFEMf4gHHAzMHWokBJ"
+        // Setup wallet keys
+        settings.walletPublicKey = "1Fo2NXefxfEUayB3zFEMf4gHHAzMHWokBJ"
+        settings.walletPrivateKey = "1Fo2NXefxfEUayB3zFEMf4gHHAzMHWokBJ"
+        
+        // Setup your reseller key
+        settings.resellerKey = "9b85a53c-88fb-4a56-b4b0-4088153e4b7e"
+        
         MrCoin.sharedController().needsAcceptTerms = false;
 //        settings.userEmail = "email@domain.com"
 //        settings.userPhone = "+36307086085";
+        
+        MrCoin.sharedController().delegate = self;
+        MrCoin.api().language = "hu"
+        MrCoin.api().authenticate({ (result) -> Void in
+            print(result);
+            }) { (errors, type) -> Void in
+                print(errors);
+        }
 
         return true
+    }
+    
+    // MARK: MrCoin Delegate
+    func requestSignatureFor(message: String!, privateKey: String!) -> String! {
+        print(message,privateKey);
+        return message;
     }
 
     func applicationWillResignActive(application: UIApplication) {
