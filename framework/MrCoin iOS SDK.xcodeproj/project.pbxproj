@@ -89,9 +89,11 @@
 		26D956B41BC2FF1100B3810F /* MRCPhoneViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 26D956B01BC2FF1100B3810F /* MRCPhoneViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		26D956B61BC2FF1100B3810F /* MRCPhoneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26D956B11BC2FF1100B3810F /* MRCPhoneViewController.m */; settings = {ASSET_TAGS = (); }; };
 		26D956B81BC2FF1100B3810F /* MRCPhoneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26D956B11BC2FF1100B3810F /* MRCPhoneViewController.m */; settings = {ASSET_TAGS = (); }; };
-		26D9F00F1BD237EE0016658B /* MrCoinTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 26D9F00E1BD237EE0016658B /* MrCoinTests.m */; };
 		26D9F0111BD237EE0016658B /* MrCoinFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26FA7F8D1BC2A2580018B72C /* MrCoinFramework.framework */; settings = {ASSET_TAGS = (); }; };
 		26D9F01A1BD23AF60016658B /* MrCoin.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 2610BC0C1BC2945800BFF784 /* MrCoin.bundle */; };
+		26D9F01E1BD24CAE0016658B /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 26D9F01C1BD24CAE0016658B /* Info.plist */; settings = {ASSET_TAGS = (); }; };
+		26D9F01F1BD24CAE0016658B /* MrCoinTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 26D9F01D1BD24CAE0016658B /* MrCoinTests.m */; settings = {ASSET_TAGS = (); }; };
+		26D9F0211BD24CD40016658B /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 26D9F0201BD24CD40016658B /* Info.plist */; settings = {ASSET_TAGS = (); }; };
 		26DF33AC1BCC3326004454A3 /* close.png in Resources */ = {isa = PBXBuildFile; fileRef = 26DF33AA1BCC3326004454A3 /* close.png */; settings = {ASSET_TAGS = (); }; };
 		26DF33AD1BCC3326004454A3 /* close@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 26DF33AB1BCC3326004454A3 /* close@2x.png */; settings = {ASSET_TAGS = (); }; };
 		26DF33B61BCC6F25004454A3 /* MRCEmailData.h in Headers */ = {isa = PBXBuildFile; fileRef = 26DF33AE1BCC6F25004454A3 /* MRCEmailData.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -247,8 +249,9 @@
 		26D956B01BC2FF1100B3810F /* MRCPhoneViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MRCPhoneViewController.h; path = Source/MRCPhoneViewController.h; sourceTree = SOURCE_ROOT; };
 		26D956B11BC2FF1100B3810F /* MRCPhoneViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MRCPhoneViewController.m; path = Source/MRCPhoneViewController.m; sourceTree = SOURCE_ROOT; };
 		26D9F00C1BD237EE0016658B /* MrCoinTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MrCoinTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		26D9F00E1BD237EE0016658B /* MrCoinTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MrCoinTests.m; sourceTree = "<group>"; };
-		26D9F0101BD237EE0016658B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		26D9F01C1BD24CAE0016658B /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = UnitTests/Info.plist; sourceTree = SOURCE_ROOT; };
+		26D9F01D1BD24CAE0016658B /* MrCoinTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MrCoinTests.m; path = UnitTests/MrCoinTests.m; sourceTree = SOURCE_ROOT; };
+		26D9F0201BD24CD40016658B /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = UnitTests/Info.plist; sourceTree = SOURCE_ROOT; };
 		26DF33AA1BCC3326004454A3 /* close.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = close.png; path = Resources/close.png; sourceTree = "<group>"; };
 		26DF33AB1BCC3326004454A3 /* close@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "close@2x.png"; path = "Resources/close@2x.png"; sourceTree = "<group>"; };
 		26DF33AE1BCC6F25004454A3 /* MRCEmailData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MRCEmailData.h; path = Source/MRCEmailData.h; sourceTree = SOURCE_ROOT; };
@@ -432,12 +435,13 @@
 			name = "Terms of service";
 			sourceTree = "<group>";
 		};
-		26D9F00D1BD237EE0016658B /* MrCoinTests */ = {
+		26D9F00D1BD237EE0016658B /* Unit Tests */ = {
 			isa = PBXGroup;
 			children = (
-				26D9F00E1BD237EE0016658B /* MrCoinTests.m */,
-				26D9F0101BD237EE0016658B /* Info.plist */,
+				26D9F01C1BD24CAE0016658B /* Info.plist */,
+				26D9F01D1BD24CAE0016658B /* MrCoinTests.m */,
 			);
+			name = "Unit Tests";
 			path = MrCoinTests;
 			sourceTree = "<group>";
 		};
@@ -448,7 +452,7 @@
 				26E479D51BC1085B0003536C /* SDK */,
 				26E479EF1BC1085B0003536C /* Unit Tests */,
 				26FEB8131BCAF37E00DDA046 /* Framework */,
-				26D9F00D1BD237EE0016658B /* MrCoinTests */,
+				26D9F00D1BD237EE0016658B /* Unit Tests */,
 				2622ACCE1BC290E30017259E /* Frameworks */,
 				26E479D41BC1085B0003536C /* Products */,
 			);
@@ -484,6 +488,7 @@
 		26E479EF1BC1085B0003536C /* Unit Tests */ = {
 			isa = PBXGroup;
 			children = (
+				26D9F0201BD24CD40016658B /* Info.plist */,
 				26755B9E1BC10E610093EC98 /* MrCoinTests.m */,
 			);
 			name = "Unit Tests";
@@ -788,7 +793,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				26D9F01E1BD24CAE0016658B /* Info.plist in Resources */,
 				26D9F01A1BD23AF60016658B /* MrCoin.bundle in Resources */,
+				26D9F0211BD24CD40016658B /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -878,7 +885,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				26D9F00F1BD237EE0016658B /* MrCoinTests.m in Sources */,
+				26D9F01F1BD24CAE0016658B /* MrCoinTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1040,11 +1047,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				INFOPLIST_FILE = MrCoinTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				INFOPLIST_FILE = UnitTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = MrCoin.MrCoinTests;
+				PRODUCT_BUNDLE_IDENTIFIER = MrCoin.UnitTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -1053,10 +1060,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				INFOPLIST_FILE = MrCoinTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				INFOPLIST_FILE = UnitTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = MrCoin.MrCoinTests;
+				PRODUCT_BUNDLE_IDENTIFIER = MrCoin.UnitTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
