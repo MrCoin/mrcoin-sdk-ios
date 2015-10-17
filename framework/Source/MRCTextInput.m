@@ -180,14 +180,15 @@
     BOOL isChanged = YES;
     if(self.dataType){
         NSString *newString = [textField.text stringByReplacingCharactersInRange:range withString:string];
+        newString = [self.dataType unformat:newString];
         if(self.dataType.defaultValue){
             if(self.dataType.defaultValue.length <= newString.length)
             {
-                newString = [self.dataType unformat:newString];
+//                newString = ;
                 self.text = [self.dataType format:newString];
             }
         }else{
-            newString = [self.dataType unformat:newString];
+//            newString = [self.dataType unformat:newString];
             self.text = [self.dataType format:newString];
         }
         isChanged = NO;
@@ -210,6 +211,8 @@
 }
 -(BOOL)_validateText:(NSString*)newText
 {
+    newText = [self.dataType unformat:newText];
+
     BOOL isValid = YES;
     if(self.dataType){
         isValid = [self.dataType isValid:newText];

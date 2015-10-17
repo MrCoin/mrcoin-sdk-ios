@@ -18,6 +18,19 @@
 {
     return 4;
 }
+- (BOOL) isValid:(NSString*)string
+{
+    if(string.length < self.minimumLength)  return NO;
+    if(string.length > self.maximumLength)  return NO;
+    return [self _isValidCode:string];
+}
 
+#pragma mark - Utilities
+-(BOOL) _isValidCode:(NSString *)checkString
+{
+    NSString *stricterFilterString = @"^[0-9]*$";
+    NSPredicate *emailTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", stricterFilterString];
+    return [emailTest evaluateWithObject:checkString];
+}
 
 @end

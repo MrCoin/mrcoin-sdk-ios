@@ -38,7 +38,10 @@
 }
 - (NSString*) unformat:(NSString*)string
 {
-    return [[string componentsSeparatedByString:@" "] componentsJoinedByString:@""];
+    NSString *s = [[string componentsSeparatedByString:@" "] componentsJoinedByString:@""];
+    s = [[s componentsSeparatedByString:@"("] componentsJoinedByString:@""];
+    s = [[s componentsSeparatedByString:@")"] componentsJoinedByString:@""];
+    return s;
 }
 
 - (NSInteger) minimumLength

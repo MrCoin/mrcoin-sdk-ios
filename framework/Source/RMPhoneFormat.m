@@ -557,6 +557,10 @@
         }
     }
     
+    // Must return YES if rulsets not available like (Angola)
+    if(!self.ruleSets || self.ruleSets.count == 0)     return YES;
+
+    
     // Scan through all sets find best match with no optional prefixes allowed
     for (RuleSet *set in self.ruleSets) {
         BOOL valid = [set isValid:str intlPrefix:intlPrefix trunkPrefix:trunkPrefix prefixRequired:YES];
@@ -645,7 +649,8 @@ static NSMutableDictionary *flagRules = nil;
 
 - (id)initWithDefaultCountry:(NSString *)countryCode {
     if ((self = [super init])) {
-        _data = [NSData dataWithContentsOfFile:[[MrCoin frameworkBundle] pathForResource:@"PhoneFormats" ofType:@"dat"]];
+        _data = [NSData dataWithContentsOfFile:[[[MrCoin frameworkBundle] resourcePath] stringByAppendingPathComponent:@"PhoneFormats.dat"]];
+        if(!_data)   _data = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"PhoneFormats" ofType:@"dat"]];
         NSAssert(_data, @"The file PhoneFormats.dat is not in the resource bundle. See the README.");
 
         if (countryCode.length) {
