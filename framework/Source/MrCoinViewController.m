@@ -46,6 +46,7 @@
             [self showUnconfigured];
         }
     }
+    [super viewWillAppear:animated];
 }
 
 - (void)showTransferView

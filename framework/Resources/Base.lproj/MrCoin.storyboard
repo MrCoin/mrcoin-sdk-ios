@@ -181,18 +181,6 @@
                                     <constraint firstAttribute="height" constant="140" id="tAy-kn-d53"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YGM-lF-B7E" customClass="MRCButton">
-                                <rect key="frame" x="233" y="262" width="34" height="30"/>
-                                <animations/>
-                                <color key="tintColor" red="0.062745098039215685" green="0.52941176470588236" blue="0.75294117647058822" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="Start"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="bordered" value="YES"/>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="startConfiguration:" destination="X1Y-BT-GJd" eventType="touchUpInside" id="DIW-lV-a1G"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FlV-wS-RMP">
                                 <rect key="frame" x="170" y="146" width="210" height="108"/>
                                 <animations/>
@@ -206,7 +194,7 @@ To set up QuickTransfer for your wallet we need a phone number and your email ad
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your account isn't configured yet" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1yf-cA-fzT">
-                                <rect key="frame" x="20" y="118" width="360" height="20"/>
+                                <rect key="frame" x="20" y="102" width="360" height="20"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="CRk-xQ-3XU"/>
@@ -214,18 +202,30 @@ To set up QuickTransfer for your wallet we need a phone number and your email ad
                                 <fontDescription key="fontDescription" type="system" weight="thin" pointSize="20"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YGM-lF-B7E" customClass="MRCButton">
+                                <rect key="frame" x="183" y="278" width="34" height="30"/>
+                                <animations/>
+                                <color key="tintColor" red="0.062745098039215685" green="0.52941176470588236" blue="0.75294117647058822" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Start"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="bordered" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="startConfiguration:" destination="X1Y-BT-GJd" eventType="touchUpInside" id="DIW-lV-a1G"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <animations/>
                         <constraints>
-                            <constraint firstItem="YGM-lF-B7E" firstAttribute="top" secondItem="FlV-wS-RMP" secondAttribute="bottom" constant="8" id="7pe-qF-fqw"/>
                             <constraint firstItem="FlV-wS-RMP" firstAttribute="leading" secondItem="ifT-s3-I1H" secondAttribute="trailing" constant="8" id="ABz-DL-Iax"/>
+                            <constraint firstItem="YGM-lF-B7E" firstAttribute="top" secondItem="ifT-s3-I1H" secondAttribute="bottom" constant="8" id="Nig-UH-Znj"/>
                             <constraint firstAttribute="trailingMargin" secondItem="1yf-cA-fzT" secondAttribute="trailing" id="Rdj-ax-e0v"/>
                             <constraint firstItem="ifT-s3-I1H" firstAttribute="leading" secondItem="NLu-Su-OCH" secondAttribute="leadingMargin" id="YjG-9w-4OT"/>
                             <constraint firstAttribute="trailingMargin" secondItem="FlV-wS-RMP" secondAttribute="trailing" id="boR-v6-BmQ"/>
-                            <constraint firstItem="YGM-lF-B7E" firstAttribute="centerX" secondItem="NLu-Su-OCH" secondAttribute="centerX" constant="50" id="dr9-Dn-dSO"/>
+                            <constraint firstItem="YGM-lF-B7E" firstAttribute="centerX" secondItem="NLu-Su-OCH" secondAttribute="centerX" id="dr9-Dn-dSO"/>
                             <constraint firstItem="ifT-s3-I1H" firstAttribute="centerY" secondItem="NLu-Su-OCH" secondAttribute="centerY" id="ggg-uZ-KDH"/>
                             <constraint firstItem="FlV-wS-RMP" firstAttribute="centerY" secondItem="NLu-Su-OCH" secondAttribute="centerY" id="hpj-UA-A6d"/>
-                            <constraint firstItem="FlV-wS-RMP" firstAttribute="top" secondItem="1yf-cA-fzT" secondAttribute="bottom" constant="8" id="rOU-jI-pzV"/>
+                            <constraint firstItem="ifT-s3-I1H" firstAttribute="top" secondItem="1yf-cA-fzT" secondAttribute="bottom" constant="8" id="pX1-zd-BVI"/>
                             <constraint firstItem="1yf-cA-fzT" firstAttribute="leading" secondItem="NLu-Su-OCH" secondAttribute="leadingMargin" id="wAk-de-TKh"/>
                         </constraints>
                     </view>
@@ -657,8 +657,8 @@ re</string>
                         <rect key="frame" x="0.0" y="0.0" width="400" height="400"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Enter your wallet keys" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R1E-4q-6hf">
-                                <rect key="frame" x="113" y="20" width="174" height="27"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter your wallet keys" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R1E-4q-6hf">
+                                <rect key="frame" x="101" y="20" width="198" height="27"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" weight="thin" pointSize="22"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>

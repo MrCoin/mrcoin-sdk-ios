@@ -52,7 +52,7 @@
     [self showActivityIndicator:NSLocalizedString(@"Sending data to MrCoin...",nil)];
     //
     [[MrCoin api] phone:[[MrCoin settings] userPhone] country:[[MrCoin settings] userCountryCode] success:^(NSDictionary *dictionary) {
-        MRCPopUpViewController *popup = [MRCPopUpViewController sharedPopup];
+//        MRCPopUpViewController *popup = [MRCPopUpViewController sharedPopup];
     } error:^(NSArray *errors, MRCAPIErrorType errorType) {
         NSLog(@"%@",errors);
     }];

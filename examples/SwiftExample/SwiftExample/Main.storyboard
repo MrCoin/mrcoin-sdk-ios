@@ -37,7 +37,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Mr Coin" id="UPM-Xg-IMy">
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="352-ql-CdC">
+                        <barButtonItem key="rightBarButtonItem" id="352-ql-CdC">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="zca-M1-APu">
                                 <rect key="frame" x="516" y="-10" width="64" height="64"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>

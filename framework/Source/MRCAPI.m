@@ -231,14 +231,14 @@
 
     // Nonce
     NSInteger nonce = [[NSNumber numberWithFloat:[[NSDate date] timeIntervalSince1970]] integerValue];
-    [request setValue:[NSString stringWithFormat:@"%lx",nonce] forHTTPHeaderField:@"X-Mrcoin-Api-Nonce"];
+    [request setValue:[NSString stringWithFormat:@"%lu",(long)nonce] forHTTPHeaderField:@"X-Mrcoin-Api-Nonce"];
   
     NSString *message;
     //(nonce + request method + request path + post data)
     if(jsonString){
-        message = [NSString stringWithFormat:@"%lx%@/api/v1/%@%@",nonce,HTTPMethod,methodName,jsonString];
+        message = [NSString stringWithFormat:@"%lu%@/api/v1/%@%@",(long)nonce,HTTPMethod,methodName,jsonString];
     }else{
-        message = [NSString stringWithFormat:@"%lx%@/api/v1/%@",nonce,HTTPMethod,methodName];
+        message = [NSString stringWithFormat:@"%lu%@/api/v1/%@",(long)nonce,HTTPMethod,methodName];
     }
     NSString *sign = [[[MrCoin sharedController] delegate] requestSignatureFor:message privateKey:[[MrCoin settings] walletPrivateKey]];
     [request setValue:sign forHTTPHeaderField:@"X-Mrcoin-Api-Signature"];

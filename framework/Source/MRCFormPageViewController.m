@@ -26,6 +26,7 @@
 }
 -(void)viewDidLoad
 {
+    [super viewDidLoad];
     if(self.nextButton) self.nextButton.enabled = NO;
 }
 

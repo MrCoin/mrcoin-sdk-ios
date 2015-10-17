@@ -85,7 +85,7 @@
 -(UIColor*) color:(UIColor*)uicolor alpha:(CGFloat)alpha
 {
     CGColorRef color = [uicolor CGColor];
-    int numComponents = CGColorGetNumberOfComponents(color);
+    int numComponents = (int)CGColorGetNumberOfComponents(color);
     
     UIColor *newColor;
     if (numComponents == 4)
@@ -146,12 +146,14 @@
 
     if(self.topGradientSize > 0){
         CGContextDrawLinearGradient(context, gradient1, sPoint1, ePoint1, 0);
-        CGGradientRelease(gradient1), gradient1 = NULL;
     }
     if(self.bottomGradientSize > 0){
         CGContextDrawLinearGradient(context, gradient2, sPoint2, ePoint2, 0);
-        CGGradientRelease(gradient2), gradient2 = NULL;
     }
+    CGGradientRelease(gradient1);
+    CGGradientRelease(gradient2);
+    gradient1 = NULL;
+    gradient2 = NULL;
     
     CGContextRestoreGState(context);
 }
@@ -271,6 +273,7 @@
     _page = -1;
     [self nextPage];
     _animation = YES;
+    [super viewWillAppear:animated];
 }
 #pragma mark - Progress View delegate
 -(void)progressViewClosed:(MRCProgressView*)progressView

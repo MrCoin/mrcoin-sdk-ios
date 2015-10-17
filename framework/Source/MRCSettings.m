@@ -33,7 +33,7 @@
 }
 - (void) loadSettings
 {
-    NSUserDefaults *d = [NSUserDefaults standardUserDefaults];
+//    NSUserDefaults *d = [NSUserDefaults standardUserDefaults];
 //    self.sourceCurrency = [d objectForKey:@"MRCSourceCurrency"];
 }
 
