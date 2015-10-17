@@ -53,22 +53,23 @@
 //    response(nil);
 ////    error([NSError errorWithDomain:@"MrCoin" code:0 userInfo:nil],MRCAPIGenericErrorType);
 //}
-
+- (void) checkConfiguration
+{
+    NSAssert([[MrCoin settings] walletPublicKey],@"Public wallet key isn't configured. See the README.");
+    NSAssert([[MrCoin settings] walletPrivateKey],@"Private wallet key isn't configured. See the README.");
+    NSAssert([[MrCoin sharedController] delegate],@"MrCoin Delegate isn't configured. See the README.");
+    NSAssert([[[MrCoin sharedController] delegate] respondsToSelector:@selector(requestSignatureFor:privateKey:)],@"MrCoin Delegate method (requestSignatureFor:privateKey:) isn't configured. See the README.");
+}
 - (void) authenticate:(APIResponse)responseBlock error:(APIResponseError)errorBlock
 {
     [self callMethod:@"authenticate" parameters:nil HTTPMethod:@"GET" response:responseBlock error:errorBlock];
 }
-static NSArray* _countries;
-- (NSArray*) countries
-{
-    return _countries;
-}
 - (void) getCountries:(APIResponse)responseBlock error:(APIResponseError)errorBlock
 {
     NSString *dummyURL = @"http://sandbox.mrcoin.eu/api/v1/docs/simulate/country/get_supported_countries";
-    [self _dummyURL:dummyURL success:^(NSDictionary *dictionary) {
-        _countries = [dictionary objectForKey:@"data"];
-        responseBlock(dictionary);
+    [self _dummyURL:dummyURL success:^(id result) {
+        self.countries = (NSArray*)result;
+        responseBlock(self.countries);
     } error:errorBlock];
     // TODO: Implement!
 //    [self callMethod:@"countries" parameters:nil HTTPMethod:@"GET" response:responseBlock error:errorBlock];
@@ -108,7 +109,8 @@ static NSArray* _countries;
 }
 - (void) phone:(NSString*)number country:(NSString*)countryCode success:(APIResponse)responseBlock error:(APIResponseError)errorBlock
 {
-    NSString *dummyURL = @"http://sandbox.mrcoin.eu/api/v1/docs/simulate/phonenumber/get_user's_phone_number";
+    //    NSString *dummyURL = @"http://sandbox.mrcoin.eu/api/v1/docs/simulate/phonenumber/get_user's_phone_number";
+    NSString *dummyURL = @"http://sandbox.mrcoin.eu/api/v1/docs/simulate/phonenumber/invalid_phone_number";
     [self _dummyURL:dummyURL success:^(NSDictionary *dictionary) {
         _countries = [dictionary objectForKey:@"data"];
         responseBlock(dictionary);
@@ -157,24 +159,23 @@ static NSArray* _countries;
 #pragma mark - Generic internal methods
 -(void) callMethod:(NSString*)methodName parameters:(NSDictionary*)parameters HTTPMethod:(NSString*)HTTPMethod response:(APIResponse)responseBlock error:(APIResponseError)errorBlock
 {
-    APIResponseError commonError = ^(NSError *error, MRCAPIErrorType errorType) {
-        NSLog(@"OOOPS %@",error);
-    };
+    [self checkConfiguration];
     // Parametes
-    NSString *jsonParams = [self parametersToJSON:parameters error:nil];
+    NSString *jsonParams = [self parametersToJSON:parameters error:errorBlock];
     NSURLRequest *request = [self requestMethod:methodName parameters:jsonParams HTTPMethod:@"POST"];
     
     // Response
-    [self sendRequest:request response:^(NSData *response) {
-        if(responseBlock) responseBlock([self responseFromJSON:response error:commonError]);
-    } error:commonError];
+    [self sendRequest:request response:^(NSData *response,NSInteger statusCode) {
+        NSDictionary *result = [self responseFromJSON:response error:errorBlock];
+        [self _handleResult:result statusCode:statusCode success:responseBlock error:errorBlock];
+    } error:errorBlock];
 }
 -(NSDictionary*) responseFromJSON:(NSData*)jsonResponse error:(APIResponseError)errorBlock
 {
     NSError *error;
     NSDictionary *o = [NSJSONSerialization JSONObjectWithData:jsonResponse options:0 error:&error];
     if(error){
-        if(errorBlock) errorBlock(error,MRCAPInternalErrorType);
+        if(errorBlock) errorBlock(@[error],MRCAPInternalErrorType);
         return nil;
     }
     return o;
@@ -186,7 +187,7 @@ static NSArray* _countries;
     NSError *error;
     NSData *jsonData = [NSJSONSerialization dataWithJSONObject:parameters options:0 error:&error];
     if(error){
-        if(errorBlock) errorBlock(error,MRCAPInternalErrorType);
+        if(errorBlock) errorBlock(@[error],MRCAPInternalErrorType);
         return nil;
     }
     NSString *json;
@@ -200,16 +201,12 @@ static NSArray* _countries;
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
     [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse * _Nullable response, NSData * _Nullable data, NSError * _Nullable connectionError) {
         if(connectionError){
-            if(errorBlock) errorBlock(connectionError,MRCAPInternalErrorType);
+            if(errorBlock) errorBlock(@[connectionError],MRCAPInternalErrorType);
 //            return;
         }else{
             [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
             NSInteger statusCode = [(NSHTTPURLResponse*)response statusCode];
-            if(statusCode == 200){
-                responseBlock(data);
-            }else{
-                errorBlock([self errorByStatus:statusCode],MRCAPIGenericErrorType);
-            }
+            responseBlock(data,statusCode);
         }
     }];
     
@@ -228,23 +225,30 @@ static NSArray* _countries;
     NSURL *url = [[NSURL alloc] initWithString:[API_URL stringByAppendingPathComponent:methodName]];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
     [request setHTTPMethod:HTTPMethod];
-    [request setValue:API_PUBKEY forHTTPHeaderField:@"X-Mrcoin-Api-Pubkey"];
-    [request setValue:API_SIGNATURE forHTTPHeaderField:@"X-Mrcoin-Api-Signature"];
     
+    // Public wallet key
+    [request setValue:[[MrCoin settings] walletPublicKey] forHTTPHeaderField:@"X-Mrcoin-Api-Pubkey"];
+
+    // Nonce
     NSInteger nonce = [[NSNumber numberWithFloat:[[NSDate date] timeIntervalSince1970]] integerValue];
     [request setValue:[NSString stringWithFormat:@"%lx",nonce] forHTTPHeaderField:@"X-Mrcoin-Api-Nonce"];
-    
+  
+    NSString *message;
+    //(nonce + request method + request path + post data)
+    if(jsonString){
+        message = [NSString stringWithFormat:@"%lx%@/api/v1/%@%@",nonce,HTTPMethod,methodName,jsonString];
+    }else{
+        message = [NSString stringWithFormat:@"%lx%@/api/v1/%@",nonce,HTTPMethod,methodName];
+    }
+    NSString *sign = [[[MrCoin sharedController] delegate] requestSignatureFor:message privateKey:[[MrCoin settings] walletPrivateKey]];
+    [request setValue:sign forHTTPHeaderField:@"X-Mrcoin-Api-Signature"];
+    if(!self.language) self.language = @"en";
     [request setValue:self.language forHTTPHeaderField:@"HTTP_ACCEPT_LANGUAGE"];
     [request setValue:@"application/vnd.api+json" forHTTPHeaderField:@"Accept"];
     [request setValue:@"application/vnd.api+json" forHTTPHeaderField:@"Content-Type"];
     if(jsonString)  [request setHTTPBody:[jsonString dataUsingEncoding:NSUTF8StringEncoding]];
     return (NSURLRequest*)request;
 }
-//
-//-(NSDictionary*) quickTransferDictionaryForAddress:(NSString*)address phone:(NSString*)phone email:(NSString*)email currencyCode:(NSString*)currencyCode
-//{
-//    return [self quickTransferDictionaryForAddress:address phone:phone email:email currencyCode:currencyCode locale:nil timezone:nil reseller:nil];
-//}
 -(NSDictionary*) dictionaryForMethod:(NSString*)methodName parameters:(NSDictionary*)parameters
 {
     return @{
@@ -254,15 +258,38 @@ static NSArray* _countries;
                                          }
                                  };
 }
-
+- (void) _handleResult:(NSDictionary*)result statusCode:(NSInteger)statusCode success:(APIResponse)responseBlock error:(APIResponseError)errorBlock
+{
+    NSArray *rawErrors = [result objectForKey:@"errors"];
+    if(rawErrors){
+        if(errorBlock){
+            NSMutableArray *errors = [NSMutableArray array];
+            for (NSDictionary *rawError in rawErrors) {
+                [errors addObject:[NSError errorWithDomain:@"MrCoin"
+                                     code:[rawError[@"status"] integerValue]
+                                 userInfo:@{
+                                            NSLocalizedDescriptionKey:rawError[@"detail"],
+                                            NSLocalizedFailureReasonErrorKey:rawError[@"title"]
+                                            }]
+                 ];
+            }
+            errorBlock(errors,MRCAPIGenericErrorType);
+        }
+    }else if([result objectForKey:@"data"]){
+      if(responseBlock) responseBlock([result objectForKey:@"data"]);
+    }
+}
 #pragma mark - Temporary
 - (void) _dummyURL:(NSString*)dummyURL success:(APIResponse)responseBlock error:(APIResponseError)errorBlock
 {
+    [self checkConfiguration];
+    
     NSURL *url = [[NSURL alloc] initWithString:dummyURL];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
     // Response
-    [self sendRequest:request response:^(NSData *response) {
-        if(responseBlock) responseBlock([self responseFromJSON:response error:errorBlock]);
+    [self sendRequest:request response:^(NSData *response,NSInteger statusCode) {
+        NSDictionary *result = [self responseFromJSON:response error:errorBlock];
+        [self _handleResult:result statusCode:statusCode success:responseBlock error:errorBlock];
     } error:errorBlock];
 }
 

@@ -9,6 +9,7 @@
 #import "MRCWalletAddressViewController.h"
 #import "MRCPopUpViewController.h"
 #import "MrCoin.h"
+#import "MRCInputDataType.h"
 
 @interface MRCWalletAddressViewController ()
 
@@ -19,7 +20,10 @@
 #pragma mark - Initialization
 - (void)viewDidLoad {
     [super viewDidLoad];
-    _addressInput.textInputDelegate = self;
+    _publicKey.dataType = [[MRCInputDataType alloc] init];
+    _publicKey.textInputDelegate = self;
+    _privateKey.dataType = [[MRCInputDataType alloc] init];
+    _privateKey.textInputDelegate = self;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -29,23 +33,25 @@
 #pragma mark - Navigation
 -(void)nextPage:(id)sender
 {
-    [[MrCoin settings] setBitcoinAddress:_addressInput.text];
-    [_addressInput endEditing:YES];
+    [[MrCoin settings] setWalletPublicKey:_publicKey.text];
+    [[MrCoin settings] setWalletPrivateKey:_privateKey.text];
+    [_publicKey endEditing:YES];
+    [_privateKey endEditing:YES];
     [super nextPage:sender];
 }
 
 #pragma mark - Text Input
 -(BOOL)textInput:(MRCTextInput *)textInput changeText:(NSString *)string inRange:(NSRange)range
 {
-    if(_addressInput != textInput) return YES;
     NSString *newString = [textInput.text stringByReplacingCharactersInRange:range withString:string];
-    _addressInput.text = newString;
+    textInput.text = newString;
     return NO;
 }
-- (BOOL)textInputIsValid:(MRCTextInput *)textInput
+-(void)textInput:(MRCTextInput *)textInput isValid:(BOOL)valid
 {
-    self.nextButton.enabled = YES;
-    return YES;
+    if(![_publicKey.text isEqualToString:@""] && ![_privateKey.text isEqualToString:@""]){
+        self.nextButton.enabled = valid;
+    }
 }
 
 @end

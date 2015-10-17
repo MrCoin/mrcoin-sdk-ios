@@ -12,6 +12,7 @@
 
 @interface MRCWalletAddressViewController : MRCFormPageViewController 
 
-@property (weak, nonatomic) IBOutlet MRCTextInput *addressInput;
+@property (weak, nonatomic) IBOutlet MRCTextInput *publicKey;
+@property (weak, nonatomic) IBOutlet MRCTextInput *privateKey;
 
 @end

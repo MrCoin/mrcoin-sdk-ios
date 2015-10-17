@@ -38,7 +38,8 @@
     [[MrCoin api] email:_emailTextInput.text success:^(NSDictionary *dictionary) {
         [[MrCoin settings] setUserEmail:_emailTextInput.text];
         [super nextPage:sender];
-    } error:^(NSError *error, MRCAPIErrorType errorType) {
+    } error:^(NSArray *errors, MRCAPIErrorType errorType) {
+        NSLog(@"%@",errors);
     }];
 }
 

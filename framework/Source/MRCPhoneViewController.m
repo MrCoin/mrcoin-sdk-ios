@@ -31,16 +31,21 @@
         _phoneTextInput.text = [self.object objectForKey:@"phone"];
     }
     
-    if(!_countrySelector.items){
-        [[MrCoin api] getCountries:^(NSDictionary *dictionary) {
-            [self configureDropdown:dictionary];
-        } error:^(NSError *error, MRCAPIErrorType errorType) {
-            NSLog(@"%@",error);
-        }];
+    // Load country list
+    [[MrCoin api] addObserver:self forKeyPath:@"countries" options:(NSKeyValueObservingOptionInitial | NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld) context:nil];
+    if([[MrCoin api] countries]){
+//        [self configureDropdown:[[MrCoin api] countries]];
     }
-
 }
-
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context
+{
+    if([MrCoin api] == object){
+        if(![change[NSKeyValueChangeNewKey] isKindOfClass:[NSNull class]]){
+            [self configureDropdown:change[NSKeyValueChangeNewKey]];
+        }
+    }
+    //
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
@@ -53,11 +58,9 @@
         // Change country, update API settings
         NSInteger index = self.countrySelector.selectedRow;
         [[MrCoin api] setCountry:[[[MrCoin api] countries] objectAtIndex:index]];
+        [[MrCoin settings] setSourceCurrencies:[[[MrCoin api] country] valueForKeyPath:@"attributes.currencies"]];
         //
         NSString *prefix = [[[MrCoin api] country] valueForKeyPath:@"attributes.phone_prefix"];
-        NSString *countryCode = [[[[MrCoin api] country] valueForKeyPath:@"attributes.code2"] lowercaseString];
-        NSLog(@"Country selected: %@",[[MrCoin api] country]);
-        
         // Configure validator
         MRCPhoneData* phoneData = (MRCPhoneData*)_phoneTextInput.dataType;
         [phoneData setPrefix:prefix];
@@ -87,19 +90,22 @@
         MRCPopUpViewController *popup = [MRCPopUpViewController sharedPopup];
         [popup dismissViewController];
         [[MrCoin settings] setUserPhone:self.phoneTextInput.text];
-        [[MrCoin settings] setUserCountry:self.countrySelector.text];
-        [super nextPage:self withObject:@{@"phone":_phoneTextInput.text,@"country":_countrySelector.text}];
-    } error:^(NSError *error, MRCAPIErrorType errorType) {
+        
+        NSString *countryCode = [[[[MrCoin api] country] valueForKeyPath:@"attributes.code2"] lowercaseString];
+        [[MrCoin settings] setUserCountryCode:countryCode];
+        [super nextPage:self];
+    } error:^(NSArray *errors, MRCAPIErrorType errorType) {
+        [self showErrorPopup:@"Error" message:[errors.firstObject localizedDescription]];
+        NSLog(@"%@",errors);
+    }];
         //        [self showErrorPopup:@"Invalid verification code" message:[NSString stringWithFormat:@"Verification code: '%@' is incorrect.",self.codeTextInput.text]];
         //        self.nextButton.enabled = NO;
         //        _codeTextInput.text = @"";
         //        [[self view] setNeedsLayout];
 
-    }];
 }
-- (void) configureDropdown:(NSDictionary*)dictionary
+- (void) configureDropdown:(NSArray*)countries
 {
-    NSArray *countries = [dictionary objectForKey:@"data"];
     NSMutableArray *names = [NSMutableArray array];
     NSMutableArray *flags = [NSMutableArray array];
     for (NSDictionary *country in countries) {

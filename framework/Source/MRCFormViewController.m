@@ -184,6 +184,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    // Load country list
+    [[MrCoin api] getCountries:^(NSDictionary *dictionary) {
+    } error:^(NSArray *errors, MRCAPIErrorType errorType) {
+        NSLog(@"%@",errors);
+    }];
+
     // Create pages
     NSMutableArray *pages = [NSMutableArray array];
     if([[MrCoin sharedController] needsAcceptTerms])
@@ -193,10 +199,10 @@
                           storyboardID:@"DocumentViewer"
                           showInProgressView:NO]];
     }
-    if(![[MrCoin settings] bitcoinAddress])
+    if(![[MrCoin settings] walletPublicKey] || ![[MrCoin settings] walletPrivateKey])
     {
         [pages addObject:[MRCFormPage
-                          pageWithTitle:NSLocalizedString(@"Bitcoin address",nil)
+                          pageWithTitle:NSLocalizedString(@"Wallet keys",nil)
                           storyboardID:@"Form_Wallet"
                           showInProgressView:YES]];
     }
@@ -218,13 +224,13 @@
                           storyboardID:@"Form_Email"
                           showInProgressView:YES]];
     }
-    if(![[MrCoin settings] sourceCurrency])
-    {
-        [pages addObject:[MRCFormPage
-                          pageWithTitle:NSLocalizedString(@"Currency",nil)
-                          storyboardID:@"Form_Currency"
-                          showInProgressView:YES]];
-    }
+//    if(![[MrCoin settings] sourceCurrency])
+//    {
+//        [pages addObject:[MRCFormPage
+//                          pageWithTitle:NSLocalizedString(@"Currency",nil)
+//                          storyboardID:@"Form_Currency"
+//                          showInProgressView:YES]];
+//    }
     [pages addObject:[MRCFormPage
                       pageWithTitle:NSLocalizedString(@"Done",nil)
                       storyboardID:@"Form_Done"

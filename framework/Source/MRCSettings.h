@@ -10,12 +10,26 @@
 
 @interface MRCSettings : NSObject
 
+// Wallet
+@property (nonatomic) NSString *walletPublicKey;
+@property (nonatomic) NSString *walletPrivateKey;
+
 // User settings
-@property (nonatomic) NSString *bitcoinAddress;
+@property (nonatomic) NSString *userCountryCode;
 @property (nonatomic) NSString *userPhone;
 @property (nonatomic) NSString *userEmail;
 @property (nonatomic) NSString *sourceCurrency;
 @property (nonatomic,readonly) NSString *destinationCurrency;
+
+// Temporary data
+@property (nonatomic) NSArray *sourceCurrencies;
+
+// Documents
+@property (nonatomic) NSString *supportEmail;
+@property (nonatomic) NSString *supportURL;
+@property (nonatomic) NSString *termsURL;
+@property (nonatomic) NSString *shortTermsURL;
+
 @property (readonly) BOOL isConfigured;
 
 - (void) loadSettings;

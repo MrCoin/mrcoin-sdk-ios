@@ -15,15 +15,16 @@ typedef enum {
     MRCAPInternalErrorType          //
 } MRCAPIErrorType;
 
-typedef void (^APIResponseData)(NSData* response);
-typedef void (^APIResponse)(NSDictionary* dictionary);
-typedef void (^APIResponseError)(NSError* error, MRCAPIErrorType errorType);
+typedef void (^APIResponseData)(NSData* response,NSInteger statusCode);
+typedef void (^APIResponse)(id result);
+typedef void (^APIResponseError)(NSArray* errors, MRCAPIErrorType errorType);
 
 @interface MRCAPI : NSObject
 
 @property (nonatomic) NSString* language;
 @property (nonatomic) NSDictionary* country;
-;
+@property (nonatomic) NSArray* countries;
+
 
 - (void) authenticate:(APIResponse)responseBlock error:(APIResponseError)errorBlock;
 - (void) getCountries:(APIResponse)responseBlock error:(APIResponseError)errorBlock;
@@ -39,6 +40,9 @@ typedef void (^APIResponseError)(NSError* error, MRCAPIErrorType errorType);
 
 - (void) getPriceTicker:(APIResponse)responseBlock error:(APIResponseError)errorBlock;
 
-- (NSArray*) countries;
+
+#pragma mark - Methods for testing
+//-(void) callMethod:(NSString*)methodName parameters:(NSDictionary*)parameters HTTPMethod:(NSString*)HTTPMethod response:(APIResponse)responseBlock error:(APIResponseError)errorBlock;
+-(NSURLRequest*) requestMethod:(NSString*)methodName parameters:(NSString*)jsonString HTTPMethod:(NSString*)HTTPMethod;
 
 @end

@@ -45,11 +45,11 @@
 }
 - (void)viewWillAppear:(BOOL)animated
 {
-    [[MrCoin api] quickTransfers:[[MrCoin settings]bitcoinAddress] currency:[[MrCoin settings]destinationCurrency] resellerID:[[MrCoin settings]resellerKey] success:^(NSDictionary *dictionary) {
+    [[MrCoin api] quickTransfers:[[MrCoin settings] walletPublicKey] currency:[[MrCoin settings]destinationCurrency] resellerID:[[MrCoin settings]resellerKey] success:^(NSDictionary *dictionary) {
         NSLog(@"dictionary %@",dictionary);
         [self setupView:dictionary currency:[[MrCoin settings]sourceCurrency]]; //HUF
-    } error:^(NSError *error, MRCAPIErrorType errorType) {
-        NSLog(@"ERROR %@",error);
+    } error:^(NSArray *errors, MRCAPIErrorType errorType) {
+        NSLog(@"%@",errors);
     }];
     [super viewWillAppear:animated];
 }
@@ -63,12 +63,6 @@
     NSString *swift = [d valueForKey:@"bic"];
     NSString *reference = [d valueForKey:@"reference"];
     
-    NSString* path= [[MrCoin frameworkBundle] pathForResource:@"en" ofType:@"lproj"];
-    
-    NSBundle* languageBundle = [NSBundle bundleWithPath:path];
-//    
-//    NSLog(@"%@",languageBundle);
-//    NSLog(@"%@",[languageBundle localizedStringForKey:@"name" value:@"" table:nil]);
     
     NSString *copyTxt = NSLocalizedString(@"Copy %@ (%@)",nil);
     NSString *copyClipTxt = NSLocalizedString(@"Copy %@ to clipboard",nil);
@@ -104,25 +98,12 @@
 
 #pragma mark - Button Actions
 - (IBAction)help:(id)sender {
-//    MRCTextViewController *text = [MrCoin documentViewController:MrCoinDocumentSupport];
-//    [text.navigationItem setLeftBarButtonItem:[[UIBarButtonItem alloc] initWithImage:[MrCoin imageNamed:@"close"] style:UIBarButtonItemStylePlain target:text action:@selector(close:)]];
-//    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:text];
-//    nav.modalPresentationStyle = UIModalTransitionStyleFlipHorizontal;
-//    [self presentViewController:nav animated:YES completion:^{
-//        
-//    }];
-    
-    /* create mail subject */
+    NSString *to = MRCOIN_SUPPORT;
     NSString *subject = [NSString stringWithFormat:@"Help me with QuickTransfer"];
-    NSString *mail = [NSString stringWithFormat:MRCOIN_SUPPORT];
-    NSURL *url = [[NSURL alloc] initWithString:[NSString stringWithFormat:@"mailto:%@?subject=%@",
-                                                [mail stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding],
-                                                [subject stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding]]];
-    [[UIApplication sharedApplication] openURL:url];
-    
+    [[MrCoin sharedController] sendMail:to subject:subject];
 }
 - (IBAction)serviceProvider:(id)sender {
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:MRCOIN_URL]];
+    [[MrCoin sharedController] openURL:[NSURL URLWithString:MRCOIN_URL]];
 }
 
 @end

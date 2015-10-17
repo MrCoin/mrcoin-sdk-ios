@@ -51,9 +51,10 @@
     
     [self showActivityIndicator:NSLocalizedString(@"Sending data to MrCoin...",nil)];
     //
-    [[MrCoin api] phone:[[MrCoin settings] userPhone] country:[[MrCoin settings] userCountry] success:^(NSDictionary *dictionary) {
+    [[MrCoin api] phone:[[MrCoin settings] userPhone] country:[[MrCoin settings] userCountryCode] success:^(NSDictionary *dictionary) {
         MRCPopUpViewController *popup = [MRCPopUpViewController sharedPopup];
-    } error:^(NSError *error, MRCAPIErrorType errorType) {
+    } error:^(NSArray *errors, MRCAPIErrorType errorType) {
+        NSLog(@"%@",errors);
     }];
     [[self view] setNeedsLayout];
 //    MRCPopUpViewController *popup = [MRCPopUpViewController sharedPopup];
@@ -83,7 +84,8 @@
         MRCPopUpViewController *popup = [MRCPopUpViewController sharedPopup];
         [popup dismissViewController];
         [super nextPage:self];
-    } error:^(NSError *error, MRCAPIErrorType errorType) {
+    } error:^(NSArray *errors, MRCAPIErrorType errorType) {
+        NSLog(@"%@",errors);
     }];
 }
 
