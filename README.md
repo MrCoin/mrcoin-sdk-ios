@@ -1,15 +1,45 @@
 # MrCoin iOS SDK #
 
-## Overview ##
+## Working implementations##
 
-### Swift Example ###
+###Swift Project Example###
+###Obj-C Project Example###
+###Our Wallet App###
 
-        MrCoin.settings().walletKey = "1Fo2NXefxfEUayB3zFEMf4gHHAzMHWokBJ"
-        MrCoin.settings().resellerKey = "Breadwallet"
-        MrCoin.settings().sourceCurrency = "EUR"
-        MrCoin.show(window);
+## Adding this as a framework (module) to your iOS project ##
 
-## Adding the static library to your iOS project ##
+Xcode 6 and iOS 8 support the use of full frameworks, as does the Mac, which simplifies the process of adding this to your application. 
+
+![image](docs/add_fw_1.png)
+
+- To add this to your application, I recommend dragging the **MrCoin iOS SDK.xcodeproj** project file from framework folder into your application's project 
+
+For your application, go to its **target build settings** and choose the **Build Phases** tab. 
+
+![image](docs/add_fw_2.png)
+
+- Under the **Target Dependencies** grouping, add **MrCoin Agregate** Agregate to the list (not MrCoinFramework).
+
+![image](docs/add_fw_3.png)
+
+- Under the **Link binary with Libraries** grouping, add **MrCoinFramework.framework** to the list (not MrCoin, which builds the static library).
+
+![image](docs/add_fw_4.png)
+
+Finally, under the **Copy bundle Resources** grouping, drag **MrCoin.bundle** to the list from the SDK build folder **MrCoin iOS SDK.xcodeproj/Products**.
+
+This should cause MrCoin to build as a framework. To use the MrCoin classes within your application, simply include the core framework header using the following:
+
+    #import <MrCoinFramework/MrCoinFramework.h>
+
+Under Xcode 6+, this will also build as a module, which will allow you to use this in Swift projects. When set up as above, you should just need to use 
+
+    import MrCoinFramework
+
+to pull it in.
+
+
+##### Alternatively: Adding the static library to your iOS project
 
 Note: if you want to use this in a Swift project, you need to use the steps in the "Adding this as a framework" section instead of the following. Swift needs modules for third-party code.
 
@@ -21,26 +51,74 @@ To use the MrCoin classes within your application, simply include the core frame
 
 Additionally, this is an ARC-enabled framework, so if you want to use this within a manual reference counted application targeting iOS 4.x, you'll need to add -fobjc-arc to your Other Linker Flags as well.
 
+## Setup your MrCoin Delegate Class##
 
-## Adding this as a framework (module) to your iOS project ##
+You need to implement the **MrCoinDelegate** protocol to provide some necessary information to the API. 
 
-Xcode 6 and iOS 8 support the use of full frameworks, as does the Mac, which simplifies the process of adding this to your application. To add this to your application, I recommend dragging the .xcodeproj project file into your application's project (as you would in the static library target).
+#### API HTTP Headers
+Authentication is successful if the following headers are present:
 
-For your application, go to its target build settings and choose the Build Phases tab. Under the Target Dependencies grouping, add MrCoinFramework to the list (not MrCoin, which builds the static library).
+**X-Mrcoin-Api-Pubkey** 
+Public key used for signing. For HD wallet derivation path please see below.
 
-This should cause MrCoin to build as a framework. Under Xcode 6, this will also build as a module, which will allow you to use this in Swift projects. When set up as above, you should just need to use 
+**X-Mrcoin-Api-Signature** 
+Bitcoin message signature of (nonce + request method + request path + post data)
 
-    import MrCoinFramework
+**X-Mrcoin-Api-Nonce** 
+Unsigned 63 bit integer
 
-to pull it in.
+[Read more about API Header Structure & HD Wallet Derivation Path](http://sandbox.mrcoin.eu/api/v1/docs#authentication-dummy-endpoint)
+
+    [[MrCoin sharedController] setDelegate:self];
+    
+    [[MrCoin api] authenticate:^(id result) {
+        NSLog(@"result %@",result);
+    } error:^(NSArray *errors, MRCAPIErrorType errorType) {
+        NSLog(@"errors %@",errors);
+    }];
+
+#### Public key ####
+
+Example implementation from our iOS Wallet App:
+
+	- (NSString*) requestPublicKey
+	{
+	}
+
+#### Private key ####
+
+Example implementation from our iOS Wallet App:
+
+	- (NSString*) requestPrivateKey
+	{
+	}
+#### Signature ####
+We need a bitcoin message signature of provided message (nonce + request method + request path + post data). The SDK provides a message string for example:
+
+	1444560003GET/api/v1/authenticate?any=thing
+
+We need to send back a valid signature to the API as you see in the following example from our iOS Wallet App:
+
+	- (NSString*) requestMessageSignature:(NSString*)message privateKey:(NSString*)privateKey;
+	{
+	}
+
+Example of a generated signature:
+	
 
 
-## License ##
+#### Optional delegate methods ####
 
-…
+
 
 ## Technical requirements ##
 
 - iOS 7.0 as a deployment target
 - minimum iOS 8.0 SDK to build
 - The framework uses automatic reference counting (ARC).
+
+## License ##
+Licensed under the Apache License, Version 2.0
+
+[read more...](./LICENSE)
+
