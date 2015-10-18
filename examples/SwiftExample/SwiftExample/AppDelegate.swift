@@ -24,10 +24,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MrCoinDelegate {
         settings.showErrorOnTextField = true
         settings.showPopupOnError = false
         
-        // Setup wallet keys
-        settings.walletPublicKey = "1Fo2NXefxfEUayB3zFEMf4gHHAzMHWokBJ"
-        settings.walletPrivateKey = "1Fo2NXefxfEUayB3zFEMf4gHHAzMHWokBJ"
-        
         // Setup your reseller key
         settings.resellerKey = "9b85a53c-88fb-4a56-b4b0-4088153e4b7e"
         
@@ -47,7 +43,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MrCoinDelegate {
     }
     
     // MARK: MrCoin Delegate
-    func requestSignatureFor(message: String!, privateKey: String!) -> String! {
+    func requestPrivateKey() -> String! {
+        return "";
+    }
+    func requestPublicKey() -> String! {
+        return "";
+    }
+    func requestMessageSignature(message: String!, privateKey: String!) -> String! {
         print(message,privateKey);
         return message;
     }

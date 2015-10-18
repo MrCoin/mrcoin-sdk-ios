@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		26BAEBB91BD3C76F00129DC1 /* CoreBitcoin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26BAEBB81BD3C76F00129DC1 /* CoreBitcoin.framework */; settings = {ASSET_TAGS = (); }; };
+		26BAEBBF1BD3C78000129DC1 /* CoreBitcoin.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 26BAEBB81BD3C76F00129DC1 /* CoreBitcoin.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		26FA7F031BC2972C0018B72C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26FA7F021BC2972C0018B72C /* AppDelegate.swift */; };
 		26FA7F0A1BC2972C0018B72C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 26FA7F091BC2972C0018B72C /* Assets.xcassets */; };
 		26FA7F0D1BC2972C0018B72C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 26FA7F0B1BC2972C0018B72C /* LaunchScreen.storyboard */; };
@@ -17,12 +19,19 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		26FA7F401BC298E00018B72C /* PBXContainerItemProxy */ = {
+		26BAEBBD1BD3C76F00129DC1 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 26FA7F391BC298E00018B72C /* MrCoin iOS SDK.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = 26E479EC1BC1085B0003536C;
-			remoteInfo = "MrCoin iOS SDKTests";
+			remoteGlobalIDString = 26D9F00C1BD237EE0016658B;
+			remoteInfo = MrCoinTests;
+		};
+		26BAEBC01BD3C79500129DC1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 26FA7F391BC298E00018B72C /* MrCoin iOS SDK.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 26FA7F8C1BC2A2580018B72C;
+			remoteInfo = MrCoinFramework;
 		};
 		26FA7F421BC298E00018B72C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -45,20 +54,6 @@
 			remoteGlobalIDString = 26FA7F8D1BC2A2580018B72C;
 			remoteInfo = MrCoinFramework;
 		};
-		26FA7F981BC2A2AA0018B72C /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 26FA7F391BC298E00018B72C /* MrCoin iOS SDK.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 26FA7F8C1BC2A2580018B72C;
-			remoteInfo = MrCoinFramework;
-		};
-		26FA7F9C1BC2A2B20018B72C /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 26FA7F391BC298E00018B72C /* MrCoin iOS SDK.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 26FA7F8C1BC2A2580018B72C;
-			remoteInfo = MrCoinFramework;
-		};
 		26FA7FB01BC2A4D10018B72C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 26FA7F391BC298E00018B72C /* MrCoin iOS SDK.xcodeproj */;
@@ -75,6 +70,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				26BAEBBF1BD3C78000129DC1 /* CoreBitcoin.framework in Embed Frameworks */,
 				26FA7F9B1BC2A2B20018B72C /* MrCoinFramework.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -83,6 +79,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		26BAEBB81BD3C76F00129DC1 /* CoreBitcoin.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBitcoin.framework; path = ../../CoreBitcoin.framework; sourceTree = "<group>"; };
 		26FA7EFF1BC2972C0018B72C /* SwiftExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		26FA7F021BC2972C0018B72C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		26FA7F091BC2972C0018B72C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -97,6 +94,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				26BAEBB91BD3C76F00129DC1 /* CoreBitcoin.framework in Frameworks */,
 				26FA7F9A1BC2A2B20018B72C /* MrCoinFramework.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -124,6 +122,7 @@
 		26FA7F011BC2972C0018B72C /* SwiftExample */ = {
 			isa = PBXGroup;
 			children = (
+				26BAEBB81BD3C76F00129DC1 /* CoreBitcoin.framework */,
 				26FA7F021BC2972C0018B72C /* AppDelegate.swift */,
 				26FA7F091BC2972C0018B72C /* Assets.xcassets */,
 				26FA7F0B1BC2972C0018B72C /* LaunchScreen.storyboard */,
@@ -136,10 +135,10 @@
 		26FA7F3A1BC298E00018B72C /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				26FA7F411BC298E00018B72C /* MrCoin iOS SDKTests.xctest */,
 				26FA7F431BC298E00018B72C /* libMrCoin.a */,
 				26FA7F451BC298E00018B72C /* MrCoin.bundle */,
 				26FA7F971BC2A29B0018B72C /* MrCoinFramework.framework */,
+				26BAEBBE1BD3C76F00129DC1 /* MrCoinTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -159,9 +158,8 @@
 			buildRules = (
 			);
 			dependencies = (
+				26BAEBC11BD3C79500129DC1 /* PBXTargetDependency */,
 				26FA7FB11BC2A4D10018B72C /* PBXTargetDependency */,
-				26FA7F991BC2A2AA0018B72C /* PBXTargetDependency */,
-				26FA7F9D1BC2A2B20018B72C /* PBXTargetDependency */,
 			);
 			name = SwiftExample;
 			productName = SwiftExample;
@@ -208,11 +206,11 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		26FA7F411BC298E00018B72C /* MrCoin iOS SDKTests.xctest */ = {
+		26BAEBBE1BD3C76F00129DC1 /* MrCoinTests.xctest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
-			path = "MrCoin iOS SDKTests.xctest";
-			remoteRef = 26FA7F401BC298E00018B72C /* PBXContainerItemProxy */;
+			path = MrCoinTests.xctest;
+			remoteRef = 26BAEBBD1BD3C76F00129DC1 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		26FA7F431BC298E00018B72C /* libMrCoin.a */ = {
@@ -264,15 +262,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		26FA7F991BC2A2AA0018B72C /* PBXTargetDependency */ = {
+		26BAEBC11BD3C79500129DC1 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = MrCoinFramework;
-			targetProxy = 26FA7F981BC2A2AA0018B72C /* PBXContainerItemProxy */;
-		};
-		26FA7F9D1BC2A2B20018B72C /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = MrCoinFramework;
-			targetProxy = 26FA7F9C1BC2A2B20018B72C /* PBXContainerItemProxy */;
+			targetProxy = 26BAEBC01BD3C79500129DC1 /* PBXContainerItemProxy */;
 		};
 		26FA7FB11BC2A4D10018B72C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;

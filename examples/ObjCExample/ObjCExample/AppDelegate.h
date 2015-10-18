@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MrCoinFramework/MrCoinFramework.h>
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
+@interface AppDelegate : UIResponder <UIApplicationDelegate, MrCoinDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 

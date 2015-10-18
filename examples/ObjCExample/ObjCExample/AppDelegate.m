@@ -17,7 +17,38 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    MRCSettings *settings = [MrCoin settings];
+    
+    [settings setShowErrorOnTextField:YES];
+    [settings setShowPopupOnError:NO];
+    [settings setResellerKey:@"9b85a53c-88fb-4a56-b4b0-4088153e4b7e"];
+    
+    [[MrCoin sharedController] setNeedsAcceptTerms:NO];
+    [[MrCoin sharedController] setDelegate:self];
+    [[MrCoin api] setLanguage:@"hu"];
+    [[MrCoin api] authenticate:^(id result) {
+        NSLog(@"result: %@",result);
+    } error:^(NSArray *errors, MRCAPIErrorType errorType) {
+        NSLog(@"errors: %@",errors);
+    }];
     return YES;
+}
+
+#pragma mark - MrCoin Delegate
+-(NSString *)requestPublicKey
+{
+    return @"";
+}
+-(NSString *)requestPrivateKey
+{
+    return @"";
+}
+-(NSString *)requestMessageSignature:(NSString *)message privateKey:(NSString *)privateKey
+{
+    NSLog(@"message:    %@",message);
+    NSLog(@"privateKey: %@",privateKey);
+    return message;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

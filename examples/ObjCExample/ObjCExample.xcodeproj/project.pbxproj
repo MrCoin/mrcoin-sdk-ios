@@ -7,23 +7,29 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		26AEE4DF1BD3C1D500C32E23 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 26AEE4DE1BD3C1D500C32E23 /* Main.storyboard */; settings = {ASSET_TAGS = (); }; };
+		26AEE4E21BD3C1F300C32E23 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 26AEE4E01BD3C1F300C32E23 /* LaunchScreen.storyboard */; settings = {ASSET_TAGS = (); }; };
+		26AEE4E31BD3C30400C32E23 /* MrCoinFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26AEE4DA1BD3C13400C32E23 /* MrCoinFramework.framework */; };
 		26FA7F581BC299EB0018B72C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 26FA7F571BC299EB0018B72C /* main.m */; };
 		26FA7F5B1BC299EB0018B72C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 26FA7F5A1BC299EB0018B72C /* AppDelegate.m */; };
-		26FA7F5E1BC299EB0018B72C /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26FA7F5D1BC299EB0018B72C /* ViewController.m */; };
-		26FA7F611BC299EB0018B72C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 26FA7F5F1BC299EB0018B72C /* Main.storyboard */; };
 		26FA7F631BC299EB0018B72C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 26FA7F621BC299EB0018B72C /* Assets.xcassets */; };
-		26FA7F661BC299EB0018B72C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 26FA7F641BC299EB0018B72C /* LaunchScreen.storyboard */; };
-		26FA7F7C1BC29A110018B72C /* libMrCoin.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 26FA7F771BC299F30018B72C /* libMrCoin.a */; };
 		26FA7F7D1BC29A290018B72C /* MrCoin.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 26FA7F791BC299F30018B72C /* MrCoin.bundle */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		26FA7F741BC299F30018B72C /* PBXContainerItemProxy */ = {
+		26AEE4D91BD3C13400C32E23 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 26FA7F6D1BC299F30018B72C /* MrCoin iOS SDK.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = 26E479EC1BC1085B0003536C;
-			remoteInfo = "MrCoin iOS SDKTests";
+			remoteGlobalIDString = 26FA7F8D1BC2A2580018B72C;
+			remoteInfo = MrCoinFramework;
+		};
+		26AEE4DB1BD3C13400C32E23 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 26FA7F6D1BC299F30018B72C /* MrCoin iOS SDK.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 26D9F00C1BD237EE0016658B;
+			remoteInfo = MrCoinTests;
 		};
 		26FA7F761BC299F30018B72C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -56,15 +62,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		26AEE4DE1BD3C1D500C32E23 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = ../../SwiftExample/SwiftExample/Main.storyboard; sourceTree = "<group>"; };
+		26AEE4E11BD3C1F300C32E23 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = ../../SwiftExample/SwiftExample/Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		26FA7F531BC299EB0018B72C /* ObjCExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ObjCExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		26FA7F571BC299EB0018B72C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		26FA7F591BC299EB0018B72C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		26FA7F5A1BC299EB0018B72C /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		26FA7F5C1BC299EB0018B72C /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		26FA7F5D1BC299EB0018B72C /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		26FA7F601BC299EB0018B72C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		26FA7F621BC299EB0018B72C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		26FA7F651BC299EB0018B72C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		26FA7F671BC299EB0018B72C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		26FA7F6D1BC299F30018B72C /* MrCoin iOS SDK.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "MrCoin iOS SDK.xcodeproj"; path = "../../framework/MrCoin iOS SDK.xcodeproj"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -74,7 +78,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				26FA7F7C1BC29A110018B72C /* libMrCoin.a in Frameworks */,
+				26AEE4E31BD3C30400C32E23 /* MrCoinFramework.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -103,11 +107,9 @@
 			children = (
 				26FA7F591BC299EB0018B72C /* AppDelegate.h */,
 				26FA7F5A1BC299EB0018B72C /* AppDelegate.m */,
-				26FA7F5C1BC299EB0018B72C /* ViewController.h */,
-				26FA7F5D1BC299EB0018B72C /* ViewController.m */,
-				26FA7F5F1BC299EB0018B72C /* Main.storyboard */,
 				26FA7F621BC299EB0018B72C /* Assets.xcassets */,
-				26FA7F641BC299EB0018B72C /* LaunchScreen.storyboard */,
+				26AEE4DE1BD3C1D500C32E23 /* Main.storyboard */,
+				26AEE4E01BD3C1F300C32E23 /* LaunchScreen.storyboard */,
 				26FA7F671BC299EB0018B72C /* Info.plist */,
 				26FA7F561BC299EB0018B72C /* Supporting Files */,
 			);
@@ -125,9 +127,10 @@
 		26FA7F6E1BC299F30018B72C /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				26FA7F751BC299F30018B72C /* MrCoin iOS SDKTests.xctest */,
 				26FA7F771BC299F30018B72C /* libMrCoin.a */,
 				26FA7F791BC299F30018B72C /* MrCoin.bundle */,
+				26AEE4DA1BD3C13400C32E23 /* MrCoinFramework.framework */,
+				26AEE4DC1BD3C13400C32E23 /* MrCoinTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -194,11 +197,18 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		26FA7F751BC299F30018B72C /* MrCoin iOS SDKTests.xctest */ = {
+		26AEE4DA1BD3C13400C32E23 /* MrCoinFramework.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = MrCoinFramework.framework;
+			remoteRef = 26AEE4D91BD3C13400C32E23 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		26AEE4DC1BD3C13400C32E23 /* MrCoinTests.xctest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
-			path = "MrCoin iOS SDKTests.xctest";
-			remoteRef = 26FA7F741BC299F30018B72C /* PBXContainerItemProxy */;
+			path = MrCoinTests.xctest;
+			remoteRef = 26AEE4DB1BD3C13400C32E23 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		26FA7F771BC299F30018B72C /* libMrCoin.a */ = {
@@ -222,10 +232,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				26FA7F661BC299EB0018B72C /* LaunchScreen.storyboard in Resources */,
 				26FA7F631BC299EB0018B72C /* Assets.xcassets in Resources */,
-				26FA7F611BC299EB0018B72C /* Main.storyboard in Resources */,
+				26AEE4E21BD3C1F300C32E23 /* LaunchScreen.storyboard in Resources */,
 				26FA7F7D1BC29A290018B72C /* MrCoin.bundle in Resources */,
+				26AEE4DF1BD3C1D500C32E23 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -236,7 +246,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				26FA7F5E1BC299EB0018B72C /* ViewController.m in Sources */,
 				26FA7F5B1BC299EB0018B72C /* AppDelegate.m in Sources */,
 				26FA7F581BC299EB0018B72C /* main.m in Sources */,
 			);
@@ -258,18 +267,10 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		26FA7F5F1BC299EB0018B72C /* Main.storyboard */ = {
+		26AEE4E01BD3C1F300C32E23 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				26FA7F601BC299EB0018B72C /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		26FA7F641BC299EB0018B72C /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				26FA7F651BC299EB0018B72C /* Base */,
+				26AEE4E11BD3C1F300C32E23 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -402,6 +403,7 @@
 				26FA7F6C1BC299EB0018B72C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
