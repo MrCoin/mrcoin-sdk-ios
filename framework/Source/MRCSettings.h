@@ -6,17 +6,18 @@
 //  Copyright © 2015 MrCoin. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 @interface MRCSettings : NSObject
 
-// Wallet
-@property (nonatomic) NSString *walletPublicKey;
-@property (nonatomic) NSString *walletPrivateKey;
+//// Wallet
+//@property (nonatomic) NSString *walletPublicKey;
+//@property (nonatomic) NSString *walletPrivateKey;
 
 // User settings
 @property (nonatomic) NSString *userCountryCode;
 @property (nonatomic) NSString *userPhone;
+@property (nonatomic) NSString *userCountry;
 @property (nonatomic) NSString *userEmail;
 @property (nonatomic) NSString *sourceCurrency;
 @property (nonatomic,readonly) NSString *destinationCurrency;
@@ -37,8 +38,11 @@
 - (void) resetSettings;
 
 // Framework settings
+@property (nonatomic) UIColor *formBackgroundColor;
+@property (nonatomic) UIImage *formBackgroundImage;
 @property (nonatomic) NSString *resellerKey;
 @property (nonatomic) BOOL showPopupOnError;
+@property (nonatomic) BOOL showActivityPopupOnLoading;
 @property (nonatomic) BOOL showErrorOnTextField;
 
 @end

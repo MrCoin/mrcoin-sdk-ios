@@ -109,10 +109,6 @@ static UIStoryboard *_sharedStoryboard;
 }
 
 #pragma mark - Storyboard
-+ (void) customStoryboard:(UIStoryboard*)customStoryBoard
-{
-    _sharedStoryboard = customStoryBoard;
-}
 + (UIStoryboard*) storyboard
 {
     return [[self sharedController] storyboard];
@@ -127,25 +123,32 @@ static UIStoryboard *_sharedStoryboard;
 
     return _sharedStoryboard;
 }
+static NSBundle* _frameworkBundle = nil;
 + (NSBundle *)frameworkBundle
 {
-    static NSBundle* frameworkBundle = nil;
     static dispatch_once_t predicate;
     dispatch_once(&predicate, ^{
         NSString* mainBundlePath = [[NSBundle mainBundle] resourcePath];
         NSString* frameworkBundlePath = [mainBundlePath stringByAppendingPathComponent:MRC_BUNDLE];
-        frameworkBundle = [NSBundle bundleWithPath:frameworkBundlePath];
+        _frameworkBundle = [NSBundle bundleWithPath:frameworkBundlePath];
         
-        if(!frameworkBundle){
+        if(!_frameworkBundle){
             NSString *path = [[[[NSBundle bundleForClass:[self class]] resourcePath] stringByDeletingLastPathComponent] stringByAppendingPathComponent:MRC_BUNDLE];
-            frameworkBundle = [NSBundle bundleWithPath:path];
+            _frameworkBundle = [NSBundle bundleWithPath:path];
         }
     });
     NSString *throwMessage = [NSString stringWithFormat:@"The resource file '%@' not found. See the README.",MRC_BUNDLE];
-    NSAssert(frameworkBundle, throwMessage);
+    NSAssert(_frameworkBundle, throwMessage);
 
-    return frameworkBundle;
+    return _frameworkBundle;
 }
++ (void) customBundle:(NSBundle*)customBundle
+{
+    if(!customBundle) return;
+    _frameworkBundle = customBundle;
+    _sharedStoryboard = nil;
+}
+
 #pragma mark - View Controllers
 + (UIViewController*) viewController:(NSString*)named
 {
@@ -183,6 +186,7 @@ static UIStoryboard *_sharedStoryboard;
                                                 [subject stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding]]];
     [[UIApplication sharedApplication] openURL:url];
 }
+#pragma mark - Localization
 - (NSString*) localizedString:(NSString*)key
 {
     static NSBundle* languageBundle = nil;
@@ -194,13 +198,68 @@ static UIStoryboard *_sharedStoryboard;
     return [languageBundle localizedStringForKey:key value:@"" table:nil];
 }
 
-
-//    MRCTextViewController *text = [MrCoin documentViewController:MrCoinDocumentSupport];
-//    [text.navigationItem setLeftBarButtonItem:[[UIBarButtonItem alloc] initWithImage:[MrCoin imageNamed:@"close"] style:UIBarButtonItemStylePlain target:text action:@selector(close:)]];
-//    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:text];
-//    nav.modalPresentationStyle = UIModalTransitionStyleFlipHorizontal;
-//    [self presentViewController:nav animated:YES completion:^{
-//
-//    }];
-
+#pragma mark - Error handling
+-(void)showErrorPopup:(NSString*)title message:(NSString*)message
+{
+    if(![[MrCoin settings] showPopupOnError]) return;
+    MRCPopUpViewController *popup = [MRCPopUpViewController sharedPopup];
+    [popup setStyle:MRCPopupLightStyle];
+    [popup setMode:MRCPopupMessage];
+    [popup setOkLabel:NSLocalizedString(@"OK",nil)];
+    [popup setTitle:title];
+    if(message)  [popup setMessage:message];
+    [popup present];
+}
+-(void)showErrorPopup:(NSString*)title
+{
+    [self showErrorPopup:title message:nil];
+}
+- (void)showErrors:(NSArray*)errors type:(MRCAPIErrorType)type
+{
+    [self showErrorPopup:@"Error" message:[errors.firstObject localizedDescription]];
+    NSLog(@"%@",errors);
+}
+- (void)hideErrorPopup
+{
+    if(![[MrCoin settings] showPopupOnError]) return;
+    if(self.delegate){
+        if([self.delegate respondsToSelector:@selector(hideErrorPopup)]){
+            [self.delegate hideErrorsPopup];
+            return;
+        }
+    }
+    MRCPopUpViewController *popup = [MRCPopUpViewController sharedPopup];
+    [popup dismissViewController];
+}
+- (void)showActivityIndicator
+{
+    [self showActivityIndicator:nil];
+}
+- (void)showActivityIndicator:(NSString*)message
+{
+    if(![[MrCoin settings] showActivityPopupOnLoading]) return;
+    if(self.delegate){
+        if([self.delegate respondsToSelector:@selector(showActivityIndicator:)]){
+            [self.delegate showActivityIndicator:message];
+            return;
+        }
+    }
+    MRCPopUpViewController *popup = [MRCPopUpViewController sharedPopup];
+    [popup setStyle:MRCPopupLightStyle];
+    [popup setMode:MRCPopupActivityIndicator];
+    if(message) [popup setTitle:message];
+    [popup present];
+}
+- (void)hideActivityIndicator
+{
+    if(![[MrCoin settings] showActivityPopupOnLoading]) return;
+    if(self.delegate){
+        if([self.delegate respondsToSelector:@selector(hideActivityIndicator)]){
+            [self.delegate hideActivityIndicator];
+            return;
+        }
+    }
+    MRCPopUpViewController *popup = [MRCPopUpViewController sharedPopup];
+    [popup dismissViewController];
+}
 @end

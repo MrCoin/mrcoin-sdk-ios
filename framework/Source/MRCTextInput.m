@@ -33,6 +33,7 @@
 {
     self = [super initWithCoder:coder];
     if (self) {
+        self.cursor = YES;
         _hasPasteButton = YES;
         self.delegate = self;
     }
@@ -149,6 +150,16 @@
 #pragma mark - TextField Delegate
 -(void)textFieldDidBeginEditing:(UITextField *)textField
 {
+    if(self.cursor){
+        [[self valueForKey:@"textInputTraits"]
+         setValue:[UIColor lightGrayColor]
+         forKey:@"insertionPointColor"];
+    }else{
+        [[self valueForKey:@"textInputTraits"]
+         setValue:[UIColor clearColor]
+         forKey:@"insertionPointColor"];
+    }
+
     [self hideError];
     [self addButtons];
     BOOL isValid = [self _validateText:self.text];

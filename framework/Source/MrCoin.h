@@ -37,12 +37,19 @@
 @protocol MrCoinDelegate <NSObject>
 
 //(nonce + request method + request path + post data)
-- (NSString*) requestSignatureFor:(NSString*)message privateKey:(NSString*)privateKey;
+- (NSString*) requestMessageSignature:(NSString*)message privateKey:(NSString*)privateKey;
+- (NSString*) requestDestinationAddress;
+- (NSString*) requestPrivateKey;
+- (NSString*) requestPublicKey;
 
 @optional
 - (void) openURL:(NSURL*)url;
 - (void) sendMail:(NSString*)to subject:(NSString*)subject;
 
+- (void)showErrors:(NSArray*)errors type:(MRCAPIErrorType)type;
+- (void) hideErrorsPopup;
+- (void) showActivityIndicator:(NSString*)message;
+- (void) hideActivityIndicator;
 @end
 
 @interface MrCoin : NSObject
@@ -53,7 +60,7 @@
 @property BOOL needsAcceptTerms;
 
 // Customizable
-+ (void) customStoryboard:(UIStoryboard*)customStoryBoard;
++ (void) customBundle:(NSBundle*)customBundle;
 
 + (void)show:(id)target; // Valid target is window
 + (MRCTextViewController*)documentViewController:(MrCoinDocumentType)type;
@@ -78,4 +85,13 @@
 + (NSBundle *)frameworkBundle;
 - (NSString*) localizedString:(NSString*)key;
 
+
+- (void)showErrorPopup:(NSString*)title message:(NSString*)message;
+- (void)showErrorPopup:(NSString*)title;
+- (void)showErrors:(NSArray*)errors type:(MRCAPIErrorType)type;
+- (void)hideErrorPopup;
+
+- (void)showActivityIndicator:(NSString*)message;
+- (void)showActivityIndicator;
+- (void)hideActivityIndicator;
 @end

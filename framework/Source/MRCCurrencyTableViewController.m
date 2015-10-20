@@ -40,11 +40,18 @@
 }
 - (void)viewWillAppear:(BOOL)animated
 {
-    NSInteger index = [_currencies indexOfObject:[[MrCoin settings] sourceCurrency]];
+    [super viewWillAppear:animated];
+    NSInteger index = -1;
+    NSInteger i = 0;
+    for (NSString *_currency in _currencies) {
+        if([_currency isEqualToString:[[MrCoin settings] sourceCurrency]]){
+            index = i;
+        }
+        i++;
+    }
     if(index < _currencies.count && index >= 0){
         [[self tableView] selectRowAtIndexPath:[NSIndexPath indexPathForRow:index inSection:0] animated:YES scrollPosition:UITableViewScrollPositionTop];
     }
-    [super viewWillAppear:animated];
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {

@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXAggregateTarget section */
-		2610BC011BC2937F00BFF784 /* Framework */ = {
+		2610BC011BC2937F00BFF784 /* MrCoin Agregate */ = {
 			isa = PBXAggregateTarget;
-			buildConfigurationList = 2610BC041BC2937F00BFF784 /* Build configuration list for PBXAggregateTarget "Framework" */;
+			buildConfigurationList = 2610BC041BC2937F00BFF784 /* Build configuration list for PBXAggregateTarget "MrCoin Agregate" */;
 			buildPhases = (
 				2610BC071BC2939F00BFF784 /* ShellScript */,
 			);
@@ -17,7 +17,7 @@
 				2610BC151BC2953000BFF784 /* PBXTargetDependency */,
 				2610BC061BC2938B00BFF784 /* PBXTargetDependency */,
 			);
-			name = Framework;
+			name = "MrCoin Agregate";
 			productName = Framework;
 		};
 /* End PBXAggregateTarget section */
@@ -110,10 +110,6 @@
 		26DF33C31BCC6F25004454A3 /* MRCVerificationCode.h in Headers */ = {isa = PBXBuildFile; fileRef = 26DF33B41BCC6F25004454A3 /* MRCVerificationCode.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		26DF33C41BCC6F25004454A3 /* MRCVerificationCode.m in Sources */ = {isa = PBXBuildFile; fileRef = 26DF33B51BCC6F25004454A3 /* MRCVerificationCode.m */; settings = {ASSET_TAGS = (); }; };
 		26DF33C51BCC6F25004454A3 /* MRCVerificationCode.m in Sources */ = {isa = PBXBuildFile; fileRef = 26DF33B51BCC6F25004454A3 /* MRCVerificationCode.m */; settings = {ASSET_TAGS = (); }; };
-		26DF33C81BCC6F3D004454A3 /* MRCWalletAddressViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 26DF33C61BCC6F3D004454A3 /* MRCWalletAddressViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		26DF33C91BCC6F3D004454A3 /* MRCWalletAddressViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 26DF33C61BCC6F3D004454A3 /* MRCWalletAddressViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		26DF33CA1BCC6F3D004454A3 /* MRCWalletAddressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26DF33C71BCC6F3D004454A3 /* MRCWalletAddressViewController.m */; settings = {ASSET_TAGS = (); }; };
-		26DF33CB1BCC6F3D004454A3 /* MRCWalletAddressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26DF33C71BCC6F3D004454A3 /* MRCWalletAddressViewController.m */; settings = {ASSET_TAGS = (); }; };
 		26DF33CE1BCC6F50004454A3 /* MRCCurrencyViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 26DF33CC1BCC6F50004454A3 /* MRCCurrencyViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		26DF33CF1BCC6F50004454A3 /* MRCCurrencyViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 26DF33CC1BCC6F50004454A3 /* MRCCurrencyViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		26DF33D01BCC6F50004454A3 /* MRCCurrencyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26DF33CD1BCC6F50004454A3 /* MRCCurrencyViewController.m */; settings = {ASSET_TAGS = (); }; };
@@ -131,6 +127,7 @@
 		26DF33E21BCC6F7C004454A3 /* MRCSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26DF33DF1BCC6F7C004454A3 /* MRCSettingsViewController.m */; settings = {ASSET_TAGS = (); }; };
 		26DF33E31BCC6F7C004454A3 /* MRCSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26DF33DF1BCC6F7C004454A3 /* MRCSettingsViewController.m */; settings = {ASSET_TAGS = (); }; };
 		26E194101BD2780200E5990F /* mrcoin_masked@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 26E1940F1BD2780200E5990F /* mrcoin_masked@2x.png */; settings = {ASSET_TAGS = (); }; };
+		26EF3A4C1BD50DB700AD0BB8 /* mrcoin_quicktransfer@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 26EF3A4B1BD50DB700AD0BB8 /* mrcoin_quicktransfer@2x.png */; settings = {ASSET_TAGS = (); }; };
 		26F37FAD1BC99F9C003EF687 /* MRCPopUpViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 26F37FAA1BC99F9C003EF687 /* MRCPopUpViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		26F37FAE1BC99F9C003EF687 /* MRCPopUpViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 26F37FAA1BC99F9C003EF687 /* MRCPopUpViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		26F37FB01BC99F9C003EF687 /* MRCPopUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26F37FAB1BC99F9C003EF687 /* MRCPopUpViewController.m */; settings = {ASSET_TAGS = (); }; };
@@ -259,8 +256,6 @@
 		26DF33B31BCC6F25004454A3 /* MRCPhoneData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MRCPhoneData.m; path = Source/MRCPhoneData.m; sourceTree = SOURCE_ROOT; };
 		26DF33B41BCC6F25004454A3 /* MRCVerificationCode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MRCVerificationCode.h; path = Source/MRCVerificationCode.h; sourceTree = SOURCE_ROOT; };
 		26DF33B51BCC6F25004454A3 /* MRCVerificationCode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MRCVerificationCode.m; path = Source/MRCVerificationCode.m; sourceTree = SOURCE_ROOT; };
-		26DF33C61BCC6F3D004454A3 /* MRCWalletAddressViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MRCWalletAddressViewController.h; path = Source/MRCWalletAddressViewController.h; sourceTree = SOURCE_ROOT; };
-		26DF33C71BCC6F3D004454A3 /* MRCWalletAddressViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MRCWalletAddressViewController.m; path = Source/MRCWalletAddressViewController.m; sourceTree = SOURCE_ROOT; };
 		26DF33CC1BCC6F50004454A3 /* MRCCurrencyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MRCCurrencyViewController.h; path = Source/MRCCurrencyViewController.h; sourceTree = SOURCE_ROOT; };
 		26DF33CD1BCC6F50004454A3 /* MRCCurrencyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MRCCurrencyViewController.m; path = Source/MRCCurrencyViewController.m; sourceTree = SOURCE_ROOT; };
 		26DF33D21BCC6F5D004454A3 /* MRCFormPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MRCFormPageViewController.h; path = Source/MRCFormPageViewController.h; sourceTree = SOURCE_ROOT; };
@@ -270,6 +265,7 @@
 		26DF33DE1BCC6F7C004454A3 /* MRCSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MRCSettingsViewController.h; path = Source/MRCSettingsViewController.h; sourceTree = SOURCE_ROOT; };
 		26DF33DF1BCC6F7C004454A3 /* MRCSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MRCSettingsViewController.m; path = Source/MRCSettingsViewController.m; sourceTree = SOURCE_ROOT; };
 		26E1940F1BD2780200E5990F /* mrcoin_masked@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "mrcoin_masked@2x.png"; path = "Resources/mrcoin_masked@2x.png"; sourceTree = "<group>"; };
+		26EF3A4B1BD50DB700AD0BB8 /* mrcoin_quicktransfer@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "mrcoin_quicktransfer@2x.png"; path = "Resources/mrcoin_quicktransfer@2x.png"; sourceTree = "<group>"; };
 		26F37FAA1BC99F9C003EF687 /* MRCPopUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MRCPopUpViewController.h; path = Source/MRCPopUpViewController.h; sourceTree = SOURCE_ROOT; };
 		26F37FAB1BC99F9C003EF687 /* MRCPopUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MRCPopUpViewController.m; path = Source/MRCPopUpViewController.m; sourceTree = SOURCE_ROOT; };
 		26FA7F8D1BC2A2580018B72C /* MrCoinFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MrCoinFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -341,6 +337,7 @@
 				26D65CF11BC70B6C00DFF489 /* mrcoin@2.png */,
 				266C3FC31BC3C39C00C0948E /* PhoneFormats.dat */,
 				266FC5641BCDB47000D3A1A0 /* MrCoin.storyboard */,
+				26EF3A4B1BD50DB700AD0BB8 /* mrcoin_quicktransfer@2x.png */,
 				266FC5581BCDAECA00D3A1A0 /* Localizable.strings */,
 			);
 			name = Resources;
@@ -359,7 +356,6 @@
 			isa = PBXGroup;
 			children = (
 				26D65D281BC711E100DFF489 /* Terms of service */,
-				26FEB7F61BCA6A5800DDA046 /* Wallet address */,
 				266C3FE21BC43AEE00C0948E /* Phone */,
 				266C3FE51BC43B1900C0948E /* Email */,
 				26F716C81BC8369900CCBB1F /* Currency */,
@@ -543,15 +539,6 @@
 			name = Model;
 			sourceTree = "<group>";
 		};
-		26FEB7F61BCA6A5800DDA046 /* Wallet address */ = {
-			isa = PBXGroup;
-			children = (
-				26DF33C61BCC6F3D004454A3 /* MRCWalletAddressViewController.h */,
-				26DF33C71BCC6F3D004454A3 /* MRCWalletAddressViewController.m */,
-			);
-			name = "Wallet address";
-			sourceTree = "<group>";
-		};
 		26FEB8131BCAF37E00DDA046 /* Framework */ = {
 			isa = PBXGroup;
 			children = (
@@ -572,7 +559,6 @@
 				2622AD051BC2917E0017259E /* MRCEmptyViewController.h in Headers */,
 				2622AD061BC2917E0017259E /* MRCFormViewController.h in Headers */,
 				26F37FAD1BC99F9C003EF687 /* MRCPopUpViewController.h in Headers */,
-				26DF33C81BCC6F3D004454A3 /* MRCWalletAddressViewController.h in Headers */,
 				266C3FDD1BC43AE400C0948E /* MRCPhoneVerificationViewController.h in Headers */,
 				26DF33B61BCC6F25004454A3 /* MRCEmailData.h in Headers */,
 				26D65D0A1BC70BD100DFF489 /* MRCTextViewController.h in Headers */,
@@ -618,7 +604,6 @@
 				26DF33D51BCC6F5D004454A3 /* MRCFormPageViewController.h in Headers */,
 				26DF33C31BCC6F25004454A3 /* MRCVerificationCode.h in Headers */,
 				26DF33CF1BCC6F50004454A3 /* MRCCurrencyViewController.h in Headers */,
-				26DF33C91BCC6F3D004454A3 /* MRCWalletAddressViewController.h in Headers */,
 				26DF33BB1BCC6F25004454A3 /* MRCInputDataType.h in Headers */,
 				26DF33B71BCC6F25004454A3 /* MRCEmailData.h in Headers */,
 				26DF33E11BCC6F7C004454A3 /* MRCSettingsViewController.h in Headers */,
@@ -754,7 +739,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				2610BC011BC2937F00BFF784 /* Framework */,
+				2610BC011BC2937F00BFF784 /* MrCoin Agregate */,
 				2622ACD21BC290FD0017259E /* MrCoin */,
 				2610BC0B1BC2945800BFF784 /* MrCoinResources */,
 				26FA7F8C1BC2A2580018B72C /* MrCoinFramework */,
@@ -772,6 +757,7 @@
 				26E194101BD2780200E5990F /* mrcoin_masked@2x.png in Resources */,
 				26FEB8121BCADADB00DDA046 /* error@2x.png in Resources */,
 				266C3FC41BC3C39C00C0948E /* PhoneFormats.dat in Resources */,
+				26EF3A4C1BD50DB700AD0BB8 /* mrcoin_quicktransfer@2x.png in Resources */,
 				266C3FD81BC3FD0200C0948E /* downArrow@2x.png in Resources */,
 				266FC5661BCDB47000D3A1A0 /* MrCoin.storyboard in Resources */,
 				266C3FD71BC3FD0200C0948E /* downArrow.png in Resources */,
@@ -855,7 +841,6 @@
 				26D956AE1BC2F53300B3810F /* MrCoinViewController.m in Sources */,
 				26DF33D61BCC6F5D004454A3 /* MRCFormPageViewController.m in Sources */,
 				26D65D041BC70BB900DFF489 /* MRCCopiableButton.m in Sources */,
-				26DF33CA1BCC6F3D004454A3 /* MRCWalletAddressViewController.m in Sources */,
 				26D65D0C1BC70BD100DFF489 /* MRCTextViewController.m in Sources */,
 				2622ACFD1BC2916C0017259E /* MRCEmptyViewController.m in Sources */,
 				26D956B61BC2FF1100B3810F /* MRCPhoneViewController.m in Sources */,
@@ -899,7 +884,6 @@
 				26D956AF1BC2F53300B3810F /* MrCoinViewController.m in Sources */,
 				26DF33D71BCC6F5D004454A3 /* MRCFormPageViewController.m in Sources */,
 				26D65D051BC70BB900DFF489 /* MRCCopiableButton.m in Sources */,
-				26DF33CB1BCC6F3D004454A3 /* MRCWalletAddressViewController.m in Sources */,
 				26D65D0D1BC70BD100DFF489 /* MRCTextViewController.m in Sources */,
 				26FA7FA61BC2A2DE0018B72C /* MRCEmptyViewController.m in Sources */,
 				26D956B81BC2FF1100B3810F /* MRCPhoneViewController.m in Sources */,
@@ -1197,7 +1181,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		2610BC041BC2937F00BFF784 /* Build configuration list for PBXAggregateTarget "Framework" */ = {
+		2610BC041BC2937F00BFF784 /* Build configuration list for PBXAggregateTarget "MrCoin Agregate" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2610BC021BC2937F00BFF784 /* Debug */,

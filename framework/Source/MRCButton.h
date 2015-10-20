@@ -10,7 +10,9 @@
 
 @interface MRCButton : UIButton
 
-@property (nonatomic) IBInspectable BOOL bordered;
+@property (nonatomic) IBInspectable BOOL stroke;
+@property (nonatomic) IBInspectable BOOL fill;
+@property (nonatomic) IBInspectable CGFloat cornerRadius;
 
 - (void) setupControl;
 

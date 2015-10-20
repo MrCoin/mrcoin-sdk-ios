@@ -10,8 +10,9 @@
 #import "MrCoin.h"
 
 #define TOP_MARGIN 60.0f
+#define STROKE_COLOR        [UIColor colorWithWhite:1.0 alpha:1.0]
 #define GRAY_COLOR          [UIColor colorWithWhite:0.5 alpha:1.0]
-#define LIGHTGRAY_COLOR     [UIColor colorWithWhite:0.5 alpha:0.3]
+#define LIGHTGRAY_COLOR     [UIColor colorWithWhite:1.0 alpha:1.0]
 
 @interface MRCProgressItemView : UIView
 
@@ -101,27 +102,25 @@
     [self setActiveStep:activeStep];
 }
 
-- (void)drawRect:(CGRect)rect {
-    CGContextRef context = UIGraphicsGetCurrentContext();
-    CGContextSaveGState(context);
-    
-    CGContextSetStrokeColorWithColor(context, [LIGHTGRAY_COLOR CGColor]);
-    
-//    CGFloat h = 100.0f;
-//    CGFloat y = TOP_MARGIN+(2.5f);
-    CGFloat h = 5.0f;
-    CGFloat y = TOP_MARGIN-(2.5f);
-    
-    CGContextSetLineWidth(context, h);
-    CGContextMoveToPoint(context, 0, y);
-    CGContextAddLineToPoint(context, rect.size.width, y);
-    CGContextDrawPath(context, kCGPathStroke);
-    
-    CGContextRestoreGState(context);
-}
+//- (void)drawRect:(CGRect)rect {
+//    CGContextRef context = UIGraphicsGetCurrentContext();
+//    CGContextSaveGState(context);
+//    
+//    CGContextSetStrokeColorWithColor(context, [LIGHTGRAY_COLOR CGColor]);
+//    
+//    CGFloat h = 5.0f;
+//    CGFloat y = TOP_MARGIN-(2.5f);
+//    
+//    CGContextSetLineWidth(context, h);
+//    CGContextMoveToPoint(context, 0, y);
+//    CGContextAddLineToPoint(context, rect.size.width, y);
+//    CGContextDrawPath(context, kCGPathStroke);
+//    
+//    CGContextRestoreGState(context);
+//}
 - (void)layoutSubviews
 {
-    CGRect rect = CGRectInset(self.bounds, 40, 0);
+    CGRect rect = CGRectInset(self.bounds, 20, 0);
     CGRect itemSize = CGRectZero;
     CGFloat h = rect.size.height*0.5f;//rect.size.width/self.maxSteps;
     //    h *= 0.5f;
@@ -166,7 +165,7 @@
         self.itemIndex = anIndex;
         //
         shapeLayer = [CAShapeLayer layer];
-        shapeLayer.lineWidth = 2.0;
+        shapeLayer.lineWidth = 1.0;
         shapeLayer.fillRule = kCAFillRuleNonZero;
         [self.layer addSublayer:shapeLayer];
         //
@@ -191,8 +190,8 @@
             _closeImage = [UIButton buttonWithType:UIButtonTypeCustom];
             [_closeImage setImage:[[MrCoin imageNamed:@"close"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
             _closeImage.tintColor = [UIColor whiteColor];
-            CGSize s = _closeImage.imageView.image.size;
-            _closeImage.frame = CGRectMake(0, 0, s.width, s.height);
+//            CGSize s = _closeImage.imageView.image.size;
+            _closeImage.frame = self.bounds;//CGRectMake(0, 0, s.width, s.height);
             [_closeImage addTarget:target action:@selector(closePressed:) forControlEvents:UIControlEventTouchUpInside];
             [self addSubview:_closeImage];
         }
@@ -231,28 +230,28 @@
     shapeLayer.frame = CGRectMake(shapeFrame.size.width*0.5f, shapeFrame.size.height*0.5f, shapeFrame.size.width, shapeFrame.size.height);
     if(_selected){
         shapeLayer.fillColor = [self.tintColor CGColor];
-        shapeLayer.strokeColor = [[UIColor clearColor] CGColor];
+        shapeLayer.strokeColor = nil;
     }else{
         if(self.title){
-            shapeLayer.strokeColor = [GRAY_COLOR CGColor];
+            shapeLayer.strokeColor = [STROKE_COLOR CGColor];
             shapeLayer.fillColor = [[UIColor whiteColor] CGColor];
         }else{
-            shapeLayer.strokeColor = [GRAY_COLOR CGColor];
+            shapeLayer.strokeColor = nil;
             shapeLayer.fillColor = [GRAY_COLOR CGColor];
         }
     }
     if(self.title){
-        CGFloat fontSize = 18.0f;
+        CGFloat fontSize = 22.0f;
         UIColor *textColor;
         if(_selected){
-            fontSize = 35.0f;
+            fontSize = 40.0f;
             textColor = [UIColor whiteColor];
         }else{
             textColor = GRAY_COLOR;
         }
         // Number
         NSString *stepString = [NSString stringWithFormat:@"%@",[NSNumber numberWithInteger:_itemIndex+1]];
-        UIFont *stepFont = [UIFont fontWithName:@"HelveticaNeue-Light" size:fontSize];
+        UIFont *stepFont = [UIFont fontWithName:@"HelveticaNeue-Thin" size:fontSize];
         [shapeText setFont:stepFont];
         [shapeText setTextColor:textColor];
         [shapeText setText:stepString];
@@ -271,6 +270,7 @@
 //        _titleLabel.center = CGPointMake(rect.origin.x+(rect.size.width*0.5f), rect.origin.y+rect.size.height+10);
         _titleLabel.center = CGPointMake((rect.size.width*0.5f), (rect.size.height+10));
     }else{
+        _closeImage.frame = rect;
         _closeImage.center = CGPointMake((rect.size.width*0.5f), (rect.size.height*0.5f));
     }
     

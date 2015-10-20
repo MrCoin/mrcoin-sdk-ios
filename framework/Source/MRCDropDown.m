@@ -35,11 +35,6 @@
         self.hasPasteButton = NO;
         self.selectedRow = -1;
         
-        // hide the caret and its blinking
-        [[self valueForKey:@"textInputTraits"]
-         setValue:[UIColor clearColor]
-         forKey:@"insertionPointColor"];
-        
         // setup the arrow image
         UIImage* img = [UIImage imageNamed:@"downArrow.png"];   // non-CocoaPods
         if (img == nil) img = [UIImage imageNamed:@"MrCoin.bundle/downArrow.png"]; // CocoaPod
@@ -68,6 +63,7 @@
     picker = [[UIPickerView alloc] init];
     picker.dataSource = self;
     picker.delegate = self;
+    picker.backgroundColor = [UIColor whiteColor];
     self.inputView = picker;
     if(_selectedItem){
         [picker selectRow:_selectedRow inComponent:0 animated:NO];
@@ -222,6 +218,7 @@
 #pragma mark - Textfield delegate
 -(BOOL)textFieldShouldBeginEditing:(UITextField *)textField
 {
+    self.cursor = NO;
     if(!self.items || self.items.count == 0){
         [self showPicker];
         [super textFieldDidBeginEditing:textField];

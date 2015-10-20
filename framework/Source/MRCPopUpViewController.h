@@ -31,6 +31,7 @@ typedef enum : NSUInteger {
 
 + (instancetype) sharedPopup;
 
+- (void)present;
 -(void)presentInViewController:(UIViewController *)viewController;
 -(void)presentInViewController:(UIViewController *)viewController hideAfterDelay:(NSTimeInterval)delay;
 -(void)dismissViewController;

@@ -73,38 +73,13 @@
         [self nextPage:self.nextButton];
     }
 }
-
-#pragma mark - Error handling
--(void)showError:(NSString*)title message:(NSString*)message textInput:(MRCTextInput*)textInput
+- (void)showError:(NSString*)title message:(NSString*)message textInput:(MRCTextInput*)textInput
 {
     if([[MrCoin settings] showErrorOnTextField]){
-        [self showErrorTextInput:textInput error:title];
+        [textInput showError:title];
     }
-    if([[MrCoin settings] showPopupOnError]){
-        [self showErrorPopup:title message:message];
-    }
+    [[MrCoin sharedController] showErrorPopup:title message:message];
 }
--(void)showErrorPopup:(NSString*)title message:(NSString*)message
-{
-    MRCPopUpViewController *popup = [MRCPopUpViewController sharedPopup];
-    [popup setStyle:MRCPopupLightStyle];
-    [popup setMode:MRCPopupMessage];
-    [popup setOkLabel:NSLocalizedString(@"OK",nil)];
-    [popup setTitle:title];
-    [popup setMessage:message];
-    [popup presentInViewController:self.parentViewController];
-}
--(void)showErrorTextInput:(MRCTextInput*)textInput error:(NSString*)title
-{
-    [textInput showError:title];
-}
-- (void)showActivityIndicator:(NSString*)message
-{
-    MRCPopUpViewController *popup = [MRCPopUpViewController sharedPopup];
-    [popup setStyle:MRCPopupLightStyle];
-    [popup setMode:MRCPopupActivityIndicator];
-    [popup setTitle:message];
-    [popup presentInViewController:self.parentViewController];
-}
+
 
 @end

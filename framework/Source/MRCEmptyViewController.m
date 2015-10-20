@@ -13,7 +13,7 @@
 @implementation MRCEmptyViewController
 
 - (IBAction)startConfiguration:(id)sender {
-    [[MrCoin rootController] showForm:sender];
+    [[MrCoin rootController] showForm:self];
 }
 
 @end

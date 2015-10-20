@@ -45,24 +45,28 @@
 }
 - (void)viewWillAppear:(BOOL)animated
 {
-    [[MrCoin api] quickTransfers:[[MrCoin settings] walletPublicKey] currency:[[MrCoin settings]destinationCurrency] resellerID:[[MrCoin settings]resellerKey] success:^(NSDictionary *dictionary) {
-        NSLog(@"dictionary %@",dictionary);
+    NSAssert([[MrCoin sharedController] delegate],@"MrCoin Delegate isn't configured. See the README.");
+    NSAssert([[[MrCoin sharedController] delegate] respondsToSelector:@selector(requestPublicKey)],@"MrCoin Delegate method (requestPublicKey:) isn't configured. See the README.");
+    
+    NSString *publicKey = [[[MrCoin sharedController] delegate] requestPublicKey];
+    
+    [[MrCoin api] quickTransfers:publicKey currency:[[MrCoin settings]destinationCurrency] resellerID:[[MrCoin settings]resellerKey] success:^(NSDictionary *dictionary) {
         [self setupView:dictionary currency:[[MrCoin settings]sourceCurrency]]; //HUF
-    } error:^(NSArray *errors, MRCAPIErrorType errorType) {
-        NSLog(@"%@",errors);
-    }];
+    } error:nil];
+    
     [super viewWillAppear:animated];
 }
 
 -(void)setupView:(NSDictionary*)dictionary currency:(NSString*)currency
 {
-    NSString *keyPath = [NSString stringWithFormat:@"data.attributes.payment-methods.bank-transfer.%@.%@",currency,@"basic-info"];
+    NSLog(@"dictionary %@",dictionary);
+
+    NSString *keyPath = [NSString stringWithFormat:@"attributes.payment_methods.bank_transfer.%@.basic_info",currency];
     NSDictionary *d = [dictionary valueForKeyPath:keyPath];
-    NSString *name = [d valueForKey:@"beneficiary-name"];
+    NSString *name = [d valueForKey:@"beneficiary_name"];
     NSString *iban = [d valueForKey:@"iban"];
     NSString *swift = [d valueForKey:@"bic"];
     NSString *reference = [d valueForKey:@"reference"];
-    
     
     NSString *copyTxt = NSLocalizedString(@"Copy %@ (%@)",nil);
     NSString *copyClipTxt = NSLocalizedString(@"Copy %@ to clipboard",nil);
@@ -77,20 +81,27 @@
                         value:name
      ];
     [self.ibanButton setLabel:iban
-                    copyTitle:[NSString stringWithFormat:copyTxt,ibanTxt,name]
+                    copyTitle:[NSString stringWithFormat:copyTxt,ibanTxt,iban]
                     copyLabel:[NSString stringWithFormat:copyClipTxt,ibanTxt]
                         value:[[iban componentsSeparatedByString:@" "] componentsJoinedByString:@""]
      ];
     [self.swiftButton setLabel:swift
-                     copyTitle:[NSString stringWithFormat:copyTxt,swiftTxt,name]
-                     copyLabel:[NSString stringWithFormat:copyClipTxt,swiftTxt,name]
+                     copyTitle:[NSString stringWithFormat:copyTxt,swiftTxt,swift]
+                     copyLabel:[NSString stringWithFormat:copyClipTxt,swiftTxt]
                         value:swift
      ];
     [self.messageButton setLabel:reference
-                       copyTitle:[NSString stringWithFormat:copyTxt,messageTxt,name]
-                       copyLabel:[NSString stringWithFormat:copyClipTxt,messageTxt,name]
+                       copyTitle:[NSString stringWithFormat:copyTxt,messageTxt,reference]
+                       copyLabel:[NSString stringWithFormat:copyClipTxt,messageTxt]
                         value:reference
      ];
+    
+    // Setup documents
+    [[MrCoin settings] setSupportEmail:[dictionary valueForKeyPath:@"attributes.support.email"]];
+    [[MrCoin settings] setSupportURL:[dictionary valueForKeyPath:@"attributes.support.web"]];
+    [[MrCoin settings] setTermsURL:[dictionary valueForKeyPath:@"attributes.terms.full_terms"]];
+    [[MrCoin settings] setShortTermsURL:[dictionary valueForKeyPath:@"attributes.terms.short_terms"]];
+
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

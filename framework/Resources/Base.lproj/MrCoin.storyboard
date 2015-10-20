@@ -6,6 +6,15 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="HelveticaNeue.ttc">
+            <string>HelveticaNeue-Medium</string>
+        </mutableArray>
+        <mutableArray key="HelveticaNeueLights.ttc">
+            <string>HelveticaNeue-Light</string>
+            <string>HelveticaNeue-Light</string>
+        </mutableArray>
+    </customFonts>
     <scenes>
         <!--Form View-->
         <scene sceneID="tne-QT-ifu">
@@ -15,17 +24,17 @@
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                    <view key="view" clipsSubviews="YES" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cvo-Nl-uXq">
-                                <rect key="frame" x="-4" y="52" width="208" height="148"/>
+                                <rect key="frame" x="0.0" y="52" width="200" height="148"/>
                                 <animations/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
                             <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bjk-WX-Quk" customClass="MRCProgressView">
-                                <rect key="frame" x="-4" y="0.0" width="208" height="120"/>
+                                <rect key="frame" x="0.0" y="0.0" width="200" height="120"/>
                                 <animations/>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -36,13 +45,13 @@
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="bjk-WX-Quk" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="5DB-e7-u6z"/>
+                            <constraint firstItem="bjk-WX-Quk" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-16" id="5DB-e7-u6z"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="cvo-Nl-uXq" secondAttribute="bottom" id="Adf-P1-qYw"/>
                             <constraint firstItem="bjk-WX-Quk" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="-20" id="AhZ-Fn-Byc"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="cvo-Nl-uXq" secondAttribute="trailing" constant="-20" id="C7d-XK-8M1"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="bjk-WX-Quk" secondAttribute="trailing" constant="-20" id="Ju1-mJ-Nek"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="cvo-Nl-uXq" secondAttribute="trailing" constant="-16" id="C7d-XK-8M1"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="bjk-WX-Quk" secondAttribute="trailing" constant="-16" id="Ju1-mJ-Nek"/>
                             <constraint firstItem="cvo-Nl-uXq" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="32" id="RZ4-6K-Vd9"/>
-                            <constraint firstItem="cvo-Nl-uXq" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="r1S-6c-QRb"/>
+                            <constraint firstItem="cvo-Nl-uXq" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-16" id="r1S-6c-QRb"/>
                         </constraints>
                     </view>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
@@ -75,29 +84,23 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Ls-bY-tCJ" customClass="MRCButton">
-                                <rect key="frame" x="169" y="212" width="62" height="30"/>
+                                <rect key="frame" x="169" y="196" width="62" height="30"/>
                                 <animations/>
                                 <state key="normal" title="Continue"/>
                                 <connections>
                                     <action selector="nextPage:" destination="mJa-wm-PWL" eventType="touchUpInside" id="guU-Ft-tVa"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter your phone number" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PKD-Jn-Z8m">
-                                <rect key="frame" x="82" y="20" width="237" height="27"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qlQ-fX-bDJ">
+                                <rect key="frame" x="79" y="32" width="243" height="60"/>
                                 <animations/>
-                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="22"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please enter your phone number below.  To set up QuickTransfer for your wallet we need to verify your phone number." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qlQ-fX-bDJ">
-                                <rect key="frame" x="20" y="55" width="360" height="53"/>
-                                <animations/>
-                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <string key="text">Please select your country and enter your phone number below.  To set up QuickTransfer for your wallet we need to verify your phone number.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                <color key="textColor" red="0.40461387434554974" green="0.382929233767275" blue="0.36570014842399245" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Your Phone Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PMR-oU-m6l" customClass="MRCTextInput">
-                                <rect key="frame" x="100" y="166" width="200" height="30"/>
+                                <rect key="frame" x="100" y="150" width="200" height="30"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="Kk1-lF-zPV"/>
@@ -109,7 +112,7 @@
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Choose your country" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AJI-Cl-vB8" customClass="MRCDropDown">
-                                <rect key="frame" x="100" y="128" width="200" height="30"/>
+                                <rect key="frame" x="100" y="112" width="200" height="30"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="bHe-my-9zu"/>
@@ -123,15 +126,24 @@
                                     <action selector="countrySelectorChanged:" destination="mJa-wm-PWL" eventType="editingDidEnd" id="pqc-kH-RcF"/>
                                 </connections>
                             </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter your phone number" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PKD-Jn-Z8m">
+                                <rect key="frame" x="79" y="0.0" width="243" height="24"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="243" id="1Se-4G-jHv"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="20"/>
+                                <color key="textColor" red="0.40461387434554974" green="0.382929233767275" blue="0.36570014842399245" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <animations/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="PKD-Jn-Z8m" firstAttribute="top" secondItem="d09-69-Ccb" secondAttribute="bottom" constant="20" id="097-gZ-x2K"/>
-                            <constraint firstItem="qlQ-fX-bDJ" firstAttribute="leading" secondItem="MS9-Qg-j5r" secondAttribute="leadingMargin" id="Nog-gD-mqI"/>
+                            <constraint firstItem="PKD-Jn-Z8m" firstAttribute="top" secondItem="d09-69-Ccb" secondAttribute="bottom" id="097-gZ-x2K"/>
+                            <constraint firstItem="PKD-Jn-Z8m" firstAttribute="trailing" secondItem="qlQ-fX-bDJ" secondAttribute="trailing" id="D1I-BK-AY4"/>
+                            <constraint firstItem="PKD-Jn-Z8m" firstAttribute="leading" secondItem="qlQ-fX-bDJ" secondAttribute="leading" id="IvE-5o-Ov2"/>
                             <constraint firstItem="AJI-Cl-vB8" firstAttribute="centerX" secondItem="MS9-Qg-j5r" secondAttribute="centerX" id="PFp-MJ-szT"/>
                             <constraint firstItem="PKD-Jn-Z8m" firstAttribute="centerX" secondItem="MS9-Qg-j5r" secondAttribute="centerX" id="TyW-ts-hNh"/>
-                            <constraint firstItem="qlQ-fX-bDJ" firstAttribute="trailing" secondItem="MS9-Qg-j5r" secondAttribute="trailingMargin" id="bDU-pT-pd9"/>
                             <constraint firstItem="5Ls-bY-tCJ" firstAttribute="centerX" secondItem="MS9-Qg-j5r" secondAttribute="centerX" id="dw0-Un-wqX"/>
                             <constraint firstItem="5Ls-bY-tCJ" firstAttribute="top" secondItem="PMR-oU-m6l" secondAttribute="bottom" constant="16" id="fsQ-iM-fty"/>
                             <constraint firstItem="AJI-Cl-vB8" firstAttribute="top" secondItem="qlQ-fX-bDJ" secondAttribute="bottom" constant="20" id="l3m-Xo-PQb"/>
@@ -159,7 +171,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="366-y8-sjH" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer id="CIC-eg-Wvl"/>
             </objects>
-            <point key="canvasLocation" x="644" y="-2057"/>
+            <point key="canvasLocation" x="620" y="-2543"/>
         </scene>
         <!--Unconfigured View-->
         <scene sceneID="k2a-Mu-xCd">
@@ -173,60 +185,59 @@
                         <rect key="frame" x="0.0" y="0.0" width="400" height="400"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" image="mrcoin_masked.png" translatesAutoresizingMaskIntoConstraints="NO" id="ifT-s3-I1H">
-                                <rect key="frame" x="20" y="130" width="142" height="140"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To set up QuickTransfer for your wallet we need a phone number and your email address." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FlV-wS-RMP">
+                                <rect key="frame" x="60" y="187" width="280" height="27"/>
                                 <animations/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="142" id="Mdx-Me-YVo"/>
-                                    <constraint firstAttribute="height" constant="140" id="tAy-kn-d53"/>
-                                </constraints>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FlV-wS-RMP">
-                                <rect key="frame" x="170" y="146" width="210" height="108"/>
-                                <animations/>
-                                <string key="text">Top-up your wallet with SEPA and SWIFT.  
-  
-Whatever amount you transfer (up to 1,000 EUR) will be converted to Bitcoin and sent directly into your wallet.  
-  
-To set up QuickTransfer for your wallet we need a phone number and your email address.</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your account isn't configured yet" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1yf-cA-fzT">
-                                <rect key="frame" x="20" y="102" width="360" height="20"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Transfer money" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1yf-cA-fzT">
+                                <rect key="frame" x="20" y="127" width="360" height="24"/>
                                 <animations/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="20" id="CRk-xQ-3XU"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="20"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="20"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YGM-lF-B7E" customClass="MRCButton">
-                                <rect key="frame" x="183" y="278" width="34" height="30"/>
+                                <rect key="frame" x="133" y="230" width="135" height="30"/>
                                 <animations/>
-                                <color key="tintColor" red="0.062745098039215685" green="0.52941176470588236" blue="0.75294117647058822" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="Start"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="bordered" value="YES"/>
-                                </userDefinedRuntimeAttributes>
+                                <state key="normal" title="Setup quicktransfer"/>
                                 <connections>
                                     <action selector="startConfiguration:" destination="X1Y-BT-GJd" eventType="touchUpInside" id="DIW-lV-a1G"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Quicktransfer isn't configured" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cnE-Hs-sde">
+                                <rect key="frame" x="60" y="155" width="280" height="16"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="13"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" image="mrcoin_quicktransfer.png" translatesAutoresizingMaskIntoConstraints="NO" id="ifT-s3-I1H">
+                                <rect key="frame" x="256" y="263" width="104" height="150"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="104" id="Mdx-Me-YVo"/>
+                                    <constraint firstAttribute="height" constant="150" id="tAy-kn-d53"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <animations/>
                         <constraints>
-                            <constraint firstItem="FlV-wS-RMP" firstAttribute="leading" secondItem="ifT-s3-I1H" secondAttribute="trailing" constant="8" id="ABz-DL-Iax"/>
-                            <constraint firstItem="YGM-lF-B7E" firstAttribute="top" secondItem="ifT-s3-I1H" secondAttribute="bottom" constant="8" id="Nig-UH-Znj"/>
+                            <constraint firstItem="FlV-wS-RMP" firstAttribute="trailing" secondItem="cnE-Hs-sde" secondAttribute="trailing" id="3lo-We-a2t"/>
+                            <constraint firstItem="ifT-s3-I1H" firstAttribute="trailing" secondItem="NLu-Su-OCH" secondAttribute="trailingMargin" constant="-20" id="489-hi-JrO"/>
+                            <constraint firstItem="FlV-wS-RMP" firstAttribute="top" secondItem="cnE-Hs-sde" secondAttribute="bottom" constant="16" id="ByR-cr-eHz"/>
+                            <constraint firstItem="cnE-Hs-sde" firstAttribute="top" secondItem="1yf-cA-fzT" secondAttribute="bottom" constant="4" id="Emg-ks-7zE"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="cnE-Hs-sde" secondAttribute="trailing" constant="40" id="L75-l6-9Kh"/>
                             <constraint firstAttribute="trailingMargin" secondItem="1yf-cA-fzT" secondAttribute="trailing" id="Rdj-ax-e0v"/>
-                            <constraint firstItem="ifT-s3-I1H" firstAttribute="leading" secondItem="NLu-Su-OCH" secondAttribute="leadingMargin" id="YjG-9w-4OT"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="FlV-wS-RMP" secondAttribute="trailing" id="boR-v6-BmQ"/>
-                            <constraint firstItem="YGM-lF-B7E" firstAttribute="centerX" secondItem="NLu-Su-OCH" secondAttribute="centerX" id="dr9-Dn-dSO"/>
-                            <constraint firstItem="ifT-s3-I1H" firstAttribute="centerY" secondItem="NLu-Su-OCH" secondAttribute="centerY" id="ggg-uZ-KDH"/>
+                            <constraint firstItem="YGM-lF-B7E" firstAttribute="top" secondItem="FlV-wS-RMP" secondAttribute="bottom" constant="16" id="Vbb-JP-R0u"/>
+                            <constraint firstItem="ifT-s3-I1H" firstAttribute="centerY" secondItem="NLu-Su-OCH" secondAttribute="centerY" constant="138" id="ggg-uZ-KDH"/>
                             <constraint firstItem="FlV-wS-RMP" firstAttribute="centerY" secondItem="NLu-Su-OCH" secondAttribute="centerY" id="hpj-UA-A6d"/>
-                            <constraint firstItem="ifT-s3-I1H" firstAttribute="top" secondItem="1yf-cA-fzT" secondAttribute="bottom" constant="8" id="pX1-zd-BVI"/>
+                            <constraint firstItem="FlV-wS-RMP" firstAttribute="leading" secondItem="cnE-Hs-sde" secondAttribute="leading" id="kKE-f5-fCR"/>
+                            <constraint firstItem="YGM-lF-B7E" firstAttribute="centerX" secondItem="NLu-Su-OCH" secondAttribute="centerX" id="pkg-db-mEM"/>
                             <constraint firstItem="1yf-cA-fzT" firstAttribute="leading" secondItem="NLu-Su-OCH" secondAttribute="leadingMargin" id="wAk-de-TKh"/>
+                            <constraint firstItem="cnE-Hs-sde" firstAttribute="leading" secondItem="NLu-Su-OCH" secondAttribute="leadingMargin" constant="40" id="xQX-aV-LnU"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="QgR-yO-72K"/>
@@ -365,53 +376,15 @@ To set up QuickTransfer for your wallet we need a phone number and your email ad
                         <rect key="frame" x="0.0" y="0.0" width="400" height="400"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b91-Qb-7XM">
-                                <rect key="frame" x="124" y="11" width="153" height="35"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="transfer money: to the following bank account" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b91-Qb-7XM">
+                                <rect key="frame" x="74" y="10" width="254" height="48"/>
                                 <animations/>
-                                <attributedString key="attributedText">
-                                    <fragment content="t">
-                                        <attributes>
-                                            <color key="NSColor" red="0.2627450980392157" green="0.2627450980392157" blue="0.2627450980392157" alpha="1" colorSpace="calibratedRGB"/>
-                                            <font key="NSFont" size="16" name="HelveticaNeue-Light"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
-                                        </attributes>
-                                    </fragment>
-                                    <fragment content="ransfer money">
-                                        <attributes>
-                                            <color key="NSColor" red="0.2627450980392157" green="0.2627450980392157" blue="0.2627450980392157" alpha="1" colorSpace="calibratedRGB"/>
-                                            <font key="NSFont" size="17" name="HelveticaNeue-Light"/>
-                                            <font key="NSOriginalFont" size="16" name="HelveticaNeue-Light"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
-                                        </attributes>
-                                    </fragment>
-                                    <fragment content=":">
-                                        <attributes>
-                                            <color key="NSColor" red="0.2627450980392157" green="0.2627450980392157" blue="0.2627450980392157" alpha="1" colorSpace="calibratedRGB"/>
-                                            <font key="NSFont" size="16" name="HelveticaNeue-Light"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
-                                        </attributes>
-                                    </fragment>
-                                    <fragment content=" ">
-                                        <attributes>
-                                            <color key="NSColor" red="0.2627450980392157" green="0.2627450980392157" blue="0.2627450980392157" alpha="1" colorSpace="calibratedRGB"/>
-                                            <font key="NSFont" size="16" name="HelveticaNeue-Light"/>
-                                            <font key="NSOriginalFont" size="16" name="HelveticaNeue-Light"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
-                                        </attributes>
-                                    </fragment>
-                                    <fragment content="to the following bank account">
-                                        <attributes>
-                                            <color key="NSColor" red="0.2627450980392157" green="0.2627450980392157" blue="0.2627450980392157" alpha="1" colorSpace="calibratedRGB"/>
-                                            <font key="NSFont" size="12" name="HelveticaNeue-Light"/>
-                                            <font key="NSOriginalFont" size="14" name="HelveticaNeue-Light"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
-                                        </attributes>
-                                    </fragment>
-                                </attributedString>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="20"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Name" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6G1-HD-Kjn">
-                                <rect key="frame" x="54" y="66" width="65" height="15"/>
+                                <rect key="frame" x="54" y="78" width="65" height="15"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="65" id="97S-j9-jP2"/>
@@ -421,7 +394,7 @@ To set up QuickTransfer for your wallet we need a phone number and your email ad
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="IBAN" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FFY-03-AlO">
-                                <rect key="frame" x="54" y="89" width="65" height="15"/>
+                                <rect key="frame" x="54" y="101" width="65" height="15"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="65" id="cVp-hv-yIA"/>
@@ -431,7 +404,7 @@ To set up QuickTransfer for your wallet we need a phone number and your email ad
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="SWIFT (BIC)" textAlignment="right" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C65-iM-4dE">
-                                <rect key="frame" x="54" y="112" width="65" height="29"/>
+                                <rect key="frame" x="54" y="124" width="65" height="29"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="65" id="y5k-4e-QAF"/>
@@ -441,7 +414,7 @@ To set up QuickTransfer for your wallet we need a phone number and your email ad
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="center" verticalHuggingPriority="249" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="9" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rz2-up-4Yf">
-                                <rect key="frame" x="51" y="190" width="299" height="61"/>
+                                <rect key="frame" x="51" y="202" width="299" height="61"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="61" id="Nrk-5T-CRY"/>
@@ -455,7 +428,7 @@ Please allow 12-48 banking hours for the transfer to clear in the Plan Old Ban
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VoE-dv-l0f" customClass="MRCButton">
-                                <rect key="frame" x="158" y="295" width="180" height="50"/>
+                                <rect key="frame" x="158" y="307" width="180" height="50"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="180" id="vbg-yM-aoo"/>
@@ -463,15 +436,12 @@ Please allow 12-48 banking hours for the transfer to clear in the Plan Old Ban
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="12"/>
                                 <state key="normal" title="Help me, I have a problem!"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="bordered" value="YES"/>
-                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="help:" destination="xEJ-gk-wob" eventType="touchUpInside" id="LaJ-bO-pdc"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OYr-22-eRD" customClass="MRCCopiableButton">
-                                <rect key="frame" x="127" y="64" width="215" height="20"/>
+                                <rect key="frame" x="127" y="76" width="215" height="20"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="215" id="3aY-JH-pQa"/>
@@ -483,7 +453,7 @@ Please allow 12-48 banking hours for the transfer to clear in the Plan Old Ban
                                 </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="giL-jJ-ygB" customClass="MRCCopiableButton">
-                                <rect key="frame" x="127" y="87" width="215" height="20"/>
+                                <rect key="frame" x="127" y="99" width="215" height="20"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="215" id="T3K-6A-p18"/>
@@ -495,7 +465,7 @@ Please allow 12-48 banking hours for the transfer to clear in the Plan Old Ban
                                 </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FVH-2M-Mrq" customClass="MRCCopiableButton">
-                                <rect key="frame" x="127" y="110" width="215" height="20"/>
+                                <rect key="frame" x="127" y="122" width="215" height="20"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="Fhf-4f-wIE"/>
@@ -507,7 +477,7 @@ Please allow 12-48 banking hours for the transfer to clear in the Plan Old Ban
                                 </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tDX-x8-lKb" customClass="MRCCopiableButton">
-                                <rect key="frame" x="127" y="147" width="215" height="20"/>
+                                <rect key="frame" x="127" y="159" width="215" height="20"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="215" id="SH1-O6-o8G"/>
@@ -519,7 +489,7 @@ Please allow 12-48 banking hours for the transfer to clear in the Plan Old Ban
                                 </state>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" image="mrcoin.png" translatesAutoresizingMaskIntoConstraints="NO" id="vAW-r2-1dt">
-                                <rect key="frame" x="58" y="270" width="96" height="120"/>
+                                <rect key="frame" x="58" y="282" width="96" height="120"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="120" id="2TO-dV-Z8v"/>
@@ -527,7 +497,7 @@ Please allow 12-48 banking hours for the transfer to clear in the Plan Old Ban
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="J03-bA-adh">
-                                <rect key="frame" x="160" y="353" width="176" height="25"/>
+                                <rect key="frame" x="160" y="365" width="176" height="25"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="176" id="UOS-fv-Z6T"/>
@@ -556,7 +526,7 @@ Please allow 12-48 banking hours for the transfer to clear in the Plan Old Ban
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" textAlignment="right" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dAC-Ce-Esu">
-                                <rect key="frame" x="54" y="149" width="65" height="29"/>
+                                <rect key="frame" x="54" y="161" width="65" height="29"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="65" id="nZv-n5-JPt"/>
@@ -645,102 +615,6 @@ re</string>
             </objects>
             <point key="canvasLocation" x="1548" y="-2643"/>
         </scene>
-        <!--Form: Wallet Key-->
-        <scene sceneID="kC0-fM-qkK">
-            <objects>
-                <viewController storyboardIdentifier="Form_Wallet" id="I8F-Sj-4hi" userLabel="Form: Wallet Key" customClass="MRCWalletAddressViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="YTZ-IG-uoZ"/>
-                        <viewControllerLayoutGuide type="bottom" id="4Eu-vV-FBU"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="t6f-kq-JrI">
-                        <rect key="frame" x="0.0" y="0.0" width="400" height="400"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter your wallet keys" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R1E-4q-6hf">
-                                <rect key="frame" x="101" y="20" width="198" height="27"/>
-                                <animations/>
-                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="22"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Wallet public key" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jmf-02-an8" customClass="MRCTextInput">
-                                <rect key="frame" x="100" y="89" width="200" height="30"/>
-                                <animations/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="200" id="9XH-gK-nic"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="hasPasteButton" value="YES"/>
-                                </userDefinedRuntimeAttributes>
-                            </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please enter your destination bitcoin address below." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m8j-qr-gBr">
-                                <rect key="frame" x="20" y="55" width="360" height="14"/>
-                                <animations/>
-                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Wallet private key" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="h1C-qH-hFB" customClass="MRCTextInput">
-                                <rect key="frame" x="100" y="127" width="200" height="30"/>
-                                <animations/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="200" id="SEZ-h2-9R5"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="hasPasteButton" value="YES"/>
-                                </userDefinedRuntimeAttributes>
-                            </textField>
-                            <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kgg-Aw-Sec" customClass="MRCButton">
-                                <rect key="frame" x="169" y="177" width="62" height="30"/>
-                                <animations/>
-                                <state key="normal" title="Continue"/>
-                                <connections>
-                                    <action selector="nextPage:" destination="I8F-Sj-4hi" eventType="touchUpInside" id="3AU-uR-fEI"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <animations/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="h1C-qH-hFB" firstAttribute="top" secondItem="jmf-02-an8" secondAttribute="bottom" constant="8" id="2fU-8v-duv"/>
-                            <constraint firstItem="jmf-02-an8" firstAttribute="centerX" secondItem="m8j-qr-gBr" secondAttribute="centerX" id="DrS-is-ERn"/>
-                            <constraint firstItem="R1E-4q-6hf" firstAttribute="centerX" secondItem="t6f-kq-JrI" secondAttribute="centerX" id="Fd0-Fw-6D7"/>
-                            <constraint firstItem="m8j-qr-gBr" firstAttribute="trailing" secondItem="t6f-kq-JrI" secondAttribute="trailingMargin" id="Hlb-Yj-CmB"/>
-                            <constraint firstItem="kgg-Aw-Sec" firstAttribute="centerX" secondItem="jmf-02-an8" secondAttribute="centerX" id="Khe-QV-waK"/>
-                            <constraint firstItem="h1C-qH-hFB" firstAttribute="centerX" secondItem="t6f-kq-JrI" secondAttribute="centerX" id="XPL-TH-cuv"/>
-                            <constraint firstItem="R1E-4q-6hf" firstAttribute="top" secondItem="YTZ-IG-uoZ" secondAttribute="bottom" constant="20" id="kvE-1e-NFr"/>
-                            <constraint firstItem="kgg-Aw-Sec" firstAttribute="top" secondItem="h1C-qH-hFB" secondAttribute="bottom" constant="20" id="ouL-vz-eGM"/>
-                            <constraint firstItem="m8j-qr-gBr" firstAttribute="leading" secondItem="t6f-kq-JrI" secondAttribute="leadingMargin" id="qR6-7a-ihf"/>
-                            <constraint firstItem="m8j-qr-gBr" firstAttribute="top" secondItem="R1E-4q-6hf" secondAttribute="bottom" constant="8" id="rjU-Gt-eyp"/>
-                            <constraint firstItem="jmf-02-an8" firstAttribute="top" secondItem="m8j-qr-gBr" secondAttribute="bottom" constant="20" id="tDC-au-EOY"/>
-                        </constraints>
-                        <connections>
-                            <outletCollection property="gestureRecognizers" destination="eP9-dR-EcV" appends="YES" id="vhF-QE-m18"/>
-                        </connections>
-                    </view>
-                    <navigationItem key="navigationItem" id="Y9a-J4-Ofx"/>
-                    <nil key="simulatedStatusBarMetrics"/>
-                    <nil key="simulatedTopBarMetrics"/>
-                    <nil key="simulatedBottomBarMetrics"/>
-                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
-                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="400" height="400"/>
-                    <connections>
-                        <outlet property="nextButton" destination="kgg-Aw-Sec" id="lf4-Pz-62G"/>
-                        <outlet property="privateKey" destination="h1C-qH-hFB" id="4NM-DE-jxe"/>
-                        <outlet property="publicKey" destination="jmf-02-an8" id="Wsv-Y6-HIY"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="duj-OE-7WT" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="eP9-dR-EcV"/>
-            </objects>
-            <point key="canvasLocation" x="644" y="-2543"/>
-        </scene>
         <!--Form: Phone Verification-->
         <scene sceneID="Q3N-OP-Txt">
             <objects>
@@ -754,14 +628,14 @@ re</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phone number verification" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PCd-vK-NNr">
-                                <rect key="frame" x="79" y="20" width="243" height="27"/>
+                                <rect key="frame" x="79" y="0.0" width="243" height="27"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" weight="thin" pointSize="22"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BPN-ch-rXX">
-                                <rect key="frame" x="20" y="55" width="360" height="40"/>
+                                <rect key="frame" x="20" y="35" width="360" height="40"/>
                                 <animations/>
                                 <string key="text">You will receive a verification code shortly...
 
@@ -771,7 +645,7 @@ Please enter it below when you receive it</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="weg-gb-Sej" customClass="MRCButton">
-                                <rect key="frame" x="169" y="211" width="62" height="30"/>
+                                <rect key="frame" x="169" y="191" width="62" height="30"/>
                                 <animations/>
                                 <state key="normal" title="Continue"/>
                                 <connections>
@@ -779,7 +653,7 @@ Please enter it below when you receive it</string>
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter verification code" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mzi-R9-E8e" customClass="MRCTextInput">
-                                <rect key="frame" x="100" y="115" width="200" height="80"/>
+                                <rect key="frame" x="100" y="95" width="200" height="80"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="L8Q-St-2Jf"/>
@@ -789,10 +663,11 @@ Please enter it below when you receive it</string>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="done"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="hasPasteButton" value="NO"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="cursor" value="NO"/>
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uvt-hW-lT3">
-                                <rect key="frame" x="125" y="257" width="150" height="28"/>
+                                <rect key="frame" x="125" y="237" width="150" height="28"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <state key="normal" title="Resend verification code"/>
@@ -801,7 +676,7 @@ Please enter it below when you receive it</string>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6OM-8R-wjy">
-                                <rect key="frame" x="131" y="289" width="139" height="28"/>
+                                <rect key="frame" x="131" y="269" width="139" height="28"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <state key="normal" title="Change phone number"/>
@@ -811,7 +686,6 @@ Please enter it below when you receive it</string>
                             </button>
                         </subviews>
                         <animations/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="mzi-R9-E8e" firstAttribute="top" secondItem="BPN-ch-rXX" secondAttribute="bottom" constant="20" id="G09-pU-4Hb"/>
                             <constraint firstItem="weg-gb-Sej" firstAttribute="centerX" secondItem="mzi-R9-E8e" secondAttribute="centerX" id="MD0-pe-wRO"/>
@@ -819,7 +693,7 @@ Please enter it below when you receive it</string>
                             <constraint firstItem="PCd-vK-NNr" firstAttribute="centerX" secondItem="MLb-Mg-y0x" secondAttribute="centerX" id="UFo-4g-X3B"/>
                             <constraint firstItem="BPN-ch-rXX" firstAttribute="leading" secondItem="MLb-Mg-y0x" secondAttribute="leadingMargin" id="Zoy-d8-T6m"/>
                             <constraint firstItem="6OM-8R-wjy" firstAttribute="top" secondItem="uvt-hW-lT3" secondAttribute="bottom" constant="4" id="atu-i3-PKr"/>
-                            <constraint firstItem="PCd-vK-NNr" firstAttribute="top" secondItem="8XM-h2-oEs" secondAttribute="bottom" constant="20" id="egb-7F-4dU"/>
+                            <constraint firstItem="PCd-vK-NNr" firstAttribute="top" secondItem="8XM-h2-oEs" secondAttribute="bottom" id="egb-7F-4dU"/>
                             <constraint firstItem="uvt-hW-lT3" firstAttribute="centerX" secondItem="MLb-Mg-y0x" secondAttribute="centerX" id="gad-tJ-dAh"/>
                             <constraint firstItem="BPN-ch-rXX" firstAttribute="top" secondItem="PCd-vK-NNr" secondAttribute="bottom" constant="8" id="gba-Si-Py8"/>
                             <constraint firstItem="6OM-8R-wjy" firstAttribute="centerX" secondItem="MLb-Mg-y0x" secondAttribute="centerX" id="jDH-YM-5iE"/>
@@ -848,7 +722,7 @@ Please enter it below when you receive it</string>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lsn-j3-1d8" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer id="REm-Cw-3gb"/>
             </objects>
-            <point key="canvasLocation" x="644" y="-1583"/>
+            <point key="canvasLocation" x="620" y="-2069"/>
         </scene>
         <!--Form: Terms of Service-->
         <scene sceneID="ikB-VM-Gla">
@@ -897,7 +771,6 @@ Please enter it below when you receive it</string>
                             </button>
                         </subviews>
                         <animations/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="nAW-8g-iHk" firstAttribute="top" secondItem="JtS-ke-sH4" secondAttribute="bottom" id="1go-U9-hmP"/>
                             <constraint firstItem="nAW-8g-iHk" firstAttribute="top" secondItem="X5S-8g-Qph" secondAttribute="bottom" constant="20" id="61r-Y7-4ZE"/>
@@ -948,7 +821,7 @@ Please enter it below when you receive it</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NVo-sY-R3r" customClass="MRCButton">
-                                <rect key="frame" x="169" y="227" width="62" height="30"/>
+                                <rect key="frame" x="169" y="207" width="62" height="30"/>
                                 <animations/>
                                 <state key="normal" title="Continue"/>
                                 <connections>
@@ -956,14 +829,14 @@ Please enter it below when you receive it</string>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter your email address" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3A9-r9-l9e">
-                                <rect key="frame" x="86" y="20" width="228" height="27"/>
+                                <rect key="frame" x="86" y="0.0" width="228" height="27"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" weight="thin" pointSize="22"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LPJ-jW-qEQ">
-                                <rect key="frame" x="20" y="55" width="360" height="106"/>
+                                <rect key="frame" x="20" y="35" width="360" height="106"/>
                                 <animations/>
                                 <string key="text">Please enter your email below.  
   
@@ -975,7 +848,7 @@ Please see MrCoin's Privacy Policy if in doubt.</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fyQ-tR-s6U" customClass="MRCTextInput">
-                                <rect key="frame" x="100" y="181" width="200" height="30"/>
+                                <rect key="frame" x="100" y="161" width="200" height="30"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="r3n-Kd-UYl"/>
@@ -991,10 +864,9 @@ Please see MrCoin's Privacy Policy if in doubt.</string>
                             </textField>
                         </subviews>
                         <animations/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="NVo-sY-R3r" firstAttribute="top" secondItem="fyQ-tR-s6U" secondAttribute="bottom" constant="16" id="7MH-aB-GH4"/>
-                            <constraint firstItem="3A9-r9-l9e" firstAttribute="top" secondItem="IMy-8b-JM4" secondAttribute="bottom" constant="20" id="FBa-Gc-lne"/>
+                            <constraint firstItem="3A9-r9-l9e" firstAttribute="top" secondItem="IMy-8b-JM4" secondAttribute="bottom" id="FBa-Gc-lne"/>
                             <constraint firstItem="LPJ-jW-qEQ" firstAttribute="trailing" secondItem="A9f-7b-t9l" secondAttribute="trailingMargin" id="JoL-jN-Yyk"/>
                             <constraint firstItem="LPJ-jW-qEQ" firstAttribute="leading" secondItem="A9f-7b-t9l" secondAttribute="leadingMargin" id="cjh-bS-NYp"/>
                             <constraint firstItem="fyQ-tR-s6U" firstAttribute="top" secondItem="LPJ-jW-qEQ" secondAttribute="bottom" constant="20" id="dIr-Ah-Vgg"/>
@@ -1022,7 +894,7 @@ Please see MrCoin's Privacy Policy if in doubt.</string>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="C3Q-6I-edD" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer id="Wtk-AQ-AMQ"/>
             </objects>
-            <point key="canvasLocation" x="644" y="-1099"/>
+            <point key="canvasLocation" x="620" y="-1585"/>
         </scene>
         <!--Form: Complete-->
         <scene sceneID="W0s-Zb-HPU">
@@ -1061,7 +933,6 @@ Please see MrCoin's Privacy Policy if in doubt.</string>
                             </label>
                         </subviews>
                         <animations/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="L1Z-bU-xH8" firstAttribute="trailing" secondItem="Qhf-Ea-pk6" secondAttribute="trailingMargin" id="4AP-Yb-wzT"/>
                             <constraint firstItem="yKB-Fv-H2v" firstAttribute="centerX" secondItem="Qhf-Ea-pk6" secondAttribute="centerX" id="BUd-Q9-zic"/>
@@ -1086,7 +957,7 @@ Please see MrCoin's Privacy Policy if in doubt.</string>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KdH-Nn-auf" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer id="Rrx-Sc-OYK"/>
             </objects>
-            <point key="canvasLocation" x="644" y="-145"/>
+            <point key="canvasLocation" x="620" y="-623"/>
         </scene>
         <!--Form: Currency-->
         <scene sceneID="Scp-3g-ovd">
@@ -1101,7 +972,7 @@ Please see MrCoin's Privacy Policy if in doubt.</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DUf-XS-6GU" customClass="MRCButton">
-                                <rect key="frame" x="169" y="187" width="62" height="30"/>
+                                <rect key="frame" x="169" y="115" width="62" height="30"/>
                                 <animations/>
                                 <state key="normal" title="Continue"/>
                                 <connections>
@@ -1109,22 +980,21 @@ Please see MrCoin's Privacy Policy if in doubt.</string>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select Currency" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W9B-YZ-VGu">
-                                <rect key="frame" x="126" y="20" width="148" height="27"/>
+                                <rect key="frame" x="126" y="0.0" width="148" height="27"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" weight="thin" pointSize="22"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oHR-7v-hXr">
-                                <rect key="frame" x="20" y="55" width="360" height="66"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please select currency below." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oHR-7v-hXr">
+                                <rect key="frame" x="20" y="35" width="360" height="14"/>
                                 <animations/>
-                                <string key="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi eu dictum orci. Quisque accumsan tellus lectus, et cursus felis maximus at. Vestibulum lacus nisi, ornare in lacinia vel, pellentesque vitae tellus. Nullam libero leo, tincidunt et metus non, faucibus sollicitudin libero</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Select currency" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OtA-KB-CKC" customClass="MRCDropDown">
-                                <rect key="frame" x="100" y="141" width="200" height="30"/>
+                                <rect key="frame" x="100" y="69" width="200" height="30"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="Feb-iT-Z4S"/>
@@ -1140,11 +1010,10 @@ Please see MrCoin's Privacy Policy if in doubt.</string>
                             </textField>
                         </subviews>
                         <animations/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="DUf-XS-6GU" firstAttribute="top" secondItem="OtA-KB-CKC" secondAttribute="bottom" constant="16" id="J2P-Kk-EzG"/>
                             <constraint firstItem="oHR-7v-hXr" firstAttribute="leading" secondItem="TQE-2z-uwq" secondAttribute="leadingMargin" id="KB9-Ls-Mre"/>
-                            <constraint firstItem="W9B-YZ-VGu" firstAttribute="top" secondItem="MIm-dS-GcM" secondAttribute="bottom" constant="20" id="KDJ-Af-0us"/>
+                            <constraint firstItem="W9B-YZ-VGu" firstAttribute="top" secondItem="MIm-dS-GcM" secondAttribute="bottom" id="KDJ-Af-0us"/>
                             <constraint firstItem="DUf-XS-6GU" firstAttribute="centerX" secondItem="OtA-KB-CKC" secondAttribute="centerX" id="Y8e-EP-PM1"/>
                             <constraint firstItem="DUf-XS-6GU" firstAttribute="centerX" secondItem="TQE-2z-uwq" secondAttribute="centerX" id="aCb-Th-1q4"/>
                             <constraint firstItem="OtA-KB-CKC" firstAttribute="top" secondItem="oHR-7v-hXr" secondAttribute="bottom" constant="20" id="bv1-Wg-Bfz"/>
@@ -1171,7 +1040,7 @@ Please see MrCoin's Privacy Policy if in doubt.</string>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3xZ-8e-FKe" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer id="3fm-dE-eaS"/>
             </objects>
-            <point key="canvasLocation" x="644" y="-615"/>
+            <point key="canvasLocation" x="620" y="-1101"/>
         </scene>
         <!--Currency Settings-->
         <scene sceneID="HKH-lD-Q2n">
@@ -1181,7 +1050,7 @@ Please see MrCoin's Privacy Policy if in doubt.</string>
                         <rect key="frame" x="0.0" y="0.0" width="400" height="400"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <animations/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="MRCCurrencyCell" id="nBW-Bm-kZo">
                                 <rect key="frame" x="0.0" y="40" width="400" height="44"/>
@@ -1192,6 +1061,7 @@ Please see MrCoin's Privacy Policy if in doubt.</string>
                                     <animations/>
                                 </tableViewCellContentView>
                                 <animations/>
+                                <color key="backgroundColor" white="1" alpha="0.67000000000000004" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -1214,7 +1084,7 @@ Please see MrCoin's Privacy Policy if in doubt.</string>
                         <rect key="frame" x="0.0" y="0.0" width="400" height="400"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <animations/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" shouldIndentWhileEditing="NO" reuseIdentifier="SettingsLink" id="blU-Cu-5ep">
                                 <rect key="frame" x="0.0" y="60" width="400" height="44"/>
@@ -1226,7 +1096,7 @@ Please see MrCoin's Privacy Policy if in doubt.</string>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="101" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qrv-iI-2ZQ">
                                             <rect key="frame" x="18" y="11" width="349" height="20"/>
                                             <animations/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
                                             <color key="textColor" red="0.0" green="0.49809472269999999" blue="0.84534522249999999" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -1240,6 +1110,7 @@ Please see MrCoin's Privacy Policy if in doubt.</string>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <animations/>
+                                <color key="backgroundColor" white="1" alpha="0.67000000000000004" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" shouldIndentWhileEditing="NO" reuseIdentifier="SettingsValue" id="pxn-QF-KPv">
                                 <rect key="frame" x="0.0" y="104" width="400" height="44"/>
@@ -1248,20 +1119,20 @@ Please see MrCoin's Privacy Policy if in doubt.</string>
                                     <rect key="frame" x="0.0" y="0.0" width="400" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" tag="202" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Bo-b0-lxy">
-                                            <rect key="frame" x="126" y="11" width="266" height="21"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" tag="202" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="3Bo-b0-lxy">
+                                            <rect key="frame" x="176" y="11" width="216" height="21"/>
                                             <animations/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
                                             <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="201" contentMode="left" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qis-b9-6iC">
-                                            <rect key="frame" x="18" y="13" width="100" height="18"/>
+                                            <rect key="frame" x="18" y="11" width="150" height="21"/>
                                             <animations/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="100" id="ov8-jC-Er6"/>
+                                                <constraint firstAttribute="width" constant="150" id="ov8-jC-Er6"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -1288,6 +1159,7 @@ Please see MrCoin's Privacy Policy if in doubt.</string>
                                     </variation>
                                 </tableViewCellContentView>
                                 <animations/>
+                                <color key="backgroundColor" white="1" alpha="0.67000000000000004" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -1305,6 +1177,7 @@ Please see MrCoin's Privacy Policy if in doubt.</string>
     </scenes>
     <resources>
         <image name="mrcoin.png" width="86" height="113"/>
-        <image name="mrcoin_masked.png" width="141" height="176"/>
+        <image name="mrcoin_quicktransfer.png" width="121" height="154"/>
     </resources>
+    <color key="tintColor" red="0.96862745100000003" green="0.56470588239999997" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
 </document>

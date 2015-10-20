@@ -180,17 +180,22 @@
     NSArray *_pageNames;
     
     BOOL _animation;
+    
+    UIImageView *wallpaper;
 }
 
 #pragma mark - Initialization
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    wallpaper = [[UIImageView alloc] initWithImage:[[MrCoin settings] formBackgroundImage]];
+//    wallpaper.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+//    wallpaper.image = ;
+    wallpaper.contentMode = UIViewContentModeBottomLeft;
+    wallpaper.clipsToBounds = YES;
+    [self.view insertSubview:wallpaper atIndex:0];
 
-    // Load country list
-    [[MrCoin api] getCountries:^(NSDictionary *dictionary) {
-    } error:^(NSArray *errors, MRCAPIErrorType errorType) {
-        NSLog(@"%@",errors);
-    }];
+
 
     // Create pages
     NSMutableArray *pages = [NSMutableArray array];
@@ -201,15 +206,19 @@
                           storyboardID:@"DocumentViewer"
                           showInProgressView:NO]];
     }
-    if(![[MrCoin settings] walletPublicKey] || ![[MrCoin settings] walletPrivateKey])
-    {
-        [pages addObject:[MRCFormPage
-                          pageWithTitle:NSLocalizedString(@"Wallet keys",nil)
-                          storyboardID:@"Form_Wallet"
-                          showInProgressView:YES]];
-    }
+//    if(![[MrCoin settings] walletPublicKey] || ![[MrCoin settings] walletPrivateKey])
+//    {
+//        [pages addObject:[MRCFormPage
+//                          pageWithTitle:NSLocalizedString(@"Wallet keys",nil)
+//                          storyboardID:@"Form_Wallet"
+//                          showInProgressView:YES]];
+//    }
     if(![[MrCoin settings] userPhone])
     {
+        // Load country list
+        [[MrCoin api] getCountries:^(NSDictionary *dictionary) {
+        } error:nil];
+
         [pages addObject:[MRCFormPage
                           pageWithTitle:NSLocalizedString(@"Phone number",nil)
                           storyboardID:@"Form_Phone"
@@ -275,6 +284,11 @@
     _animation = YES;
     [super viewWillAppear:animated];
 }
+-(void)viewWillDisappear:(BOOL)animated
+{
+    wallpaper.clipsToBounds = YES;
+    [super viewWillAppear:animated];
+}
 #pragma mark - Progress View delegate
 -(void)progressViewClosed:(MRCProgressView*)progressView
 {
@@ -283,6 +297,13 @@
 #pragma mark - Handle pages
 - (void) _showPage:(id)object reverse:(BOOL)reverse
 {
+    CGRect wallpaperFrame;
+    if(wallpaper){
+        wallpaperFrame = wallpaper.frame;
+        CGFloat max = wallpaper.image.size.width-self.view.frame.size.width;
+        wallpaperFrame.origin.x = -(max/(CGFloat)_pages.count)*_page;
+    }
+    
     MRCFormPage *page = _pages[_page];
     if(page.showInProgressView){
         _progressTop.constant = -10;
@@ -296,6 +317,9 @@
     if(_animation){
         [UIView animateWithDuration:0.5 animations:^{
             [self.view layoutIfNeeded];
+            if(wallpaper){
+                wallpaper.frame = wallpaperFrame;
+            }
         } completion:^(BOOL finished) {
             if(finished){
             }
@@ -334,8 +358,8 @@
     }
     newViewController.view.frame = r;
     
-    self.view.backgroundColor = newViewController.view.backgroundColor;
-    if(_overlay)    _overlay.backgroundColor = newViewController.view.backgroundColor;
+    self.view.backgroundColor = [[MrCoin settings] formBackgroundColor];
+    if(_overlay)    _overlay.backgroundColor = self.view.backgroundColor;
     
     if([newViewController isKindOfClass:[MRCTextViewController class]]){
         MRCTextViewController *vc = (MRCTextViewController*)newViewController;

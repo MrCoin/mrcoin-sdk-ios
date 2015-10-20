@@ -112,6 +112,11 @@ static MRCPopUpViewController *popup;
     return popup;
 }
 
+- (void)present
+{
+    UIViewController *rootView = [[[[UIApplication sharedApplication] delegate] window] rootViewController];
+    [self presentInViewController:rootView hideAfterDelay:0.0];
+}
 - (void)presentInViewController:(UIViewController *)viewController
 {
     [self presentInViewController:viewController hideAfterDelay:0.0];

@@ -12,7 +12,7 @@
 
 - (BOOL)isConfigured
 {
-    return (_walletPublicKey != nil && _walletPrivateKey != nil && _userEmail != nil && _userPhone != nil && _sourceCurrency != nil);
+    return (_userEmail != nil && _userPhone != nil && _sourceCurrency != nil);
 }
 - (NSString *)destinationCurrency
 {

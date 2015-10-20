@@ -40,10 +40,19 @@
             [_unconfigured.view removeFromSuperview];
             _unconfigured = nil;
         }
-        [self showTransferView];
+        if(!_page){
+            [self showTransferView];
+        }
     }else{
         if(!_unconfigured){
-            [self showUnconfigured];
+            if(_page){
+                [_page removeFromParentViewController];
+                [_page.view removeFromSuperview];
+                _page = nil;
+            }
+            if(!_unconfigured){
+                [self showUnconfigured];
+            }
         }
     }
     [super viewWillAppear:animated];
@@ -73,7 +82,7 @@
 - (IBAction) showForm:(id)sender;
 {
     UIViewController *form = [MrCoin viewController:@"Form"];
-    [self presentViewController:form animated:YES completion:^{
+    [sender presentViewController:form animated:YES completion:^{
     }];
 }
 - (IBAction) showSettings:(id)sender;

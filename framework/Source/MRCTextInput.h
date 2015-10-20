@@ -27,6 +27,7 @@
 
 @interface MRCTextInput : UITextField <UITextFieldDelegate>
 
+@property (nonatomic,readwrite) IBInspectable BOOL cursor;
 @property (nonatomic,readwrite) IBInspectable BOOL hasPasteButton;
 @property (nonatomic) id <MRCTextInputDelegate> textInputDelegate;
 @property (nonatomic) MRCInputDataType *dataType;

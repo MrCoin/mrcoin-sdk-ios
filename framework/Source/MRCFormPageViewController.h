@@ -27,9 +27,5 @@
 - (void)previousPage:(id)sender withObject:(id)object;
 
 - (void)showError:(NSString*)title message:(NSString*)message textInput:(MRCTextInput*)textInput;
-- (void)showErrorPopup:(NSString*)title message:(NSString*)message;
-- (void)showErrorTextInput:(MRCTextInput*)textInput error:(NSString*)title;
-
-- (void)showActivityIndicator:(NSString*)message;
 
 @end
