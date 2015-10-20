@@ -59,6 +59,9 @@
         NSInteger index = self.countrySelector.selectedRow;
         [[MrCoin api] setCountry:[[[MrCoin api] countries] objectAtIndex:index]];
         [[MrCoin settings] setSourceCurrencies:[[[MrCoin api] country] valueForKeyPath:@"attributes.currencies"]];
+
+        // TODO:
+        [[MrCoin settings] setSourceCurrency:@"EUR"];
         //
         NSString *prefix = [[[MrCoin api] country] valueForKeyPath:@"attributes.phone_prefix"];
         // Configure validator
@@ -84,8 +87,6 @@
 {
     [self.phoneTextInput endEditing:YES];
     //
-    [self showActivityIndicator:NSLocalizedString(@"Sending data to MrCoin...",nil)];
-    //
     [[MrCoin api] phone:[_phoneTextInput text] country:[_countrySelector text] success:^(NSDictionary *dictionary) {
         MRCPopUpViewController *popup = [MRCPopUpViewController sharedPopup];
         [popup dismissViewController];
@@ -94,10 +95,7 @@
         NSString *countryCode = [[[[MrCoin api] country] valueForKeyPath:@"attributes.code2"] lowercaseString];
         [[MrCoin settings] setUserCountryCode:countryCode];
         [super nextPage:self];
-    } error:^(NSArray *errors, MRCAPIErrorType errorType) {
-        [self showErrorPopup:@"Error" message:[errors.firstObject localizedDescription]];
-        NSLog(@"%@",errors);
-    }];
+    } error:nil];
         //        [self showErrorPopup:@"Invalid verification code" message:[NSString stringWithFormat:@"Verification code: '%@' is incorrect.",self.codeTextInput.text]];
         //        self.nextButton.enabled = NO;
         //        _codeTextInput.text = @"";

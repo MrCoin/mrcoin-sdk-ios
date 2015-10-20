@@ -49,13 +49,9 @@
     _codeTextInput.text = @"";
     [_codeTextInput hideError];
     
-    [self showActivityIndicator:NSLocalizedString(@"Sending data to MrCoin...",nil)];
-    //
     [[MrCoin api] phone:[[MrCoin settings] userPhone] country:[[MrCoin settings] userCountryCode] success:^(NSDictionary *dictionary) {
 //        MRCPopUpViewController *popup = [MRCPopUpViewController sharedPopup];
-    } error:^(NSArray *errors, MRCAPIErrorType errorType) {
-        NSLog(@"%@",errors);
-    }];
+    } error:nil];
     [[self view] setNeedsLayout];
 //    MRCPopUpViewController *popup = [MRCPopUpViewController sharedPopup];
 //    [popup setStyle:MRCPopupLightStyle];
@@ -78,15 +74,12 @@
 - (void)nextPage:(id)sender
 {
     [self.codeTextInput endEditing:YES];
-    [self showActivityIndicator:NSLocalizedString(@"Sending data to MrCoin...",nil)];
     //
     [[MrCoin api] verifyPhone:_codeTextInput.text success:^(NSDictionary *dictionary) {
         MRCPopUpViewController *popup = [MRCPopUpViewController sharedPopup];
         [popup dismissViewController];
         [super nextPage:self];
-    } error:^(NSArray *errors, MRCAPIErrorType errorType) {
-        NSLog(@"%@",errors);
-    }];
+    } error:nil];
 }
 
 @end
