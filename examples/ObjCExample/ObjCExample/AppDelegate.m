@@ -7,16 +7,22 @@
 //
 
 #import "AppDelegate.h"
+#import <CoreBitcoin/CoreBitcoin.h>
+#import <CoreBitcoin/NS+BTCBase58.h>
+#import <CoreBitcoin/NSData+BTCData.h>
 
 @interface AppDelegate ()
 
 @end
 
 @implementation AppDelegate
-
+{
+    BTCKey *key;
+}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    key = [[BTCKey alloc] initWithWIF:@"5HpkEX6HKihoxMCwPTkWQmV4fDZPvjZr4zcXC5dZj5jwc539m9P"];
     
     MRCSettings *settings = [MrCoin settings];
     
@@ -26,7 +32,7 @@
     
     [[MrCoin sharedController] setNeedsAcceptTerms:NO];
     [[MrCoin sharedController] setDelegate:self];
-    [[MrCoin api] setLanguage:@"hu"];
+    
     [[MrCoin api] authenticate:^(id result) {
         NSLog(@"result: %@",result);
     } error:^(NSArray *errors, MRCAPIErrorType errorType) {
@@ -38,17 +44,21 @@
 #pragma mark - MrCoin Delegate
 -(NSString *)requestPublicKey
 {
-    return @"";
+    return [key.compressedPublicKey hex];
 }
 -(NSString *)requestPrivateKey
 {
-    return @"";
+    return BTCBase58CheckStringWithData(key.privateKey);
 }
 -(NSString *)requestMessageSignature:(NSString *)message privateKey:(NSString *)privateKey
 {
-    NSLog(@"message:    %@",message);
-    NSLog(@"privateKey: %@",privateKey);
-    return message;
+    NSData *hashedMessage = BTCSHA256([message dataUsingEncoding:NSUTF8StringEncoding]);
+    NSData *sign = [key signatureForHash:hashedMessage];
+    return BTCHexFromData(sign);
+}
+-(NSString *)requestDestinationAddress
+{
+    return [key.address base58String];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

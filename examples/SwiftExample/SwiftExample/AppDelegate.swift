@@ -13,11 +13,11 @@ import MrCoinFramework
 class AppDelegate: UIResponder, UIApplicationDelegate, MrCoinDelegate {
 
     var window: UIWindow?
-
+    let key = BTCKey(WIF: "5HpkEX6HKihoxMCwPTkWQmV4fDZPvjZr4zcXC5dZj5jwc539m9P");
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         window?.backgroundColor = UIColor.grayColor()
-        
+
         let settings = MrCoin.settings()
 
         // Framework Settings
@@ -27,11 +27,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MrCoinDelegate {
         // Setup your reseller key
         settings.resellerKey = "9b85a53c-88fb-4a56-b4b0-4088153e4b7e"
         
+        MrCoin.sharedController().delegate = self;
         MrCoin.sharedController().needsAcceptTerms = false;
 //        settings.userEmail = "email@domain.com"
 //        settings.userPhone = "+36307086085";
         
-        MrCoin.sharedController().delegate = self;
         MrCoin.api().language = "hu"
         MrCoin.api().authenticate({ (result) -> Void in
             print(result);
@@ -43,15 +43,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MrCoinDelegate {
     }
     
     // MARK: MrCoin Delegate
-    func requestPrivateKey() -> String! {
-        return "";
-    }
     func requestPublicKey() -> String! {
-        return "";
+        return key.compressedPublicKey.hex()
+    }
+    func requestPrivateKey() -> String! {
+        return BTCBase58CheckStringWithData(key.privateKey)
     }
     func requestMessageSignature(message: String!, privateKey: String!) -> String! {
-        print(message,privateKey);
-        return message;
+        let hash = BTCSHA256(message.dataUsingEncoding(NSUTF8StringEncoding))
+        let sign = key.signatureForHash(hash)
+        return BTCHexFromData(sign);
+    }
+    func requestDestinationAddress() -> String! {
+        return key.address.base58String;
     }
 
     func applicationWillResignActive(application: UIApplication) {

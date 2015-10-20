@@ -1,3 +1,0 @@
-[submodule "framework/Dependencies/secp256k1"]
-	path = framework/Dependencies/secp256k1
-	url = https://github.com/bitcoin/secp256k1.git
