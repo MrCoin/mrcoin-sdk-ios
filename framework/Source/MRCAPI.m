@@ -8,6 +8,8 @@
 
 #import "MRCAPI.h"
 #import "MrCoin.h"
+#import "NSData+NSHash.h"
+#import "NSString+NSHash.h"
 /*
  api:
  errors:
@@ -46,6 +48,49 @@
 #define API_URL         @"http://sandbox.mrcoin.eu/api/v1"
 
 @implementation MRCAPI
+
+- (NSData*) slip13Hash:(UInt32)index uri:(NSString*)URI
+{
+    // 1. Let’s concatenate the little endian representation of index with the URI.
+    UInt32 little =  CFSwapInt32HostToLittle(index);
+    NSMutableData *path = [NSMutableData data];
+    [path appendBytes:&little length:4];
+    [path appendData:[URI dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    // 2. Compute the SHA256 hash of the result.
+    return [path SHA256];
+}
+- (NSString*) slip13Path:(UInt32)index uri:(NSString*)URI
+{
+    NSData *hash = [self slip13Hash:index uri:URI];
+    return [self slip13Path:hash];
+}
+- (NSString*) slip13Path:(NSData*)hash
+{
+    // 3. Let’s take first 128 bits of the hash and split it into four 32-bit numbers A, B, C, D.
+    NSData *hashFirst128Bits = [hash subdataWithRange:NSMakeRange(0, 16)]; // first 16bytes (16*8 = 128)
+    
+    int32_t A,B,C,D;
+    [hashFirst128Bits getBytes:&A range:NSMakeRange(0, 4)];
+    [hashFirst128Bits getBytes:&B range:NSMakeRange(4, 4)];
+    [hashFirst128Bits getBytes:&C range:NSMakeRange(8, 4)];
+    [hashFirst128Bits getBytes:&D range:NSMakeRange(12, 4)];
+    
+    // 4. Set highest bits of numbers A, B, C, D to 1.
+//    A = A | 0b00000010;
+//    B = B | 0b00000010;
+//    C = C | 0b00000010;
+//    D = D | 0b00000010;
+    
+    NSString *a = [NSString stringWithFormat:@"m/%u/%u/%u/%u/%u",
+            0x80000000 | 13,
+            0x80000000 | A,
+            0x80000000 | B,
+            0x80000000 | C,
+            0x80000000 | D];
+    
+    return a;
+}
 
 - (void) authenticate:(APIResponse)responseBlock error:(APIResponseError)errorBlock
 {
@@ -364,3 +409,5 @@
 //}
 
 //@end
+
+

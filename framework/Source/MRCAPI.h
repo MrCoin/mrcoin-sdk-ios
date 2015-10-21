@@ -40,6 +40,11 @@ typedef void (^APIResponseError)(NSArray* errors, MRCAPIErrorType errorType);
 - (void) getPriceTicker:(APIResponse)responseBlock error:(APIResponseError)errorBlock;
 
 
+#pragma mark - SLIP-0013 (http://doc.satoshilabs.com/slips/slip-0013.html#hd-structure)
+- (NSData*) slip13Hash:(UInt32)index uri:(NSString*)URI;
+- (NSString*) slip13Path:(NSData*)hash;
+- (NSString*) slip13Path:(UInt32)index uri:(NSString*)URI;
+
 #pragma mark - Methods for testing
 //-(void) callMethod:(NSString*)methodName parameters:(NSDictionary*)parameters HTTPMethod:(NSString*)HTTPMethod response:(APIResponse)responseBlock error:(APIResponseError)errorBlock;
 -(NSURLRequest*) requestMethod:(NSString*)methodName parameters:(NSString*)jsonString HTTPMethod:(NSString*)HTTPMethod;
