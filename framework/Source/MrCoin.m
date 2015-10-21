@@ -7,6 +7,10 @@
 //
 
 #import "MrCoin.h"
+//#import "MRCFormViewController.m"
+#import "MRCPopUpViewController.h"
+
+@class MRCFormViewController;
 
 #define MRC_BUNDLE      @"MrCoin.bundle"
 #define MRC_STORYBOARD  @"MrCoin"
@@ -18,6 +22,19 @@
 @end
 
 @implementation MrCoin
+
+
++ (void) setupQuickTransfer
+{
+    [[MrCoin rootController] showForm:nil];
+}
++ (void) resetQuickTransfer
+{
+    [[MrCoin settings] resetSettings];
+    [self setupQuickTransfer];
+}
+
+
 
 static UIStoryboard *_sharedStoryboard;
 
@@ -69,8 +86,15 @@ static UIStoryboard *_sharedStoryboard;
 {
     if(!_userSettings){
         _userSettings = [[MRCSettings alloc] init];
+        _userSettings.sourceCurrency = @"EUR";
         _userSettings.showPopupOnError = YES;
         _userSettings.showErrorOnTextField = YES;
+        
+        _userSettings.supportEmail = @"support@mrcoin.eu";
+        _userSettings.supportURL = @"https://www.mrcoin.eu/contact";
+        _userSettings.shortTermsURL = @"https://www.mrcoin.eu/terms";
+        _userSettings.website = @"http://www.mrcoin.eu";
+        _userSettings.termsURL = @"https://www.mrcoin.eu/terms_full";
         [_userSettings loadSettings];
     }
     return _userSettings;
@@ -84,13 +108,17 @@ static UIStoryboard *_sharedStoryboard;
     UIWindow *w = [[[UIApplication sharedApplication] delegate] window];
     vc.view.frame = w.frame;
     [vc setMode:MRCShowDocuments];
-    [vc loadHTML:@""];
+
+    
     if(type == MrCoinDocumentTerms){
         [vc setTitle:@"Terms"];
+        [vc loadHTML:[[self settings] termsURL]];
     }else if(type == MrCoinDocumentShortTerms){
         [vc setTitle:@"Terms"];
+        [vc loadHTML:[[self settings] shortTermsURL]];
     }else if(type == MrCoinDocumentSupport){
         [vc setTitle:@"Support"];
+        [vc loadHTML:[[self settings] supportURL]];
     }
     return vc;
 }

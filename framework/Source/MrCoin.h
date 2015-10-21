@@ -8,28 +8,10 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
-
 #import "MrCoinViewController.h"
-
-#import "MRCFormViewController.h"
-#import "MRCFormPageViewController.h"
-
-#import "MRCEmptyViewController.h"
-#import "MRCTransferViewController.h"
-
-#import "MRCPopUpViewController.h"
 #import "MRCTextViewController.h"
-#import "MRCCurrencyTableViewController.h"
-
-#import "MRCProgressView.h"
-#import "MRCTextInput.h"
-#import "MRCDropDown.h"
-#import "MRCButton.h"
-#import "MRCCopiableButton.h"
-
-#import "MRCAPI.h"
 #import "MRCSettings.h"
-
+#import "MRCAPI.h"
 
 #define MRCOIN_URL      @"http://www.mrcoin.eu"
 #define MRCOIN_SUPPORT  @"support@mrcoin.eu"
@@ -46,7 +28,7 @@
 - (void) openURL:(NSURL*)url;
 - (void) sendMail:(NSString*)to subject:(NSString*)subject;
 
-- (void)showErrors:(NSArray*)errors type:(MRCAPIErrorType)type;
+- (void) showErrors:(NSArray*)errors type:(MRCAPIErrorType)type;
 - (void) hideErrorsPopup;
 - (void) showActivityIndicator:(NSString*)message;
 - (void) hideActivityIndicator;
@@ -78,6 +60,9 @@
 + (UIImage*) imageNamed:(NSString*)named;
 
 + (MRCAPI *)api;
+
++ (void) setupQuickTransfer;
++ (void) resetQuickTransfer;
 
 - (void) openURL:(NSURL*)url;
 - (void) sendMail:(NSString*)to subject:(NSString*)subject;

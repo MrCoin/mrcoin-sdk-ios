@@ -352,7 +352,7 @@
 			name = "Transter View";
 			sourceTree = "<group>";
 		};
-		266C3FC51BC3C3C400C0948E /* Registration */ = {
+		266C3FC51BC3C3C400C0948E /* Form */ = {
 			isa = PBXGroup;
 			children = (
 				26D65D281BC711E100DFF489 /* Terms of service */,
@@ -365,7 +365,7 @@
 				26DF33D21BCC6F5D004454A3 /* MRCFormPageViewController.h */,
 				26DF33D31BCC6F5D004454A3 /* MRCFormPageViewController.m */,
 			);
-			name = Registration;
+			name = Form;
 			sourceTree = "<group>";
 		};
 		266C3FE21BC43AEE00C0948E /* Phone */ = {
@@ -468,7 +468,7 @@
 				26FA7FC11BC2A6320018B72C /* Model */,
 				266C3FE41BC43B0800C0948E /* Welcome View */,
 				264134511BC52E260013C82C /* Transter View */,
-				266C3FC51BC3C3C400C0948E /* Registration */,
+				266C3FC51BC3C3C400C0948E /* Form */,
 				26FA7FAD1BC2A2E90018B72C /* User Interface */,
 				266C3FE31BC43AF900C0948E /* View Controllers */,
 				2622ACE01BC2911B0017259E /* MrCoin.h */,

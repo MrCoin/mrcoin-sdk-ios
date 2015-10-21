@@ -29,10 +29,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MrCoinDelegate {
         
         MrCoin.sharedController().delegate = self;
         MrCoin.sharedController().needsAcceptTerms = false;
-//        settings.userEmail = "email@domain.com"
-//        settings.userPhone = "+36307086085";
-        
-        MrCoin.api().language = "hu"
         MrCoin.api().authenticate({ (result) -> Void in
             print(result);
             }) { (errors, type) -> Void in

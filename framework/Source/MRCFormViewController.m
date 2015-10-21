@@ -13,7 +13,7 @@
 
 @interface MRCFormPage : NSObject
 
-+(instancetype) pageWithTitle:(NSString*)title storyboardID:(NSString*)storyboardID showInProgressView:(BOOL)showInProgressView;
++(instancetype) pageWithTitle:(NSString*)title storyboardID:(NSString*)storyboardID showInProgressView:( BOOL)showInProgressView;
 +(instancetype) pageWithTitle:(NSString*)title storyboardID:(NSString*)storyboardID;
 
 @property (nonatomic) NSString *title;
@@ -102,7 +102,7 @@
     CGContextRef context = UIGraphicsGetCurrentContext();
     
     // Create a gradient
-    NSArray *colors = [NSArray arrayWithObjects:(id)[self color:_backgroundColor alpha:1.0].CGColor,(id)[self color:_backgroundColor alpha:0.5].CGColor, (id)[self clearColor:_backgroundColor].CGColor, nil];
+    NSArray *colors = [NSArray arrayWithObjects:(id)[self color:_backgroundColor alpha:0.95].CGColor,(id)[self color:_backgroundColor alpha:0.5].CGColor, (id)[self clearColor:_backgroundColor].CGColor, nil];
 //    CGFloat colors [] = {
 //        1.0, 1.0, 1.0, 1.0,
 //        1.0, 1.0, 1.0, 0.0
@@ -187,15 +187,13 @@
 #pragma mark - Initialization
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    wallpaper = [[UIImageView alloc] initWithImage:[[MrCoin settings] formBackgroundImage]];
-//    wallpaper.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
-//    wallpaper.image = ;
-    wallpaper.contentMode = UIViewContentModeBottomLeft;
-    wallpaper.clipsToBounds = YES;
-    [self.view insertSubview:wallpaper atIndex:0];
 
-
+    if([[MrCoin settings] formBackgroundImage]){
+        wallpaper = [[UIImageView alloc] initWithImage:[[MrCoin settings] formBackgroundImage]];
+        wallpaper.contentMode = UIViewContentModeBottomLeft;
+        wallpaper.clipsToBounds = YES;
+        [self.view insertSubview:wallpaper atIndex:0];
+    }
 
     // Create pages
     NSMutableArray *pages = [NSMutableArray array];
@@ -206,13 +204,6 @@
                           storyboardID:@"DocumentViewer"
                           showInProgressView:NO]];
     }
-//    if(![[MrCoin settings] walletPublicKey] || ![[MrCoin settings] walletPrivateKey])
-//    {
-//        [pages addObject:[MRCFormPage
-//                          pageWithTitle:NSLocalizedString(@"Wallet keys",nil)
-//                          storyboardID:@"Form_Wallet"
-//                          showInProgressView:YES]];
-//    }
     if(![[MrCoin settings] userPhone])
     {
         // Load country list
@@ -358,13 +349,18 @@
     }
     newViewController.view.frame = r;
     
-    self.view.backgroundColor = [[MrCoin settings] formBackgroundColor];
+    if([[MrCoin settings] formBackgroundColor]){
+        self.view.backgroundColor = [[MrCoin settings] formBackgroundColor];
+    }else{
+        self.view.backgroundColor = [UIColor whiteColor];
+    }
     if(_overlay)    _overlay.backgroundColor = self.view.backgroundColor;
     
     if([newViewController isKindOfClass:[MRCTextViewController class]]){
         MRCTextViewController *vc = (MRCTextViewController*)newViewController;
         vc.mode = MRCTermsUserNeedsAcceptForm;
-        [vc loadHTML:@""];
+        vc.overlayView.backgroundColor = self.view.backgroundColor;
+        [vc loadHTML:[[MrCoin settings] termsURL]];
     }
 
     [_contentView addSubview:newViewController.view];

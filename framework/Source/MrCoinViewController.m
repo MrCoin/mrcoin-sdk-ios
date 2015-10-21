@@ -82,12 +82,15 @@
 - (IBAction) showForm:(id)sender;
 {
     UIViewController *form = [MrCoin viewController:@"Form"];
+    if(!sender) sender = [[[[UIApplication sharedApplication] delegate] window] rootViewController];
+    
     [sender presentViewController:form animated:YES completion:^{
     }];
 }
 - (IBAction) showSettings:(id)sender;
 {
     UIViewController *settings = [MrCoin viewController:@"Settings"];
+    settings.view.backgroundColor = [UIColor whiteColor];
     if(self.navigationController){
         [self.navigationController pushViewController:settings animated:YES];
     }

@@ -50,21 +50,40 @@
         i++;
     }
     if(index < _currencies.count && index >= 0){
-        [[self tableView] selectRowAtIndexPath:[NSIndexPath indexPathForRow:index inSection:0] animated:YES scrollPosition:UITableViewScrollPositionTop];
+        [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:index inSection:0]]
+                         withRowAnimation:UITableViewRowAnimationAutomatic];
     }
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    NSInteger index = -1;
+    NSInteger i = 0;
+    for (NSString *_currency in _currencies) {
+        if([_currency isEqualToString:[[MrCoin settings] sourceCurrency]]){
+            index = i;
+        }
+        i++;
+    }
     [[MrCoin settings] setSourceCurrency:_currencies[indexPath.row]];
     [[MrCoin settings] saveSettings];
-    if(self.navigationController){
-        [self.navigationController popViewControllerAnimated:YES];
+
+    if(index > -1){
+        [tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:index inSection:0],indexPath]
+                         withRowAnimation:UITableViewRowAnimationAutomatic];
     }
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MRCCurrencyCell" forIndexPath:indexPath];
     [[cell textLabel] setText:[NSString stringWithFormat:@"%@ - %@",_currencies[indexPath.row],_currencyNames[indexPath.row]]];
+    
+    if([[[MrCoin settings] sourceCurrency] isEqualToString:_currencies[indexPath.row]]){
+        cell.accessoryType = UITableViewCellAccessoryCheckmark;
+    }else{
+        cell.accessoryType = UITableViewCellAccessoryNone;
+    }
+    
     return cell;
 }
 

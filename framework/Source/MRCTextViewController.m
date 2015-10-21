@@ -9,10 +9,10 @@
 #import "MRCTextViewController.h"
 #import "MRCFormViewController.h"
 #import "MrCoin.h"
+#import "MRCButton.h"
 
 @interface MRCTextViewController ()
 
-@property (weak, nonatomic) IBOutlet MRCFormViewOverlay *overlayView;
 @property (weak, nonatomic) IBOutlet MRCButton *declineButton;
 @property (weak, nonatomic) IBOutlet MRCButton *acceptButton;
 
@@ -23,8 +23,8 @@
 #pragma mark - Initialization
 - (void)viewDidLoad {
     [super viewDidLoad];
-//    _declineButton.hidden = YES;
-//    _acceptButton.hidden = YES;
+    _declineButton.hidden = YES;
+    _acceptButton.hidden = YES;
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -35,24 +35,15 @@
     _mode = mode;
     switch (mode) {
         default:
-        case MRCTermsUserNeedsAcceptForm:
-            _overlayView.backgroundColor = self.view.backgroundColor;
-            _overlayView.documentMode = YES;
-            _overlayView.topGradientSize = 20;
-            _overlayView.bottomGradientSize = 80;
-            _overlayView.hidden = NO;
-            _declineButton.hidden = NO;
-            _acceptButton.hidden = NO;
-            break;
         case MRCTermsUserNeedsAccept:
-            _overlayView.backgroundColor = self.view.backgroundColor;
+            [_acceptButton setTitle:NSLocalizedString(@"Accept",nil) forState:UIControlStateNormal];
+        case MRCTermsUserNeedsAcceptForm:
             _overlayView.documentMode = YES;
-            _overlayView.topGradientSize = 20;
-            _overlayView.bottomGradientSize = 80;
+            _overlayView.topGradientSize = 0;
+            _overlayView.bottomGradientSize = 95;
             _overlayView.hidden = NO;
             _declineButton.hidden = NO;
             _acceptButton.hidden = NO;
-            [_acceptButton setTitle:NSLocalizedString(@"Accept",nil) forState:UIControlStateNormal];
             break;
         case MRCShowDocuments:
 //            _textView.backgroundColor = [UIColor redColor];
@@ -64,6 +55,8 @@
             _acceptButton.hidden = YES;
             break;
     }
+    [self.view sendSubviewToBack:_overlayView];
+    [self.view sendSubviewToBack:_textView];
     [_overlayView setNeedsDisplay];
     [[self view] setNeedsDisplay];
 }
@@ -95,17 +88,18 @@
 #pragma mark - HTML
 - (void)loadHTML:(NSString*)url
 {
-    NSString *htmlString = @"<html><h1>Terms of Usage</h1><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis non ligula urna. Integer a metus malesuada, elementum diam sit amet, faucibus tortor. Donec justo massa, tempus at magna vel, fringilla dictum sem. Sed ac tincidunt augue. Aliquam erat volutpat. Nunc ac nulla sed augue condimentum cursus. Curabitur finibus pharetra lacus, ac venenatis erat sagittis sed. Etiam sagittis ex ullamcorper velit convallis, sed consequat nibh placerat. Sed nulla mi, tempor viverra venenatis vel, pellentesque vitae ligula. Maecenas ut purus vitae enim suscipit tristique. Aliquam semper arcu eget tincidunt ultricies. Nulla id vestibulum velit. Pellentesque sem lacus, tempor in malesuada sit amet, tincidunt in ipsum. Pellentesque faucibus odio eu ipsum tincidunt, at vulputate nibh malesuada. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;</p><p>Sed in fringilla nisl. Ut ac lacus eget mi pellentesque auctor. Pellentesque fermentum lorem sapien, sit amet fringilla sapien feugiat eu. Vestibulum quam lacus, suscipit ut interdum vel, vulputate eget metus. In eget est eu ligula euismod venenatis. Fusce sit amet nisi id erat rhoncus venenatis eget feugiat dui. Quisque ut ullamcorper lacus, non placerat nisi. Morbi vel ligula magna. Praesent nec sagittis turpis. Etiam posuere ipsum nibh, sit amet sodales lectus sodales in. Ut luctus sem orci, nec auctor diam viverra sit amet. Donec lobortis, elit ut tincidunt iaculis, nisi purus porta turpis, quis sodales libero urna eu est.</p></html>";
-
-    // TODO: Implement loader
-    [self parseHTML:htmlString];
+    [self performSelectorInBackground:@selector(_loadHTML:) withObject:url];
 }
+- (void)_loadHTML:(NSString*)url
+{
+    NSString *s = [NSString stringWithContentsOfURL:[NSURL URLWithString:url] encoding:NSUTF8StringEncoding error:nil];
+    [self performSelectorOnMainThread:@selector(parseHTML:) withObject:s waitUntilDone:YES];
+}
+
 - (void)parseHTML:(NSString*)htmlString
 {
-    htmlString = [htmlString stringByAppendingString:[NSString stringWithFormat:@"<style>body{font-family: '%@'; font-size:%fpx;}</style>",
-                                                      @"HelveticaNeue",
-                                                      14.0f]];
-    
+    htmlString = [htmlString stringByAppendingString:@"<style>body{font-family: 'HelveticaNeue-Light'; font-size:12px;} h1{font-weight:normal;font-size:20px;} h2{font-size:14px;font-weight:normal;}</style>"];
+//
     NSMutableAttributedString *txt = [[NSMutableAttributedString alloc] initWithData:[htmlString dataUsingEncoding:NSUTF8StringEncoding]
                                                                              options:@{NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType,
                                                                                        NSCharacterEncodingDocumentAttribute: @(NSUTF8StringEncoding)}
@@ -119,17 +113,15 @@
         default:
         case MRCTermsUserNeedsAcceptForm:
         case MRCTermsUserNeedsAccept:
-            _textView.textContainerInset = UIEdgeInsetsMake(20, 10, 50, 10);
-            _textView.scrollIndicatorInsets = UIEdgeInsetsMake(50, 0, 70, 0);
+            _textView.textContainerInset = UIEdgeInsetsMake(20, 20, 50, 20);
+            _textView.scrollIndicatorInsets = UIEdgeInsetsMake(50, 0, 70, 4);
             break;
         case MRCShowDocuments:
-            _textView.textContainerInset = UIEdgeInsetsMake(0, 0, 0, 0);
-            _textView.scrollIndicatorInsets = UIEdgeInsetsMake(0, 0, 0, 0);
+            _textView.textContainerInset = UIEdgeInsetsMake(10, 20, 10, 20);
+            _textView.scrollIndicatorInsets = UIEdgeInsetsMake(0, 0, 0, 4);
             break;
     }
     [_textView setContentOffset:CGPointZero animated:NO];
-}
-- (void)viewWillLayoutSubviews
-{
+    [super viewDidLayoutSubviews];
 }
 @end

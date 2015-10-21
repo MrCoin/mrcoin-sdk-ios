@@ -109,12 +109,10 @@
 
 #pragma mark - Button Actions
 - (IBAction)help:(id)sender {
-    NSString *to = MRCOIN_SUPPORT;
-    NSString *subject = [NSString stringWithFormat:@"Help me with QuickTransfer"];
-    [[MrCoin sharedController] sendMail:to subject:subject];
+    [[MrCoin sharedController] sendMail:[[MrCoin settings] supportEmail] subject:@"Help me with QuickTransfer"];
 }
 - (IBAction)serviceProvider:(id)sender {
-    [[MrCoin sharedController] openURL:[NSURL URLWithString:MRCOIN_URL]];
+    [[MrCoin sharedController] openURL:[NSURL URLWithString:[[MrCoin settings] website]]];
 }
 
 @end

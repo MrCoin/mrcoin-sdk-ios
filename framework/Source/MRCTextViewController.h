@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "MRCFormPageViewController.h"
+#import "MRCFormViewController.h"
 
 typedef enum : NSUInteger {
     MRCTermsUserNeedsAcceptForm = 1,
@@ -24,6 +25,7 @@ typedef enum : NSUInteger {
 
 @interface MRCTextViewController : MRCFormPageViewController
 
+@property (weak, nonatomic) IBOutlet MRCFormViewOverlay *overlayView;
 @property (weak, nonatomic) IBInspectable NSString *sourceURL;
 @property (weak, nonatomic) IBOutlet UITextView *textView;
 @property (nonatomic,readwrite) MRCDocumentViewMode mode;

@@ -737,17 +737,12 @@ Please enter it below when you receive it</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JtS-ke-sH4">
-                                <rect key="frame" x="20" y="0.0" width="360" height="400"/>
+                                <rect key="frame" x="0.0" y="0.0" width="400" height="400"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                 <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES" address="YES"/>
                             </textView>
-                            <view opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Em-i5-pbM" customClass="MRCFormViewOverlay">
-                                <rect key="frame" x="20" y="0.0" width="360" height="400"/>
-                                <animations/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                            </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X5S-8g-Qph" customClass="MRCButton">
                                 <rect key="frame" x="228" y="350" width="142" height="30"/>
                                 <animations/>
@@ -765,10 +760,19 @@ Please enter it below when you receive it</string>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <state key="normal" title="Decline"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="fill" value="NO"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="stroke" value="NO"/>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="decline:" destination="0Tn-sg-Hi4" eventType="touchUpInside" id="IJ3-ne-Ac0"/>
                                 </connections>
                             </button>
+                            <view opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Em-i5-pbM" customClass="MRCFormViewOverlay">
+                                <rect key="frame" x="0.0" y="0.0" width="400" height="400"/>
+                                <animations/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <animations/>
                         <constraints>
@@ -776,13 +780,13 @@ Please enter it below when you receive it</string>
                             <constraint firstItem="nAW-8g-iHk" firstAttribute="top" secondItem="X5S-8g-Qph" secondAttribute="bottom" constant="20" id="61r-Y7-4ZE"/>
                             <constraint firstItem="nAW-8g-iHk" firstAttribute="top" secondItem="9Em-i5-pbM" secondAttribute="bottom" id="7gn-gv-Apn"/>
                             <constraint firstItem="9Em-i5-pbM" firstAttribute="top" secondItem="0qS-bx-iXq" secondAttribute="bottom" id="MNX-4g-07j"/>
-                            <constraint firstItem="JtS-ke-sH4" firstAttribute="leading" secondItem="IKb-BC-hNp" secondAttribute="leadingMargin" id="RUO-2c-ns3"/>
-                            <constraint firstItem="JtS-ke-sH4" firstAttribute="trailing" secondItem="IKb-BC-hNp" secondAttribute="trailingMargin" id="ZPn-qR-zJz"/>
+                            <constraint firstItem="JtS-ke-sH4" firstAttribute="leading" secondItem="IKb-BC-hNp" secondAttribute="leadingMargin" constant="-20" id="RUO-2c-ns3"/>
+                            <constraint firstItem="JtS-ke-sH4" firstAttribute="trailing" secondItem="IKb-BC-hNp" secondAttribute="trailingMargin" constant="20" id="ZPn-qR-zJz"/>
                             <constraint firstItem="N3g-uz-E2a" firstAttribute="leading" secondItem="IKb-BC-hNp" secondAttribute="leadingMargin" constant="20" id="gEg-9i-MnV"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="9Em-i5-pbM" secondAttribute="trailing" id="q57-bE-Etu"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="9Em-i5-pbM" secondAttribute="trailing" constant="-20" id="q57-bE-Etu"/>
                             <constraint firstItem="X5S-8g-Qph" firstAttribute="trailing" secondItem="IKb-BC-hNp" secondAttribute="trailingMargin" constant="-10" id="wLc-OE-ecD"/>
                             <constraint firstItem="X5S-8g-Qph" firstAttribute="centerY" secondItem="N3g-uz-E2a" secondAttribute="centerY" id="xU5-FC-JBK"/>
-                            <constraint firstItem="9Em-i5-pbM" firstAttribute="leading" secondItem="IKb-BC-hNp" secondAttribute="leadingMargin" id="xxO-Zg-lnG"/>
+                            <constraint firstItem="9Em-i5-pbM" firstAttribute="leading" secondItem="IKb-BC-hNp" secondAttribute="leadingMargin" constant="-20" id="xxO-Zg-lnG"/>
                             <constraint firstItem="JtS-ke-sH4" firstAttribute="top" secondItem="0qS-bx-iXq" secondAttribute="bottom" id="yUu-j1-BKO"/>
                         </constraints>
                         <connections>

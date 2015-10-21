@@ -6,7 +6,7 @@
 //  Copyright © 2015 MrCoin. All rights reserved.
 //
 
-#import <MrCoinFramework/MrCoin.h>
+#import "MrCoin.h"
 #import "MRCCurrencyViewController.h"
 
 @interface MRCCurrencyViewController ()
