@@ -8,7 +8,40 @@
 
 #import "MRCAPI.h"
 #import "MrCoin.h"
-
+/*
+ api:
+ errors:
+ invalid_signature:
+ title: Invalid signature
+ detail: The provided signature is invalid
+ invalid_nonce:
+ title: Invalid nonce
+ detail: The provided nonce is invalid
+ nonce_out_of_range:
+ title: Nonce out of range
+ detail: The provided nonce is out of the allowed range
+ verify_phone_first:
+ title: No verified phone
+ detail: You must verify your phone number and try again
+ invalid_country_code:
+ title: Invalid country code
+ detail: The provided country is not supported
+ invalid_verification_code:
+ title: Invalid verification code
+ detail: The provided verification code is invalid
+ phone_already_verified:
+ title: Phone already verified
+ detail: Phone already verified with this verification code
+ verification_code_expired:
+ title: Verification code expired
+ detail: The provided verification code expired
+ invalid_reseller:
+ title: Invalid reseller id
+ detail: The provided reseller id is invalid
+ add_email_first:
+ title: Add email first
+ detail: An email address was not found, please add it first
+ */
 //#define API_TEST 1
 #define API_URL         @"http://sandbox.mrcoin.eu/api/v1"
 
@@ -192,12 +225,14 @@
 {
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
     [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse * _Nullable response, NSData * _Nullable data, NSError * _Nullable connectionError) {
-        if(connectionError){
-            if(errorBlock) errorBlock(@[connectionError],MRCAPInternalErrorType);
-        }else{
-            [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+        [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+        if(data){
             NSInteger statusCode = [(NSHTTPURLResponse*)response statusCode];
             responseBlock(data,statusCode);
+        }else{
+            if(connectionError){
+                if(errorBlock) errorBlock(@[connectionError],MRCAPInternalErrorType);
+            }
         }
     }];
 }
@@ -218,16 +253,16 @@
     [request setHTTPMethod:HTTPMethod];
     
     // Nonce
-    NSInteger nonce = [[NSNumber numberWithFloat:([[NSDate date] timeIntervalSince1970]*1000.0f)] integerValue];
-    [request setValue:[NSString stringWithFormat:@"%lu",(long)nonce] forHTTPHeaderField:@"X-Mrcoin-Api-Nonce"];
-//    NSLog(@"X-Mrcoin-Api-Nonce          %@",[request valueForHTTPHeaderField:@"X-Mrcoin-Api-Nonce"]);
-  
+    CGFloat nonce = ([[NSDate date] timeIntervalSince1970]*1000.0f);
+    [request setValue:[NSString stringWithFormat:@"%.f",nonce] forHTTPHeaderField:@"X-Mrcoin-Api-Nonce"];
+//    NSLog(@"X-Mrcoin-Api-Nonce          %.f",nonce);
+    
     NSString *message;
     //(nonce + request method + request path + post data)
     if(jsonString){
-        message = [NSString stringWithFormat:@"%lu%@/api/v1/%@%@",(long)nonce,HTTPMethod,methodName,jsonString];
+        message = [NSString stringWithFormat:@"%.f%@/api/v1/%@%@",nonce,HTTPMethod,methodName,jsonString];
     }else{
-        message = [NSString stringWithFormat:@"%lu%@/api/v1/%@",(long)nonce,HTTPMethod,methodName];
+        message = [NSString stringWithFormat:@"%.f%@/api/v1/%@",nonce,HTTPMethod,methodName];
     }
     
     NSString *privateKey = [[[MrCoin sharedController] delegate] requestPrivateKey];
@@ -239,8 +274,11 @@
     [request setValue:sign forHTTPHeaderField:@"X-Mrcoin-Api-Signature"];
 //    NSLog(@"X-Mrcoin-Api-Pubkey         %@",[request valueForHTTPHeaderField:@"X-Mrcoin-Api-Pubkey"]);
 //    NSLog(@"X-Mrcoin-Api-Signature      %@",[request valueForHTTPHeaderField:@"X-Mrcoin-Api-Signature"]);
-    if(!self.language) self.language = @"en";
-    [request setValue:self.language forHTTPHeaderField:@"HTTP_ACCEPT_LANGUAGE"];
+    NSLocale *locale = [NSLocale currentLocale];
+    if([[MrCoin settings] locale]){
+        locale = [[MrCoin settings] locale];
+    }
+    [request setValue:[locale objectForKey:NSLocaleLanguageCode] forHTTPHeaderField:@"HTTP_ACCEPT_LANGUAGE"];
     [request setValue:@"application/vnd.api+json" forHTTPHeaderField:@"Accept"];
     [request setValue:@"application/vnd.api+json" forHTTPHeaderField:@"Content-Type"];
 //    NSLog(@"Accept                      application/vnd.api+json");

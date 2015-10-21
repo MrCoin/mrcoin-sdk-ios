@@ -37,14 +37,16 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    if(section == 0) return 4;
-    return 3;
+    if(section == 0) return ([[MrCoin settings] isConfigured])? 4:1;
+    return 5;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSString *_id = @"SettingsLink";
     if(indexPath.section == 0){
-        _id = @"SettingsValue";
+        if([[MrCoin settings] isConfigured] && indexPath.row < 3){
+            _id = @"SettingsValue";
+        }
     }
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:_id forIndexPath:indexPath];
     
@@ -53,18 +55,22 @@
     // Settings Value
     if(indexPath.section == 0){
         label = (UILabel*)[cell viewWithTag:201];
-        if(label)
-        {
-            if(indexPath.row == 0){
+        if(indexPath.row == 0){
+            if([[MrCoin settings] isConfigured]){
                 label.text = NSLocalizedString(@"Phone",nil);
-            }else if(indexPath.row == 1){
-                label.text = NSLocalizedString(@"Email",nil);
-            }else if(indexPath.row == 2){
-                label.text = NSLocalizedString(@"Currency",nil);
-            }else if(indexPath.row == 3){
-                label.text = NSLocalizedString(@"Reset settings",nil);
+            }else{
+                label = (UILabel*)[cell viewWithTag:101];
+                label.text = NSLocalizedString(@"Setup quicktransfer",nil);
             }
+        }else if(indexPath.row == 1){
+            label.text = NSLocalizedString(@"Email",nil);
+        }else if(indexPath.row == 2){
+            label.text = NSLocalizedString(@"Currency",nil);
+        }else if(indexPath.row == 3){
+            label = (UILabel*)[cell viewWithTag:101];
+            label.text = NSLocalizedString(@"Reset quicktransfer",nil);
         }
+
         label = (UILabel*)[cell viewWithTag:202];
         if(label)
         {
@@ -88,8 +94,12 @@
             if(indexPath.row == 0){
                 label.text = NSLocalizedString(@"Support",nil);
             }else if(indexPath.row == 1){
-                label.text = NSLocalizedString(@"Terms of Service",nil);
+                label.text = NSLocalizedString(@"Contact",nil);
             }else if(indexPath.row == 2){
+                label.text = NSLocalizedString(@"Website",nil);
+            }else if(indexPath.row == 3){
+                label.text = NSLocalizedString(@"Terms of Service",nil);
+            }else if(indexPath.row == 4){
                 label.text = NSLocalizedString(@"Terms of Service (short)",nil);
             }
         }
@@ -104,22 +114,45 @@
 {
     if(indexPath.section == 1 && self.navigationController)
     {
+        UIViewController *vc;
         if(indexPath.row == 0){
-            [self.navigationController pushViewController:[MrCoin documentViewController:MrCoinDocumentSupport] animated:YES];
+            [[MrCoin sharedController] sendMail:[[MrCoin settings] supportEmail] subject:@"Help me with QuickTransfer"];
         }else if(indexPath.row == 1){
-            [self.navigationController pushViewController:[MrCoin documentViewController:MrCoinDocumentTerms] animated:YES];
+            vc = [MrCoin documentViewController:MrCoinDocumentSupport];
         }else if(indexPath.row == 2){
-            [self.navigationController pushViewController:[MrCoin documentViewController:MrCoinDocumentShortTerms] animated:YES];
+            [[MrCoin sharedController] openURL:[NSURL URLWithString:[[MrCoin settings] website]]];
+        }else if(indexPath.row == 3){
+            vc = [MrCoin documentViewController:MrCoinDocumentTerms];
+        }else if(indexPath.row == 4){
+            vc = [MrCoin documentViewController:MrCoinDocumentShortTerms];
+        }
+        if(vc){
+            vc.view.backgroundColor = [UIColor whiteColor];
+            [self.navigationController pushViewController:vc animated:YES];
         }
     }else if(indexPath.section == 0 && self.navigationController){
-        if(indexPath.row == 2){
-            [self.navigationController pushViewController:[MrCoin viewController:@"CurrencySettings"] animated:YES];
-        }
-        if(indexPath.row == 3){
-            [[MrCoin settings] resetSettings];
-            [[MrCoin rootController] showForm:self];
+        if([[MrCoin settings] isConfigured]){
+            if(indexPath.row == 2){
+                UIViewController *vc = [MrCoin viewController:@"CurrencySettings"];
+                vc.view.backgroundColor = [UIColor whiteColor];
+                [self.navigationController pushViewController:vc animated:YES];
+            }else if(indexPath.row == 3){
+                [MrCoin resetQuickTransfer];
+            }
+        }else{
+            if(indexPath.row == 0){
+                [MrCoin setupQuickTransfer];
+            }
         }
     }
+}
+-(BOOL)tableView:(UITableView *)tableView shouldHighlightRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if([[MrCoin settings] isConfigured]){
+        if(indexPath.section == 0 && indexPath.row < 2) return NO;
+    }
+
+    return YES;
 }
 -(CGFloat)tableView:(UITableView *)tableView estimatedHeightForHeaderInSection:(NSInteger)section
 {
@@ -128,9 +161,9 @@
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
     if(section == 0){
-        return NSLocalizedString(@"Settings",nil);
+        return NSLocalizedString(@"Quicktransfer",nil);
     }
-    return NSLocalizedString(@"Documents",nil);
+    return NSLocalizedString(@"Links",nil);
 
 }
 

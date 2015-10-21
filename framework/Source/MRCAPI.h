@@ -21,7 +21,6 @@ typedef void (^APIResponseError)(NSArray* errors, MRCAPIErrorType errorType);
 
 @interface MRCAPI : NSObject
 
-@property (nonatomic) NSString* language;
 @property (nonatomic) NSDictionary* country;
 @property (nonatomic) NSArray* countries;
 

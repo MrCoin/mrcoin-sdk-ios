@@ -14,6 +14,9 @@
 //@property (nonatomic) NSString *walletPublicKey;
 //@property (nonatomic) NSString *walletPrivateKey;
 
+@property (nonatomic) NSLocale* locale;
+@property (nonatomic) NSTimeZone* timeZone;
+
 // User settings
 @property (nonatomic) NSString *userCountryCode;
 @property (nonatomic) NSString *userPhone;
@@ -26,6 +29,7 @@
 @property (nonatomic) NSArray *sourceCurrencies;
 
 // Documents
+@property (nonatomic) NSString *website;
 @property (nonatomic) NSString *supportEmail;
 @property (nonatomic) NSString *supportURL;
 @property (nonatomic) NSString *termsURL;
