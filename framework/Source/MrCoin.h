@@ -28,6 +28,7 @@
 - (void) openURL:(NSURL*)url;
 - (void) sendMail:(NSString*)to subject:(NSString*)subject;
 
+- (void) setupViewController:(UIViewController*)viewController;
 - (void) showErrors:(NSArray*)errors type:(MRCAPIErrorType)type;
 - (void) hideErrorsPopup;
 - (void) showActivityIndicator:(NSString*)message;

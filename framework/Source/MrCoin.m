@@ -93,7 +93,7 @@ static UIStoryboard *_sharedStoryboard;
         _userSettings.supportEmail = @"support@mrcoin.eu";
         _userSettings.supportURL = @"https://www.mrcoin.eu/contact";
         _userSettings.shortTermsURL = @"https://www.mrcoin.eu/terms";
-        _userSettings.website = @"http://www.mrcoin.eu";
+        _userSettings.websiteURL = @"http://www.mrcoin.eu";
         _userSettings.termsURL = @"https://www.mrcoin.eu/terms_full";
         [_userSettings loadSettings];
     }
@@ -185,7 +185,11 @@ static NSBundle* _frameworkBundle = nil;
 - (UIViewController*) viewController:(NSString*)named
 {
     if(self.storyboard){
-        return [self.storyboard instantiateViewControllerWithIdentifier:named];
+        UIViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:named];
+        if(self.delegate && [self.delegate respondsToSelector:@selector(setupViewController:)]){
+            [self.delegate setupViewController:vc];
+        }
+        return vc;
     }
     return nil;
 }

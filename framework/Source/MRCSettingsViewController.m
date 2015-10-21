@@ -116,11 +116,11 @@
     {
         UIViewController *vc;
         if(indexPath.row == 0){
-            [[MrCoin sharedController] sendMail:[[MrCoin settings] supportEmail] subject:@"Help me with QuickTransfer"];
+            [[MrCoin sharedController] sendMail:[[MrCoin settings] supportEmail] subject:NSLocalizedString(@"Help me with QuickTransfer",nil)];
         }else if(indexPath.row == 1){
             vc = [MrCoin documentViewController:MrCoinDocumentSupport];
         }else if(indexPath.row == 2){
-            [[MrCoin sharedController] openURL:[NSURL URLWithString:[[MrCoin settings] website]]];
+            [[MrCoin sharedController] openURL:[NSURL URLWithString:[[MrCoin settings] websiteURL]]];
         }else if(indexPath.row == 3){
             vc = [MrCoin documentViewController:MrCoinDocumentTerms];
         }else if(indexPath.row == 4){

@@ -29,7 +29,7 @@
 @property (nonatomic) NSArray *sourceCurrencies;
 
 // Documents
-@property (nonatomic) NSString *website;
+@property (nonatomic) NSString *websiteURL;
 @property (nonatomic) NSString *supportEmail;
 @property (nonatomic) NSString *supportURL;
 @property (nonatomic) NSString *termsURL;

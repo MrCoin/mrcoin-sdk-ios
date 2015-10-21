@@ -28,7 +28,26 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "26D9F00B1BD237EE0016658B"
+               BuildableName = "MrCoinTests.xctest"
+               BlueprintName = "MrCoinTests"
+               ReferencedContainer = "container:MrCoin iOS SDK.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "26FA7F8C1BC2A2580018B72C"
+            BuildableName = "MrCoinFramework.framework"
+            BlueprintName = "MrCoinFramework"
+            ReferencedContainer = "container:MrCoin iOS SDK.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </TestAction>
