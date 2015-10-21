@@ -1,5 +1,5 @@
 Pod::Spec.new do |s|
-  s.name         = "mrcoin-sdk-ios"
+  s.name         = "MrCoinSDK"
   s.version      = "0.0.1"
   s.summary      = "MrCoin SDK for iOS"
 
@@ -18,7 +18,7 @@ Pod::Spec.new do |s|
   s.author             = { "MrCoin" => "email@address.com" }
   # s.social_media_url   = "http://twitter.com/MrCoin"
   s.platform     = :ios, "7.0"
-  s.source       = { :git => "https://github.com/MrCoin/mrcoin-sdk-ios.git", :commit => "73a9ed6a18679df5fc01ddb76304784162a0087a" }
+  s.source       = { :git => "https://github.com/MrCoin/mrcoin-sdk-ios.git", :commit => "326b3e3" }
   s.source_files  = "framework/Source", "framework/Source/**/*.{h,m}"
   s.resources = "framework/Resources/**/*.{png,storyboard,strings}"
 
