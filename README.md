@@ -193,9 +193,17 @@ Cell actions for a your own implementation:
 		[MrCoin documentViewController:MrCoinDocumentTerms];
 		[MrCoin documentViewController:MrCoinDocumentShortTerms];
 
-		// Setup/reset a quick transfer
+		// Setup QuickTransfer
 		[MrCoin setupQuickTransfer];
+
+		// Reset QuickTransfer
 		[MrCoin resetQuickTransfer];
+		
+		// Send an email
+		[[MrCoin sharedController] sendMail:[[MrCoin settings] supportEmail] subject:MRCLocalizedString(@"Help me with QuickTransfer")];
+
+		// Open our website
+		[[MrCoin sharedController] openURL:[NSURL URLWithString:[[MrCoin settings] websiteURL]]];
 
 
 #### Settings Model ####
@@ -218,6 +226,7 @@ Error feedback:
 URLs:
 
     NSLog(@"%@", [[MrCoin settings] supportEmail] ); // print support email address.
+    NSLog(@"%@", [[MrCoin settings] websiteURL] ); // print website url.
     NSLog(@"%@", [[MrCoin settings] supportURL] ); // print support url.
     NSLog(@"%@", [[MrCoin settings] termsURL] ); // print terms url.
     NSLog(@"%@", [[MrCoin settings] shortTermsURL] ); // print terms url.
@@ -231,6 +240,9 @@ Custom locale & timezone:
     [[MrCoin settings] setTimeZone:customTimeZone];
 
 #### Optional delegate methods ####
+
+	// Setup a newly created view controller by viewController:
+	- (void) setupViewController:(UIViewController*)viewController;
 
 	// Handling URL requests
 	- (void) openURL:(NSURL*)url;
