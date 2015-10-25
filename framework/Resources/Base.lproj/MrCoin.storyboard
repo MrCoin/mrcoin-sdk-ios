@@ -1183,5 +1183,4 @@ Please see MrCoin's Privacy Policy if in doubt.</string>
         <image name="mrcoin.png" width="86" height="113"/>
         <image name="mrcoin_quicktransfer.png" width="121" height="154"/>
     </resources>
-    <color key="tintColor" red="0.96862745100000003" green="0.56470588239999997" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
 </document>

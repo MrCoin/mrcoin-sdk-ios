@@ -80,6 +80,10 @@ First, configure the SDK, somewhere in your application delegate file:
 	// Setup your reseller key
     [[MrCoin settings] setResellerKey:@"9b85a53c-88fb-4a56-b4b0-4088153e4b7e"];
 
+and then check user configuration details via me api call.
+
+	[MrCoin checkUserDetails];
+
 Add MrCoin View Controller to your view hierarchy, typically in your root view controller.
     
     MrCoinViewController *viewController = [MrCoin viewController:@"MrCoin"];

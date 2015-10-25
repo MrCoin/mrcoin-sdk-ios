@@ -41,6 +41,7 @@
     NSString *s = [[string componentsSeparatedByString:@" "] componentsJoinedByString:@""];
     s = [[s componentsSeparatedByString:@"("] componentsJoinedByString:@""];
     s = [[s componentsSeparatedByString:@")"] componentsJoinedByString:@""];
+    s = [[s componentsSeparatedByString:@"-"] componentsJoinedByString:@""];
     return s;
 }
 

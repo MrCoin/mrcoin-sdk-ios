@@ -38,8 +38,13 @@
     } error:^(NSArray *errors, MRCAPIErrorType errorType) {
         NSLog(@"errors: %@",errors);
     }];
+
+    // index - (32-bit unsigned integer)
+    // URI   - RFC 3986 URI proto://[user@]host[:port][/path]
+    NSString *slip13 = [[MrCoin api] slip0013Path:0x00000000 uri:@"https://www.mrcoin.eu/callback/bitid"];
     return YES;
 }
+
 
 #pragma mark - MrCoin Delegate
 -(NSString *)requestPublicKey

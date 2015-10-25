@@ -58,6 +58,16 @@ static UIStoryboard *_sharedStoryboard;
     return _sharedController;
 }
 #pragma mark - Root view controller
++ (void) checkUserDetails
+{
+    [[self api] getUserDetails:^(id result) {
+        [[self settings] setConfigured:YES];
+        NSLog(@"%@",result);
+    } error:^(NSArray *errors, MRCAPIErrorType errorType) {
+        [[self settings] setConfigured:NO];
+        NSLog(@"%@",errors);
+    }];
+}
 + (MrCoinViewController*) rootController
 {
     return [[MrCoin sharedController] rootController];
@@ -248,7 +258,11 @@ static NSBundle* _frameworkBundle = nil;
 }
 - (void)showErrors:(NSArray*)errors type:(MRCAPIErrorType)type
 {
-    [self showErrorPopup:@"Error" message:[errors.firstObject localizedDescription]];
+    NSString *desc  = @"";
+    for (NSError *error in errors) {
+        desc = [desc stringByAppendingFormat:@"- %@\n",[error localizedDescription]];
+    }
+    [self showErrorPopup:NSLocalizedString(@"Something happend", NULL) message:desc];
     NSLog(@"%@",errors);
 }
 - (void)hideErrorPopup

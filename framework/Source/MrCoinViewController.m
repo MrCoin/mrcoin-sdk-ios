@@ -19,7 +19,9 @@
 @end
 
 @implementation MrCoinViewController
-
+{
+    BOOL verifyPhone;
+}
 - (instancetype)initWithCoder:(NSCoder *)coder
 {
     self = [super initWithCoder:coder];
@@ -32,9 +34,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 }
-- (void)viewWillAppear:(BOOL)animated
+- (void)showView:(BOOL)configured
 {
-    if([[MrCoin settings] isConfigured]){
+    if(configured){
         if(_unconfigured){
             [_unconfigured removeFromParentViewController];
             [_unconfigured.view removeFromSuperview];
@@ -55,7 +57,11 @@
             }
         }
     }
+}
+- (void)viewWillAppear:(BOOL)animated
+{
     [super viewWillAppear:animated];
+    [self showView:[[MrCoin settings] isConfigured]];
 }
 
 - (void)showTransferView

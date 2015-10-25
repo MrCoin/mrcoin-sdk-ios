@@ -35,7 +35,7 @@
 @property (nonatomic) NSString *termsURL;
 @property (nonatomic) NSString *shortTermsURL;
 
-@property (readonly) BOOL isConfigured;
+@property (nonatomic, getter=isConfigured) BOOL configured;
 
 - (void) loadSettings;
 - (void) saveSettings;

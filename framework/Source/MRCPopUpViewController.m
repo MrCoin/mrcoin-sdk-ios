@@ -159,12 +159,12 @@ static MRCPopUpViewController *popup;
     self.view.alpha = 0;
     self.view.transform = CGAffineTransformMakeScale(1.2f, 1.2f);
     if(viewController){
-        self.view.bounds = viewController.view.bounds;
-        [[[viewController view] window] addSubview:[self view]];
+//        self.view.bounds = viewController.view.bounds;
+//        [[[viewController view] window] addSubview:[self view]];
     }else{
-        self.view.bounds = [[UIScreen mainScreen] bounds];
-        [[[[UIApplication sharedApplication]delegate]window] addSubview:[self view]];
     }
+    self.view.bounds = [[UIScreen mainScreen] bounds];
+    [[[[UIApplication sharedApplication]delegate]window] addSubview:[self view]];
     [UIView animateWithDuration:0.3f animations:^{
         self.view.transform = CGAffineTransformIdentity;
         self.view.alpha = 1;

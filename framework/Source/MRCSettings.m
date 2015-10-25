@@ -10,10 +10,10 @@
 
 @implementation MRCSettings
 
-- (BOOL)isConfigured
-{
-    return (_userEmail != nil && _userPhone != nil && _sourceCurrency != nil);
-}
+//- (BOOL)isConfigured
+//{
+//    return (_userEmail != nil && _userPhone != nil && _sourceCurrency != nil);
+//}
 - (NSString *)destinationCurrency
 {
     return @"BTC";

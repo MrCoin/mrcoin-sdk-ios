@@ -22,18 +22,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MrCoinDelegate {
 
         // Framework Settings
         settings.showErrorOnTextField = true
-        settings.showPopupOnError = false
+//        settings.showPopupOnError = false
         
         // Setup your reseller key
         settings.resellerKey = "9b85a53c-88fb-4a56-b4b0-4088153e4b7e"
         
         MrCoin.sharedController().delegate = self;
         MrCoin.sharedController().needsAcceptTerms = false;
-        MrCoin.api().authenticate({ (result) -> Void in
-            print(result);
-            }) { (errors, type) -> Void in
-                print(errors);
-        }
+//        MrCoin.api().authenticate({ (result) -> Void in
+//            print(result);
+//            }) { (errors, type) -> Void in
+//                print(errors);
+//        }
 
         return true
     }

@@ -42,6 +42,8 @@
 @property id <MrCoinDelegate> delegate;
 @property BOOL needsAcceptTerms;
 
++ (void) checkUserDetails;
+
 // Customizable
 + (void) customBundle:(NSBundle*)customBundle;
 

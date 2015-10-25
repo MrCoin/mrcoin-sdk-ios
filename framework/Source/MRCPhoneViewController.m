@@ -30,11 +30,11 @@
         _countrySelector.text = [self.object objectForKey:@"country"];
         _phoneTextInput.text = [self.object objectForKey:@"phone"];
     }
-    
     // Load country list
-    [[MrCoin api] addObserver:self forKeyPath:@"countries" options:(NSKeyValueObservingOptionInitial | NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld) context:nil];
     if([[MrCoin api] countries]){
-//        [self configureDropdown:[[MrCoin api] countries]];
+        [self configureDropdown:[[MrCoin api] countries]];
+    }else{
+        [[MrCoin api] addObserver:self forKeyPath:@"countries" options:(NSKeyValueObservingOptionInitial | NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld) context:nil];
     }
 }
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context
@@ -87,7 +87,9 @@
 {
     [self.phoneTextInput endEditing:YES];
     //
-    [[MrCoin api] phone:[_phoneTextInput text] country:[_countrySelector text] success:^(NSDictionary *dictionary) {
+    NSString *phone = [_phoneTextInput.dataType unformat:_phoneTextInput.text];
+    NSString *country = [[[[MrCoin api] country] valueForKeyPath:@"attributes.code2"] uppercaseString];
+    [[MrCoin api] phone:phone country:country success:^(NSDictionary *dictionary) {
         MRCPopUpViewController *popup = [MRCPopUpViewController sharedPopup];
         [popup dismissViewController];
         [[MrCoin settings] setUserPhone:self.phoneTextInput.text];
