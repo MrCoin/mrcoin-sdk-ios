@@ -18,10 +18,10 @@
 
 @interface NSData (NSHash_AdditionalHashingAlgorithms)
 
-- (NSData*) MD5;
-
-- (NSData*) SHA1;
-
-- (NSData*) SHA256;
+//- (NSData*) MD5;
+//
+//- (NSData*) SHA1;
+//
+- (NSData*) mrc_SHA256;
 
 @end

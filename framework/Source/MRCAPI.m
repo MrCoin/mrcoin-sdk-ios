@@ -10,42 +10,10 @@
 #import "MrCoin.h"
 #import "NSData+NSHash.h"
 #import "NSString+NSHash.h"
-/*
- api:
- errors:
- invalid_signature:
- title: Invalid signature
- detail: The provided signature is invalid
- invalid_nonce:
- title: Invalid nonce
- detail: The provided nonce is invalid
- nonce_out_of_range:
- title: Nonce out of range
- detail: The provided nonce is out of the allowed range
- verify_phone_first:
- title: No verified phone
- detail: You must verify your phone number and try again
- invalid_country_code:
- title: Invalid country code
- detail: The provided country is not supported
- invalid_verification_code:
- title: Invalid verification code
- detail: The provided verification code is invalid
- phone_already_verified:
- title: Phone already verified
- detail: Phone already verified with this verification code
- verification_code_expired:
- title: Verification code expired
- detail: The provided verification code expired
- invalid_reseller:
- title: Invalid reseller id
- detail: The provided reseller id is invalid
- add_email_first:
- title: Add email first
- detail: An email address was not found, please add it first
- */
+
 //#define API_TEST 1
 #define API_URL         @"http://sandbox.mrcoin.eu/api/v1"
+//#define API_URL         @"https://www.mrcoin.eu/api/v1"
 
 @implementation MRCAPI
 
@@ -58,38 +26,52 @@
     [path appendData:[URI dataUsingEncoding:NSUTF8StringEncoding]];
     
     // 2. Compute the SHA256 hash of the result.
-    return [path SHA256];
+    return [path mrc_SHA256];
 }
-- (NSString*) slip13Path:(UInt32)index uri:(NSString*)URI
+- (NSString*) slip13PathString:(UInt32)index uri:(NSString*)URI
 {
     NSData *hash = [self slip13Hash:index uri:URI];
-    return [self slip13Path:hash];
+
+    int32_t I,A,B,C,D;
+    NSData *slip13 = [self slip13Path:hash];
+    [slip13 getBytes:&I range:NSMakeRange(0, 4)];
+    [slip13 getBytes:&A range:NSMakeRange(4, 4)];
+    [slip13 getBytes:&B range:NSMakeRange(8, 4)];
+    [slip13 getBytes:&C range:NSMakeRange(12, 4)];
+    [slip13 getBytes:&D range:NSMakeRange(16, 4)];
+
+    return [NSString stringWithFormat:@"m/%u/%u/%u/%u/%u",I,A,B,C,D];
 }
-- (NSString*) slip13Path:(NSData*)hash
+- (NSData*) slip13Path:(UInt32)index uri:(NSString*)URI
+{
+    return [self slip13Path:[self slip13Hash:index uri:URI]];
+}
+- (NSData*) slip13Path:(NSData*)hash
 {
     // 3. Let’s take first 128 bits of the hash and split it into four 32-bit numbers A, B, C, D.
     NSData *hashFirst128Bits = [hash subdataWithRange:NSMakeRange(0, 16)]; // first 16bytes (16*8 = 128)
     
-    int32_t A,B,C,D;
+    int32_t I,A,B,C,D;
     [hashFirst128Bits getBytes:&A range:NSMakeRange(0, 4)];
     [hashFirst128Bits getBytes:&B range:NSMakeRange(4, 4)];
     [hashFirst128Bits getBytes:&C range:NSMakeRange(8, 4)];
     [hashFirst128Bits getBytes:&D range:NSMakeRange(12, 4)];
     
     // 4. Set highest bits of numbers A, B, C, D to 1.
-//    A = A | 0b00000010;
-//    B = B | 0b00000010;
-//    C = C | 0b00000010;
-//    D = D | 0b00000010;
+    I = 0x80000000 | 13;
+    A = 0x80000000 | A;
+    B = 0x80000000 | B;
+    C = 0x80000000 | C;
+    D = 0x80000000 | D;
     
-    NSString *a = [NSString stringWithFormat:@"m/%u/%u/%u/%u/%u",
-            0x80000000 | 13,
-            0x80000000 | A,
-            0x80000000 | B,
-            0x80000000 | C,
-            0x80000000 | D];
+    NSMutableData *data = [NSMutableData data];
+    [data appendBytes:&I length:4];
+    [data appendBytes:&A length:4];
+    [data appendBytes:&B length:4];
+    [data appendBytes:&C length:4];
+    [data appendBytes:&D length:4];
     
-    return a;
+    return data;
 }
 
 - (void) authenticate:(APIResponse)responseBlock error:(APIResponseError)errorBlock
@@ -108,7 +90,10 @@
         responseBlock(self.countries);
     } error:errorBlock];
 #else
-    [self callMethod:@"countries" parameters:nil HTTPMethod:@"GET" response:responseBlock error:errorBlock];
+    [self callMethod:@"countries" parameters:nil HTTPMethod:@"GET" response:^(id result) {
+        self.countries = (NSArray*)result;
+        responseBlock(self.countries);
+    } error:errorBlock];
 #endif
 }
 - (void) getEmail:(APIResponse)responseBlock error:(APIResponseError)errorBlock
@@ -156,7 +141,6 @@
 {
     [[MrCoin sharedController] showActivityIndicator:NSLocalizedString(@"Sending data to MrCoin...",nil)];
 #ifdef API_TEST
-//    NSString *dummyURL = @"http://sandbox.mrcoin.eu/api/v1/docs/simulate/phonenumber/invalid_phone_number";
     NSString *dummyURL = @"http://sandbox.mrcoin.eu/api/v1/docs/simulate/phonenumber/get_user's_phone_number";
     [self _dummyURL:dummyURL success:^(NSDictionary *dictionary) {
         responseBlock([dictionary objectForKey:@"data"]);
@@ -236,7 +220,6 @@
     [self sendRequest:request response:^(NSData *response,NSInteger statusCode) {
 //        NSLog(@"%@",[[NSString alloc] initWithData:response encoding:NSUTF8StringEncoding]);
         NSDictionary *result = [self responseFromJSON:response error:errorBlock];
-//        NSLog(@"%@",result);
         [self _handleResult:result statusCode:statusCode success:responseBlock error:errorBlock];
     } error:errorBlock];
 }
@@ -292,13 +275,14 @@
 -(NSURLRequest*) requestMethod:(NSString*)methodName parameters:(NSString*)jsonString HTTPMethod:(NSString*)HTTPMethod
 {
     NSURL *url = [[NSURL alloc] initWithString:[API_URL stringByAppendingPathComponent:methodName]];
-    NSLog(@"Request for URL: %@ (method:%@)",url,HTTPMethod);
-    NSLog(@"----------------------------------------------------------");
+//    NSLog(@"Request for URL: %@ (method:%@)",url,HTTPMethod);
+//    NSLog(@"----------------------------------------------------------");
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
     [request setHTTPMethod:HTTPMethod];
     
     // Nonce
-    CGFloat nonce = ([[NSDate date] timeIntervalSince1970]*1000.0f);
+    NSTimeInterval now = [[NSDate date] timeIntervalSince1970];
+    double nonce = (now*1000.0);
     [request setValue:[NSString stringWithFormat:@"%.f",nonce] forHTTPHeaderField:@"X-Mrcoin-Api-Nonce"];
 //    NSLog(@"X-Mrcoin-Api-Nonce          %.f",nonce);
     
@@ -330,7 +314,7 @@
 //    NSLog(@"Content-Type                application/vnd.api+json");
     if(jsonString){
         [request setHTTPBody:[jsonString dataUsingEncoding:NSUTF8StringEncoding]];
-        NSLog(@"Body:\n%@",[jsonString dataUsingEncoding:NSUTF8StringEncoding]);
+        NSLog(@"Body:\n%@",jsonString);
     }
     
     return (NSURLRequest*)request;
@@ -348,11 +332,12 @@
 {
     NSArray *rawErrors = [result objectForKey:@"errors"];
     if(rawErrors){
+        NSLog(@"%@",rawErrors);
         if(errorBlock){
             NSMutableArray *errors = [NSMutableArray array];
             for (NSDictionary *rawError in rawErrors) {
                 [errors addObject:[NSError errorWithDomain:@"MrCoin"
-                                     code:[rawError[@"status"] integerValue]
+                                     code:[rawError[@"code"] integerValue]
                                  userInfo:@{
                                             NSLocalizedDescriptionKey:rawError[@"detail"],
                                             NSLocalizedFailureReasonErrorKey:rawError[@"title"]
@@ -362,6 +347,7 @@
             errorBlock(errors,MRCAPIGenericErrorType);
         }
     }else if([result objectForKey:@"data"]){
+        NSLog(@"%@",[result objectForKey:@"data"]);
       if(responseBlock) responseBlock([result objectForKey:@"data"]);
     }
 }

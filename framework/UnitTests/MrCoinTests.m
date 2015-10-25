@@ -30,35 +30,30 @@
 }
 - (void)testSLIP13_Hash {
     MRCAPI *api = [[MRCAPI alloc] init];
-    
     XCTAssertEqualObjects(@"d0e2389d4c8394a9f3e32de01104bf6e8db2d9e2bb0905d60fffa5a18fd696db", fromHEX([api slip13Hash:0 uri:@"https://satoshi@bitcoin.org/login"]));
     XCTAssertEqualObjects(@"79a6b53831c6ff224fb283587adc4ebae8fb0d734734a46c876838f52dff53f3", fromHEX([api slip13Hash:3 uri:@"ftp://satoshi@bitcoin.org:2323/pub"]));
     XCTAssertEqualObjects(@"5fa612f558a1a3b1fb7f010b2ea0a25cb02520a0ffa202ce74a92fc6145da5f3", fromHEX([api slip13Hash:47 uri:@"ssh://satoshi@bitcoin.org"]));
 }
 - (void)testSLIP13_Path {
     MRCAPI *api = [[MRCAPI alloc] init];
-    
     XCTAssertEqualObjects(@"m/2147483661/2637750992/2845082444/3761103859/4005495825",
-                          [api slip13Path:0 uri:@"https://satoshi@bitcoin.org/login"]);
-    XCTAssertEqualObjects(@"m/2147483661/3098912377/2734671409/3632509519/3125730426", [api slip13Path:3 uri:@"ftp://satoshi@bitcoin.org:2323/pub"]);
-    XCTAssertEqualObjects(@"m/2147483661/4111640159/2980290904/2332131323/3701645358", [api slip13Path:47 uri:@"ssh://satoshi@bitcoin.org"]);
+                          [api slip13PathString:0 uri:@"https://satoshi@bitcoin.org/login"]);
+    XCTAssertEqualObjects(@"m/2147483661/3098912377/2734671409/3632509519/3125730426", [api slip13PathString:3 uri:@"ftp://satoshi@bitcoin.org:2323/pub"]);
+    XCTAssertEqualObjects(@"m/2147483661/4111640159/2980290904/2332131323/3701645358", [api slip13PathString:47 uri:@"ssh://satoshi@bitcoin.org"]);
 }
 - (void)testAPIRequest {
     [[MrCoin sharedController] setDelegate:self];
     MRCAPI *api = [[MRCAPI alloc] init];
-//
     NSURLRequest *r = [api requestMethod:@"authenticate" parameters:@"{@\"some\":@\"thing\"}" HTTPMethod:@"POST"];
     NSString *nonce = [r valueForHTTPHeaderField:@"X-Mrcoin-Api-Nonce"];
     NSString *sign = [r valueForHTTPHeaderField:@"X-Mrcoin-Api-Signature"];
     NSString *validString = [NSString stringWithFormat:@"%@POST/api/v1/authenticate{@\"some\":@\"thing\"}",nonce];
-
     XCTAssertEqualObjects([r valueForHTTPHeaderField:@"X-Mrcoin-Api-Pubkey"],@"PUBLIC");
     XCTAssertEqualObjects(sign,validString);
     XCTAssertEqualObjects([r valueForHTTPHeaderField:@"Accept"],@"application/vnd.api+json");
     XCTAssertEqualObjects([r valueForHTTPHeaderField:@"Content-Type"],@"application/vnd.api+json");
     XCTAssertTrue([r valueForHTTPHeaderField:@"HTTP_ACCEPT_LANGUAGE"]);
     XCTAssertEqualObjects([r valueForHTTPHeaderField:@"HTTP_ACCEPT_LANGUAGE"],@"en");
-    
     r = [api requestMethod:@"authenticate" parameters:nil HTTPMethod:@"POST"];
 }
 -(NSString *)requestPrivateKey
