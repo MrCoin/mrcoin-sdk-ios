@@ -109,7 +109,6 @@
     NSMutableArray *names = [NSMutableArray array];
     NSMutableArray *flags = [NSMutableArray array];
     for (NSDictionary *country in countries) {
-//            NSLog(@"%@",country);
         [names addObject:[country valueForKeyPath:@"attributes.localized_name"]];
         [flags addObject:[NSString stringWithFormat:@"flags/%@",[[country valueForKeyPath:@"attributes.code2"] lowercaseString]]];
     }

@@ -180,6 +180,7 @@
 -(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
 {
     self.text = _items[row];
+    [self setNeedsDisplay];
     UIImageView *v;
     UIImage *img = [MrCoin imageNamed:_iconItems[row]];
     if(_iconItems){
@@ -213,6 +214,20 @@
         return r;
     }
     return CGRectZero;
+}
+- (void)drawTextInRect:(CGRect)rect
+{
+    [self.textColor setFill];
+    
+    NSMutableParagraphStyle *paragrahStyle = [[NSMutableParagraphStyle alloc] init];
+    [paragrahStyle setLineSpacing:1.5];
+    [paragrahStyle setLineBreakMode:NSLineBreakByTruncatingTail];
+    NSMutableAttributedString *attributedText = [[NSMutableAttributedString alloc] initWithAttributedString:self.attributedText];
+    [attributedText addAttribute:NSParagraphStyleAttributeName value:paragrahStyle range:NSMakeRange(0, [attributedText length])];
+
+    self.attributedText = attributedText;
+    
+    [super drawTextInRect:rect];
 }
 
 #pragma mark - Textfield delegate

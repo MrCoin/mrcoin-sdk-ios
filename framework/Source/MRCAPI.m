@@ -347,7 +347,7 @@
             errorBlock(errors,MRCAPIGenericErrorType);
         }
     }else if([result objectForKey:@"data"]){
-        NSLog(@"%@",[result objectForKey:@"data"]);
+//        NSLog(@"%@",[result objectForKey:@"data"]);
       if(responseBlock) responseBlock([result objectForKey:@"data"]);
     }
 }

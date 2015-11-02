@@ -190,8 +190,14 @@
 {
     BOOL isChanged = YES;
     if(self.dataType){
-        NSString *newString = [textField.text stringByReplacingCharactersInRange:range withString:string];
-        newString = [self.dataType unformat:newString];
+        NSString *firstString = [textField.text substringWithRange:NSMakeRange(0, range.location+range.length)];
+        NSString *unformatedFirstString = [self.dataType unformat:firstString];
+        NSString *unformatedString = unformatedFirstString;
+        NSInteger diff = firstString.length-unformatedFirstString.length;
+        
+        range = NSMakeRange(range.location-diff, range.length);
+        
+        NSString *newString = [unformatedString stringByReplacingCharactersInRange:range withString:string];
         if(self.dataType.defaultValue){
             if(self.dataType.defaultValue.length <= newString.length)
             {

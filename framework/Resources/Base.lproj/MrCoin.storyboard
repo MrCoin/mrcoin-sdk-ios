@@ -13,6 +13,7 @@
         <mutableArray key="HelveticaNeueLights.ttc">
             <string>HelveticaNeue-Light</string>
             <string>HelveticaNeue-Light</string>
+            <string>HelveticaNeue-Light</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -376,15 +377,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="400" height="400"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="transfer money: to the following bank account" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b91-Qb-7XM">
-                                <rect key="frame" x="74" y="10" width="254" height="48"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="transfer money:" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b91-Qb-7XM">
+                                <rect key="frame" x="133" y="20" width="135" height="24"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="20"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Name" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6G1-HD-Kjn">
-                                <rect key="frame" x="54" y="78" width="65" height="15"/>
+                                <rect key="frame" x="54" y="69" width="65" height="15"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="65" id="97S-j9-jP2"/>
@@ -394,7 +395,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="IBAN" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FFY-03-AlO">
-                                <rect key="frame" x="54" y="101" width="65" height="15"/>
+                                <rect key="frame" x="54" y="92" width="65" height="15"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="65" id="cVp-hv-yIA"/>
@@ -404,7 +405,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="SWIFT (BIC)" textAlignment="right" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C65-iM-4dE">
-                                <rect key="frame" x="54" y="124" width="65" height="29"/>
+                                <rect key="frame" x="54" y="115" width="65" height="29"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="65" id="y5k-4e-QAF"/>
@@ -414,7 +415,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="center" verticalHuggingPriority="249" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="9" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rz2-up-4Yf">
-                                <rect key="frame" x="51" y="202" width="299" height="61"/>
+                                <rect key="frame" x="51" y="193" width="299" height="61"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="61" id="Nrk-5T-CRY"/>
@@ -427,21 +428,8 @@ Please allow 12-48 banking hours for the transfer to clear in the Plan Old Ban
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VoE-dv-l0f" customClass="MRCButton">
-                                <rect key="frame" x="158" y="307" width="180" height="50"/>
-                                <animations/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="180" id="vbg-yM-aoo"/>
-                                    <constraint firstAttribute="height" constant="50" id="wvt-6J-TYn"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="12"/>
-                                <state key="normal" title="Help me, I have a problem!"/>
-                                <connections>
-                                    <action selector="help:" destination="xEJ-gk-wob" eventType="touchUpInside" id="LaJ-bO-pdc"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OYr-22-eRD" customClass="MRCCopiableButton">
-                                <rect key="frame" x="127" y="76" width="215" height="20"/>
+                                <rect key="frame" x="127" y="67" width="215" height="20"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="215" id="3aY-JH-pQa"/>
@@ -452,20 +440,8 @@ Please allow 12-48 banking hours for the transfer to clear in the Plan Old Ban
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="giL-jJ-ygB" customClass="MRCCopiableButton">
-                                <rect key="frame" x="127" y="99" width="215" height="20"/>
-                                <animations/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="215" id="T3K-6A-p18"/>
-                                    <constraint firstAttribute="height" constant="20" id="xhH-o9-SjY"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="11"/>
-                                <state key="normal" title="---">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FVH-2M-Mrq" customClass="MRCCopiableButton">
-                                <rect key="frame" x="127" y="122" width="215" height="20"/>
+                                <rect key="frame" x="127" y="113" width="215" height="20"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="Fhf-4f-wIE"/>
@@ -477,7 +453,7 @@ Please allow 12-48 banking hours for the transfer to clear in the Plan Old Ban
                                 </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tDX-x8-lKb" customClass="MRCCopiableButton">
-                                <rect key="frame" x="127" y="159" width="215" height="20"/>
+                                <rect key="frame" x="127" y="150" width="215" height="20"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="215" id="SH1-O6-o8G"/>
@@ -488,45 +464,31 @@ Please allow 12-48 banking hours for the transfer to clear in the Plan Old Ban
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" image="mrcoin.png" translatesAutoresizingMaskIntoConstraints="NO" id="vAW-r2-1dt">
-                                <rect key="frame" x="58" y="282" width="96" height="120"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" image="mrcoin.png" translatesAutoresizingMaskIntoConstraints="NO" id="vAW-r2-1dt">
+                                <rect key="frame" x="58" y="264" width="96" height="110"/>
                                 <animations/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="120" id="2TO-dV-Z8v"/>
+                                    <constraint firstAttribute="height" constant="110" id="2TO-dV-Z8v"/>
                                     <constraint firstAttribute="width" constant="96" id="9sn-jN-Q7g"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="J03-bA-adh">
-                                <rect key="frame" x="160" y="365" width="176" height="25"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J03-bA-adh">
+                                <rect key="frame" x="160" y="274" width="176" height="25"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="176" id="UOS-fv-Z6T"/>
                                     <constraint firstAttribute="height" constant="25" id="Wnw-wd-vvy"/>
                                 </constraints>
-                                <state key="normal" title="Service provided by MrCoin">
-                                    <attributedString key="attributedTitle">
-                                        <fragment content="Service provided by ">
-                                            <attributes>
-                                                <color key="NSColor" red="0.26666666666666666" green="0.26666666666666666" blue="0.26666666666666666" alpha="1" colorSpace="calibratedRGB"/>
-                                                <font key="NSFont" size="12" name="HelveticaNeue-Light"/>
-                                                <font key="NSOriginalFont" size="11" name="HelveticaNeue-Thin"/>
-                                            </attributes>
-                                        </fragment>
-                                        <fragment content="MrCoin">
-                                            <attributes>
-                                                <color key="NSColor" red="0.26666666666666666" green="0.26666666666666666" blue="0.26666666666666666" alpha="1" colorSpace="calibratedRGB"/>
-                                                <font key="NSFont" size="12" name="HelveticaNeue-Medium"/>
-                                                <font key="NSOriginalFont" size="12" name="HelveticaNeue"/>
-                                            </attributes>
-                                        </fragment>
-                                    </attributedString>
+                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="14"/>
+                                <state key="normal" title="We sell at: 94,392 HUF">
+                                    <color key="titleColor" red="0.26666666666666666" green="0.26666666666666666" blue="0.26666666666666666" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="serviceProvider:" destination="xEJ-gk-wob" eventType="touchUpInside" id="mkF-L0-Aye"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" textAlignment="right" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dAC-Ce-Esu">
-                                <rect key="frame" x="54" y="161" width="65" height="29"/>
+                                <rect key="frame" x="54" y="152" width="65" height="29"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="65" id="nZv-n5-JPt"/>
@@ -537,35 +499,72 @@ re</string>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="to the following bank account" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RWJ-c8-chc">
+                                <rect key="frame" x="130" y="44" width="140" height="13"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="11"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VoE-dv-l0f" customClass="MRCButton">
+                                <rect key="frame" x="158" y="305" width="180" height="50"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="180" id="vbg-yM-aoo"/>
+                                    <constraint firstAttribute="height" constant="50" id="wvt-6J-TYn"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="12"/>
+                                <state key="normal" title="Help me, I have a problem!"/>
+                                <connections>
+                                    <action selector="help:" destination="xEJ-gk-wob" eventType="touchUpInside" id="LaJ-bO-pdc"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" alpha="0.5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RMz-t8-X7j">
+                                <rect key="frame" x="112" y="363" width="176" height="25"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="25" id="1X2-Rs-Iqa"/>
+                                    <constraint firstAttribute="width" constant="176" id="Wqd-lB-DQ4"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="8"/>
+                                <state key="normal" title="Service provided by MrCoin">
+                                    <color key="titleColor" red="0.2666666667" green="0.2666666667" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="serviceProvider:" destination="xEJ-gk-wob" eventType="touchUpInside" id="NiD-My-VAT"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <animations/>
                         <constraints>
-                            <constraint firstItem="J03-bA-adh" firstAttribute="top" secondItem="VoE-dv-l0f" secondAttribute="bottom" constant="8" id="0u5-jm-arQ"/>
                             <constraint firstItem="b91-Qb-7XM" firstAttribute="centerX" secondItem="XgF-RJ-0jR" secondAttribute="centerX" id="1II-CJ-9Yk"/>
                             <constraint firstItem="6G1-HD-Kjn" firstAttribute="centerX" secondItem="XgF-RJ-0jR" secondAttribute="centerX" constant="-113.5" id="2TE-27-Lj4"/>
                             <constraint firstItem="dAC-Ce-Esu" firstAttribute="top" secondItem="C65-iM-4dE" secondAttribute="bottom" constant="8" id="2xa-c2-hfL"/>
-                            <constraint firstItem="vAW-r2-1dt" firstAttribute="top" secondItem="rz2-up-4Yf" secondAttribute="bottom" constant="19" id="45X-tn-Dvh"/>
+                            <constraint firstItem="vAW-r2-1dt" firstAttribute="top" secondItem="rz2-up-4Yf" secondAttribute="bottom" constant="10" id="45X-tn-Dvh"/>
                             <constraint firstItem="OYr-22-eRD" firstAttribute="top" secondItem="6G1-HD-Kjn" secondAttribute="top" constant="-2" id="6ih-aO-70T"/>
-                            <constraint firstItem="VoE-dv-l0f" firstAttribute="top" secondItem="rz2-up-4Yf" secondAttribute="bottom" constant="44" id="71s-y0-VBF"/>
                             <constraint firstItem="FFY-03-AlO" firstAttribute="top" secondItem="6G1-HD-Kjn" secondAttribute="bottom" constant="8" id="Cq5-K5-RgV"/>
                             <constraint firstItem="vAW-r2-1dt" firstAttribute="centerX" secondItem="XgF-RJ-0jR" secondAttribute="centerX" constant="-94" id="DWr-Dg-nxq"/>
+                            <constraint firstItem="RWJ-c8-chc" firstAttribute="top" secondItem="b91-Qb-7XM" secondAttribute="bottom" id="Da1-4S-jvb"/>
                             <constraint firstItem="rz2-up-4Yf" firstAttribute="top" secondItem="dAC-Ce-Esu" secondAttribute="bottom" constant="12" id="E6y-m5-7mH"/>
-                            <constraint firstItem="giL-jJ-ygB" firstAttribute="leading" secondItem="FFY-03-AlO" secondAttribute="trailing" constant="8" id="M1X-I8-9gX"/>
+                            <constraint firstItem="J03-bA-adh" firstAttribute="top" secondItem="rz2-up-4Yf" secondAttribute="bottom" constant="20" id="Eco-d9-bY3"/>
+                            <constraint firstItem="6G1-HD-Kjn" firstAttribute="top" secondItem="RWJ-c8-chc" secondAttribute="bottom" constant="12" id="FTh-DN-3Id"/>
+                            <constraint firstItem="RMz-t8-X7j" firstAttribute="top" secondItem="VoE-dv-l0f" secondAttribute="bottom" constant="8" id="GDh-wG-heC"/>
+                            <constraint firstItem="RWJ-c8-chc" firstAttribute="centerX" secondItem="XgF-RJ-0jR" secondAttribute="centerX" id="Js9-Fe-Gnn"/>
                             <constraint firstItem="C65-iM-4dE" firstAttribute="centerX" secondItem="XgF-RJ-0jR" secondAttribute="centerX" constant="-113.5" id="Mwf-9t-r8v"/>
                             <constraint firstItem="FVH-2M-Mrq" firstAttribute="top" secondItem="C65-iM-4dE" secondAttribute="top" constant="-2" id="OsZ-aW-dru"/>
                             <constraint firstItem="C65-iM-4dE" firstAttribute="top" secondItem="FFY-03-AlO" secondAttribute="bottom" constant="8" id="Qnu-AF-bDf"/>
                             <constraint firstItem="OYr-22-eRD" firstAttribute="leading" secondItem="6G1-HD-Kjn" secondAttribute="trailing" constant="8" id="TAy-Bf-ere"/>
-                            <constraint firstItem="6G1-HD-Kjn" firstAttribute="top" secondItem="b91-Qb-7XM" secondAttribute="bottom" constant="20" id="UMN-tM-uVF"/>
-                            <constraint firstItem="giL-jJ-ygB" firstAttribute="top" secondItem="FFY-03-AlO" secondAttribute="top" constant="-2" id="XJg-UC-EYs"/>
+                            <constraint firstItem="RMz-t8-X7j" firstAttribute="centerX" secondItem="XgF-RJ-0jR" secondAttribute="centerX" id="TKS-zj-9Xw"/>
                             <constraint firstItem="J03-bA-adh" firstAttribute="centerX" secondItem="XgF-RJ-0jR" secondAttribute="centerX" constant="48" id="aKB-sW-SxG"/>
                             <constraint firstItem="FVH-2M-Mrq" firstAttribute="leading" secondItem="C65-iM-4dE" secondAttribute="trailing" constant="8" id="cSD-so-TaE"/>
                             <constraint firstItem="tDX-x8-lKb" firstAttribute="top" secondItem="dAC-Ce-Esu" secondAttribute="top" constant="-2" id="e6b-u1-TKy"/>
                             <constraint firstItem="FFY-03-AlO" firstAttribute="centerX" secondItem="XgF-RJ-0jR" secondAttribute="centerX" constant="-113.5" id="fU3-WE-12e"/>
                             <constraint firstItem="dAC-Ce-Esu" firstAttribute="centerX" secondItem="XgF-RJ-0jR" secondAttribute="centerX" constant="-113.5" id="fZz-v8-dcg"/>
+                            <constraint firstItem="VoE-dv-l0f" firstAttribute="top" secondItem="J03-bA-adh" secondAttribute="bottom" constant="6" id="hG9-Wx-yRb"/>
                             <constraint firstItem="rz2-up-4Yf" firstAttribute="centerX" secondItem="XgF-RJ-0jR" secondAttribute="centerX" id="hMN-CA-K0E"/>
                             <constraint firstItem="rz2-up-4Yf" firstAttribute="centerY" secondItem="XgF-RJ-0jR" secondAttribute="centerY" priority="500" constant="20" id="iXR-4Z-C0y"/>
                             <constraint firstItem="VoE-dv-l0f" firstAttribute="centerX" secondItem="XgF-RJ-0jR" secondAttribute="centerX" constant="48" id="kNB-mY-UnS"/>
-                            <constraint firstItem="b91-Qb-7XM" firstAttribute="top" relation="greaterThanOrEqual" secondItem="P7X-PD-BCf" secondAttribute="bottom" constant="10" id="nr3-nj-1ad"/>
+                            <constraint firstItem="b91-Qb-7XM" firstAttribute="top" relation="greaterThanOrEqual" secondItem="P7X-PD-BCf" secondAttribute="bottom" constant="20" id="nr3-nj-1ad"/>
                             <constraint firstItem="tDX-x8-lKb" firstAttribute="leading" secondItem="dAC-Ce-Esu" secondAttribute="trailing" constant="8" id="qIC-ew-xzP"/>
                         </constraints>
                     </view>
@@ -578,7 +577,6 @@ re</string>
                     <size key="freeformSize" width="400" height="400"/>
                     <connections>
                         <outlet property="helpButton" destination="VoE-dv-l0f" id="ske-BT-U8Z"/>
-                        <outlet property="ibanButton" destination="giL-jJ-ygB" id="ooX-gG-6b0"/>
                         <outlet property="messageButton" destination="tDX-x8-lKb" id="AQQ-Dq-ydG"/>
                         <outlet property="mrCoin" destination="vAW-r2-1dt" id="ylR-mB-nsM"/>
                         <outlet property="nameButton" destination="OYr-22-eRD" id="NoI-Af-bHM"/>
