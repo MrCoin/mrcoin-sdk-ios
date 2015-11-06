@@ -35,16 +35,10 @@ typedef void (^APIResponseError)(NSArray* errors, MRCAPIErrorType errorType);
 - (void) phone:(NSString*)number country:(NSString*)countryCode success:(APIResponse)responseBlock error:(APIResponseError)errorBlock;
 - (void) getPhone:(APIResponse)responseBlock error:(APIResponseError)errorBlock;
 - (void) verifyPhone:(NSString*)verificationCode success:(APIResponse)responseBlock error:(APIResponseError)errorBlock;
-- (void) quickTransfers:(NSString*)destAddress currency:(NSString*)currency resellerID:(NSString*)resellerID success:(APIResponse)responseBlock error:(APIResponseError)errorBlock;
+- (void) quickDeposits:(NSString*)destAddress currency:(NSString*)currency resellerID:(NSString*)resellerID success:(APIResponse)responseBlock error:(APIResponseError)errorBlock;
 
 - (void) getPriceTicker:(APIResponse)responseBlock error:(APIResponseError)errorBlock;
 
-
-#pragma mark - SLIP-0013 (http://doc.satoshilabs.com/slips/slip-0013.html#hd-structure)
-- (NSData*) slip13Hash:(UInt32)index uri:(NSString*)URI;
-- (NSData*) slip13Path:(NSData*)hash;
-- (NSData*) slip13Path:(UInt32)index uri:(NSString*)URI;
-- (NSString*) slip13PathString:(UInt32)index uri:(NSString*)URI;
 
 #pragma mark - Methods for testing
 -(NSURLRequest*) requestMethod:(NSString*)methodName parameters:(NSString*)jsonString HTTPMethod:(NSString*)HTTPMethod;
