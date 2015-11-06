@@ -12,6 +12,7 @@
 #import "MRCEmailData.h"
 #import "MRCAPI.h"
 #import "MrCoin.h"
+#import "SLIP13.h"
 
 @interface MrCoinTests : XCTestCase <MrCoinDelegate>
 
@@ -29,17 +30,15 @@
     [super tearDown];
 }
 - (void)testSLIP13_Hash {
-    MRCAPI *api = [[MRCAPI alloc] init];
-    XCTAssertEqualObjects(@"d0e2389d4c8394a9f3e32de01104bf6e8db2d9e2bb0905d60fffa5a18fd696db", fromHEX([api slip13Hash:0 uri:@"https://satoshi@bitcoin.org/login"]));
-    XCTAssertEqualObjects(@"79a6b53831c6ff224fb283587adc4ebae8fb0d734734a46c876838f52dff53f3", fromHEX([api slip13Hash:3 uri:@"ftp://satoshi@bitcoin.org:2323/pub"]));
-    XCTAssertEqualObjects(@"5fa612f558a1a3b1fb7f010b2ea0a25cb02520a0ffa202ce74a92fc6145da5f3", fromHEX([api slip13Hash:47 uri:@"ssh://satoshi@bitcoin.org"]));
+    XCTAssertEqualObjects(@"d0e2389d4c8394a9f3e32de01104bf6e8db2d9e2bb0905d60fffa5a18fd696db", fromHEX([NSData slip0013HashForIndex:0 uri:@"https://satoshi@bitcoin.org/login"]));
+    XCTAssertEqualObjects(@"79a6b53831c6ff224fb283587adc4ebae8fb0d734734a46c876838f52dff53f3", fromHEX([NSData slip0013HashForIndex:3 uri:@"ftp://satoshi@bitcoin.org:2323/pub"]));
+    XCTAssertEqualObjects(@"5fa612f558a1a3b1fb7f010b2ea0a25cb02520a0ffa202ce74a92fc6145da5f3", fromHEX([NSData slip0013HashForIndex:47 uri:@"ssh://satoshi@bitcoin.org"]));
 }
 - (void)testSLIP13_Path {
-    MRCAPI *api = [[MRCAPI alloc] init];
     XCTAssertEqualObjects(@"m/2147483661/2637750992/2845082444/3761103859/4005495825",
-                          [api slip13PathString:0 uri:@"https://satoshi@bitcoin.org/login"]);
-    XCTAssertEqualObjects(@"m/2147483661/3098912377/2734671409/3632509519/3125730426", [api slip13PathString:3 uri:@"ftp://satoshi@bitcoin.org:2323/pub"]);
-    XCTAssertEqualObjects(@"m/2147483661/4111640159/2980290904/2332131323/3701645358", [api slip13PathString:47 uri:@"ssh://satoshi@bitcoin.org"]);
+                          [NSString slip0013ForIndex:0 uri:@"https://satoshi@bitcoin.org/login"]);
+    XCTAssertEqualObjects(@"m/2147483661/3098912377/2734671409/3632509519/3125730426", [NSString slip0013ForIndex:3 uri:@"ftp://satoshi@bitcoin.org:2323/pub"]);
+    XCTAssertEqualObjects(@"m/2147483661/4111640159/2980290904/2332131323/3701645358", [NSString slip0013ForIndex:47 uri:@"ssh://satoshi@bitcoin.org"]);
 }
 - (void)testAPIRequest {
     [[MrCoin sharedController] setDelegate:self];

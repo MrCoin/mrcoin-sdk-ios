@@ -60,7 +60,7 @@
 + (NSString*) slip0013ForIndex:(UInt32)index uri:(NSString*)URI
 {
     int32_t I,A,B,C,D;
-    NSData *slip13 = [NSData slip0013HashForIndex:index uri:URI];
+    NSData *slip13 = [NSData slip0013ForIndex:index uri:URI];
     [slip13 getBytes:&I range:NSMakeRange(0, 4)];
     [slip13 getBytes:&A range:NSMakeRange(4, 4)];
     [slip13 getBytes:&B range:NSMakeRange(8, 4)];
