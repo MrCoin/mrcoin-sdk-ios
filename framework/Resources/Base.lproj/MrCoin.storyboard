@@ -472,7 +472,7 @@ Please allow 12-48 banking hours for the transfer to clear in the Plan Old Ban
                                     <constraint firstAttribute="width" constant="96" id="9sn-jN-Q7g"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J03-bA-adh">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J03-bA-adh" customClass="MRCButton">
                                 <rect key="frame" x="160" y="274" width="176" height="25"/>
                                 <animations/>
                                 <constraints>
@@ -480,11 +480,15 @@ Please allow 12-48 banking hours for the transfer to clear in the Plan Old Ban
                                     <constraint firstAttribute="height" constant="25" id="Wnw-wd-vvy"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="14"/>
-                                <state key="normal" title="We sell at: 94,392 HUF">
+                                <state key="normal">
                                     <color key="titleColor" red="0.26666666666666666" green="0.26666666666666666" blue="0.26666666666666666" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="stroke" value="NO"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="fill" value="NO"/>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="serviceProvider:" destination="xEJ-gk-wob" eventType="touchUpInside" id="mkF-L0-Aye"/>
+                                    <action selector="changeTickerCurrency:" destination="xEJ-gk-wob" eventType="touchUpInside" id="Ktq-sW-9W9"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" textAlignment="right" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dAC-Ce-Esu">
@@ -520,7 +524,7 @@ re</string>
                                 </connections>
                             </button>
                             <button opaque="NO" alpha="0.5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RMz-t8-X7j">
-                                <rect key="frame" x="112" y="363" width="176" height="25"/>
+                                <rect key="frame" x="112" y="375" width="176" height="25"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="25" id="1X2-Rs-Iqa"/>
@@ -548,7 +552,7 @@ re</string>
                             <constraint firstItem="rz2-up-4Yf" firstAttribute="top" secondItem="dAC-Ce-Esu" secondAttribute="bottom" constant="12" id="E6y-m5-7mH"/>
                             <constraint firstItem="J03-bA-adh" firstAttribute="top" secondItem="rz2-up-4Yf" secondAttribute="bottom" constant="20" id="Eco-d9-bY3"/>
                             <constraint firstItem="6G1-HD-Kjn" firstAttribute="top" secondItem="RWJ-c8-chc" secondAttribute="bottom" constant="12" id="FTh-DN-3Id"/>
-                            <constraint firstItem="RMz-t8-X7j" firstAttribute="top" secondItem="VoE-dv-l0f" secondAttribute="bottom" constant="8" id="GDh-wG-heC"/>
+                            <constraint firstItem="RMz-t8-X7j" firstAttribute="top" secondItem="VoE-dv-l0f" secondAttribute="bottom" constant="20" id="GDh-wG-heC"/>
                             <constraint firstItem="RWJ-c8-chc" firstAttribute="centerX" secondItem="XgF-RJ-0jR" secondAttribute="centerX" id="Js9-Fe-Gnn"/>
                             <constraint firstItem="C65-iM-4dE" firstAttribute="centerX" secondItem="XgF-RJ-0jR" secondAttribute="centerX" constant="-113.5" id="Mwf-9t-r8v"/>
                             <constraint firstItem="FVH-2M-Mrq" firstAttribute="top" secondItem="C65-iM-4dE" secondAttribute="top" constant="-2" id="OsZ-aW-dru"/>
@@ -580,8 +584,8 @@ re</string>
                         <outlet property="messageButton" destination="tDX-x8-lKb" id="AQQ-Dq-ydG"/>
                         <outlet property="mrCoin" destination="vAW-r2-1dt" id="ylR-mB-nsM"/>
                         <outlet property="nameButton" destination="OYr-22-eRD" id="NoI-Af-bHM"/>
-                        <outlet property="serviceButton" destination="J03-bA-adh" id="Mi7-Jm-CY6"/>
                         <outlet property="swiftButton" destination="FVH-2M-Mrq" id="Qg4-dj-qah"/>
+                        <outlet property="tickerButton" destination="J03-bA-adh" id="9pM-Ef-enM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zoc-Wq-mwV" sceneMemberID="firstResponder"/>

@@ -31,9 +31,13 @@
 @property (weak, nonatomic) IBOutlet MRCCopiableButton *messageButton;
 @property (weak, nonatomic) IBOutlet MRCButton *helpButton;
 @property (weak, nonatomic) IBOutlet UIButton *serviceButton;
+@property (weak, nonatomic) IBOutlet UIButton *tickerButton;
+
+@property NSDictionary *tickerData;
 
 - (IBAction)serviceProvider:(id)sender;
 - (IBAction)help:(id)sender;
+- (IBAction)changeTickerCurrency:(id)sender;
 
 @end
 
@@ -48,13 +52,36 @@
     NSAssert([[MrCoin sharedController] delegate],@"MrCoin Delegate isn't configured. See the README.");
     NSAssert([[[MrCoin sharedController] delegate] respondsToSelector:@selector(requestPublicKey)],@"MrCoin Delegate method (requestPublicKey:) isn't configured. See the README.");
     
+    
+    [self _loadTicker];
+    [self _loadQuicktransfer];
+    [super viewWillAppear:animated];
+}
+-(void) _loadTicker
+{
+    [[MrCoin api] getPriceTicker:^(id result) {
+        self.tickerData = result;
+        [self.tickerButton setTitle:[self tickerString] forState:UIControlStateNormal];
+    } error:nil];
+}
+-(NSString*) tickerString
+{
+    NSString *priceString;
+    if(self.tickerData){
+        NSString *currency = [[MrCoin settings] sourceCurrency];
+        NSString *path = [NSString stringWithFormat:@"attributes.btc%@.ask_localized",[currency lowercaseString]];
+        NSString *price = [self.tickerData valueForKeyPath:path];
+        priceString = [NSString stringWithFormat:NSLocalizedString(@"We sell at: %@", NULL),price];
+    }
+    return priceString;
+}
+-(void) _loadQuicktransfer
+{
     NSString *publicKey = [[[MrCoin sharedController] delegate] requestPublicKey];
     
-    [[MrCoin api] quickTransfers:publicKey currency:[[MrCoin settings]destinationCurrency] resellerID:[[MrCoin settings]resellerKey] success:^(NSDictionary *dictionary) {
+    [[MrCoin api] quickDeposits:publicKey currency:[[MrCoin settings]destinationCurrency] resellerID:[[MrCoin settings]resellerKey] success:^(NSDictionary *dictionary) {
         [self setupView:dictionary currency:[[MrCoin settings]sourceCurrency]]; //HUF
     } error:nil];
-    
-    [super viewWillAppear:animated];
 }
 
 -(void)setupView:(NSDictionary*)dictionary currency:(NSString*)currency
@@ -110,6 +137,21 @@
 #pragma mark - Button Actions
 - (IBAction)help:(id)sender {
     [[MrCoin sharedController] sendMail:[[MrCoin settings] supportEmail] subject:NSLocalizedString(@"Help me with QuickTransfer",nil)];
+}
+
+- (IBAction)changeTickerCurrency:(id)sender {
+    NSString *currency = [[MrCoin settings] sourceCurrency];
+    NSUInteger length = [[[MrCoin settings] sourceCurrencies] count];
+    NSInteger index = [[[MrCoin settings] sourceCurrencies] indexOfObject:currency];
+    if(index >= 0 && index < length){
+        index++;
+        if(index >= length){
+            index = 0;
+        }
+    }
+    [[MrCoin settings] setSourceCurrency:[[[MrCoin settings] sourceCurrencies] objectAtIndex:index]];
+    [self.tickerButton setTitle:[self tickerString] forState:UIControlStateNormal];
+
 }
 - (IBAction)serviceProvider:(id)sender {
     [[MrCoin sharedController] openURL:[NSURL URLWithString:[[MrCoin settings] websiteURL]]];

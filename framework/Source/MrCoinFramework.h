@@ -19,6 +19,8 @@ FOUNDATION_EXPORT const unsigned char MrCoinFrameworkVersionString[];
 #import <MrCoinFramework/MrCoin.h>
 #import <MrCoinFramework/MrCoinViewController.h>
 #import <MrCoinFramework/MRCAPI.h>
+#import <MrCoinFramework/SLIP13.h>
+
 #import <MrCoinFramework/MRCSettings.h>
 #import <MrCoinFramework/MRCCurrencyViewController.h>
 #import <MrCoinFramework/MRCEmailViewController.h>
@@ -44,4 +46,3 @@ FOUNDATION_EXPORT const unsigned char MrCoinFrameworkVersionString[];
 #import <MrCoinFramework/MRCPhoneData.h>
 #import <MrCoinFramework/RMPhoneFormat.h>
 #import <MrCoinFramework/MRCEmailData.h>
-

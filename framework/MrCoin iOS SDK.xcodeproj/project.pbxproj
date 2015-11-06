@@ -48,10 +48,10 @@
 		266C3FE11BC43AE400C0948E /* MRCPhoneVerificationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 266C3FDB1BC43AE400C0948E /* MRCPhoneVerificationViewController.m */; settings = {ASSET_TAGS = (); }; };
 		266FC5561BCDAECA00D3A1A0 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 266FC5581BCDAECA00D3A1A0 /* Localizable.strings */; };
 		266FC5661BCDB47000D3A1A0 /* MrCoin.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 266FC5641BCDB47000D3A1A0 /* MrCoin.storyboard */; settings = {ASSET_TAGS = (); }; };
-		268593391BD843410081DDB3 /* NSData+NSHash.h in Headers */ = {isa = PBXBuildFile; fileRef = 268593351BD843410081DDB3 /* NSData+NSHash.h */; settings = {ASSET_TAGS = (); }; };
-		2685933A1BD843410081DDB3 /* NSData+NSHash.h in Headers */ = {isa = PBXBuildFile; fileRef = 268593351BD843410081DDB3 /* NSData+NSHash.h */; settings = {ASSET_TAGS = (); }; };
-		2685933B1BD843410081DDB3 /* NSData+NSHash.m in Sources */ = {isa = PBXBuildFile; fileRef = 268593361BD843410081DDB3 /* NSData+NSHash.m */; settings = {ASSET_TAGS = (); }; };
-		2685933C1BD843410081DDB3 /* NSData+NSHash.m in Sources */ = {isa = PBXBuildFile; fileRef = 268593361BD843410081DDB3 /* NSData+NSHash.m */; settings = {ASSET_TAGS = (); }; };
+		268593391BD843410081DDB3 /* SLIP13.h in Headers */ = {isa = PBXBuildFile; fileRef = 268593351BD843410081DDB3 /* SLIP13.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2685933A1BD843410081DDB3 /* SLIP13.h in Headers */ = {isa = PBXBuildFile; fileRef = 268593351BD843410081DDB3 /* SLIP13.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2685933B1BD843410081DDB3 /* SLIP13.m in Sources */ = {isa = PBXBuildFile; fileRef = 268593361BD843410081DDB3 /* SLIP13.m */; settings = {ASSET_TAGS = (); }; };
+		2685933C1BD843410081DDB3 /* SLIP13.m in Sources */ = {isa = PBXBuildFile; fileRef = 268593361BD843410081DDB3 /* SLIP13.m */; settings = {ASSET_TAGS = (); }; };
 		2685933D1BD843410081DDB3 /* NSString+NSHash.h in Headers */ = {isa = PBXBuildFile; fileRef = 268593371BD843410081DDB3 /* NSString+NSHash.h */; settings = {ASSET_TAGS = (); }; };
 		2685933E1BD843410081DDB3 /* NSString+NSHash.h in Headers */ = {isa = PBXBuildFile; fileRef = 268593371BD843410081DDB3 /* NSString+NSHash.h */; settings = {ASSET_TAGS = (); }; };
 		2685933F1BD843410081DDB3 /* NSString+NSHash.m in Sources */ = {isa = PBXBuildFile; fileRef = 268593381BD843410081DDB3 /* NSString+NSHash.m */; settings = {ASSET_TAGS = (); }; };
@@ -229,8 +229,8 @@
 		266FC56C1BCDB4A700D3A1A0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Resources/Base.lproj/MrCoin.storyboard; sourceTree = "<group>"; };
 		26755B9E1BC10E610093EC98 /* MrCoinTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MrCoinTests.m; path = UnitTests/MrCoinTests.m; sourceTree = SOURCE_ROOT; };
 		267BBDC91BC27BA900FA2399 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		268593351BD843410081DDB3 /* NSData+NSHash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSData+NSHash.h"; path = "Source/NSData+NSHash.h"; sourceTree = SOURCE_ROOT; };
-		268593361BD843410081DDB3 /* NSData+NSHash.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSData+NSHash.m"; path = "Source/NSData+NSHash.m"; sourceTree = SOURCE_ROOT; };
+		268593351BD843410081DDB3 /* SLIP13.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SLIP13.h; path = Source/SLIP13.h; sourceTree = SOURCE_ROOT; };
+		268593361BD843410081DDB3 /* SLIP13.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SLIP13.m; path = Source/SLIP13.m; sourceTree = SOURCE_ROOT; };
 		268593371BD843410081DDB3 /* NSString+NSHash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+NSHash.h"; path = "Source/NSString+NSHash.h"; sourceTree = SOURCE_ROOT; };
 		268593381BD843410081DDB3 /* NSString+NSHash.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+NSHash.m"; path = "Source/NSString+NSHash.m"; sourceTree = SOURCE_ROOT; };
 		26D65CF01BC70B6C00DFF489 /* mrcoin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = mrcoin.png; path = Resources/mrcoin.png; sourceTree = "<group>"; };
@@ -533,8 +533,8 @@
 		26FA7FC11BC2A6320018B72C /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				268593351BD843410081DDB3 /* NSData+NSHash.h */,
-				268593361BD843410081DDB3 /* NSData+NSHash.m */,
+				268593351BD843410081DDB3 /* SLIP13.h */,
+				268593361BD843410081DDB3 /* SLIP13.m */,
 				268593371BD843410081DDB3 /* NSString+NSHash.h */,
 				268593381BD843410081DDB3 /* NSString+NSHash.m */,
 				266C3FB41BC3C0BB00C0948E /* RMPhoneFormat.m */,
@@ -586,7 +586,7 @@
 				26D65D0E1BC70BD100DFF489 /* MRCTransferViewController.h in Headers */,
 				26D65D161BC70BEB00DFF489 /* MRCEmailViewController.h in Headers */,
 				2685933D1BD843410081DDB3 /* NSString+NSHash.h in Headers */,
-				268593391BD843410081DDB3 /* NSData+NSHash.h in Headers */,
+				268593391BD843410081DDB3 /* SLIP13.h in Headers */,
 				26DF33E01BCC6F7C004454A3 /* MRCSettingsViewController.h in Headers */,
 				26D956B31BC2FF1100B3810F /* MRCPhoneViewController.h in Headers */,
 				26DF33D41BCC6F5D004454A3 /* MRCFormPageViewController.h in Headers */,
@@ -624,7 +624,7 @@
 				26DF33CF1BCC6F50004454A3 /* MRCCurrencyViewController.h in Headers */,
 				26DF33BB1BCC6F25004454A3 /* MRCInputDataType.h in Headers */,
 				26DF33B71BCC6F25004454A3 /* MRCEmailData.h in Headers */,
-				2685933A1BD843410081DDB3 /* NSData+NSHash.h in Headers */,
+				2685933A1BD843410081DDB3 /* SLIP13.h in Headers */,
 				26DF33E11BCC6F7C004454A3 /* MRCSettingsViewController.h in Headers */,
 				26DF33DB1BCC6F6F004454A3 /* MRCErrorView.h in Headers */,
 				26F37FAE1BC99F9C003EF687 /* MRCPopUpViewController.h in Headers */,
@@ -875,7 +875,7 @@
 				26DF33DC1BCC6F6F004454A3 /* MRCErrorView.m in Sources */,
 				26DF33C41BCC6F25004454A3 /* MRCVerificationCode.m in Sources */,
 				26D65D181BC70BEB00DFF489 /* MRCEmailViewController.m in Sources */,
-				2685933B1BD843410081DDB3 /* NSData+NSHash.m in Sources */,
+				2685933B1BD843410081DDB3 /* SLIP13.m in Sources */,
 				26D65D001BC70BB900DFF489 /* MRCButton.m in Sources */,
 				2622ACFE1BC2916C0017259E /* MRCFormViewController.m in Sources */,
 				26FA7FB81BC2A5FF0018B72C /* MRCAPI.m in Sources */,
@@ -920,7 +920,7 @@
 				26DF33DD1BCC6F6F004454A3 /* MRCErrorView.m in Sources */,
 				26DF33C51BCC6F25004454A3 /* MRCVerificationCode.m in Sources */,
 				26D65D191BC70BEB00DFF489 /* MRCEmailViewController.m in Sources */,
-				2685933C1BD843410081DDB3 /* NSData+NSHash.m in Sources */,
+				2685933C1BD843410081DDB3 /* SLIP13.m in Sources */,
 				26D65D011BC70BB900DFF489 /* MRCButton.m in Sources */,
 				26FA7FA71BC2A2DE0018B72C /* MRCFormViewController.m in Sources */,
 				26FA7FB61BC2A5F90018B72C /* MRCAPI.m in Sources */,
