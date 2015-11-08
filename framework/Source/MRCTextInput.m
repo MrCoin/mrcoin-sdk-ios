@@ -179,12 +179,22 @@
     }
     [self show];
 }
+-(BOOL)textFieldShouldEndEditing:(UITextField *)textField
+{
+    if(self.textInputDelegate){
+        if([self.textInputDelegate respondsToSelector:@selector(textInputWillEndEditing:)])
+        {
+            return [self.textInputDelegate textInputWillEndEditing:self];
+        }
+    }
+    return YES;
+}
 -(void)textFieldDidEndEditing:(UITextField *)textField
 {
+    [self hide];
     if(self.textInputDelegate){
         [self.textInputDelegate textInputEndEditing:self];
     }
-    [self hide];
 }
 -(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {

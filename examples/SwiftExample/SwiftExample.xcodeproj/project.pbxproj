@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		26C3368C1BEFF41C00A9E758 /* wallpaper-default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 26C3368B1BEFF41C00A9E758 /* wallpaper-default@2x.png */; settings = {ASSET_TAGS = (); }; };
 		26FA7F031BC2972C0018B72C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26FA7F021BC2972C0018B72C /* AppDelegate.swift */; };
 		26FA7F0A1BC2972C0018B72C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 26FA7F091BC2972C0018B72C /* Assets.xcassets */; };
 		26FA7F0D1BC2972C0018B72C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 26FA7F0B1BC2972C0018B72C /* LaunchScreen.storyboard */; };
@@ -77,6 +78,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		26C3368B1BEFF41C00A9E758 /* wallpaper-default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wallpaper-default@2x.png"; sourceTree = "<group>"; };
 		26E72EAE1BD690120059F5D0 /* SwiftExample-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SwiftExample-Bridging-Header.h"; sourceTree = "<group>"; };
 		26FA7EFF1BC2972C0018B72C /* SwiftExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		26FA7F021BC2972C0018B72C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -136,6 +138,7 @@
 				26E72EAE1BD690120059F5D0 /* SwiftExample-Bridging-Header.h */,
 				26FA7F021BC2972C0018B72C /* AppDelegate.swift */,
 				26FA7F091BC2972C0018B72C /* Assets.xcassets */,
+				26C3368B1BEFF41C00A9E758 /* wallpaper-default@2x.png */,
 				26FA7F0B1BC2972C0018B72C /* LaunchScreen.storyboard */,
 				26FA7F0E1BC2972C0018B72C /* Info.plist */,
 				26FEB7EF1BCA673F00DDA046 /* Main.storyboard */,
@@ -263,6 +266,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				26C3368C1BEFF41C00A9E758 /* wallpaper-default@2x.png in Resources */,
 				26FA7F0D1BC2972C0018B72C /* LaunchScreen.storyboard in Resources */,
 				26FA7F0A1BC2972C0018B72C /* Assets.xcassets in Resources */,
 				26FA7F491BC2994C0018B72C /* MrCoin.bundle in Resources */,

@@ -75,7 +75,6 @@
         
         // Reset navigation
         _phoneTextInput.enabled = YES;
-        [_phoneTextInput becomeFirstResponder];
         self.nextButton.enabled = NO;
     }else{
         _phoneTextInput.enabled = NO;
@@ -116,9 +115,11 @@
 {
     [super textInputStartEditing:textInput];
 }
--(void)textInputFinishedEditing:(MRCTextInput *)textInput
+-(void)textInputEndEditing:(MRCTextInput *)textInput
 {
-    
+    if(textInput == _countrySelector){
+        [_phoneTextInput becomeFirstResponder];
+    }
 }
 - (void) textInput:(MRCTextInput *)textInput isValid:(BOOL)valid
 {

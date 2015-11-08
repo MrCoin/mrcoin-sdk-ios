@@ -22,6 +22,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MrCoinDelegate {
 
         // Framework Settings
         settings.showErrorOnTextField = true
+        settings.formBackgroundColor = UIColor ( red: 0.9725, green: 0.9608, blue: 0.9412, alpha: 1.0 )
+        settings.formBackgroundImage = UIImage(named: "wallpaper-default")
 //        settings.showPopupOnError = false
         
         // Setup your reseller key

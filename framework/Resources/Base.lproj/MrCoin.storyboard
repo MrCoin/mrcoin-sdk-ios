@@ -7,11 +7,7 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <mutableArray key="HelveticaNeue.ttc">
-            <string>HelveticaNeue-Medium</string>
-        </mutableArray>
         <mutableArray key="HelveticaNeueLights.ttc">
-            <string>HelveticaNeue-Light</string>
             <string>HelveticaNeue-Light</string>
             <string>HelveticaNeue-Light</string>
         </mutableArray>
@@ -85,40 +81,35 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Ls-bY-tCJ" customClass="MRCButton">
-                                <rect key="frame" x="169" y="196" width="62" height="30"/>
+                                <rect key="frame" x="167" y="239" width="66" height="32"/>
                                 <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <state key="normal" title="Continue"/>
                                 <connections>
                                     <action selector="nextPage:" destination="mJa-wm-PWL" eventType="touchUpInside" id="guU-Ft-tVa"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qlQ-fX-bDJ">
-                                <rect key="frame" x="79" y="32" width="243" height="60"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="qlQ-fX-bDJ">
+                                <rect key="frame" x="51" y="57" width="299" height="78"/>
                                 <animations/>
                                 <string key="text">Please select your country and enter your phone number below.  To set up QuickTransfer for your wallet we need to verify your phone number.</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <color key="textColor" red="0.40461387434554974" green="0.382929233767275" blue="0.36570014842399245" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Your Phone Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PMR-oU-m6l" customClass="MRCTextInput">
-                                <rect key="frame" x="100" y="150" width="200" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Your Phone Number" textAlignment="natural" minimumFontSize="13" translatesAutoresizingMaskIntoConstraints="NO" id="PMR-oU-m6l" customClass="MRCTextInput">
+                                <rect key="frame" x="60" y="193" width="280" height="30"/>
                                 <animations/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="200" id="Kk1-lF-zPV"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="done"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="hasPasteButton" value="NO"/>
                                 </userDefinedRuntimeAttributes>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Choose your country" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AJI-Cl-vB8" customClass="MRCDropDown">
-                                <rect key="frame" x="100" y="112" width="200" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Choose your country" textAlignment="natural" minimumFontSize="13" translatesAutoresizingMaskIntoConstraints="NO" id="AJI-Cl-vB8" customClass="MRCDropDown">
+                                <rect key="frame" x="60" y="155" width="280" height="30"/>
                                 <animations/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="200" id="bHe-my-9zu"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="hasPasteButton" value="NO"/>
@@ -127,29 +118,30 @@
                                     <action selector="countrySelectorChanged:" destination="mJa-wm-PWL" eventType="editingDidEnd" id="pqc-kH-RcF"/>
                                 </connections>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter your phone number" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PKD-Jn-Z8m">
-                                <rect key="frame" x="79" y="0.0" width="243" height="24"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter your phone number" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="PKD-Jn-Z8m">
+                                <rect key="frame" x="51" y="15" width="299" height="34"/>
                                 <animations/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="243" id="1Se-4G-jHv"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="20"/>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="28"/>
                                 <color key="textColor" red="0.40461387434554974" green="0.382929233767275" blue="0.36570014842399245" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <animations/>
                         <constraints>
-                            <constraint firstItem="PKD-Jn-Z8m" firstAttribute="top" secondItem="d09-69-Ccb" secondAttribute="bottom" id="097-gZ-x2K"/>
+                            <constraint firstItem="AJI-Cl-vB8" firstAttribute="leading" secondItem="MS9-Qg-j5r" secondAttribute="leadingMargin" constant="40" id="0ig-3d-uJl"/>
                             <constraint firstItem="PKD-Jn-Z8m" firstAttribute="trailing" secondItem="qlQ-fX-bDJ" secondAttribute="trailing" id="D1I-BK-AY4"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="PMR-oU-m6l" secondAttribute="trailing" constant="40" id="HaZ-Yj-cs0"/>
                             <constraint firstItem="PKD-Jn-Z8m" firstAttribute="leading" secondItem="qlQ-fX-bDJ" secondAttribute="leading" id="IvE-5o-Ov2"/>
+                            <constraint firstItem="AJI-Cl-vB8" firstAttribute="centerY" secondItem="MS9-Qg-j5r" secondAttribute="centerY" constant="-30" id="Kkd-v0-K0W"/>
                             <constraint firstItem="AJI-Cl-vB8" firstAttribute="centerX" secondItem="MS9-Qg-j5r" secondAttribute="centerX" id="PFp-MJ-szT"/>
                             <constraint firstItem="PKD-Jn-Z8m" firstAttribute="centerX" secondItem="MS9-Qg-j5r" secondAttribute="centerX" id="TyW-ts-hNh"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="AJI-Cl-vB8" secondAttribute="trailing" constant="40" id="bqJ-HL-4Xx"/>
                             <constraint firstItem="5Ls-bY-tCJ" firstAttribute="centerX" secondItem="MS9-Qg-j5r" secondAttribute="centerX" id="dw0-Un-wqX"/>
                             <constraint firstItem="5Ls-bY-tCJ" firstAttribute="top" secondItem="PMR-oU-m6l" secondAttribute="bottom" constant="16" id="fsQ-iM-fty"/>
                             <constraint firstItem="AJI-Cl-vB8" firstAttribute="top" secondItem="qlQ-fX-bDJ" secondAttribute="bottom" constant="20" id="l3m-Xo-PQb"/>
                             <constraint firstItem="qlQ-fX-bDJ" firstAttribute="top" secondItem="PKD-Jn-Z8m" secondAttribute="bottom" constant="8" id="qbP-Ma-P6K"/>
                             <constraint firstItem="PMR-oU-m6l" firstAttribute="top" secondItem="AJI-Cl-vB8" secondAttribute="bottom" constant="8" id="rhe-Uq-ffs"/>
+                            <constraint firstItem="PMR-oU-m6l" firstAttribute="leading" secondItem="MS9-Qg-j5r" secondAttribute="leadingMargin" constant="40" id="un5-R0-Aj7"/>
                             <constraint firstItem="5Ls-bY-tCJ" firstAttribute="centerX" secondItem="PMR-oU-m6l" secondAttribute="centerX" id="xhg-7w-NEZ"/>
                         </constraints>
                         <connections>
@@ -186,32 +178,33 @@
                         <rect key="frame" x="0.0" y="0.0" width="400" height="400"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To set up QuickTransfer for your wallet we need a phone number and your email address." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FlV-wS-RMP">
-                                <rect key="frame" x="60" y="187" width="280" height="27"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="To set up QuickTransfer for your wallet we need a phone number and your email address." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="FlV-wS-RMP">
+                                <rect key="frame" x="50" y="185" width="290" height="32"/>
                                 <animations/>
-                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Transfer money" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1yf-cA-fzT">
-                                <rect key="frame" x="20" y="127" width="360" height="24"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Transfer money" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="1yf-cA-fzT">
+                                <rect key="frame" x="20" y="111" width="360" height="34"/>
                                 <animations/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="20"/>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="28"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YGM-lF-B7E" customClass="MRCButton">
-                                <rect key="frame" x="133" y="230" width="135" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YGM-lF-B7E" customClass="MRCButton">
+                                <rect key="frame" x="129" y="233" width="143" height="32"/>
                                 <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <state key="normal" title="Setup quicktransfer"/>
                                 <connections>
                                     <action selector="startConfiguration:" destination="X1Y-BT-GJd" eventType="touchUpInside" id="DIW-lV-a1G"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Quicktransfer isn't configured" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cnE-Hs-sde">
-                                <rect key="frame" x="60" y="155" width="280" height="16"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Quicktransfer isn't configured" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="13" translatesAutoresizingMaskIntoConstraints="NO" id="cnE-Hs-sde">
+                                <rect key="frame" x="50" y="149" width="290" height="20"/>
                                 <animations/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="13"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -230,7 +223,7 @@
                             <constraint firstItem="ifT-s3-I1H" firstAttribute="trailing" secondItem="NLu-Su-OCH" secondAttribute="trailingMargin" constant="-20" id="489-hi-JrO"/>
                             <constraint firstItem="FlV-wS-RMP" firstAttribute="top" secondItem="cnE-Hs-sde" secondAttribute="bottom" constant="16" id="ByR-cr-eHz"/>
                             <constraint firstItem="cnE-Hs-sde" firstAttribute="top" secondItem="1yf-cA-fzT" secondAttribute="bottom" constant="4" id="Emg-ks-7zE"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="cnE-Hs-sde" secondAttribute="trailing" constant="40" id="L75-l6-9Kh"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="cnE-Hs-sde" secondAttribute="trailing" constant="30" id="L75-l6-9Kh"/>
                             <constraint firstAttribute="trailingMargin" secondItem="1yf-cA-fzT" secondAttribute="trailing" id="Rdj-ax-e0v"/>
                             <constraint firstItem="YGM-lF-B7E" firstAttribute="top" secondItem="FlV-wS-RMP" secondAttribute="bottom" constant="16" id="Vbb-JP-R0u"/>
                             <constraint firstItem="ifT-s3-I1H" firstAttribute="centerY" secondItem="NLu-Su-OCH" secondAttribute="centerY" constant="138" id="ggg-uZ-KDH"/>
@@ -238,7 +231,7 @@
                             <constraint firstItem="FlV-wS-RMP" firstAttribute="leading" secondItem="cnE-Hs-sde" secondAttribute="leading" id="kKE-f5-fCR"/>
                             <constraint firstItem="YGM-lF-B7E" firstAttribute="centerX" secondItem="NLu-Su-OCH" secondAttribute="centerX" id="pkg-db-mEM"/>
                             <constraint firstItem="1yf-cA-fzT" firstAttribute="leading" secondItem="NLu-Su-OCH" secondAttribute="leadingMargin" id="wAk-de-TKh"/>
-                            <constraint firstItem="cnE-Hs-sde" firstAttribute="leading" secondItem="NLu-Su-OCH" secondAttribute="leadingMargin" constant="40" id="xQX-aV-LnU"/>
+                            <constraint firstItem="cnE-Hs-sde" firstAttribute="leading" secondItem="NLu-Su-OCH" secondAttribute="leadingMargin" constant="30" id="xQX-aV-LnU"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="QgR-yO-72K"/>
@@ -669,10 +662,9 @@ Please enter it below when you receive it</string>
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter verification code" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mzi-R9-E8e" customClass="MRCTextInput">
-                                <rect key="frame" x="100" y="95" width="200" height="80"/>
+                                <rect key="frame" x="60" y="95" width="280" height="80"/>
                                 <animations/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="200" id="L8Q-St-2Jf"/>
                                     <constraint firstAttribute="height" constant="80" id="uc6-y7-R5c"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="70"/>
@@ -703,10 +695,12 @@ Please enter it below when you receive it</string>
                         </subviews>
                         <animations/>
                         <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="mzi-R9-E8e" secondAttribute="trailing" constant="40" id="9Xh-5o-YRw"/>
                             <constraint firstItem="mzi-R9-E8e" firstAttribute="top" secondItem="BPN-ch-rXX" secondAttribute="bottom" constant="20" id="G09-pU-4Hb"/>
                             <constraint firstItem="weg-gb-Sej" firstAttribute="centerX" secondItem="mzi-R9-E8e" secondAttribute="centerX" id="MD0-pe-wRO"/>
                             <constraint firstItem="mzi-R9-E8e" firstAttribute="centerX" secondItem="BPN-ch-rXX" secondAttribute="centerX" id="Owi-sZ-aRZ"/>
                             <constraint firstItem="PCd-vK-NNr" firstAttribute="centerX" secondItem="MLb-Mg-y0x" secondAttribute="centerX" id="UFo-4g-X3B"/>
+                            <constraint firstItem="mzi-R9-E8e" firstAttribute="leading" secondItem="MLb-Mg-y0x" secondAttribute="leadingMargin" constant="40" id="WZ5-ak-PXk"/>
                             <constraint firstItem="BPN-ch-rXX" firstAttribute="leading" secondItem="MLb-Mg-y0x" secondAttribute="leadingMargin" id="Zoy-d8-T6m"/>
                             <constraint firstItem="6OM-8R-wjy" firstAttribute="top" secondItem="uvt-hW-lT3" secondAttribute="bottom" constant="4" id="atu-i3-PKr"/>
                             <constraint firstItem="PCd-vK-NNr" firstAttribute="top" secondItem="8XM-h2-oEs" secondAttribute="bottom" id="egb-7F-4dU"/>

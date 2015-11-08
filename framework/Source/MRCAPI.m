@@ -29,7 +29,16 @@
 }
 - (void) getEmail:(APIResponse)responseBlock error:(APIResponseError)errorBlock
 {
-    [self callMethod:@"email" parameters:nil HTTPMethod:@"GET" response:responseBlock error:errorBlock];
+    NSString *n = [[MrCoin settings] userEmail];
+    if(n){
+        responseBlock(n);
+        return;
+    }
+    [self callMethod:@"email" parameters:nil HTTPMethod:@"GET" response:^(id result) {
+        NSString *n = [result valueForKeyPath:@"attributes.email"];
+        [[MrCoin settings] setUserEmail:n];
+        responseBlock(n);
+    } error:errorBlock];
 }
 - (void) email:(NSString*)emailAddress success:(APIResponse)responseBlock error:(APIResponseError)errorBlock
 {
@@ -58,7 +67,16 @@
 }
 - (void) getPhone:(APIResponse)responseBlock error:(APIResponseError)errorBlock
 {
-    [self callMethod:@"phone" parameters:nil HTTPMethod:@"GET" response:responseBlock error:errorBlock];
+    NSString *n = [[MrCoin settings] userPhone];
+    if(n){
+        responseBlock(n);
+        return;
+    }
+    [self callMethod:@"phone" parameters:nil HTTPMethod:@"GET" response:^(id result) {
+        NSString *n = [result valueForKeyPath:@"attributes.number"];
+        [[MrCoin settings] setUserPhone:n];
+        responseBlock(n);
+    } error:errorBlock];
 }
 - (void) verifyPhone:(NSString*)verificationCode success:(APIResponse)responseBlock error:(APIResponseError)errorBlock
 {

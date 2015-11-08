@@ -21,6 +21,7 @@
 @optional
 -(BOOL) textInput:(MRCTextInput*)textInput changeText:(NSString *)string inRange:(NSRange)range;
 -(BOOL) textInputIsValid:(MRCTextInput *)textInput;
+-(BOOL) textInputWillEndEditing:(MRCTextInput*)textInput;
 -(void) textInput:(MRCTextInput *)textInput isValid:(BOOL)valid;
 
 @end

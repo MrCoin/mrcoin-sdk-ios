@@ -42,7 +42,10 @@
 {
     self.nextButton.enabled = valid;
 }
-
+-(void) textInputStartEditing:(MRCTextInput*)textInput
+{
+    _codeTextInput.text = @"";
+}
 #pragma mark - Actions
 - (IBAction)resendVerificationCode:(id)sender
 {
@@ -66,6 +69,7 @@
 //        
 //    }];
 }
+
 - (IBAction)reenterPhoneNumber:(id)sender
 {
     [self previousPage:sender];

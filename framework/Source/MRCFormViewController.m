@@ -349,10 +349,6 @@
     }
     newViewController.view.frame = r;
     
-    
-    
-    if(_overlay)    _overlay.backgroundColor = self.view.backgroundColor;
-    
     if([newViewController isKindOfClass:[MRCTextViewController class]]){
         MRCTextViewController *vc = (MRCTextViewController*)newViewController;
         vc.mode = MRCTermsUserNeedsAcceptForm;
@@ -375,6 +371,7 @@
                 }else{
                     self.view.backgroundColor = [UIColor whiteColor];
                 }
+                if(_overlay)    _overlay.backgroundColor = self.view.backgroundColor;
                 wallpaper.alpha = 1.0f;
             }
 
@@ -402,6 +399,7 @@
             }else{
                 self.view.backgroundColor = [UIColor whiteColor];
             }
+            if(_overlay)    _overlay.backgroundColor = self.view.backgroundColor;
             wallpaper.alpha = 1.0f;
         }
 
