@@ -76,6 +76,7 @@
     [self.codeTextInput endEditing:YES];
     //
     [[MrCoin api] verifyPhone:_codeTextInput.text success:^(NSDictionary *dictionary) {
+        [[MrCoin settings] setUserConfiguration:UserPhoneConfigured];
         MRCPopUpViewController *popup = [MRCPopUpViewController sharedPopup];
         [popup dismissViewController];
         [super nextPage:self];

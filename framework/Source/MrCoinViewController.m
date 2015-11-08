@@ -34,9 +34,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 }
-- (void)showView:(BOOL)configured
+- (void)showView:(MRCUserConfigurationMode)configured
 {
-    if(configured){
+    if(configured == UserConfigured){
         if(_unconfigured){
             [_unconfigured removeFromParentViewController];
             [_unconfigured.view removeFromSuperview];
@@ -61,7 +61,7 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [self showView:[[MrCoin settings] isConfigured]];
+    [self showView:[[MrCoin settings] userConfiguration]];
 }
 
 - (void)showTransferView

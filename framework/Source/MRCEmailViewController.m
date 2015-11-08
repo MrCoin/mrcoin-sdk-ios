@@ -34,6 +34,7 @@
     [_emailTextInput endEditing:YES];
     //
     [[MrCoin api] email:_emailTextInput.text success:^(NSDictionary *dictionary) {
+        [[MrCoin settings] setUserConfiguration:UserConfigured];
         [[MrCoin settings] setUserEmail:_emailTextInput.text];
         [super nextPage:sender];
     } error:nil];

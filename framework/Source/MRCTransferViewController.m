@@ -34,6 +34,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *tickerButton;
 
 @property NSDictionary *tickerData;
+@property NSArray *tickerDataArray;
 
 - (IBAction)serviceProvider:(id)sender;
 - (IBAction)help:(id)sender;
@@ -43,9 +44,12 @@
 
 #define View Controller related
 @implementation MRCTransferViewController
-
+{
+    NSInteger _currencyIndex;
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
+    _currencyIndex = -1;
 }
 - (void)viewWillAppear:(BOOL)animated
 {
@@ -57,24 +61,62 @@
     [self _loadQuicktransfer];
     [super viewWillAppear:animated];
 }
+
+#define Ticker
 -(void) _loadTicker
 {
     [[MrCoin api] getPriceTicker:^(id result) {
-        self.tickerData = result;
-        [self.tickerButton setTitle:[self tickerString] forState:UIControlStateNormal];
+        NSDictionary *d = [result valueForKey:@"attributes"];
+        NSMutableArray *a = [[NSMutableArray alloc] init];
+        [d enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
+           [a addObject:obj];
+        }];
+        self.tickerDataArray = [NSArray arrayWithArray:a];
+        self.tickerData = [result valueForKey:@"attributes"];
+        [self _updateTicker];
     } error:nil];
 }
--(NSString*) tickerString
+-(void) _updateTicker
+{
+    NSUInteger length = [self.tickerData count];
+    if(_currencyIndex == -1){
+        NSString *currency = [[MrCoin settings] sourceCurrency];
+        __block NSInteger index = -1;
+        __block NSUInteger indexCounter = 0;
+        [self.tickerData enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
+            if([key isEqualToString:[NSString stringWithFormat:@"btc%@",[currency lowercaseString]]]){
+                index = indexCounter;
+            }
+            indexCounter++;
+        }];
+        //        [self.tickerData enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        //        }];
+        if(index > -1){
+            _currencyIndex = index;
+        }
+    }
+    if(_currencyIndex >= 0 && _currencyIndex < length){
+        _currencyIndex++;
+        if(_currencyIndex >= length){
+            _currencyIndex = 0;
+        }
+    }
+    [self.tickerButton setTitle:[self _tickerString:_currencyIndex] forState:UIControlStateNormal];
+    
+}
+-(NSString*) _tickerString:(NSInteger)index
 {
     NSString *priceString;
     if(self.tickerData){
-        NSString *currency = [[MrCoin settings] sourceCurrency];
-        NSString *path = [NSString stringWithFormat:@"attributes.btc%@.ask_localized",[currency lowercaseString]];
-        NSString *price = [self.tickerData valueForKeyPath:path];
+        NSDictionary *currency = [self.tickerDataArray objectAtIndex:index];
+        NSString *price = [currency valueForKey:@"ask_localized"];
         priceString = [NSString stringWithFormat:NSLocalizedString(@"We sell at: %@", NULL),price];
     }
     return priceString;
 }
+
+
+
 -(void) _loadQuicktransfer
 {
     NSString *publicKey = [[[MrCoin sharedController] delegate] requestPublicKey];
@@ -86,10 +128,10 @@
 
 -(void)setupView:(NSDictionary*)dictionary currency:(NSString*)currency
 {
-    NSLog(@"dictionary %@",dictionary);
 
     NSString *keyPath = [NSString stringWithFormat:@"attributes.payment_methods.bank_transfer.%@.basic_info",currency];
     NSDictionary *d = [dictionary valueForKeyPath:keyPath];
+    NSLog(@"dictionary %@",d);
     NSString *name = [d valueForKey:@"beneficiary_name"];
     NSString *iban = [d valueForKey:@"iban"];
     NSString *swift = [d valueForKey:@"bic"];
@@ -140,18 +182,7 @@
 }
 
 - (IBAction)changeTickerCurrency:(id)sender {
-    NSString *currency = [[MrCoin settings] sourceCurrency];
-    NSUInteger length = [[[MrCoin settings] sourceCurrencies] count];
-    NSInteger index = [[[MrCoin settings] sourceCurrencies] indexOfObject:currency];
-    if(index >= 0 && index < length){
-        index++;
-        if(index >= length){
-            index = 0;
-        }
-    }
-    [[MrCoin settings] setSourceCurrency:[[[MrCoin settings] sourceCurrencies] objectAtIndex:index]];
-    [self.tickerButton setTitle:[self tickerString] forState:UIControlStateNormal];
-
+    [self _updateTicker];
 }
 - (IBAction)serviceProvider:(id)sender {
     [[MrCoin sharedController] openURL:[NSURL URLWithString:[[MrCoin settings] websiteURL]]];

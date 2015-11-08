@@ -12,11 +12,11 @@
 
 - (NSInteger) minimumLength
 {
-    return 6;
+    return 4;
 }
 - (NSInteger) maximumLength
 {
-    return 6;
+    return 4;
 }
 - (BOOL) isValid:(NSString*)string
 {

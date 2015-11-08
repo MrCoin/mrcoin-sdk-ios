@@ -25,10 +25,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MrCoinDelegate {
 //        settings.showPopupOnError = false
         
         // Setup your reseller key
-        settings.resellerKey = "9b85a53c-88fb-4a56-b4b0-4088153e4b7e"
-        
+//        settings.resellerKey = "9b85a53c-88fb-4a56-b4b0-4088153e4b7e"
+//        settings.configured = true
+//        settings.sourceCurrencies = ["HUF","EUR"]
+//        settings.sourceCurrency = settings.sourceCurrencies[0] as! String
+
         MrCoin.sharedController().delegate = self;
-        MrCoin.sharedController().needsAcceptTerms = false;
+//        MrCoin.sharedController().needsAcceptTerms = false;
 //        MrCoin.api().authenticate({ (result) -> Void in
 //            print(result);
 //            }) { (errors, type) -> Void in

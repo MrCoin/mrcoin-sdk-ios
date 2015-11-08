@@ -60,12 +60,21 @@ static UIStoryboard *_sharedStoryboard;
 #pragma mark - Root view controller
 + (void) checkUserDetails
 {
+    MRCSettings *s = [self settings];
     [[self api] getUserDetails:^(id result) {
-        [[self settings] setConfigured:YES];
-        NSLog(@"%@",result);
+        
+        NSDictionary *attribs = [result objectForKey:@"attributes"];
+        if(attribs){
+            [s setSourceCurrency:attribs[@"currency"]];
+//            attribs[@"locale"];
+//            attribs[@"timezone"];
+            [s setUserConfiguration:UserConfigured];
+        }
     } error:^(NSArray *errors, MRCAPIErrorType errorType) {
-        [[self settings] setConfigured:NO];
+        [s setUserConfiguration:UserUnconfigured];
         NSLog(@"%@",errors);
+//        [s setUserConfiguration:UserConfigured];
+//        [s setConfigured:NO];
     }];
 }
 + (MrCoinViewController*) rootController

@@ -8,16 +8,20 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MRCSettings : NSObject
+typedef enum : NSUInteger {
+    UserConfigurationUnknown,
+    UserUnconfigured,
+    UserPhoneConfigured,
+    UserConfigured
+} MRCUserConfigurationMode;
 
-//// Wallet
-//@property (nonatomic) NSString *walletPublicKey;
-//@property (nonatomic) NSString *walletPrivateKey;
+@interface MRCSettings : NSObject
 
 @property (nonatomic) NSLocale* locale;
 @property (nonatomic) NSTimeZone* timeZone;
 
 // User settings
+@property (nonatomic) MRCUserConfigurationMode userConfiguration;
 @property (nonatomic) NSString *userCountryCode;
 @property (nonatomic) NSString *userPhone;
 @property (nonatomic) NSString *userCountry;
@@ -35,7 +39,6 @@
 @property (nonatomic) NSString *termsURL;
 @property (nonatomic) NSString *shortTermsURL;
 
-@property (nonatomic, getter=isConfigured) BOOL configured;
 
 - (void) loadSettings;
 - (void) saveSettings;

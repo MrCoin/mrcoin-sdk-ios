@@ -23,8 +23,17 @@
 #pragma mark - Initialization
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.textView.dataDetectorTypes = UIDataDetectorTypeLink;
+    self.textView.delegate = self;
+    self.textView.selectable = YES;
     _declineButton.hidden = YES;
     _acceptButton.hidden = YES;
+}
+- (BOOL)textView:(UITextView *)textView shouldInteractWithURL:(NSURL *)URL inRange:(NSRange)characterRange
+{
+    NSLog(@"URL %@",URL);
+    [[UIApplication sharedApplication] openURL:URL];
+    return YES;
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -39,7 +48,7 @@
             [_acceptButton setTitle:NSLocalizedString(@"Accept",nil) forState:UIControlStateNormal];
         case MRCTermsUserNeedsAcceptForm:
             _overlayView.documentMode = YES;
-            _overlayView.topGradientSize = 0;
+            _overlayView.topGradientSize = 20;
             _overlayView.bottomGradientSize = 95;
             _overlayView.hidden = NO;
             _declineButton.hidden = NO;

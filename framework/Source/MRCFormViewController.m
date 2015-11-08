@@ -204,7 +204,7 @@
                           storyboardID:@"DocumentViewer"
                           showInProgressView:NO]];
     }
-    if(![[MrCoin settings] userPhone])
+    if([[MrCoin settings] userConfiguration] < UserPhoneConfigured)
     {
         // Load country list
         [[MrCoin api] getCountries:^(NSDictionary *dictionary) {
@@ -219,7 +219,7 @@
                           storyboardID:@"Form_VerifyPhone"
                           showInProgressView:YES]];
     }
-    if(![[MrCoin settings] userEmail])
+    if([[MrCoin settings] userConfiguration] < UserConfigured)
     {
         [pages addObject:[MRCFormPage
                           pageWithTitle:NSLocalizedString(@"Email",nil)
@@ -349,11 +349,8 @@
     }
     newViewController.view.frame = r;
     
-    if([[MrCoin settings] formBackgroundColor]){
-        self.view.backgroundColor = [[MrCoin settings] formBackgroundColor];
-    }else{
-        self.view.backgroundColor = [UIColor whiteColor];
-    }
+    
+    
     if(_overlay)    _overlay.backgroundColor = self.view.backgroundColor;
     
     if([newViewController isKindOfClass:[MRCTextViewController class]]){
@@ -361,12 +358,26 @@
         vc.mode = MRCTermsUserNeedsAcceptForm;
         vc.overlayView.backgroundColor = self.view.backgroundColor;
         [vc loadHTML:[[MrCoin settings] termsURL]];
+        self.view.backgroundColor = [UIColor whiteColor];
+        wallpaper.alpha = 0.2f;
+    }else{
+        wallpaper.alpha = 1.0f;
     }
+        
 
     [_contentView addSubview:newViewController.view];
     
     if(_animation){
         [UIView animateWithDuration:0.5 animations:^{
+            if(![newViewController isKindOfClass:[MRCTextViewController class]]){
+                if([[MrCoin settings] formBackgroundColor]){
+                    self.view.backgroundColor = [[MrCoin settings] formBackgroundColor];
+                }else{
+                    self.view.backgroundColor = [UIColor whiteColor];
+                }
+                wallpaper.alpha = 1.0f;
+            }
+
             newViewController.view.frame = r2;
             if(_currentViewController){
                 if(reverse){
@@ -385,6 +396,15 @@
             }
         }];
     }else{
+        if(![newViewController isKindOfClass:[MRCTextViewController class]]){
+            if([[MrCoin settings] formBackgroundColor]){
+                self.view.backgroundColor = [[MrCoin settings] formBackgroundColor];
+            }else{
+                self.view.backgroundColor = [UIColor whiteColor];
+            }
+            wallpaper.alpha = 1.0f;
+        }
+
         newViewController.view.frame = r2;
         if(_currentViewController){
             if(reverse){

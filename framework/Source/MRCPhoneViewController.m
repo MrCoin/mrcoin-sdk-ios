@@ -75,6 +75,7 @@
         
         // Reset navigation
         _phoneTextInput.enabled = YES;
+        [_phoneTextInput becomeFirstResponder];
         self.nextButton.enabled = NO;
     }else{
         _phoneTextInput.enabled = NO;
@@ -93,16 +94,10 @@
         MRCPopUpViewController *popup = [MRCPopUpViewController sharedPopup];
         [popup dismissViewController];
         [[MrCoin settings] setUserPhone:self.phoneTextInput.text];
-        
         NSString *countryCode = [[[[MrCoin api] country] valueForKeyPath:@"attributes.code2"] lowercaseString];
         [[MrCoin settings] setUserCountryCode:countryCode];
         [super nextPage:self];
     } error:nil];
-        //        [self showErrorPopup:@"Invalid verification code" message:[NSString stringWithFormat:@"Verification code: '%@' is incorrect.",self.codeTextInput.text]];
-        //        self.nextButton.enabled = NO;
-        //        _codeTextInput.text = @"";
-        //        [[self view] setNeedsLayout];
-
 }
 - (void) configureDropdown:(NSArray*)countries
 {
@@ -114,7 +109,6 @@
     }
     _countrySelector.items = names;
     _countrySelector.iconItems = flags;
-//    [_countrySelector becomeFirstResponder];
 }
 
 #pragma mark - Text Input

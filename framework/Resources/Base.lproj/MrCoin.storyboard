@@ -378,14 +378,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="transfer money:" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b91-Qb-7XM">
-                                <rect key="frame" x="133" y="20" width="135" height="24"/>
+                                <rect key="frame" x="133" y="30" width="135" height="24"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="20"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Name" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6G1-HD-Kjn">
-                                <rect key="frame" x="54" y="69" width="65" height="15"/>
+                                <rect key="frame" x="54" y="79" width="65" height="15"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="65" id="97S-j9-jP2"/>
@@ -395,7 +395,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="IBAN" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FFY-03-AlO">
-                                <rect key="frame" x="54" y="92" width="65" height="15"/>
+                                <rect key="frame" x="54" y="102" width="65" height="15"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="65" id="cVp-hv-yIA"/>
@@ -404,8 +404,8 @@
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="SWIFT (BIC)" textAlignment="right" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C65-iM-4dE">
-                                <rect key="frame" x="54" y="115" width="65" height="29"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="BIC" textAlignment="right" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C65-iM-4dE">
+                                <rect key="frame" x="54" y="125" width="65" height="15"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="65" id="y5k-4e-QAF"/>
@@ -415,21 +415,21 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="center" verticalHuggingPriority="249" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="9" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rz2-up-4Yf">
-                                <rect key="frame" x="51" y="193" width="299" height="61"/>
+                                <rect key="frame" x="30" y="175" width="340" height="90"/>
                                 <animations/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="61" id="Nrk-5T-CRY"/>
+                                    <constraint firstAttribute="height" constant="90" id="Nrk-5T-CRY"/>
                                 </constraints>
                                 <string key="text">Whatever amount you transfer (up to 1,000 EUR),
 it will be converted to Bitcoin and sent directly into your wallet.
 
 Please allow 12-48 banking hours for the transfer to clear in the Plan Old Banking System.</string>
-                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="10"/>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="11"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OYr-22-eRD" customClass="MRCCopiableButton">
-                                <rect key="frame" x="127" y="67" width="215" height="20"/>
+                                <rect key="frame" x="127" y="77" width="215" height="20"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="215" id="3aY-JH-pQa"/>
@@ -441,7 +441,7 @@ Please allow 12-48 banking hours for the transfer to clear in the Plan Old Ban
                                 </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FVH-2M-Mrq" customClass="MRCCopiableButton">
-                                <rect key="frame" x="127" y="113" width="215" height="20"/>
+                                <rect key="frame" x="127" y="123" width="215" height="20"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="Fhf-4f-wIE"/>
@@ -453,7 +453,7 @@ Please allow 12-48 banking hours for the transfer to clear in the Plan Old Ban
                                 </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tDX-x8-lKb" customClass="MRCCopiableButton">
-                                <rect key="frame" x="127" y="150" width="215" height="20"/>
+                                <rect key="frame" x="127" y="146" width="215" height="20"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="215" id="SH1-O6-o8G"/>
@@ -465,7 +465,7 @@ Please allow 12-48 banking hours for the transfer to clear in the Plan Old Ban
                                 </state>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" image="mrcoin.png" translatesAutoresizingMaskIntoConstraints="NO" id="vAW-r2-1dt">
-                                <rect key="frame" x="58" y="264" width="96" height="110"/>
+                                <rect key="frame" x="58" y="275" width="96" height="110"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="110" id="2TO-dV-Z8v"/>
@@ -473,7 +473,7 @@ Please allow 12-48 banking hours for the transfer to clear in the Plan Old Ban
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J03-bA-adh" customClass="MRCButton">
-                                <rect key="frame" x="160" y="274" width="176" height="25"/>
+                                <rect key="frame" x="160" y="285" width="176" height="25"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="176" id="UOS-fv-Z6T"/>
@@ -491,27 +491,25 @@ Please allow 12-48 banking hours for the transfer to clear in the Plan Old Ban
                                     <action selector="changeTickerCurrency:" destination="xEJ-gk-wob" eventType="touchUpInside" id="Ktq-sW-9W9"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" textAlignment="right" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dAC-Ce-Esu">
-                                <rect key="frame" x="54" y="152" width="65" height="29"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Reference" textAlignment="right" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dAC-Ce-Esu">
+                                <rect key="frame" x="54" y="148" width="65" height="15"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="65" id="nZv-n5-JPt"/>
                                 </constraints>
-                                <string key="text">Message (reference)  
-re</string>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="12"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="to the following bank account" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RWJ-c8-chc">
-                                <rect key="frame" x="130" y="44" width="140" height="13"/>
+                                <rect key="frame" x="130" y="54" width="140" height="13"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="11"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VoE-dv-l0f" customClass="MRCButton">
-                                <rect key="frame" x="158" y="305" width="180" height="50"/>
+                                <rect key="frame" x="158" y="316" width="180" height="50"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="180" id="vbg-yM-aoo"/>
@@ -524,7 +522,7 @@ re</string>
                                 </connections>
                             </button>
                             <button opaque="NO" alpha="0.5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RMz-t8-X7j">
-                                <rect key="frame" x="112" y="375" width="176" height="25"/>
+                                <rect key="frame" x="112" y="386" width="176" height="25"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="25" id="1X2-Rs-Iqa"/>
@@ -538,6 +536,18 @@ re</string>
                                     <action selector="serviceProvider:" destination="xEJ-gk-wob" eventType="touchUpInside" id="NiD-My-VAT"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Oav-az-d3F" customClass="MRCCopiableButton">
+                                <rect key="frame" x="127" y="100" width="215" height="20"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="215" id="732-Sc-8Wd"/>
+                                    <constraint firstAttribute="height" constant="20" id="FwC-DP-yOM"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="11"/>
+                                <state key="normal" title="---">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
                         </subviews>
                         <animations/>
                         <constraints>
@@ -546,6 +556,7 @@ re</string>
                             <constraint firstItem="dAC-Ce-Esu" firstAttribute="top" secondItem="C65-iM-4dE" secondAttribute="bottom" constant="8" id="2xa-c2-hfL"/>
                             <constraint firstItem="vAW-r2-1dt" firstAttribute="top" secondItem="rz2-up-4Yf" secondAttribute="bottom" constant="10" id="45X-tn-Dvh"/>
                             <constraint firstItem="OYr-22-eRD" firstAttribute="top" secondItem="6G1-HD-Kjn" secondAttribute="top" constant="-2" id="6ih-aO-70T"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="rz2-up-4Yf" secondAttribute="trailing" constant="10" id="79y-An-fuw"/>
                             <constraint firstItem="FFY-03-AlO" firstAttribute="top" secondItem="6G1-HD-Kjn" secondAttribute="bottom" constant="8" id="Cq5-K5-RgV"/>
                             <constraint firstItem="vAW-r2-1dt" firstAttribute="centerX" secondItem="XgF-RJ-0jR" secondAttribute="centerX" constant="-94" id="DWr-Dg-nxq"/>
                             <constraint firstItem="RWJ-c8-chc" firstAttribute="top" secondItem="b91-Qb-7XM" secondAttribute="bottom" id="Da1-4S-jvb"/>
@@ -553,6 +564,7 @@ re</string>
                             <constraint firstItem="J03-bA-adh" firstAttribute="top" secondItem="rz2-up-4Yf" secondAttribute="bottom" constant="20" id="Eco-d9-bY3"/>
                             <constraint firstItem="6G1-HD-Kjn" firstAttribute="top" secondItem="RWJ-c8-chc" secondAttribute="bottom" constant="12" id="FTh-DN-3Id"/>
                             <constraint firstItem="RMz-t8-X7j" firstAttribute="top" secondItem="VoE-dv-l0f" secondAttribute="bottom" constant="20" id="GDh-wG-heC"/>
+                            <constraint firstItem="Oav-az-d3F" firstAttribute="leading" secondItem="FFY-03-AlO" secondAttribute="trailing" constant="8" id="GKh-y4-eHz"/>
                             <constraint firstItem="RWJ-c8-chc" firstAttribute="centerX" secondItem="XgF-RJ-0jR" secondAttribute="centerX" id="Js9-Fe-Gnn"/>
                             <constraint firstItem="C65-iM-4dE" firstAttribute="centerX" secondItem="XgF-RJ-0jR" secondAttribute="centerX" constant="-113.5" id="Mwf-9t-r8v"/>
                             <constraint firstItem="FVH-2M-Mrq" firstAttribute="top" secondItem="C65-iM-4dE" secondAttribute="top" constant="-2" id="OsZ-aW-dru"/>
@@ -565,11 +577,12 @@ re</string>
                             <constraint firstItem="FFY-03-AlO" firstAttribute="centerX" secondItem="XgF-RJ-0jR" secondAttribute="centerX" constant="-113.5" id="fU3-WE-12e"/>
                             <constraint firstItem="dAC-Ce-Esu" firstAttribute="centerX" secondItem="XgF-RJ-0jR" secondAttribute="centerX" constant="-113.5" id="fZz-v8-dcg"/>
                             <constraint firstItem="VoE-dv-l0f" firstAttribute="top" secondItem="J03-bA-adh" secondAttribute="bottom" constant="6" id="hG9-Wx-yRb"/>
-                            <constraint firstItem="rz2-up-4Yf" firstAttribute="centerX" secondItem="XgF-RJ-0jR" secondAttribute="centerX" id="hMN-CA-K0E"/>
                             <constraint firstItem="rz2-up-4Yf" firstAttribute="centerY" secondItem="XgF-RJ-0jR" secondAttribute="centerY" priority="500" constant="20" id="iXR-4Z-C0y"/>
+                            <constraint firstItem="Oav-az-d3F" firstAttribute="top" secondItem="FFY-03-AlO" secondAttribute="top" constant="-2" id="jtO-iA-UIP"/>
                             <constraint firstItem="VoE-dv-l0f" firstAttribute="centerX" secondItem="XgF-RJ-0jR" secondAttribute="centerX" constant="48" id="kNB-mY-UnS"/>
                             <constraint firstItem="b91-Qb-7XM" firstAttribute="top" relation="greaterThanOrEqual" secondItem="P7X-PD-BCf" secondAttribute="bottom" constant="20" id="nr3-nj-1ad"/>
                             <constraint firstItem="tDX-x8-lKb" firstAttribute="leading" secondItem="dAC-Ce-Esu" secondAttribute="trailing" constant="8" id="qIC-ew-xzP"/>
+                            <constraint firstItem="rz2-up-4Yf" firstAttribute="leading" secondItem="XgF-RJ-0jR" secondAttribute="leadingMargin" constant="10" id="vlm-Ns-abg"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="o6a-y6-PQh"/>
@@ -581,6 +594,7 @@ re</string>
                     <size key="freeformSize" width="400" height="400"/>
                     <connections>
                         <outlet property="helpButton" destination="VoE-dv-l0f" id="ske-BT-U8Z"/>
+                        <outlet property="ibanButton" destination="Oav-az-d3F" id="Xw4-Os-dpT"/>
                         <outlet property="messageButton" destination="tDX-x8-lKb" id="AQQ-Dq-ydG"/>
                         <outlet property="mrCoin" destination="vAW-r2-1dt" id="ylR-mB-nsM"/>
                         <outlet property="nameButton" destination="OYr-22-eRD" id="NoI-Af-bHM"/>
@@ -739,12 +753,17 @@ Please enter it below when you receive it</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JtS-ke-sH4">
-                                <rect key="frame" x="0.0" y="0.0" width="400" height="400"/>
+                                <rect key="frame" x="0.0" y="-20" width="400" height="420"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                 <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES" address="YES"/>
                             </textView>
+                            <view opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Em-i5-pbM" customClass="MRCFormViewOverlay">
+                                <rect key="frame" x="0.0" y="-20" width="400" height="420"/>
+                                <animations/>
+                                <color key="tintColor" red="0.0" green="0.4392156862745098" blue="0.70588235294117652" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X5S-8g-Qph" customClass="MRCButton">
                                 <rect key="frame" x="228" y="350" width="142" height="30"/>
                                 <animations/>
@@ -770,18 +789,13 @@ Please enter it below when you receive it</string>
                                     <action selector="decline:" destination="0Tn-sg-Hi4" eventType="touchUpInside" id="IJ3-ne-Ac0"/>
                                 </connections>
                             </button>
-                            <view opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Em-i5-pbM" customClass="MRCFormViewOverlay">
-                                <rect key="frame" x="0.0" y="0.0" width="400" height="400"/>
-                                <animations/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                            </view>
                         </subviews>
                         <animations/>
                         <constraints>
                             <constraint firstItem="nAW-8g-iHk" firstAttribute="top" secondItem="JtS-ke-sH4" secondAttribute="bottom" id="1go-U9-hmP"/>
                             <constraint firstItem="nAW-8g-iHk" firstAttribute="top" secondItem="X5S-8g-Qph" secondAttribute="bottom" constant="20" id="61r-Y7-4ZE"/>
                             <constraint firstItem="nAW-8g-iHk" firstAttribute="top" secondItem="9Em-i5-pbM" secondAttribute="bottom" id="7gn-gv-Apn"/>
-                            <constraint firstItem="9Em-i5-pbM" firstAttribute="top" secondItem="0qS-bx-iXq" secondAttribute="bottom" id="MNX-4g-07j"/>
+                            <constraint firstItem="9Em-i5-pbM" firstAttribute="top" secondItem="0qS-bx-iXq" secondAttribute="bottom" constant="-20" id="MNX-4g-07j"/>
                             <constraint firstItem="JtS-ke-sH4" firstAttribute="leading" secondItem="IKb-BC-hNp" secondAttribute="leadingMargin" constant="-20" id="RUO-2c-ns3"/>
                             <constraint firstItem="JtS-ke-sH4" firstAttribute="trailing" secondItem="IKb-BC-hNp" secondAttribute="trailingMargin" constant="20" id="ZPn-qR-zJz"/>
                             <constraint firstItem="N3g-uz-E2a" firstAttribute="leading" secondItem="IKb-BC-hNp" secondAttribute="leadingMargin" constant="20" id="gEg-9i-MnV"/>
@@ -789,7 +803,7 @@ Please enter it below when you receive it</string>
                             <constraint firstItem="X5S-8g-Qph" firstAttribute="trailing" secondItem="IKb-BC-hNp" secondAttribute="trailingMargin" constant="-10" id="wLc-OE-ecD"/>
                             <constraint firstItem="X5S-8g-Qph" firstAttribute="centerY" secondItem="N3g-uz-E2a" secondAttribute="centerY" id="xU5-FC-JBK"/>
                             <constraint firstItem="9Em-i5-pbM" firstAttribute="leading" secondItem="IKb-BC-hNp" secondAttribute="leadingMargin" constant="-20" id="xxO-Zg-lnG"/>
-                            <constraint firstItem="JtS-ke-sH4" firstAttribute="top" secondItem="0qS-bx-iXq" secondAttribute="bottom" id="yUu-j1-BKO"/>
+                            <constraint firstItem="JtS-ke-sH4" firstAttribute="top" secondItem="0qS-bx-iXq" secondAttribute="bottom" constant="-20" id="yUu-j1-BKO"/>
                         </constraints>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="t55-26-rQV" appends="YES" id="26g-7B-OrV"/>

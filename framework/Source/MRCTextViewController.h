@@ -23,7 +23,7 @@ typedef enum : NSUInteger {
 } MrCoinDocumentType;
 
 
-@interface MRCTextViewController : MRCFormPageViewController
+@interface MRCTextViewController : MRCFormPageViewController <UITextViewDelegate>
 
 @property (weak, nonatomic) IBOutlet MRCFormViewOverlay *overlayView;
 @property (weak, nonatomic) IBInspectable NSString *sourceURL;
