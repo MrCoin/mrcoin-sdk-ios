@@ -353,7 +353,10 @@
         MRCTextViewController *vc = (MRCTextViewController*)newViewController;
         vc.mode = MRCTermsUserNeedsAcceptForm;
         vc.overlayView.backgroundColor = self.view.backgroundColor;
-        [vc loadHTML:[[MrCoin settings] termsURL]];
+//        [vc loadHTML:[[MrCoin settings] termsURL]];
+        [[MrCoin api] getTerms:^(id result) {
+            [vc parseHTML:result];
+        } error:nil];
         self.view.backgroundColor = [UIColor whiteColor];
         wallpaper.alpha = 0.2f;
     }else{

@@ -39,6 +39,12 @@
     }
     return self;
 }
+- (CGSize)intrinsicContentSize
+{
+    CGRect r = CGRectZero;
+    r.size = [super intrinsicContentSize];
+    return CGRectInset(r, -(self.font.pointSize*0.5f), -(self.font.pointSize*0.25f)).size;
+}
 #pragma mark - Layout
 -(CGRect)placeholderRectForBounds:(CGRect)bounds
 {

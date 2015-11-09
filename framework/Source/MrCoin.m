@@ -269,10 +269,9 @@ static NSBundle* _frameworkBundle = nil;
 {
     NSString *desc  = @"";
     for (NSError *error in errors) {
-        desc = [desc stringByAppendingFormat:@"- %@\n",[error localizedDescription]];
+        desc = [desc stringByAppendingFormat:@"%@\n",[error localizedDescription]];
     }
-    [self showErrorPopup:NSLocalizedString(@"Something happend", NULL) message:desc];
-    NSLog(@"%@",errors);
+    [self showErrorPopup:[(NSError*)errors[0] localizedFailureReason] message:desc];
 }
 - (void)hideErrorPopup
 {

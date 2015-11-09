@@ -122,8 +122,8 @@
         default:
         case MRCTermsUserNeedsAcceptForm:
         case MRCTermsUserNeedsAccept:
-            _textView.textContainerInset = UIEdgeInsetsMake(20, 20, 50, 20);
-            _textView.scrollIndicatorInsets = UIEdgeInsetsMake(50, 0, 70, 4);
+            _textView.textContainerInset = UIEdgeInsetsMake(35, 20, 100, 20);
+            _textView.scrollIndicatorInsets = UIEdgeInsetsMake(35, 0, 90, 4);
             break;
         case MRCShowDocuments:
             _textView.textContainerInset = UIEdgeInsetsMake(10, 20, 10, 20);

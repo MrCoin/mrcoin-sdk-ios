@@ -87,6 +87,14 @@
 {
     [self callMethod:@"price_ticker" parameters:nil HTTPMethod:@"GET" response:responseBlock error:errorBlock];
 }
+- (void) getTerms:(APIResponse)responseBlock error:(APIResponseError)errorBlock
+{
+    [self callMethod:@"terms" parameters:nil HTTPMethod:@"GET" response:^(id result) {
+        NSString *n = [result valueForKeyPath:@"attributes.terms_html"];
+        responseBlock(n);
+    } error:errorBlock];
+}
+
 - (void) quickDeposits:(NSString*)destAddress currency:(NSString*)currency resellerID:(NSString*)resellerID success:(APIResponse)responseBlock error:(APIResponseError)errorBlock
 {
     NSString *address = [[[MrCoin sharedController] delegate] requestDestinationAddress];

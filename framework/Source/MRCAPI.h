@@ -38,7 +38,7 @@ typedef void (^APIResponseError)(NSArray* errors, MRCAPIErrorType errorType);
 - (void) quickDeposits:(NSString*)destAddress currency:(NSString*)currency resellerID:(NSString*)resellerID success:(APIResponse)responseBlock error:(APIResponseError)errorBlock;
 
 - (void) getPriceTicker:(APIResponse)responseBlock error:(APIResponseError)errorBlock;
-
+- (void) getTerms:(APIResponse)responseBlock error:(APIResponseError)errorBlock;
 
 #pragma mark - Methods for testing
 -(NSURLRequest*) requestMethod:(NSString*)methodName parameters:(NSString*)jsonString HTTPMethod:(NSString*)HTTPMethod;
