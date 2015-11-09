@@ -24,7 +24,6 @@
 @interface MRCTransferViewController ()
 
 
-@property (weak, nonatomic) IBOutlet UIImageView *mrCoin;
 @property (weak, nonatomic) IBOutlet MRCCopiableButton *nameButton;
 @property (weak, nonatomic) IBOutlet MRCCopiableButton *ibanButton;
 @property (weak, nonatomic) IBOutlet MRCCopiableButton *swiftButton;

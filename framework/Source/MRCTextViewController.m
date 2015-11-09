@@ -107,7 +107,7 @@
 
 - (void)parseHTML:(NSString*)htmlString
 {
-    htmlString = [htmlString stringByAppendingString:@"<style>body{font-family: 'HelveticaNeue-Light'; font-size:12px;} h1{font-weight:normal;font-size:20px;} h2{font-size:14px;font-weight:normal;}</style>"];
+    htmlString = [htmlString stringByAppendingString:@"<style>body{font-family: 'HelveticaNeue-Light'; font-size:14px;} h1{font-weight:normal;font-size:22px;} h2{font-size:18px;font-weight:normal;}</style>"];
 //
     NSMutableAttributedString *txt = [[NSMutableAttributedString alloc] initWithData:[htmlString dataUsingEncoding:NSUTF8StringEncoding]
                                                                              options:@{NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType,

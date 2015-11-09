@@ -56,8 +56,8 @@
 		2685933E1BD843410081DDB3 /* NSString+NSHash.h in Headers */ = {isa = PBXBuildFile; fileRef = 268593371BD843410081DDB3 /* NSString+NSHash.h */; settings = {ASSET_TAGS = (); }; };
 		2685933F1BD843410081DDB3 /* NSString+NSHash.m in Sources */ = {isa = PBXBuildFile; fileRef = 268593381BD843410081DDB3 /* NSString+NSHash.m */; settings = {ASSET_TAGS = (); }; };
 		268593401BD843410081DDB3 /* NSString+NSHash.m in Sources */ = {isa = PBXBuildFile; fileRef = 268593381BD843410081DDB3 /* NSString+NSHash.m */; settings = {ASSET_TAGS = (); }; };
-		26D65CF21BC70B6C00DFF489 /* mrcoin.png in Resources */ = {isa = PBXBuildFile; fileRef = 26D65CF01BC70B6C00DFF489 /* mrcoin.png */; settings = {ASSET_TAGS = (); }; };
-		26D65CF31BC70B6C00DFF489 /* mrcoin@2.png in Resources */ = {isa = PBXBuildFile; fileRef = 26D65CF11BC70B6C00DFF489 /* mrcoin@2.png */; settings = {ASSET_TAGS = (); }; };
+		26A3ABA41BF0EED1009F609A /* quicktransfer@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 26A3ABA21BF0EED1009F609A /* quicktransfer@3x.png */; settings = {ASSET_TAGS = (); }; };
+		26A3ABA51BF0EED1009F609A /* transfer_unconfigured@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 26A3ABA31BF0EED1009F609A /* transfer_unconfigured@3x.png */; settings = {ASSET_TAGS = (); }; };
 		26D65CF61BC70BAE00DFF489 /* MRCDropDown.h in Headers */ = {isa = PBXBuildFile; fileRef = 26D65CF41BC70BAE00DFF489 /* MRCDropDown.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		26D65CF71BC70BAE00DFF489 /* MRCDropDown.h in Headers */ = {isa = PBXBuildFile; fileRef = 26D65CF41BC70BAE00DFF489 /* MRCDropDown.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		26D65CF81BC70BAE00DFF489 /* MRCDropDown.m in Sources */ = {isa = PBXBuildFile; fileRef = 26D65CF51BC70BAE00DFF489 /* MRCDropDown.m */; settings = {ASSET_TAGS = (); }; };
@@ -134,8 +134,6 @@
 		26DF33E11BCC6F7C004454A3 /* MRCSettingsViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 26DF33DE1BCC6F7C004454A3 /* MRCSettingsViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		26DF33E21BCC6F7C004454A3 /* MRCSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26DF33DF1BCC6F7C004454A3 /* MRCSettingsViewController.m */; settings = {ASSET_TAGS = (); }; };
 		26DF33E31BCC6F7C004454A3 /* MRCSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26DF33DF1BCC6F7C004454A3 /* MRCSettingsViewController.m */; settings = {ASSET_TAGS = (); }; };
-		26E194101BD2780200E5990F /* mrcoin_masked@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 26E1940F1BD2780200E5990F /* mrcoin_masked@2x.png */; settings = {ASSET_TAGS = (); }; };
-		26EF3A4C1BD50DB700AD0BB8 /* mrcoin_quicktransfer@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 26EF3A4B1BD50DB700AD0BB8 /* mrcoin_quicktransfer@2x.png */; settings = {ASSET_TAGS = (); }; };
 		26F37FAD1BC99F9C003EF687 /* MRCPopUpViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 26F37FAA1BC99F9C003EF687 /* MRCPopUpViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		26F37FAE1BC99F9C003EF687 /* MRCPopUpViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 26F37FAA1BC99F9C003EF687 /* MRCPopUpViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		26F37FB01BC99F9C003EF687 /* MRCPopUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26F37FAB1BC99F9C003EF687 /* MRCPopUpViewController.m */; settings = {ASSET_TAGS = (); }; };
@@ -233,8 +231,8 @@
 		268593361BD843410081DDB3 /* SLIP13.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SLIP13.m; path = Source/SLIP13.m; sourceTree = SOURCE_ROOT; };
 		268593371BD843410081DDB3 /* NSString+NSHash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+NSHash.h"; path = "Source/NSString+NSHash.h"; sourceTree = SOURCE_ROOT; };
 		268593381BD843410081DDB3 /* NSString+NSHash.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+NSHash.m"; path = "Source/NSString+NSHash.m"; sourceTree = SOURCE_ROOT; };
-		26D65CF01BC70B6C00DFF489 /* mrcoin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = mrcoin.png; path = Resources/mrcoin.png; sourceTree = "<group>"; };
-		26D65CF11BC70B6C00DFF489 /* mrcoin@2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "mrcoin@2.png"; path = "Resources/mrcoin@2.png"; sourceTree = "<group>"; };
+		26A3ABA21BF0EED1009F609A /* quicktransfer@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "quicktransfer@3x.png"; path = "Resources/quicktransfer@3x.png"; sourceTree = "<group>"; };
+		26A3ABA31BF0EED1009F609A /* transfer_unconfigured@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "transfer_unconfigured@3x.png"; path = "Resources/transfer_unconfigured@3x.png"; sourceTree = "<group>"; };
 		26D65CF41BC70BAE00DFF489 /* MRCDropDown.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MRCDropDown.h; path = Source/MRCDropDown.h; sourceTree = SOURCE_ROOT; };
 		26D65CF51BC70BAE00DFF489 /* MRCDropDown.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MRCDropDown.m; path = Source/MRCDropDown.m; sourceTree = SOURCE_ROOT; };
 		26D65CFA1BC70BB900DFF489 /* MRCButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MRCButton.h; path = Source/MRCButton.h; sourceTree = SOURCE_ROOT; };
@@ -276,8 +274,6 @@
 		26DF33D91BCC6F6F004454A3 /* MRCErrorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MRCErrorView.m; path = Source/MRCErrorView.m; sourceTree = SOURCE_ROOT; };
 		26DF33DE1BCC6F7C004454A3 /* MRCSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MRCSettingsViewController.h; path = Source/MRCSettingsViewController.h; sourceTree = SOURCE_ROOT; };
 		26DF33DF1BCC6F7C004454A3 /* MRCSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MRCSettingsViewController.m; path = Source/MRCSettingsViewController.m; sourceTree = SOURCE_ROOT; };
-		26E1940F1BD2780200E5990F /* mrcoin_masked@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "mrcoin_masked@2x.png"; path = "Resources/mrcoin_masked@2x.png"; sourceTree = "<group>"; };
-		26EF3A4B1BD50DB700AD0BB8 /* mrcoin_quicktransfer@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "mrcoin_quicktransfer@2x.png"; path = "Resources/mrcoin_quicktransfer@2x.png"; sourceTree = "<group>"; };
 		26F37FAA1BC99F9C003EF687 /* MRCPopUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MRCPopUpViewController.h; path = Source/MRCPopUpViewController.h; sourceTree = SOURCE_ROOT; };
 		26F37FAB1BC99F9C003EF687 /* MRCPopUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MRCPopUpViewController.m; path = Source/MRCPopUpViewController.m; sourceTree = SOURCE_ROOT; };
 		26FA7F8D1BC2A2580018B72C /* MrCoinFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MrCoinFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -336,7 +332,6 @@
 		2622ACF81BC2912C0017259E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				26E1940F1BD2780200E5990F /* mrcoin_masked@2x.png */,
 				2642D2531BCFA0CD00C79A13 /* flags */,
 				26DF33AA1BCC3326004454A3 /* close.png */,
 				26DF33AB1BCC3326004454A3 /* close@2x.png */,
@@ -345,11 +340,10 @@
 				266C3FCE1BC3FCFE00C0948E /* downArrow.png */,
 				266C3FCF1BC3FCFE00C0948E /* downArrow@2x.png */,
 				266C3FD01BC3FCFE00C0948E /* downArrow@3x.png */,
-				26D65CF01BC70B6C00DFF489 /* mrcoin.png */,
-				26D65CF11BC70B6C00DFF489 /* mrcoin@2.png */,
 				266C3FC31BC3C39C00C0948E /* PhoneFormats.dat */,
 				266FC5641BCDB47000D3A1A0 /* MrCoin.storyboard */,
-				26EF3A4B1BD50DB700AD0BB8 /* mrcoin_quicktransfer@2x.png */,
+				26A3ABA21BF0EED1009F609A /* quicktransfer@3x.png */,
+				26A3ABA31BF0EED1009F609A /* transfer_unconfigured@3x.png */,
 				266FC5581BCDAECA00D3A1A0 /* Localizable.strings */,
 			);
 			name = Resources;
@@ -774,19 +768,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				266FC5561BCDAECA00D3A1A0 /* Localizable.strings in Resources */,
-				26E194101BD2780200E5990F /* mrcoin_masked@2x.png in Resources */,
+				26A3ABA51BF0EED1009F609A /* transfer_unconfigured@3x.png in Resources */,
 				26FEB8121BCADADB00DDA046 /* error@2x.png in Resources */,
 				266C3FC41BC3C39C00C0948E /* PhoneFormats.dat in Resources */,
-				26EF3A4C1BD50DB700AD0BB8 /* mrcoin_quicktransfer@2x.png in Resources */,
+				26A3ABA41BF0EED1009F609A /* quicktransfer@3x.png in Resources */,
 				266C3FD81BC3FD0200C0948E /* downArrow@2x.png in Resources */,
 				266FC5661BCDB47000D3A1A0 /* MrCoin.storyboard in Resources */,
 				266C3FD71BC3FD0200C0948E /* downArrow.png in Resources */,
 				26FEB8111BCADADB00DDA046 /* error.png in Resources */,
-				26D65CF31BC70B6C00DFF489 /* mrcoin@2.png in Resources */,
 				266C3FD91BC3FD0200C0948E /* downArrow@3x.png in Resources */,
 				2642D2541BCFA0CD00C79A13 /* flags in Resources */,
 				26DF33AC1BCC3326004454A3 /* close.png in Resources */,
-				26D65CF21BC70B6C00DFF489 /* mrcoin.png in Resources */,
 				26DF33AD1BCC3326004454A3 /* close@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

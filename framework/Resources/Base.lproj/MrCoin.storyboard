@@ -4,6 +4,7 @@
         <deployment identifier="iOS"/>
         <development version="6000" identifier="xcode"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -203,7 +204,7 @@
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" image="mrcoin_quicktransfer.png" translatesAutoresizingMaskIntoConstraints="NO" id="ifT-s3-I1H">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" image="transfer_unconfigured.png" translatesAutoresizingMaskIntoConstraints="NO" id="ifT-s3-I1H">
                                 <rect key="frame" x="256" y="263" width="104" height="150"/>
                                 <animations/>
                                 <constraints>
@@ -365,18 +366,18 @@
                         <viewControllerLayoutGuide type="bottom" id="rFC-Ws-MYV"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="XgF-RJ-0jR">
-                        <rect key="frame" x="0.0" y="0.0" width="400" height="400"/>
+                        <rect key="frame" x="0.0" y="0.0" width="400" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Transfer money" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="b91-Qb-7XM">
-                                <rect key="frame" x="40" y="20" width="320" height="34"/>
+                                <rect key="frame" x="40" y="230" width="320" height="34"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" weight="thin" pointSize="28"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Name" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6G1-HD-Kjn">
-                                <rect key="frame" x="54" y="82" width="65" height="15"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Name" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="6" translatesAutoresizingMaskIntoConstraints="NO" id="6G1-HD-Kjn">
+                                <rect key="frame" x="54" y="292" width="65" height="15"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="65" id="97S-j9-jP2"/>
@@ -385,8 +386,8 @@
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="IBAN" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FFY-03-AlO">
-                                <rect key="frame" x="54" y="105" width="65" height="15"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="IBAN" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="6" translatesAutoresizingMaskIntoConstraints="NO" id="FFY-03-AlO">
+                                <rect key="frame" x="54" y="315" width="65" height="15"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="65" id="cVp-hv-yIA"/>
@@ -395,8 +396,8 @@
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="BIC" textAlignment="right" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C65-iM-4dE">
-                                <rect key="frame" x="54" y="128" width="65" height="15"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="BIC" textAlignment="right" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="6" translatesAutoresizingMaskIntoConstraints="NO" id="C65-iM-4dE">
+                                <rect key="frame" x="54" y="338" width="65" height="15"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="65" id="y5k-4e-QAF"/>
@@ -405,58 +406,57 @@
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="center" verticalHuggingPriority="249" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="9" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="rz2-up-4Yf">
-                                <rect key="frame" x="30" y="178" width="340" height="90"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="center" verticalHuggingPriority="249" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="rz2-up-4Yf">
+                                <rect key="frame" x="40" y="388" width="320" height="58"/>
                                 <animations/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="90" id="Nrk-5T-CRY"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="zJ8-Ht-vo4"/>
                                 </constraints>
                                 <string key="text">Whatever amount you transfer (up to 1,000 EUR),
 it will be converted to Bitcoin and sent directly into your wallet.
-
 Please allow 12-48 banking hours for the transfer to clear in the Plan Old Banking System.</string>
-                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="12"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OYr-22-eRD" customClass="MRCCopiableButton">
-                                <rect key="frame" x="127" y="80" width="215" height="20"/>
+                                <rect key="frame" x="127" y="290" width="215" height="20"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="215" id="3aY-JH-pQa"/>
                                     <constraint firstAttribute="height" constant="20" id="BZm-XB-FYe"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="11"/>
-                                <state key="normal" title="---">
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="12"/>
+                                <state key="normal">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FVH-2M-Mrq" customClass="MRCCopiableButton">
-                                <rect key="frame" x="127" y="126" width="215" height="20"/>
+                                <rect key="frame" x="127" y="336" width="215" height="20"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="Fhf-4f-wIE"/>
                                     <constraint firstAttribute="width" constant="215" id="HYi-GT-4RI"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="11"/>
-                                <state key="normal" title="---">
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="12"/>
+                                <state key="normal">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tDX-x8-lKb" customClass="MRCCopiableButton">
-                                <rect key="frame" x="127" y="149" width="215" height="20"/>
+                                <rect key="frame" x="127" y="359" width="215" height="20"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="215" id="SH1-O6-o8G"/>
                                     <constraint firstAttribute="height" constant="20" id="jWT-CC-Yfa"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="11"/>
-                                <state key="normal" title="---">
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="12"/>
+                                <state key="normal">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" image="mrcoin.png" translatesAutoresizingMaskIntoConstraints="NO" id="vAW-r2-1dt">
-                                <rect key="frame" x="58" y="278" width="96" height="110"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" image="quicktransfer.png" translatesAutoresizingMaskIntoConstraints="NO" id="vAW-r2-1dt">
+                                <rect key="frame" x="58" y="456" width="96" height="110"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="110" id="2TO-dV-Z8v"/>
@@ -464,7 +464,7 @@ Please allow 12-48 banking hours for the transfer to clear in the Plan Old Ban
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J03-bA-adh" customClass="MRCButton">
-                                <rect key="frame" x="160" y="288" width="176" height="25"/>
+                                <rect key="frame" x="160" y="466" width="176" height="25"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="176" id="UOS-fv-Z6T"/>
@@ -482,8 +482,8 @@ Please allow 12-48 banking hours for the transfer to clear in the Plan Old Ban
                                     <action selector="changeTickerCurrency:" destination="xEJ-gk-wob" eventType="touchUpInside" id="Ktq-sW-9W9"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Reference" textAlignment="right" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dAC-Ce-Esu">
-                                <rect key="frame" x="54" y="151" width="65" height="15"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Reference" textAlignment="right" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="6" translatesAutoresizingMaskIntoConstraints="NO" id="dAC-Ce-Esu">
+                                <rect key="frame" x="54" y="361" width="65" height="15"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="65" id="nZv-n5-JPt"/>
@@ -493,14 +493,14 @@ Please allow 12-48 banking hours for the transfer to clear in the Plan Old Ban
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="to the following bank account" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="RWJ-c8-chc">
-                                <rect key="frame" x="40" y="54" width="320" height="16"/>
+                                <rect key="frame" x="40" y="264" width="320" height="16"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" weight="thin" pointSize="13"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VoE-dv-l0f" customClass="MRCButton">
-                                <rect key="frame" x="158" y="319" width="180" height="50"/>
+                                <rect key="frame" x="158" y="503" width="180" height="50"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="180" id="vbg-yM-aoo"/>
@@ -512,8 +512,20 @@ Please allow 12-48 banking hours for the transfer to clear in the Plan Old Ban
                                     <action selector="help:" destination="xEJ-gk-wob" eventType="touchUpInside" id="LaJ-bO-pdc"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Oav-az-d3F" customClass="MRCCopiableButton">
+                                <rect key="frame" x="127" y="313" width="215" height="20"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="215" id="732-Sc-8Wd"/>
+                                    <constraint firstAttribute="height" constant="20" id="FwC-DP-yOM"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="12"/>
+                                <state key="normal">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
                             <button opaque="NO" alpha="0.5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RMz-t8-X7j">
-                                <rect key="frame" x="112" y="389" width="176" height="25"/>
+                                <rect key="frame" x="112" y="563" width="176" height="25"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="25" id="1X2-Rs-Iqa"/>
@@ -523,30 +535,15 @@ Please allow 12-48 banking hours for the transfer to clear in the Plan Old Ban
                                 <state key="normal" title="Service provided by MrCoin">
                                     <color key="titleColor" red="0.2666666667" green="0.2666666667" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
-                                <connections>
-                                    <action selector="serviceProvider:" destination="xEJ-gk-wob" eventType="touchUpInside" id="NiD-My-VAT"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Oav-az-d3F" customClass="MRCCopiableButton">
-                                <rect key="frame" x="127" y="103" width="215" height="20"/>
-                                <animations/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="215" id="732-Sc-8Wd"/>
-                                    <constraint firstAttribute="height" constant="20" id="FwC-DP-yOM"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="11"/>
-                                <state key="normal" title="---">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
                             </button>
                         </subviews>
                         <animations/>
                         <constraints>
+                            <constraint firstItem="J03-bA-adh" firstAttribute="top" secondItem="vAW-r2-1dt" secondAttribute="top" constant="10" id="1Mu-36-Hz6"/>
                             <constraint firstItem="6G1-HD-Kjn" firstAttribute="centerX" secondItem="XgF-RJ-0jR" secondAttribute="centerX" constant="-113.5" id="2TE-27-Lj4"/>
                             <constraint firstItem="dAC-Ce-Esu" firstAttribute="top" secondItem="C65-iM-4dE" secondAttribute="bottom" constant="8" id="2xa-c2-hfL"/>
-                            <constraint firstItem="vAW-r2-1dt" firstAttribute="top" secondItem="rz2-up-4Yf" secondAttribute="bottom" constant="10" id="45X-tn-Dvh"/>
                             <constraint firstItem="OYr-22-eRD" firstAttribute="top" secondItem="6G1-HD-Kjn" secondAttribute="top" constant="-2" id="6ih-aO-70T"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="rz2-up-4Yf" secondAttribute="trailing" constant="10" id="79y-An-fuw"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="rz2-up-4Yf" secondAttribute="trailing" constant="20" id="79y-An-fuw"/>
                             <constraint firstAttribute="trailingMargin" secondItem="RWJ-c8-chc" secondAttribute="trailing" constant="20" id="AhP-Qp-pn0"/>
                             <constraint firstItem="FFY-03-AlO" firstAttribute="top" secondItem="6G1-HD-Kjn" secondAttribute="bottom" constant="8" id="Cq5-K5-RgV"/>
                             <constraint firstItem="vAW-r2-1dt" firstAttribute="centerX" secondItem="XgF-RJ-0jR" secondAttribute="centerX" constant="-94" id="DWr-Dg-nxq"/>
@@ -554,8 +551,9 @@ Please allow 12-48 banking hours for the transfer to clear in the Plan Old Ban
                             <constraint firstItem="rz2-up-4Yf" firstAttribute="top" secondItem="dAC-Ce-Esu" secondAttribute="bottom" constant="12" id="E6y-m5-7mH"/>
                             <constraint firstItem="J03-bA-adh" firstAttribute="top" secondItem="rz2-up-4Yf" secondAttribute="bottom" constant="20" id="Eco-d9-bY3"/>
                             <constraint firstItem="6G1-HD-Kjn" firstAttribute="top" secondItem="RWJ-c8-chc" secondAttribute="bottom" constant="12" id="FTh-DN-3Id"/>
-                            <constraint firstItem="RMz-t8-X7j" firstAttribute="top" secondItem="VoE-dv-l0f" secondAttribute="bottom" constant="20" id="GDh-wG-heC"/>
+                            <constraint firstItem="RMz-t8-X7j" firstAttribute="top" secondItem="VoE-dv-l0f" secondAttribute="bottom" constant="10" id="GDh-wG-heC"/>
                             <constraint firstItem="Oav-az-d3F" firstAttribute="leading" secondItem="FFY-03-AlO" secondAttribute="trailing" constant="8" id="GKh-y4-eHz"/>
+                            <constraint firstItem="rFC-Ws-MYV" firstAttribute="top" secondItem="RMz-t8-X7j" secondAttribute="bottomMargin" constant="20" id="JWa-ba-FtU"/>
                             <constraint firstItem="RWJ-c8-chc" firstAttribute="centerX" secondItem="XgF-RJ-0jR" secondAttribute="centerX" id="Js9-Fe-Gnn"/>
                             <constraint firstAttribute="trailingMargin" secondItem="b91-Qb-7XM" secondAttribute="trailing" constant="20" id="LeF-1i-Zu3"/>
                             <constraint firstItem="C65-iM-4dE" firstAttribute="centerX" secondItem="XgF-RJ-0jR" secondAttribute="centerX" constant="-113.5" id="Mwf-9t-r8v"/>
@@ -567,16 +565,15 @@ Please allow 12-48 banking hours for the transfer to clear in the Plan Old Ban
                             <constraint firstItem="J03-bA-adh" firstAttribute="centerX" secondItem="XgF-RJ-0jR" secondAttribute="centerX" constant="48" id="aKB-sW-SxG"/>
                             <constraint firstItem="FVH-2M-Mrq" firstAttribute="leading" secondItem="C65-iM-4dE" secondAttribute="trailing" constant="8" id="cSD-so-TaE"/>
                             <constraint firstItem="tDX-x8-lKb" firstAttribute="top" secondItem="dAC-Ce-Esu" secondAttribute="top" constant="-2" id="e6b-u1-TKy"/>
+                            <constraint firstItem="b91-Qb-7XM" firstAttribute="top" relation="greaterThanOrEqual" secondItem="P7X-PD-BCf" secondAttribute="bottom" constant="10" id="f4H-gd-nKL"/>
                             <constraint firstItem="FFY-03-AlO" firstAttribute="centerX" secondItem="XgF-RJ-0jR" secondAttribute="centerX" constant="-113.5" id="fU3-WE-12e"/>
                             <constraint firstItem="dAC-Ce-Esu" firstAttribute="centerX" secondItem="XgF-RJ-0jR" secondAttribute="centerX" constant="-113.5" id="fZz-v8-dcg"/>
-                            <constraint firstItem="VoE-dv-l0f" firstAttribute="top" secondItem="J03-bA-adh" secondAttribute="bottom" constant="6" id="hG9-Wx-yRb"/>
-                            <constraint firstItem="rz2-up-4Yf" firstAttribute="centerY" secondItem="XgF-RJ-0jR" secondAttribute="centerY" priority="500" constant="20" id="iXR-4Z-C0y"/>
+                            <constraint firstItem="VoE-dv-l0f" firstAttribute="top" secondItem="J03-bA-adh" secondAttribute="bottom" constant="12" id="hG9-Wx-yRb"/>
                             <constraint firstItem="Oav-az-d3F" firstAttribute="top" secondItem="FFY-03-AlO" secondAttribute="top" constant="-2" id="jtO-iA-UIP"/>
                             <constraint firstItem="VoE-dv-l0f" firstAttribute="centerX" secondItem="XgF-RJ-0jR" secondAttribute="centerX" constant="48" id="kNB-mY-UnS"/>
                             <constraint firstItem="b91-Qb-7XM" firstAttribute="leading" secondItem="XgF-RJ-0jR" secondAttribute="leadingMargin" constant="20" id="kiS-Pw-vbH"/>
-                            <constraint firstItem="b91-Qb-7XM" firstAttribute="top" relation="greaterThanOrEqual" secondItem="P7X-PD-BCf" secondAttribute="bottom" constant="20" id="nr3-nj-1ad"/>
                             <constraint firstItem="tDX-x8-lKb" firstAttribute="leading" secondItem="dAC-Ce-Esu" secondAttribute="trailing" constant="8" id="qIC-ew-xzP"/>
-                            <constraint firstItem="rz2-up-4Yf" firstAttribute="leading" secondItem="XgF-RJ-0jR" secondAttribute="leadingMargin" constant="10" id="vlm-Ns-abg"/>
+                            <constraint firstItem="rz2-up-4Yf" firstAttribute="leading" secondItem="XgF-RJ-0jR" secondAttribute="leadingMargin" constant="20" id="vlm-Ns-abg"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="o6a-y6-PQh"/>
@@ -585,7 +582,7 @@ Please allow 12-48 banking hours for the transfer to clear in the Plan Old Ban
                     <nil key="simulatedBottomBarMetrics"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="400" height="400"/>
+                    <size key="freeformSize" width="400" height="600"/>
                     <connections>
                         <outlet property="helpButton" destination="VoE-dv-l0f" id="ske-BT-U8Z"/>
                         <outlet property="ibanButton" destination="Oav-az-d3F" id="Xw4-Os-dpT"/>
@@ -1201,8 +1198,8 @@ Please enter it below when you receive it</string>
         </scene>
     </scenes>
     <resources>
-        <image name="mrcoin.png" width="86" height="113"/>
-        <image name="mrcoin_quicktransfer.png" width="121" height="154"/>
+        <image name="quicktransfer.png" width="145" height="192"/>
+        <image name="transfer_unconfigured.png" width="201" height="239"/>
     </resources>
     <color key="tintColor" red="0.078431372550000003" green="0.45882352939999999" blue="0.71372549019999998" alpha="1" colorSpace="calibratedRGB"/>
 </document>

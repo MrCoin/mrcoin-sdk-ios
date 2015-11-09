@@ -13,8 +13,8 @@
 
 @interface MrCoinViewController ()
 
-@property (strong) UIViewController *page;
-@property (strong) UIViewController *unconfigured;
+@property (strong) MRCTransferViewController *page;
+@property (strong) MRCEmptyViewController *unconfigured;
 
 @end
 
@@ -62,6 +62,14 @@
 {
     [super viewWillAppear:animated];
     [self showView:[[MrCoin settings] userConfiguration]];
+}
+- (MRCEmptyViewController*) emptyViewController
+{
+    return _unconfigured;
+}
+- (MRCTransferViewController*) transferViewController
+{
+    return _page;
 }
 
 - (void)showTransferView

@@ -284,14 +284,17 @@
                                       initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
                                       target:nil action:nil];
     doneBarButton = [[UIBarButtonItem alloc]
-                                      initWithBarButtonSystemItem:UIBarButtonSystemItemDone
-                                      target:self action:@selector(doneEditing:)];
+                                       initWithTitle:NSLocalizedString(@"Next", NULL) style:UIBarButtonItemStyleDone
+                                       target:self action:@selector(doneEditing:)];
+//    doneBarButton = [[UIBarButtonItem alloc]
+//                                      initWithBarButtonSystemItem:UIBarButtonSystemItemDone
+//                                      target:self action:@selector(doneEditing:)];
     UIBarButtonItem *cancelBarButton = [[UIBarButtonItem alloc]
                                         initWithBarButtonSystemItem:UIBarButtonSystemItemCancel
                                         target:self action:@selector(cancelEditing:)];
     if(_hasPasteButton){
         UIBarButtonItem *pasteBarButton = [[UIBarButtonItem alloc]
-                                           initWithTitle:@"Paste" style:UIBarButtonItemStyleDone
+                                           initWithTitle:NSLocalizedString(@"Paste", NULL) style:UIBarButtonItemStyleDone
                                            target:self action:@selector(pasteClipboard:)];
         keyboardToolbar.items = @[cancelBarButton, flexBarButton, pasteBarButton, flexBarButton, doneBarButton];
     }else{

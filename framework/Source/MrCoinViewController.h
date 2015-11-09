@@ -7,10 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MRCTransferViewController.h"
+#import "MRCEmptyViewController.h"
 
 @interface MrCoinViewController : UIViewController
 
 - (IBAction) showForm:(id)sender;
 - (IBAction) showSettings:(id)sender;
+
+- (MRCEmptyViewController*) emptyViewController;
+- (MRCTransferViewController*) transferViewController;
 
 @end

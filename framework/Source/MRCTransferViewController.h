@@ -10,4 +10,6 @@
 
 @interface MRCTransferViewController : UIViewController <UIActionSheetDelegate>
 
+@property (weak, nonatomic) IBOutlet UIImageView *mrCoin;
+
 @end
