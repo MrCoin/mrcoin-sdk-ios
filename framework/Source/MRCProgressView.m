@@ -34,6 +34,7 @@
 {
     self = [super initWithCoder:coder];
     if (self) {
+        self.startPage = 0;
         self.backgroundColor = [UIColor clearColor];
         self.userInteractionEnabled = YES;
         //        UIColor *globalTint = [[[UIApplication sharedApplication] delegate] window].tintColor;
@@ -79,7 +80,7 @@
 
 - (void)setActiveStep:(NSInteger)activeStep
 {
-    _activeStep = activeStep;
+    _activeStep = activeStep+self.startPage;
     for (UIView *view in self.subviews) {
         MRCProgressItemView *v = (MRCProgressItemView*)view;
         if(v.itemIndex >= 0){

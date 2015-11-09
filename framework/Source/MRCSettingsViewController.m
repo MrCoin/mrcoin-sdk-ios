@@ -37,14 +37,14 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    if(section == 0) return ([[MrCoin settings] userConfiguration] == UserConfigured)? 4:1;
+    if(section == 0) return ([[MrCoin settings] userConfiguration] == MRCUserConfigured)? 4:1;
     return 5;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSString *_id = @"SettingsLink";
     if(indexPath.section == 0){
-        if([[MrCoin settings] userConfiguration] == UserConfigured && indexPath.row < 3){
+        if([[MrCoin settings] userConfiguration] == MRCUserConfigured && indexPath.row < 3){
             _id = @"SettingsValue";
         }
     }
@@ -56,7 +56,7 @@
     if(indexPath.section == 0){
         label = (UILabel*)[cell viewWithTag:201];
         if(indexPath.row == 0){
-            if([[MrCoin settings] userConfiguration] == UserConfigured){
+            if([[MrCoin settings] userConfiguration] == MRCUserConfigured){
                 label.text = NSLocalizedString(@"Phone",nil);
             }else{
                 label = (UILabel*)[cell viewWithTag:101];
@@ -131,7 +131,7 @@
             [self.navigationController pushViewController:vc animated:YES];
         }
     }else if(indexPath.section == 0 && self.navigationController){
-        if([[MrCoin settings] userConfiguration] == UserConfigured){
+        if([[MrCoin settings] userConfiguration] == MRCUserConfigured){
             if(indexPath.row == 2){
                 UIViewController *vc = [MrCoin viewController:@"CurrencySettings"];
                 vc.view.backgroundColor = [UIColor whiteColor];
@@ -148,7 +148,7 @@
 }
 -(BOOL)tableView:(UITableView *)tableView shouldHighlightRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if([[MrCoin settings] userConfiguration] == UserConfigured){
+    if([[MrCoin settings] userConfiguration] == MRCUserConfigured){
         if(indexPath.section == 0 && indexPath.row < 2) return NO;
     }
 

@@ -204,7 +204,7 @@
                           storyboardID:@"DocumentViewer"
                           showInProgressView:NO]];
     }
-    if([[MrCoin settings] userConfiguration] < UserPhoneConfigured)
+    if([[MrCoin settings] userConfiguration] < MRCUserPhoneConfigured)
     {
         // Load country list
         [[MrCoin api] getCountries:^(NSDictionary *dictionary) {
@@ -219,7 +219,7 @@
                           storyboardID:@"Form_VerifyPhone"
                           showInProgressView:YES]];
     }
-    if([[MrCoin settings] userConfiguration] < UserConfigured)
+    if([[MrCoin settings] userConfiguration] < MRCUserConfigured)
     {
         [pages addObject:[MRCFormPage
                           pageWithTitle:NSLocalizedString(@"Email",nil)
@@ -253,7 +253,12 @@
     }
     _progressView.showCloseButton = YES;
     _progressView.delegate = self;
-    [_progressView setStepLabels:pageNames];
+    _progressView.startPage = pageNames.count - 3;
+    [_progressView setStepLabels:@[
+                                   NSLocalizedString(@"Phone number",nil),
+                                   NSLocalizedString(@"Phone verification",nil),
+                                   NSLocalizedString(@"Email",nil),
+                                   ]];
     
     // Overlay
     _overlay = [[MRCFormViewOverlay alloc] initWithFrame:self.view.bounds];

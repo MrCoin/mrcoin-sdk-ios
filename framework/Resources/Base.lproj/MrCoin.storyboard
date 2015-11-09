@@ -836,7 +836,7 @@ Please enter it below when you receive it</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NVo-sY-R3r" customClass="MRCButton">
-                                <rect key="frame" x="167" y="231" width="66" height="32"/>
+                                <rect key="frame" x="167" y="191" width="66" height="32"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <state key="normal" title="Continue"/>
@@ -845,21 +845,21 @@ Please enter it below when you receive it</string>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter your email address" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="3A9-r9-l9e">
-                                <rect key="frame" x="40" y="115" width="320" height="34"/>
+                                <rect key="frame" x="40" y="75" width="320" height="34"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" weight="thin" pointSize="28"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="highlightedColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please enter your email below." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="LPJ-jW-qEQ">
-                                <rect key="frame" x="50" y="157" width="300" height="16"/>
+                                <rect key="frame" x="50" y="117" width="300" height="16"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fyQ-tR-s6U" customClass="MRCTextInput">
-                                <rect key="frame" x="60" y="185" width="280" height="30"/>
+                                <rect key="frame" x="60" y="145" width="280" height="30"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
@@ -870,8 +870,8 @@ Please enter it below when you receive it</string>
                                     <action selector="nextPage:" destination="vC2-BX-1Wj" eventType="primaryActionTriggered" id="fxQ-78-gvE"/>
                                 </connections>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="lEU-8v-2dm">
-                                <rect key="frame" x="60" y="231" width="280" height="66"/>
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="lEU-8v-2dm">
+                                <rect key="frame" x="60" y="195" width="280" height="66"/>
                                 <animations/>
                                 <string key="text">We only use your email to let you know when you successfully transferred fiat to your bitcoin wallet and to be able to give you support should there be an issue with your order. We will not share your email with third parties.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="11"/>
@@ -883,7 +883,7 @@ Please enter it below when you receive it</string>
                         <constraints>
                             <constraint firstItem="NVo-sY-R3r" firstAttribute="top" secondItem="fyQ-tR-s6U" secondAttribute="bottom" constant="16" id="7MH-aB-GH4"/>
                             <constraint firstItem="3A9-r9-l9e" firstAttribute="leading" secondItem="A9f-7b-t9l" secondAttribute="leadingMargin" constant="20" id="ChR-dn-rdl"/>
-                            <constraint firstItem="fyQ-tR-s6U" firstAttribute="centerY" secondItem="A9f-7b-t9l" secondAttribute="centerY" id="Czd-CN-85w"/>
+                            <constraint firstItem="fyQ-tR-s6U" firstAttribute="centerY" secondItem="A9f-7b-t9l" secondAttribute="centerY" constant="-40" id="Czd-CN-85w"/>
                             <constraint firstAttribute="trailingMargin" secondItem="fyQ-tR-s6U" secondAttribute="trailing" constant="40" id="Hat-Mt-oxw"/>
                             <constraint firstAttribute="trailingMargin" secondItem="lEU-8v-2dm" secondAttribute="trailing" constant="40" id="JZY-vg-wcH"/>
                             <constraint firstItem="LPJ-jW-qEQ" firstAttribute="trailing" secondItem="A9f-7b-t9l" secondAttribute="trailingMargin" constant="-30" id="JoL-jN-Yyk"/>
@@ -892,6 +892,7 @@ Please enter it below when you receive it</string>
                             <constraint firstItem="LPJ-jW-qEQ" firstAttribute="leading" secondItem="A9f-7b-t9l" secondAttribute="leadingMargin" constant="30" id="cjh-bS-NYp"/>
                             <constraint firstItem="fyQ-tR-s6U" firstAttribute="top" secondItem="LPJ-jW-qEQ" secondAttribute="bottom" constant="12" id="dIr-Ah-Vgg"/>
                             <constraint firstItem="NVo-sY-R3r" firstAttribute="centerX" secondItem="fyQ-tR-s6U" secondAttribute="centerX" id="fom-vP-Bqv"/>
+                            <constraint firstItem="lEU-8v-2dm" firstAttribute="top" secondItem="fyQ-tR-s6U" secondAttribute="bottom" constant="20" id="lWx-ZW-jun"/>
                             <constraint firstItem="LPJ-jW-qEQ" firstAttribute="top" secondItem="3A9-r9-l9e" secondAttribute="bottom" constant="8" id="obU-Z6-sJ2"/>
                             <constraint firstItem="fyQ-tR-s6U" firstAttribute="leading" secondItem="A9f-7b-t9l" secondAttribute="leadingMargin" constant="40" id="obz-d7-2KN"/>
                             <constraint firstItem="NVo-sY-R3r" firstAttribute="centerX" secondItem="A9f-7b-t9l" secondAttribute="centerX" id="z8z-ea-nRo"/>

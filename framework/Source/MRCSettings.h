@@ -9,10 +9,10 @@
 #import <UIKit/UIKit.h>
 
 typedef enum : NSUInteger {
-    UserConfigurationUnknown,
-    UserUnconfigured,
-    UserPhoneConfigured,
-    UserConfigured
+    MRCUserConfigurationUnknown,
+    MRCUserUnconfigured,
+    MRCUserPhoneConfigured,
+    MRCUserConfigured
 } MRCUserConfigurationMode;
 
 @interface MRCSettings : NSObject
@@ -36,8 +36,8 @@ typedef enum : NSUInteger {
 @property (nonatomic) NSString *websiteURL;
 @property (nonatomic) NSString *supportEmail;
 @property (nonatomic) NSString *supportURL;
-@property (nonatomic) NSString *termsURL;
-@property (nonatomic) NSString *shortTermsURL;
+//@property (nonatomic) NSString *termsURL;
+//@property (nonatomic) NSString *shortTermsURL;
 
 
 - (void) loadSettings;

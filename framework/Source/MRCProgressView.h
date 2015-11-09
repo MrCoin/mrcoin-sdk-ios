@@ -19,6 +19,7 @@
 @interface MRCProgressView : UIView
 
 @property (nonatomic) NSArray *stepLabels;
+@property (nonatomic) NSInteger startPage;
 @property (nonatomic) IBInspectable NSInteger activeStep;
 
 @property (nonatomic) BOOL showCloseButton;

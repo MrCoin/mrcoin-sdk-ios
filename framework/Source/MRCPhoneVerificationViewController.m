@@ -53,21 +53,8 @@
     [_codeTextInput hideError];
     
     [[MrCoin api] phone:[[MrCoin settings] userPhone] country:[[MrCoin settings] userCountryCode] success:^(NSDictionary *dictionary) {
-//        MRCPopUpViewController *popup = [MRCPopUpViewController sharedPopup];
     } error:nil];
     [[self view] setNeedsLayout];
-//    MRCPopUpViewController *popup = [MRCPopUpViewController sharedPopup];
-//    [popup setStyle:MRCPopupLightStyle];
-//    [popup setMode:MRCPopupActivityIndicator];
-//    [popup setTitle:NSLocalizedString(@"Resend verification code...",nil)];
-//    [popup presentInViewController:self.parentViewController];
-//
-//    //
-//    [self.api phone:[[MrCoin settings] userPhone] country:[[MrCoin settings] userCountry] success:^(NSDictionary *dictionary) {
-//        [popup dismissViewController];
-//    } error:^(NSError *error, MRCAPIErrorType errorType) {
-//        
-//    }];
 }
 
 - (IBAction)reenterPhoneNumber:(id)sender
@@ -80,11 +67,20 @@
     [self.codeTextInput endEditing:YES];
     //
     [[MrCoin api] verifyPhone:_codeTextInput.text success:^(NSDictionary *dictionary) {
-        [[MrCoin settings] setUserConfiguration:UserPhoneConfigured];
+        [[MrCoin settings] setUserConfiguration:MRCUserPhoneConfigured];
         MRCPopUpViewController *popup = [MRCPopUpViewController sharedPopup];
         [popup dismissViewController];
         [super nextPage:self];
-    } error:nil];
+    } error:^(NSArray *errors, MRCAPIErrorType errorType) {
+        if([(NSError*)errors[0] code] == 1006){
+            [[MrCoin settings] setUserConfiguration:MRCUserPhoneConfigured];
+            MRCPopUpViewController *popup = [MRCPopUpViewController sharedPopup];
+            [popup dismissViewController];
+            [super nextPage:self];
+        }else{
+            [[MrCoin sharedController] showErrors:errors type:errorType];
+        }
+    }];
 }
 
 @end

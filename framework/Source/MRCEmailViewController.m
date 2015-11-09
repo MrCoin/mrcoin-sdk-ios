@@ -22,6 +22,12 @@
     [super viewDidLoad];
     _emailTextInput.textInputDelegate = self;
     _emailTextInput.dataType = (MRCInputDataType*)[MRCEmailData dataType];
+    [[MrCoin api] getEmail:^(id result) {
+        _emailTextInput.text = result;
+    } error:^(NSArray *errors, MRCAPIErrorType errorType) {
+        
+    }];
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -34,7 +40,7 @@
     [_emailTextInput endEditing:YES];
     //
     [[MrCoin api] email:_emailTextInput.text success:^(NSDictionary *dictionary) {
-        [[MrCoin settings] setUserConfiguration:UserConfigured];
+        [[MrCoin settings] setUserConfiguration:MRCUserConfigured];
         [[MrCoin settings] setUserEmail:_emailTextInput.text];
         [super nextPage:sender];
     } error:nil];

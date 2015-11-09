@@ -68,13 +68,10 @@ static UIStoryboard *_sharedStoryboard;
             [s setSourceCurrency:attribs[@"currency"]];
 //            attribs[@"locale"];
 //            attribs[@"timezone"];
-            [s setUserConfiguration:UserConfigured];
+            [s setUserConfiguration:MRCUserConfigured];
         }
     } error:^(NSArray *errors, MRCAPIErrorType errorType) {
-        [s setUserConfiguration:UserUnconfigured];
-        NSLog(@"%@",errors);
-//        [s setUserConfiguration:UserConfigured];
-//        [s setConfigured:NO];
+        [s setUserConfiguration:MRCUserUnconfigured];
     }];
 }
 + (MrCoinViewController*) rootController
@@ -111,9 +108,9 @@ static UIStoryboard *_sharedStoryboard;
         
         _userSettings.supportEmail = @"support@mrcoin.eu";
         _userSettings.supportURL = @"https://www.mrcoin.eu/contact";
-        _userSettings.shortTermsURL = @"https://www.mrcoin.eu/terms";
+//        _userSettings.shortTermsURL = @"https://www.mrcoin.eu/terms";
         _userSettings.websiteURL = @"http://www.mrcoin.eu";
-        _userSettings.termsURL = @"https://www.mrcoin.eu/terms_full";
+//        _userSettings.termsURL = @"https://www.mrcoin.eu/terms_full";
         [_userSettings loadSettings];
     }
     return _userSettings;
@@ -131,10 +128,16 @@ static UIStoryboard *_sharedStoryboard;
     
     if(type == MrCoinDocumentTerms){
         [vc setTitle:@"Terms"];
-        [vc loadHTML:[[self settings] termsURL]];
+        [[MrCoin api] getTerms:^(id result) {
+            [vc parseHTML:result];
+        } error:nil];
+//        [vc loadHTML:[[self settings] termsURL]];
     }else if(type == MrCoinDocumentShortTerms){
         [vc setTitle:@"Terms"];
-        [vc loadHTML:[[self settings] shortTermsURL]];
+        [[MrCoin api] getTerms:^(id result) {
+            [vc parseHTML:result];
+        } error:nil];
+//        [vc loadHTML:[[self settings] shortTermsURL]];
     }else if(type == MrCoinDocumentSupport){
         [vc setTitle:@"Support"];
         [vc loadHTML:[[self settings] supportURL]];

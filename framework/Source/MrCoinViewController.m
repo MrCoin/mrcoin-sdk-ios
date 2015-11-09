@@ -36,7 +36,7 @@
 }
 - (void)showView:(MRCUserConfigurationMode)configured
 {
-    if(configured == UserConfigured){
+    if(configured == MRCUserConfigured){
         if(_unconfigured){
             [_unconfigured removeFromParentViewController];
             [_unconfigured.view removeFromSuperview];

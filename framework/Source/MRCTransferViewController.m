@@ -168,8 +168,8 @@
     // Setup documents
     [[MrCoin settings] setSupportEmail:[dictionary valueForKeyPath:@"attributes.support.email"]];
     [[MrCoin settings] setSupportURL:[dictionary valueForKeyPath:@"attributes.support.web"]];
-    [[MrCoin settings] setTermsURL:[dictionary valueForKeyPath:@"attributes.terms.full_terms"]];
-    [[MrCoin settings] setShortTermsURL:[dictionary valueForKeyPath:@"attributes.terms.short_terms"]];
+//    [[MrCoin settings] setTermsURL:[dictionary valueForKeyPath:@"attributes.terms.full_terms"]];
+//    [[MrCoin settings] setShortTermsURL:[dictionary valueForKeyPath:@"attributes.terms.short_terms"]];
 
 }
 - (void)didReceiveMemoryWarning {
