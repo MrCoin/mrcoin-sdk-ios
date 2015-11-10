@@ -27,7 +27,7 @@
     _userEmail = nil;
     _userCountryCode = nil;
     _userCountry = nil;
-    _sourceCurrency = nil;
+    _sourceCurrency = @"EUR";
 }
 - (void) loadSettings
 {

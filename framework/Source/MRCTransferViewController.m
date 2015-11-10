@@ -140,8 +140,17 @@
     NSString *copyTxt = NSLocalizedString(@"Copy %@ (%@)",nil);
     NSString *copyClipTxt = NSLocalizedString(@"Copy %@ to clipboard",nil);
     NSString *nameTxt = NSLocalizedString(@"name",nil);
+    
+//    Barnabas DebreczeniToday at 1:56pm
+//    HUF eseten pl. Account nr. van asszem (2x8 szamjegy), es nincs BIC Code... EUR eseten BIC + IBAN van.
     NSString *ibanTxt = NSLocalizedString(@"IBAN",nil);
-    NSString *swiftTxt = NSLocalizedString(@"SWIFT",nil);
+    NSString *swiftTxt = NSLocalizedString(@"BIC",nil);
+    if([currency isEqualToString:@"HUF"]){
+        iban = [d valueForKey:@"iban"];
+        ibanTxt = NSLocalizedString(@"Account nr.",nil);
+        swift = @"";
+        swiftTxt = @"";
+    }
     NSString *messageTxt = NSLocalizedString(@"message",nil);
     
     [self.nameButton setLabel:name

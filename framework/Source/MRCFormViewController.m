@@ -462,6 +462,11 @@
 - (IBAction)done:(id)sender
 {
     [self _closeForm];
+    if([[MrCoin sharedController] delegate]){
+        if([[[MrCoin sharedController] delegate] respondsToSelector:@selector(quickTransferDidSetup)]){
+            [[[MrCoin sharedController] delegate] quickTransferDidSetup];
+        }
+    }
 }
 
 - (void) _closeForm

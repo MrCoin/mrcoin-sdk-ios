@@ -10,4 +10,7 @@
 
 @interface MRCSettingsViewController : UITableViewController
 
+@property (nonatomic) BOOL showTerms;
+@property (nonatomic) BOOL showHeaders;
+
 @end

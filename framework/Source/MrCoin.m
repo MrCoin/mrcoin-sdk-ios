@@ -31,6 +31,11 @@
 + (void) resetQuickTransfer
 {
     [[MrCoin settings] resetSettings];
+    if([[MrCoin sharedController] delegate]){
+        if([[[MrCoin sharedController] delegate] respondsToSelector:@selector(quickTransferReset)]){
+            [[[MrCoin sharedController] delegate] quickTransferReset];
+        }
+    }
     [self setupQuickTransfer];
 }
 
@@ -72,7 +77,9 @@ static UIStoryboard *_sharedStoryboard;
         }
     } error:^(NSArray *errors, MRCAPIErrorType errorType) {
         [s setUserConfiguration:MRCUserUnconfigured];
-//        [s setUserConfiguration:MRCUserConfigured];
+        [s setUserPhone:@"+36307086085"];
+        [s setUserEmail:@"gabor.nagy@shellshaper.com"];
+        [s setUserConfiguration:MRCUserConfigured];
     }];
     //
 }

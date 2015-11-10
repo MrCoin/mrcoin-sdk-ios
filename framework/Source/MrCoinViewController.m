@@ -81,6 +81,11 @@
 }
 - (void)_showForm
 {
+    if([[MrCoin sharedController] delegate]){
+        if([[[MrCoin sharedController] delegate] respondsToSelector:@selector(quickTransferWillSetup)]){
+            [[[MrCoin sharedController] delegate] quickTransferWillSetup];
+        }
+    }
     _page = [MrCoin viewController:@"Form"];
     _page.view.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
     [[self view] addSubview:_page.view];

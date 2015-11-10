@@ -17,6 +17,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.showTerms = YES;
+    self.showHeaders = NO;
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -37,16 +39,33 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    if(section == 0) return ([[MrCoin settings] userConfiguration] == MRCUserConfigured)? 4:1;
-    return 5;
+    if(section == 0) return 4;
+//    if(section == 0) return ([[MrCoin settings] userConfiguration] == MRCUserConfigured)? 4:1;
+    return (self.showTerms)?3:2;
 }
-
+- (void)tableView:(UITableView *)tableView willDisplayHeaderView:(UIView *)view forSection:(NSInteger)section
+{
+    // Background color
+    view.tintColor = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.8];
+    
+    // Text Color
+    UITableViewHeaderFooterView *header = (UITableViewHeaderFooterView *)view;
+    [header.textLabel setTextColor:[UIColor darkGrayColor]];
+    [header.textLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Thin" size:20.0f]];
+    
+    // Another way to set the background color
+    // Note: does not preserve gradient effect of original header
+    // header.contentView.backgroundColor = [UIColor blackColor];
+}
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    cell.backgroundColor = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.5];
+}
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSString *_id = @"SettingsLink";
     if(indexPath.section == 0){
-        if([[MrCoin settings] userConfiguration] == MRCUserConfigured && indexPath.row < 3){
-            _id = @"SettingsValue";
-        }
+        if(indexPath.row == 3) _id = @"SettingsLink";
+        else _id = @"SettingsValue";
     }
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:_id forIndexPath:indexPath];
     
@@ -56,28 +75,33 @@
     if(indexPath.section == 0){
         label = (UILabel*)[cell viewWithTag:201];
         if(indexPath.row == 0){
-            if([[MrCoin settings] userConfiguration] == MRCUserConfigured){
-                label.text = NSLocalizedString(@"Phone",nil);
-            }else{
-                label = (UILabel*)[cell viewWithTag:101];
-                label.text = NSLocalizedString(@"Setup quicktransfer",nil);
-            }
+            label.text = NSLocalizedString(@"phone",nil);
         }else if(indexPath.row == 1){
-            label.text = NSLocalizedString(@"Email",nil);
+            label.text = NSLocalizedString(@"email",nil);
         }else if(indexPath.row == 2){
-            label.text = NSLocalizedString(@"Currency",nil);
+            label.text = NSLocalizedString(@"currency",nil);
         }else if(indexPath.row == 3){
             label = (UILabel*)[cell viewWithTag:101];
-            label.text = NSLocalizedString(@"Reset quicktransfer",nil);
+            label.text = NSLocalizedString(@"setup quicktransfer",nil);
         }
 
         label = (UILabel*)[cell viewWithTag:202];
         if(label)
         {
             if(indexPath.row == 0){
-                label.text = [[MrCoin settings] userPhone];
+                if(([[MrCoin settings] userConfiguration] == MRCUserPhoneConfigured)){
+                    label.text = [[MrCoin settings] userPhone];
+                }else{
+                    label.text = NSLocalizedString(@"unconfigured", NULL);
+                }
+                cell.accessoryType = UITableViewCellAccessoryNone;
             }else if(indexPath.row == 1){
-                label.text = [[MrCoin settings] userEmail];
+                if(([[MrCoin settings] userConfiguration] == MRCUserConfigured)){
+                    label.text = [[MrCoin settings] userEmail];
+                }else{
+                    label.text = NSLocalizedString(@"unconfigured", NULL);
+                }
+                cell.accessoryType = UITableViewCellAccessoryNone;
             }else if(indexPath.row == 2){
                 cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
                 label.text = [[MrCoin settings] sourceCurrency];
@@ -92,15 +116,11 @@
         if(label)
         {
             if(indexPath.row == 0){
-                label.text = NSLocalizedString(@"Support",nil);
+                label.text = NSLocalizedString(@"website",nil);
             }else if(indexPath.row == 1){
-                label.text = NSLocalizedString(@"Contact",nil);
+                label.text = NSLocalizedString(@"support",nil);
             }else if(indexPath.row == 2){
-                label.text = NSLocalizedString(@"Website",nil);
-            }else if(indexPath.row == 3){
-                label.text = NSLocalizedString(@"Terms of Service",nil);
-            }else if(indexPath.row == 4){
-                label.text = NSLocalizedString(@"Terms of Service (short)",nil);
+                label.text = NSLocalizedString(@"terms",nil);
             }
         }
     }
@@ -116,31 +136,29 @@
     {
         UIViewController *vc;
         if(indexPath.row == 0){
-            [[MrCoin sharedController] sendMail:[[MrCoin settings] supportEmail] subject:NSLocalizedString(@"Help me with QuickTransfer",nil)];
+            [[MrCoin sharedController] openURL:[NSURL URLWithString:[[MrCoin settings] websiteURL]]];
         }else if(indexPath.row == 1){
             vc = [MrCoin documentViewController:MrCoinDocumentSupport];
+//            [[MrCoin sharedController] sendMail:[[MrCoin settings] supportEmail] subject:NSLocalizedString(@"Help me with QuickTransfer",nil)];
         }else if(indexPath.row == 2){
-            [[MrCoin sharedController] openURL:[NSURL URLWithString:[[MrCoin settings] websiteURL]]];
-        }else if(indexPath.row == 3){
             vc = [MrCoin documentViewController:MrCoinDocumentTerms];
-        }else if(indexPath.row == 4){
-            vc = [MrCoin documentViewController:MrCoinDocumentShortTerms];
+//        }else if(indexPath.row == 3){
+//        }else if(indexPath.row == 4){
+//            vc = [MrCoin documentViewController:MrCoinDocumentShortTerms];
         }
         if(vc){
             vc.view.backgroundColor = [UIColor whiteColor];
             [self.navigationController pushViewController:vc animated:YES];
         }
     }else if(indexPath.section == 0 && self.navigationController){
-        if([[MrCoin settings] userConfiguration] == MRCUserConfigured){
-            if(indexPath.row == 2){
-                UIViewController *vc = [MrCoin viewController:@"CurrencySettings"];
-                vc.view.backgroundColor = [UIColor whiteColor];
-                [self.navigationController pushViewController:vc animated:YES];
-            }else if(indexPath.row == 3){
+        if(indexPath.row == 2){
+            UIViewController *vc = [MrCoin viewController:@"CurrencySettings"];
+//                vc.view.backgroundColor = [UIColor whiteColor];
+            [self.navigationController pushViewController:vc animated:YES];
+        }else if(indexPath.row == 3){
+            if([[MrCoin settings] userConfiguration] == MRCUserConfigured){
                 [MrCoin resetQuickTransfer];
-            }
-        }else{
-            if(indexPath.row == 0){
+            }else{
                 [MrCoin setupQuickTransfer];
             }
         }
@@ -154,16 +172,23 @@
 
     return YES;
 }
--(CGFloat)tableView:(UITableView *)tableView estimatedHeightForHeaderInSection:(NSInteger)section
-{
-    return 60.0f;
-}
+//-(CGFloat)tableView:(UITableView *)tableView estimatedHeightForHeaderInSection:(NSInteger)section
+//{
+//    return 50.0f;
+//}
+//-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+//{
+//    if(!self.showHeaders)   return nil;
+//    return [super tableView:tableView viewForHeaderInSection:section];
+//}
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
+    if(!self.showHeaders)   return @" ";
+    //
     if(section == 0){
         return NSLocalizedString(@"Quicktransfer",nil);
     }
-    return NSLocalizedString(@"Links",nil);
+    return NSLocalizedString(@" ",nil);
 
 }
 

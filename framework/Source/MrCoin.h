@@ -25,6 +25,10 @@
 - (NSString*) requestPublicKey;
 
 @optional
+- (void) quickTransferDidSetup;
+- (void) quickTransferWillSetup;
+- (void) quickTransferReset;
+
 - (void) openURL:(NSURL*)url;
 - (void) sendMail:(NSString*)to subject:(NSString*)subject;
 
