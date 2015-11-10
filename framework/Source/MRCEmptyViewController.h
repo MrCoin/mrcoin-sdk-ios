@@ -12,4 +12,7 @@
 
 - (IBAction)startConfiguration:(id)sender;
 
+@property (weak, nonatomic) IBOutlet UILabel *titleView;
+@property (weak, nonatomic) IBOutlet UIImageView *mrCoin;
+
 @end

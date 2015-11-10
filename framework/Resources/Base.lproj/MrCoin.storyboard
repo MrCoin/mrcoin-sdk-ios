@@ -181,7 +181,7 @@
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Transfer money" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="1yf-cA-fzT">
+                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Transfer money" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="1yf-cA-fzT">
                                 <rect key="frame" x="40" y="126" width="320" height="34"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" weight="thin" pointSize="28"/>
@@ -204,8 +204,8 @@
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" image="transfer_unconfigured.png" translatesAutoresizingMaskIntoConstraints="NO" id="ifT-s3-I1H">
-                                <rect key="frame" x="256" y="263" width="104" height="150"/>
+                            <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" image="transfer_unconfigured.png" translatesAutoresizingMaskIntoConstraints="NO" id="ifT-s3-I1H">
+                                <rect key="frame" x="256" y="285" width="104" height="150"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="104" id="Mdx-Me-YVo"/>
@@ -222,7 +222,7 @@
                             <constraint firstAttribute="trailingMargin" secondItem="cnE-Hs-sde" secondAttribute="trailing" constant="30" id="L75-l6-9Kh"/>
                             <constraint firstAttribute="trailingMargin" secondItem="1yf-cA-fzT" secondAttribute="trailing" constant="20" id="Rdj-ax-e0v"/>
                             <constraint firstItem="YGM-lF-B7E" firstAttribute="top" secondItem="FlV-wS-RMP" secondAttribute="bottom" constant="16" id="Vbb-JP-R0u"/>
-                            <constraint firstItem="ifT-s3-I1H" firstAttribute="centerY" secondItem="NLu-Su-OCH" secondAttribute="centerY" constant="138" id="ggg-uZ-KDH"/>
+                            <constraint firstItem="ifT-s3-I1H" firstAttribute="centerY" secondItem="NLu-Su-OCH" secondAttribute="centerY" constant="160" id="ggg-uZ-KDH"/>
                             <constraint firstItem="FlV-wS-RMP" firstAttribute="centerY" secondItem="NLu-Su-OCH" secondAttribute="centerY" id="hpj-UA-A6d"/>
                             <constraint firstItem="FlV-wS-RMP" firstAttribute="leading" secondItem="cnE-Hs-sde" secondAttribute="leading" id="kKE-f5-fCR"/>
                             <constraint firstItem="YGM-lF-B7E" firstAttribute="centerX" secondItem="NLu-Su-OCH" secondAttribute="centerX" id="pkg-db-mEM"/>
@@ -237,6 +237,10 @@
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="400" height="400"/>
+                    <connections>
+                        <outlet property="mrCoin" destination="ifT-s3-I1H" id="axm-bU-bhz"/>
+                        <outlet property="titleView" destination="1yf-cA-fzT" id="kIw-Bd-D7H"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cIf-C0-huC" sceneMemberID="firstResponder"/>
             </objects>
@@ -369,7 +373,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="400" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Transfer money" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="b91-Qb-7XM">
+                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Transfer money" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="b91-Qb-7XM">
                                 <rect key="frame" x="40" y="230" width="320" height="34"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" weight="thin" pointSize="28"/>
@@ -455,7 +459,7 @@ Please allow 12-48 banking hours for the transfer to clear in the Plan Old Ban
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" image="quicktransfer.png" translatesAutoresizingMaskIntoConstraints="NO" id="vAW-r2-1dt">
+                            <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" image="quicktransfer.png" translatesAutoresizingMaskIntoConstraints="NO" id="vAW-r2-1dt">
                                 <rect key="frame" x="58" y="456" width="96" height="110"/>
                                 <animations/>
                                 <constraints>
@@ -591,11 +595,12 @@ Please allow 12-48 banking hours for the transfer to clear in the Plan Old Ban
                         <outlet property="nameButton" destination="OYr-22-eRD" id="NoI-Af-bHM"/>
                         <outlet property="swiftButton" destination="FVH-2M-Mrq" id="Qg4-dj-qah"/>
                         <outlet property="tickerButton" destination="J03-bA-adh" id="9pM-Ef-enM"/>
+                        <outlet property="titleView" destination="b91-Qb-7XM" id="Plg-dk-E9z"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zoc-Wq-mwV" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="145" y="-2057"/>
+            <point key="canvasLocation" x="145" y="-1957"/>
         </scene>
         <!--Mr. Coin-->
         <scene sceneID="gfv-uZ-PSJ">

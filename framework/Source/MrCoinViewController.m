@@ -97,7 +97,6 @@
 {
     UIViewController *form = [MrCoin viewController:@"Form"];
     if(!sender) sender = [[[[UIApplication sharedApplication] delegate] window] rootViewController];
-    NSLog(@"%@",sender);
     
     [sender presentViewController:form animated:YES completion:^{
     }];

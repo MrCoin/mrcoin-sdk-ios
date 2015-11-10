@@ -72,7 +72,9 @@ static UIStoryboard *_sharedStoryboard;
         }
     } error:^(NSArray *errors, MRCAPIErrorType errorType) {
         [s setUserConfiguration:MRCUserUnconfigured];
+//        [s setUserConfiguration:MRCUserConfigured];
     }];
+    //
 }
 + (MrCoinViewController*) rootController
 {
@@ -102,7 +104,6 @@ static UIStoryboard *_sharedStoryboard;
 {
     if(!_userSettings){
         _userSettings = [[MRCSettings alloc] init];
-        _userSettings.sourceCurrency = @"EUR";
         _userSettings.showPopupOnError = YES;
         _userSettings.showErrorOnTextField = YES;
         

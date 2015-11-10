@@ -78,6 +78,7 @@
 -(void) _updateTicker
 {
     NSUInteger length = [self.tickerData count];
+    if(length <= 0) return;
     if(_currencyIndex == -1){
         NSString *currency = [[MrCoin settings] sourceCurrency];
         __block NSInteger index = -1;
@@ -90,7 +91,7 @@
         }];
         //        [self.tickerData enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         //        }];
-        if(index > -1){
+        if(index > -1 && index < length){
             _currencyIndex = index;
         }
     }
@@ -99,8 +100,8 @@
         if(_currencyIndex >= length){
             _currencyIndex = 0;
         }
+        [self.tickerButton setTitle:[self _tickerString:_currencyIndex] forState:UIControlStateNormal];
     }
-    [self.tickerButton setTitle:[self _tickerString:_currencyIndex] forState:UIControlStateNormal];
     
 }
 -(NSString*) _tickerString:(NSInteger)index
