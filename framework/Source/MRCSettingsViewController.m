@@ -46,7 +46,7 @@
 - (void)tableView:(UITableView *)tableView willDisplayHeaderView:(UIView *)view forSection:(NSInteger)section
 {
     // Background color
-    view.tintColor = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.8];
+    view.tintColor = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.2];
     
     // Text Color
     UITableViewHeaderFooterView *header = (UITableViewHeaderFooterView *)view;
@@ -89,6 +89,7 @@
         if(label)
         {
             if(indexPath.row == 0){
+                label.textColor = [UIColor grayColor];
                 if(([[MrCoin settings] userConfiguration] == MRCUserPhoneConfigured)){
                     label.text = [[MrCoin settings] userPhone];
                 }else{
@@ -96,6 +97,7 @@
                 }
                 cell.accessoryType = UITableViewCellAccessoryNone;
             }else if(indexPath.row == 1){
+                label.textColor = [UIColor grayColor];
                 if(([[MrCoin settings] userConfiguration] == MRCUserConfigured)){
                     label.text = [[MrCoin settings] userEmail];
                 }else{
@@ -103,6 +105,7 @@
                 }
                 cell.accessoryType = UITableViewCellAccessoryNone;
             }else if(indexPath.row == 2){
+                label.textColor = [self.view tintColor];
                 cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
                 label.text = [[MrCoin settings] sourceCurrency];
             }else if(indexPath.row == 3){
@@ -156,20 +159,13 @@
 //                vc.view.backgroundColor = [UIColor whiteColor];
             [self.navigationController pushViewController:vc animated:YES];
         }else if(indexPath.row == 3){
-            if([[MrCoin settings] userConfiguration] == MRCUserConfigured){
-                [MrCoin resetQuickTransfer];
-            }else{
-                [MrCoin setupQuickTransfer];
-            }
+            [MrCoin setupQuickTransfer:self];
         }
     }
 }
 -(BOOL)tableView:(UITableView *)tableView shouldHighlightRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if([[MrCoin settings] userConfiguration] == MRCUserConfigured){
-        if(indexPath.section == 0 && indexPath.row < 2) return NO;
-    }
-
+    if(indexPath.section == 0 && indexPath.row < 2) return NO;
     return YES;
 }
 //-(CGFloat)tableView:(UITableView *)tableView estimatedHeightForHeaderInSection:(NSInteger)section

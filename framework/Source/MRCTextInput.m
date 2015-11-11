@@ -195,6 +195,15 @@
     }
     return YES;
 }
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [self doneEditing:textField];
+//    [self hide];
+//    [textField resignFirstResponder];
+//    if(self.textInputDelegate){
+//        [self.textInputDelegate textInputEndEditing:self];
+//    }
+    return NO;
+}
 -(void)textFieldDidEndEditing:(UITextField *)textField
 {
     [self hide];

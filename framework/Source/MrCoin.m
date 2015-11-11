@@ -24,11 +24,16 @@
 @implementation MrCoin
 
 
-+ (void) setupQuickTransfer
++ (void) setupQuickTransfer:(id)sender
 {
-    [[MrCoin rootController] showForm:nil];
+    if([[MrCoin settings] userConfiguration] == MRCUserConfigured){
+        [MrCoin resetQuickTransfer:sender];
+        return;
+    }else{
+        [[MrCoin rootController] showForm:sender];
+    }
 }
-+ (void) resetQuickTransfer
++ (void) resetQuickTransfer:(id)sender
 {
     [[MrCoin settings] resetSettings];
     if([[MrCoin sharedController] delegate]){
@@ -36,7 +41,7 @@
             [[[MrCoin sharedController] delegate] quickTransferReset];
         }
     }
-    [self setupQuickTransfer];
+    [[MrCoin rootController] showForm:sender];
 }
 
 
@@ -124,8 +129,6 @@ static UIStoryboard *_sharedStoryboard;
     UIWindow *w = [[[UIApplication sharedApplication] delegate] window];
     vc.view.frame = w.frame;
     [vc setMode:MRCShowDocuments];
-
-    
     if(type == MrCoinDocumentTerms){
         [vc setTitle:@"Terms"];
         [[MrCoin api] getTerms:^(id result) {
