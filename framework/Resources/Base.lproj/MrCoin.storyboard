@@ -192,7 +192,9 @@
                                 <rect key="frame" x="129" y="232" width="143" height="32"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <state key="normal" title="Setup quicktransfer"/>
+                                <state key="normal" title="Setup quicktransfer">
+                                    <color key="titleColor" red="0.078431372550000003" green="0.45882352939999999" blue="0.71372549019999998" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="startConfiguration:" destination="X1Y-BT-GJd" eventType="touchUpInside" id="DIW-lV-a1G"/>
                                 </connections>
