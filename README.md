@@ -1,3 +1,4 @@
+![image](docs/mrcoin.png)
 # MrCoin iOS SDK #
 This open-source library allows you to integrate MrCoin API services into your iOS app.
 
@@ -108,8 +109,10 @@ Example implementation from our ObjC Example:
 	}
 	-(NSString *)requestPrivateKey
 	{
+		NSData *slip13 = [NSData slip0013ForIndex:0x00000000 uri:@"https://www.mrcoin.eu/callback/bitid"];
+	
 		// NSData -> base58Check
-	    return BTCBase58CheckStringWithData(key.privateKey);
+	    return BTCBase58CheckStringWithData([key privateKeyForPath:slip13]);
 	}
 	-(NSString *)requestMessageSignature:(NSString *)message privateKey:(NSString *)privateKey
 	{
@@ -149,10 +152,10 @@ Create new SDK view controllers:
 
 	[MrCoin viewController:@"CurrencySettings"]; 	// MrCoinViewController
 	
-Setup/reset a quick transfer
+Setup/reset a quick transfer from a view controller
 
-	[MrCoin setupQuickTransfer];
-	[MrCoin resetQuickTransfer];
+	[MrCoin setupQuickTransfer:self];
+	[MrCoin resetQuickTransfer:self];
 
 Setup a custom bundle file
 
@@ -177,10 +180,6 @@ Cell labels for a your own implementation:
 		// User's phone number
 		[[MrCoin settings] userPhone];
 
-	
-		// User's phone number
-		[[MrCoin settings] userPhone];
-	
 		// User's email address
 		[[MrCoin settings] userEmail];
 	
@@ -232,8 +231,6 @@ URLs:
     NSLog(@"%@", [[MrCoin settings] supportEmail] ); // print support email address.
     NSLog(@"%@", [[MrCoin settings] websiteURL] ); // print website url.
     NSLog(@"%@", [[MrCoin settings] supportURL] ); // print support url.
-    NSLog(@"%@", [[MrCoin settings] termsURL] ); // print terms url.
-    NSLog(@"%@", [[MrCoin settings] shortTermsURL] ); // print terms url.
 
 Custom locale & timezone:
 
