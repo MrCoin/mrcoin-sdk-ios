@@ -261,8 +261,8 @@ Custom locale & timezone:
 
 ## Technical requirements ##
 
-- iOS 7.0 as a deployment target
-- minimum iOS 8.0 SDK to build
+- iOS 7.1 as a deployment target
+- minimum iOS 9.0 SDK to build
 - The framework uses automatic reference counting (ARC).
 
 ## License ##
