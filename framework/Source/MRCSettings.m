@@ -7,6 +7,7 @@
 //
 
 #import "MRCSettings.h"
+#import "MrCoin.h"
 
 @implementation MRCSettings
 
@@ -14,25 +15,36 @@
 {
     return @"BTC";
 }
-- (void) saveSettings
-{
-    NSUserDefaults *d = [NSUserDefaults standardUserDefaults];
-    [d setObject:self.sourceCurrency forKey:@"MRCSourceCurrency"];
-    [d synchronize];
-}
+
 - (void) resetSettings
 {
-    _userConfiguration = MRCUserConfigurationUnknown;
-    _userPhone = nil;
-    _userEmail = nil;
-    _userCountryCode = nil;
-    _userCountry = nil;
-    _sourceCurrency = @"EUR";
+    self.userConfiguration = MRCUserConfigurationUnknown;
+    self.userPhone = nil;
+    self.userEmail = nil;
+    self.userCountryCode = nil;
+    self.userCountry = nil;
+    self.quickTransferCode = nil;
+    self.sourceCurrency = @"EUR";
 }
 - (void) loadSettings
 {
-    NSUserDefaults *d = [NSUserDefaults standardUserDefaults];
-    self.sourceCurrency = [d objectForKey:@"MRCSourceCurrency"];
+    [[MrCoin api] getUserDetails:^(id result) {
+        
+        NSDictionary *attribs = [result objectForKey:@"attributes"];
+        if(attribs){
+            [self setSourceCurrency:attribs[@"currency"]];
+            [self setUserConfiguration:MRCUserConfigured];
+        }
+    } error:^(NSArray *errors, MRCAPIErrorType errorType) {
+        [self setUserConfiguration:MRCUserUnconfigured];
+    }];
 }
-
+- (void) saveSettings
+{
+    [[MrCoin api] updateUserDetails:^(id result) {
+        
+    } error:^(NSArray *errors, MRCAPIErrorType errorType) {
+        
+    }];
+}
 @end

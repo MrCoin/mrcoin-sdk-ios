@@ -23,6 +23,10 @@
 
 @interface MRCTransferViewController ()
 
+@property (weak, nonatomic) IBOutlet UILabel *ibanLabel;
+@property (weak, nonatomic) IBOutlet UILabel *swiftLabel;
+@property (weak, nonatomic) IBOutlet UILabel *transferInfo;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *messageTopConstraint;
 
 @property (weak, nonatomic) IBOutlet MRCCopiableButton *nameButton;
 @property (weak, nonatomic) IBOutlet MRCCopiableButton *ibanButton;
@@ -49,21 +53,29 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     _currencyIndex = -1;
-}
-- (void)viewWillAppear:(BOOL)animated
-{
     NSAssert([[MrCoin sharedController] delegate],@"MrCoin Delegate isn't configured. See the README.");
     NSAssert([[[MrCoin sharedController] delegate] respondsToSelector:@selector(requestPublicKey)],@"MrCoin Delegate method (requestPublicKey:) isn't configured. See the README.");
-    
-    
-    [self _loadTicker];
-    [self _loadQuicktransfer];
+
+    [[MrCoin settings] addObserver:self forKeyPath:@"sourceCurrency" options:(NSKeyValueObservingOptionInitial | NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld) context:nil];
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context
+{
+    [self _loadTicker:change[NSKeyValueChangeNewKey]];
+    [self _loadQuicktransfer:change[NSKeyValueChangeNewKey]];
+}
+
+
+- (void)viewWillAppear:(BOOL)animated
+{
     [super viewWillAppear:animated];
 }
 
 #define Ticker
--(void) _loadTicker
+-(void) _loadTicker:(NSString*)currency
 {
+    if([[MrCoin settings] userConfiguration] < MRCUserConfigured) return;
+    _currencyIndex = -1;
     [[MrCoin api] getPriceTicker:^(id result) {
         NSDictionary *d = [result valueForKey:@"attributes"];
         NSMutableArray *a = [[NSMutableArray alloc] init];
@@ -72,36 +84,46 @@
         }];
         self.tickerDataArray = [NSArray arrayWithArray:a];
         self.tickerData = [result valueForKey:@"attributes"];
-        [self _updateTicker];
+        [self _updateTicker:currency];
     } error:nil];
 }
--(void) _updateTicker
+-(void) _updateNextTicker:(NSString*)currency
 {
-    NSUInteger length = [self.tickerData count];
-    if(length <= 0) return;
-    if(_currencyIndex == -1){
-        NSString *currency = [[MrCoin settings] sourceCurrency];
-        __block NSInteger index = -1;
-        __block NSUInteger indexCounter = 0;
-        [self.tickerData enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
-            if([key isEqualToString:[NSString stringWithFormat:@"btc%@",[currency lowercaseString]]]){
-                index = indexCounter;
-            }
-            indexCounter++;
-        }];
-        //        [self.tickerData enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        //        }];
-        if(index > -1 && index < length){
-            _currencyIndex = index;
-        }
-    }
-    if(_currencyIndex >= 0 && _currencyIndex < length){
+    NSInteger i = [self _tickerIndex:currency];
+    if(i != -1){
+        if(_currencyIndex == -1)    _currencyIndex = i;
         _currencyIndex++;
+        NSUInteger length = [self.tickerData count];
         if(_currencyIndex >= length){
             _currencyIndex = 0;
         }
         [self.tickerButton setTitle:[self _tickerString:_currencyIndex] forState:UIControlStateNormal];
     }
+}
+-(void) _updateTicker:(NSString*)currency
+{
+    NSInteger i = [self _tickerIndex:currency];
+    if(i != -1){
+        if(_currencyIndex == -1)    _currencyIndex = i;
+        [self.tickerButton setTitle:[self _tickerString:_currencyIndex] forState:UIControlStateNormal];
+    }
+}
+-(NSInteger) _tickerIndex:(NSString*)currency
+{
+    NSUInteger length = [self.tickerData count];
+    if(length <= 0) return -1;
+    __block NSInteger index = -1;
+    __block NSUInteger indexCounter = 0;
+    [self.tickerData enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
+        if([key isEqualToString:[NSString stringWithFormat:@"btc%@",[currency lowercaseString]]]){
+            index = indexCounter;
+        }
+        indexCounter++;
+    }];
+    if(index >= 0 && index < length){
+        return index;
+    }
+    return -1;
     
 }
 -(NSString*) _tickerString:(NSInteger)index
@@ -117,12 +139,13 @@
 
 
 
--(void) _loadQuicktransfer
+-(void) _loadQuicktransfer:(NSString*)currency
 {
+    if([[MrCoin settings] userConfiguration] < MRCUserConfigured) return;
     NSString *publicKey = [[[MrCoin sharedController] delegate] requestPublicKey];
     
     [[MrCoin api] quickDeposits:publicKey currency:[[MrCoin settings]destinationCurrency] resellerID:[[MrCoin settings]resellerKey] success:^(NSDictionary *dictionary) {
-        [self setupView:dictionary currency:[[MrCoin settings]sourceCurrency]]; //HUF
+        [self setupView:dictionary currency:currency]; //HUF
     } error:nil];
 }
 
@@ -137,6 +160,8 @@
     NSString *swift = [d valueForKey:@"bic"];
     NSString *reference = [d valueForKey:@"reference"];
     
+    [MrCoin settings].quickTransferCode = reference;
+    
     NSString *copyTxt = NSLocalizedString(@"Copy %@ (%@)",nil);
     NSString *copyClipTxt = NSLocalizedString(@"Copy %@ to clipboard",nil);
     NSString *nameTxt = NSLocalizedString(@"name",nil);
@@ -145,12 +170,22 @@
 //    HUF eseten pl. Account nr. van asszem (2x8 szamjegy), es nincs BIC Code... EUR eseten BIC + IBAN van.
     NSString *ibanTxt = NSLocalizedString(@"IBAN",nil);
     NSString *swiftTxt = NSLocalizedString(@"BIC",nil);
+    NSString *transferInfo;
     if([currency isEqualToString:@"HUF"]){
-        iban = [d valueForKey:@"iban"];
-        ibanTxt = NSLocalizedString(@"Account nr.",nil);
+        iban = [iban substringWithRange:NSMakeRange(5, 29)];
+        ibanTxt = NSLocalizedString(@"GIRO",nil);
         swift = @"";
         swiftTxt = @"";
+        self.swiftLabel.hidden = YES;
+        self.messageTopConstraint.constant = -16;
+        transferInfo = NSLocalizedString(@"Whatever amount you transfer (up to 300,000 HUF), it will be converted to Bitcoin and sent directly into your wallet.\nPlease allow 12-48 banking hours for the transfer to clear in the Plan Old Banking system.",nil);
+    }else{
+        self.swiftLabel.hidden = NO;
+        self.messageTopConstraint.constant = 8;
+        transferInfo = NSLocalizedString(@"Whatever amount you transfer (up to 1,000 EUR), it will be converted to Bitcoin and sent directly into your wallet.\nPlease allow 12-48 banking hours for the transfer to clear in the Plan Old Banking system.",nil);
     }
+    self.transferInfo.text = transferInfo;
+    self.ibanLabel.text = ibanTxt;
     NSString *messageTxt = NSLocalizedString(@"message",nil);
     
     [self.nameButton setLabel:name
@@ -173,6 +208,7 @@
                        copyLabel:[NSString stringWithFormat:copyClipTxt,messageTxt]
                         value:reference
      ];
+    [self.view setNeedsLayout];
     
     // Setup documents
     [[MrCoin settings] setSupportEmail:[dictionary valueForKeyPath:@"attributes.support.email"]];
@@ -191,7 +227,7 @@
 }
 
 - (IBAction)changeTickerCurrency:(id)sender {
-    [self _updateTicker];
+    [self _updateNextTicker:[[MrCoin settings] sourceCurrency]];
 }
 - (IBAction)serviceProvider:(id)sender {
     [[MrCoin sharedController] openURL:[NSURL URLWithString:[[MrCoin settings] websiteURL]]];

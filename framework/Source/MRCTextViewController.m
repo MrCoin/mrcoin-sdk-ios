@@ -25,13 +25,12 @@
     [super viewDidLoad];
     self.textView.dataDetectorTypes = UIDataDetectorTypeLink;
     self.textView.delegate = self;
-    self.textView.selectable = YES;
+    self.textView.scrollsToTop = YES;
     _declineButton.hidden = YES;
     _acceptButton.hidden = YES;
 }
 - (BOOL)textView:(UITextView *)textView shouldInteractWithURL:(NSURL *)URL inRange:(NSRange)characterRange
 {
-    NSLog(@"URL %@",URL);
     [[UIApplication sharedApplication] openURL:URL];
     return YES;
 }
@@ -84,6 +83,7 @@
 - (IBAction)accept:(id)sender {
     if(self.parentViewController && [self.parentViewController isKindOfClass:[MRCFormViewController class]]){
         [[MrCoin sharedController] setNeedsAcceptTerms:NO];
+        [[MrCoin settings] saveSettings];
         [self nextPage:sender];
     }
 }
@@ -114,23 +114,24 @@
                                                                                        NSCharacterEncodingDocumentAttribute: @(NSUTF8StringEncoding)}
                                                                   documentAttributes:nil
                                                                                error:nil];
-    _textView.attributedText = txt;
-}
--(void)viewDidLayoutSubviews
-{
     switch (_mode) {
         default:
         case MRCTermsUserNeedsAcceptForm:
         case MRCTermsUserNeedsAccept:
             _textView.textContainerInset = UIEdgeInsetsMake(25, 20, 100, 20);
-            _textView.scrollIndicatorInsets = UIEdgeInsetsMake(25, 0, 90, 4);
+            _textView.scrollIndicatorInsets = UIEdgeInsetsMake(10, 0, 90, 4);
             break;
         case MRCShowDocuments:
             _textView.textContainerInset = UIEdgeInsetsMake(10, 20, 10, 20);
-            _textView.scrollIndicatorInsets = UIEdgeInsetsMake(0, 0, 0, 4);
+            _textView.scrollIndicatorInsets = UIEdgeInsetsMake(10, 0, 10, 4);
             break;
     }
+    _textView.attributedText = txt;
     [_textView setContentOffset:CGPointZero animated:NO];
+
+}
+-(void)viewDidLayoutSubviews
+{
     [super viewDidLayoutSubviews];
 }
 @end

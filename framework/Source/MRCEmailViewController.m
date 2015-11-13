@@ -24,6 +24,10 @@
     _emailTextInput.dataType = (MRCInputDataType*)[MRCEmailData dataType];
     [[MrCoin api] getEmail:^(id result) {
         _emailTextInput.text = result;
+        self.nextButton.enabled = YES;
+        self.nextButton.hidden = NO;
+        [self.view setNeedsLayout];
+        [self.view setNeedsDisplay];
     } error:^(NSArray *errors, MRCAPIErrorType errorType) {
         
     }];

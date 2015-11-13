@@ -77,7 +77,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MRCCurrencyCell" forIndexPath:indexPath];
     [[cell textLabel] setText:[NSString stringWithFormat:@"%@ - %@",_currencies[indexPath.row],_currencyNames[indexPath.row]]];
-    
+    [[cell textLabel] setTextColor:[UIColor darkGrayColor]];
     if([[[MrCoin settings] sourceCurrency] isEqualToString:_currencies[indexPath.row]]){
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
     }else{
@@ -86,6 +86,23 @@
     
     return cell;
 }
-
+- (void)tableView:(UITableView *)tableView willDisplayHeaderView:(UIView *)view forSection:(NSInteger)section
+{
+    // Background color
+    view.tintColor = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.2];
+    
+    // Text Color
+    UITableViewHeaderFooterView *header = (UITableViewHeaderFooterView *)view;
+    [header.textLabel setTextColor:[UIColor darkGrayColor]];
+    [header.textLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Thin" size:20.0f]];
+    
+    // Another way to set the background color
+    // Note: does not preserve gradient effect of original header
+    // header.contentView.backgroundColor = [UIColor blackColor];
+}
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    cell.backgroundColor = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.5];
+}
 
 @end

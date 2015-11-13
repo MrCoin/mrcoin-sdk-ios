@@ -53,8 +53,15 @@
     [_codeTextInput hideError];
     
     [[MrCoin api] phone:[[MrCoin settings] userPhone] country:[[MrCoin settings] userCountryCode] success:^(NSDictionary *dictionary) {
+        MRCPopUpViewController *popup = [MRCPopUpViewController sharedPopup];
+        [popup setStyle:MRCPopupDarkStyle];
+        [popup setMode:MRCPopupMessage];
+        [popup setTitle:NSLocalizedString(@"Verification code sent", NULL)];
+        [popup setMessage:[NSString stringWithFormat:NSLocalizedString(@"Verification code successfully sent to %@.", NULL),[[MrCoin settings] userPhone]]];
+        [popup presentInViewController:self hideAfterDelay:2.0f];
     } error:nil];
     [[self view] setNeedsLayout];
+//    [popup dismissViewController];
 }
 
 - (IBAction)reenterPhoneNumber:(id)sender

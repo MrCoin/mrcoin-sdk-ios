@@ -593,12 +593,16 @@
                     <connections>
                         <outlet property="helpButton" destination="VoE-dv-l0f" id="ske-BT-U8Z"/>
                         <outlet property="ibanButton" destination="Oav-az-d3F" id="Xw4-Os-dpT"/>
+                        <outlet property="ibanLabel" destination="FFY-03-AlO" id="Abo-zK-LOK"/>
                         <outlet property="messageButton" destination="tDX-x8-lKb" id="AQQ-Dq-ydG"/>
+                        <outlet property="messageTopConstraint" destination="2xa-c2-hfL" id="VTz-Sw-ftk"/>
                         <outlet property="mrCoin" destination="vAW-r2-1dt" id="ylR-mB-nsM"/>
                         <outlet property="nameButton" destination="OYr-22-eRD" id="NoI-Af-bHM"/>
                         <outlet property="swiftButton" destination="FVH-2M-Mrq" id="Qg4-dj-qah"/>
+                        <outlet property="swiftLabel" destination="C65-iM-4dE" id="uy7-xR-SG2"/>
                         <outlet property="tickerButton" destination="J03-bA-adh" id="9pM-Ef-enM"/>
                         <outlet property="titleView" destination="b91-Qb-7XM" id="Plg-dk-E9z"/>
+                        <outlet property="transferInfo" destination="rz2-up-4Yf" id="4nL-v9-qdJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zoc-Wq-mwV" sceneMemberID="firstResponder"/>
@@ -752,7 +756,7 @@ Please enter it below when you receive it</string>
                         <rect key="frame" x="0.0" y="0.0" width="400" height="400"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JtS-ke-sH4">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JtS-ke-sH4">
                                 <rect key="frame" x="0.0" y="-8" width="400" height="408"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -841,7 +845,7 @@ Please enter it below when you receive it</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NVo-sY-R3r" customClass="MRCButton">
-                                <rect key="frame" x="167" y="191" width="66" height="32"/>
+                                <rect key="frame" x="167" y="176" width="66" height="32"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <state key="normal" title="Continue"/>
@@ -850,21 +854,21 @@ Please enter it below when you receive it</string>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter your email address" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="3A9-r9-l9e">
-                                <rect key="frame" x="40" y="75" width="320" height="34"/>
+                                <rect key="frame" x="40" y="60" width="320" height="34"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" weight="thin" pointSize="28"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="highlightedColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please enter your email below." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="LPJ-jW-qEQ">
-                                <rect key="frame" x="50" y="117" width="300" height="16"/>
+                                <rect key="frame" x="50" y="102" width="300" height="16"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fyQ-tR-s6U" customClass="MRCTextInput">
-                                <rect key="frame" x="60" y="145" width="280" height="30"/>
+                                <rect key="frame" x="40" y="130" width="320" height="30"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
@@ -876,7 +880,7 @@ Please enter it below when you receive it</string>
                                 </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="lEU-8v-2dm">
-                                <rect key="frame" x="60" y="195" width="280" height="66"/>
+                                <rect key="frame" x="60" y="218" width="280" height="66"/>
                                 <animations/>
                                 <string key="text">We only use your email to let you know when you successfully transferred fiat to your bitcoin wallet and to be able to give you support should there be an issue with your order. We will not share your email with third parties.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="11"/>
@@ -886,10 +890,11 @@ Please enter it below when you receive it</string>
                         </subviews>
                         <animations/>
                         <constraints>
+                            <constraint firstItem="lEU-8v-2dm" firstAttribute="top" secondItem="NVo-sY-R3r" secondAttribute="bottom" constant="10" id="0wB-03-OvQ"/>
                             <constraint firstItem="NVo-sY-R3r" firstAttribute="top" secondItem="fyQ-tR-s6U" secondAttribute="bottom" constant="16" id="7MH-aB-GH4"/>
                             <constraint firstItem="3A9-r9-l9e" firstAttribute="leading" secondItem="A9f-7b-t9l" secondAttribute="leadingMargin" constant="20" id="ChR-dn-rdl"/>
-                            <constraint firstItem="fyQ-tR-s6U" firstAttribute="centerY" secondItem="A9f-7b-t9l" secondAttribute="centerY" constant="-40" id="Czd-CN-85w"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="fyQ-tR-s6U" secondAttribute="trailing" constant="40" id="Hat-Mt-oxw"/>
+                            <constraint firstItem="fyQ-tR-s6U" firstAttribute="centerY" secondItem="A9f-7b-t9l" secondAttribute="centerY" constant="-55" id="Czd-CN-85w"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="fyQ-tR-s6U" secondAttribute="trailing" constant="20" id="Hat-Mt-oxw"/>
                             <constraint firstAttribute="trailingMargin" secondItem="lEU-8v-2dm" secondAttribute="trailing" constant="40" id="JZY-vg-wcH"/>
                             <constraint firstItem="LPJ-jW-qEQ" firstAttribute="trailing" secondItem="A9f-7b-t9l" secondAttribute="trailingMargin" constant="-30" id="JoL-jN-Yyk"/>
                             <constraint firstItem="lEU-8v-2dm" firstAttribute="leading" secondItem="A9f-7b-t9l" secondAttribute="leadingMargin" constant="40" id="LWm-a8-6ox"/>
@@ -897,9 +902,8 @@ Please enter it below when you receive it</string>
                             <constraint firstItem="LPJ-jW-qEQ" firstAttribute="leading" secondItem="A9f-7b-t9l" secondAttribute="leadingMargin" constant="30" id="cjh-bS-NYp"/>
                             <constraint firstItem="fyQ-tR-s6U" firstAttribute="top" secondItem="LPJ-jW-qEQ" secondAttribute="bottom" constant="12" id="dIr-Ah-Vgg"/>
                             <constraint firstItem="NVo-sY-R3r" firstAttribute="centerX" secondItem="fyQ-tR-s6U" secondAttribute="centerX" id="fom-vP-Bqv"/>
-                            <constraint firstItem="lEU-8v-2dm" firstAttribute="top" secondItem="fyQ-tR-s6U" secondAttribute="bottom" constant="20" id="lWx-ZW-jun"/>
                             <constraint firstItem="LPJ-jW-qEQ" firstAttribute="top" secondItem="3A9-r9-l9e" secondAttribute="bottom" constant="8" id="obU-Z6-sJ2"/>
-                            <constraint firstItem="fyQ-tR-s6U" firstAttribute="leading" secondItem="A9f-7b-t9l" secondAttribute="leadingMargin" constant="40" id="obz-d7-2KN"/>
+                            <constraint firstItem="fyQ-tR-s6U" firstAttribute="leading" secondItem="A9f-7b-t9l" secondAttribute="leadingMargin" constant="20" id="obz-d7-2KN"/>
                             <constraint firstItem="NVo-sY-R3r" firstAttribute="centerX" secondItem="A9f-7b-t9l" secondAttribute="centerX" id="z8z-ea-nRo"/>
                         </constraints>
                         <connections>
@@ -935,26 +939,25 @@ Please enter it below when you receive it</string>
                         <rect key="frame" x="0.0" y="0.0" width="400" height="400"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CdC-ne-iWZ" customClass="MRCButton">
-                                <rect key="frame" x="180" y="252" width="41" height="32"/>
+                            <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CdC-ne-iWZ" customClass="MRCButton">
+                                <rect key="frame" x="186" y="229" width="30" height="32"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <state key="normal" title="Close"/>
+                                <state key="normal" title="OK"/>
                                 <connections>
                                     <action selector="nextPage:" destination="5vy-We-WEI" eventType="touchUpInside" id="vaQ-zZ-dDG"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Setup complete" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="yKB-Fv-H2v">
-                                <rect key="frame" x="40" y="127" width="320" height="34"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Setup complete" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="yKB-Fv-H2v">
+                                <rect key="frame" x="40" y="151" width="320" height="34"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" weight="thin" pointSize="28"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="L1Z-bU-xH8">
-                                <rect key="frame" x="40" y="169" width="320" height="63"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Your quick transfer account is ready to use." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="L1Z-bU-xH8">
+                                <rect key="frame" x="40" y="193" width="320" height="16"/>
                                 <animations/>
-                                <string key="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi blandit imperdiet nibh vel tincidunt. Aenean posuere magna dui, sed vestibulum odio rhoncus id.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -1149,18 +1152,18 @@ Please enter it below when you receive it</string>
                                     <rect key="frame" x="0.0" y="0.0" width="400" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" alpha="0.69999999999999996" tag="202" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="3Bo-b0-lxy">
-                                            <rect key="frame" x="176" y="13" width="216" height="17"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" alpha="0.69999999999999996" tag="202" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Bo-b0-lxy">
+                                            <rect key="frame" x="126" y="13" width="266" height="17"/>
                                             <animations/>
-                                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
+                                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="201" contentMode="left" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qis-b9-6iC">
-                                            <rect key="frame" x="18" y="11" width="150" height="21"/>
+                                            <rect key="frame" x="18" y="11" width="100" height="21"/>
                                             <animations/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="150" id="ov8-jC-Er6"/>
+                                                <constraint firstAttribute="width" priority="500" constant="100" id="ov8-jC-Er6"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>

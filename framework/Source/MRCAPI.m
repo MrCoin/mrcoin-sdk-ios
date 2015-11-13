@@ -35,9 +35,15 @@
         return;
     }
     [self callMethod:@"email" parameters:nil HTTPMethod:@"GET" response:^(id result) {
+        NSLog(@"email %@",result);
         NSString *n = [result valueForKeyPath:@"attributes.email"];
-        [[MrCoin settings] setUserEmail:n];
-        responseBlock(n);
+        if(n && ![n isEqualToString:@""]){
+            [[MrCoin settings] setUserEmail:n];
+            responseBlock(n);
+        }else{
+            [[MrCoin settings] setUserEmail:nil];
+            responseBlock(nil);
+        }
     } error:errorBlock];
 }
 - (void) email:(NSString*)emailAddress success:(APIResponse)responseBlock error:(APIResponseError)errorBlock
@@ -50,13 +56,13 @@
 {
     [self callMethod:@"me" parameters:nil HTTPMethod:@"GET" response:responseBlock error:errorBlock];
 }
-- (void) updateUserDetails:(NSString*)currency success:(APIResponse)responseBlock error:(APIResponseError)errorBlock
+- (void) updateUserDetails:(APIResponse)responseBlock error:(APIResponseError)errorBlock
 {
-    [self updateUserDetails:currency timezone:[NSTimeZone systemTimeZone] locale:[NSLocale currentLocale] success:responseBlock error:errorBlock];
+    [self updateUserDetails:[[MrCoin settings] sourceCurrency] timezone:[NSTimeZone systemTimeZone] locale:[NSLocale currentLocale] terms:![[MrCoin sharedController] needsAcceptTerms] success:responseBlock error:errorBlock];
 }
-- (void) updateUserDetails:(NSString*)currency timezone:(NSTimeZone*)timezone  locale:(NSLocale*)locale success:(APIResponse)responseBlock error:(APIResponseError)errorBlock
+- (void) updateUserDetails:(NSString*)currency timezone:(NSTimeZone*)timezone locale:(NSLocale*)locale terms:(BOOL)terms success:(APIResponse)responseBlock error:(APIResponseError)errorBlock
 {
-    NSDictionary *parameters = [self dictionaryForMethod:@"me" parameters:@{@"locale":[locale objectForKey:NSLocaleLanguageCode],@"timezone":[timezone name],@"currency":currency}];
+    NSDictionary *parameters = [self dictionaryForMethod:@"me" parameters:@{@"locale":[locale objectForKey:NSLocaleLanguageCode],@"timezone":[timezone name],@"currency":currency,@"terms":@(terms)}];
     [self callMethod:@"me" parameters:parameters HTTPMethod:@"PATCH" response:responseBlock error:errorBlock];
 }
 - (void) phone:(NSString*)number country:(NSString*)countryCode success:(APIResponse)responseBlock error:(APIResponseError)errorBlock
@@ -73,9 +79,15 @@
         return;
     }
     [self callMethod:@"phone" parameters:nil HTTPMethod:@"GET" response:^(id result) {
+        NSLog(@"phone %@",result);
         NSString *n = [result valueForKeyPath:@"attributes.number"];
-        [[MrCoin settings] setUserPhone:n];
-        responseBlock(n);
+        if(n && ![n isEqualToString:@""]){
+            [[MrCoin settings] setUserPhone:n];
+            responseBlock(n);
+        }else{
+            [[MrCoin settings] setUserPhone:nil];
+            responseBlock(nil);
+        }
     } error:errorBlock];
 }
 - (void) verifyPhone:(NSString*)verificationCode success:(APIResponse)responseBlock error:(APIResponseError)errorBlock
@@ -124,12 +136,14 @@
     NSString *jsonParams = [self parametersToJSON:parameters error:errorBlock];
     NSURLRequest *request = [self requestMethod:methodName parameters:jsonParams HTTPMethod:HTTPMethod];
 
-    // Response
-    [self sendRequest:request response:^(NSData *response,NSInteger statusCode) {
-//        NSLog(@"%@",[[NSString alloc] initWithData:response encoding:NSUTF8StringEncoding]);
-        NSDictionary *result = [self responseFromJSON:response error:errorBlock];
-        [self _handleResult:result statusCode:statusCode success:responseBlock error:errorBlock];
-    } error:errorBlock];
+    if(request){
+        // Response
+        [self sendRequest:request response:^(NSData *response,NSInteger statusCode) {
+            //        NSLog(@"%@",[[NSString alloc] initWithData:response encoding:NSUTF8StringEncoding]);
+            NSDictionary *result = [self responseFromJSON:response error:errorBlock];
+            [self _handleResult:result statusCode:statusCode success:responseBlock error:errorBlock];
+        } error:errorBlock];
+    }
 }
 -(NSDictionary*) responseFromJSON:(NSData*)jsonResponse error:(APIResponseError)errorBlock
 {
@@ -209,6 +223,8 @@
     NSString *privateKey = [[[MrCoin sharedController] delegate] requestPrivateKey];
     NSString *sign = [[[MrCoin sharedController] delegate] requestMessageSignature:message privateKey:privateKey];
     NSString *publicKey = [[[MrCoin sharedController] delegate] requestPublicKey];
+    
+    if(!privateKey || !sign || !publicKey) return nil;
     
     // Public wallet key
     [request setValue:publicKey forHTTPHeaderField:@"X-Mrcoin-Api-Pubkey"];

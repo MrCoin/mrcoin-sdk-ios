@@ -68,20 +68,6 @@ static UIStoryboard *_sharedStoryboard;
     return _sharedController;
 }
 #pragma mark - Root view controller
-+ (void) checkUserDetails
-{
-    MRCSettings *s = [self settings];
-    [[self api] getUserDetails:^(id result) {
-        
-        NSDictionary *attribs = [result objectForKey:@"attributes"];
-        if(attribs){
-            [s setSourceCurrency:attribs[@"currency"]];
-            [s setUserConfiguration:MRCUserConfigured];
-        }
-    } error:^(NSArray *errors, MRCAPIErrorType errorType) {
-        [s setUserConfiguration:MRCUserUnconfigured];
-    }];
-}
 + (MrCoinViewController*) rootController
 {
     return [[MrCoin sharedController] rootController];

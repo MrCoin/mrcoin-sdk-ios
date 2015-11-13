@@ -43,24 +43,7 @@
 //    if(section == 0) return ([[MrCoin settings] userConfiguration] == MRCUserConfigured)? 4:1;
     return (self.showTerms)?3:2;
 }
-- (void)tableView:(UITableView *)tableView willDisplayHeaderView:(UIView *)view forSection:(NSInteger)section
-{
-    // Background color
-    view.tintColor = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.2];
-    
-    // Text Color
-    UITableViewHeaderFooterView *header = (UITableViewHeaderFooterView *)view;
-    [header.textLabel setTextColor:[UIColor darkGrayColor]];
-    [header.textLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Thin" size:20.0f]];
-    
-    // Another way to set the background color
-    // Note: does not preserve gradient effect of original header
-    // header.contentView.backgroundColor = [UIColor blackColor];
-}
-- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    cell.backgroundColor = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.5];
-}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSString *_id = @"SettingsLink";
     if(indexPath.section == 0){
@@ -88,18 +71,29 @@
         label = (UILabel*)[cell viewWithTag:202];
         if(label)
         {
+            label.text = @"";
             if(indexPath.row == 0){
+                label.text = NSLocalizedString(@"fetching...", NULL);
                 label.textColor = [UIColor grayColor];
-                if(([[MrCoin settings] userConfiguration] == MRCUserPhoneConfigured)){
-                    label.text = [[MrCoin settings] userPhone];
+                if(([[MrCoin settings] userConfiguration] >= MRCUserPhoneConfigured)){
+                    [[MrCoin api] getPhone:^(id result) {
+                        label.text = [[MrCoin settings] userPhone];
+                    } error:^(NSArray *errors, MRCAPIErrorType errorType) {
+                        label.text = NSLocalizedString(@"unconfigured", NULL);
+                    }];
                 }else{
                     label.text = NSLocalizedString(@"unconfigured", NULL);
                 }
                 cell.accessoryType = UITableViewCellAccessoryNone;
             }else if(indexPath.row == 1){
+                label.text = NSLocalizedString(@"fetching...", NULL);
                 label.textColor = [UIColor grayColor];
                 if(([[MrCoin settings] userConfiguration] == MRCUserConfigured)){
-                    label.text = [[MrCoin settings] userEmail];
+                    [[MrCoin api] getEmail:^(id result) {
+                        label.text = [[MrCoin settings] userEmail];
+                    } error:^(NSArray *errors, MRCAPIErrorType errorType) {
+                        label.text = NSLocalizedString(@"unconfigured", NULL);
+                    }];
                 }else{
                     label.text = NSLocalizedString(@"unconfigured", NULL);
                 }
@@ -187,7 +181,24 @@
     return NSLocalizedString(@" ",nil);
 
 }
-
+- (void)tableView:(UITableView *)tableView willDisplayHeaderView:(UIView *)view forSection:(NSInteger)section
+{
+    // Background color
+    view.tintColor = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.2];
+    
+    // Text Color
+    UITableViewHeaderFooterView *header = (UITableViewHeaderFooterView *)view;
+    [header.textLabel setTextColor:[UIColor darkGrayColor]];
+    [header.textLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Thin" size:20.0f]];
+    
+    // Another way to set the background color
+    // Note: does not preserve gradient effect of original header
+    // header.contentView.backgroundColor = [UIColor blackColor];
+}
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    cell.backgroundColor = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.5];
+}
 - (void)viewWillAppear:(BOOL)animated
 {
     [[self tableView] reloadData];

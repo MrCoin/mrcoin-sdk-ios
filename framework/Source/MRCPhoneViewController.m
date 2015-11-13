@@ -58,11 +58,7 @@
         // Change country, update API settings
         NSInteger index = self.countrySelector.selectedRow;
         [[MrCoin api] setCountry:[[[MrCoin api] countries] objectAtIndex:index]];
-        [[MrCoin settings] setSourceCurrencies:[[[MrCoin api] country] valueForKeyPath:@"attributes.currencies"]];
 
-        // TODO:
-        [[MrCoin settings] setSourceCurrency:@"EUR"];
-        //
         NSString *prefix = [[[MrCoin api] country] valueForKeyPath:@"attributes.phone_prefix"];
         // Configure validator
         MRCPhoneData* phoneData = (MRCPhoneData*)_phoneTextInput.dataType;

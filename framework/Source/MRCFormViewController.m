@@ -285,6 +285,11 @@
     wallpaper.clipsToBounds = YES;
     [super viewWillAppear:animated];
 }
+-(void)viewDidDisappear:(BOOL)animated
+{
+    UIViewController *vc = [[[[UIApplication sharedApplication] delegate] window] rootViewController];
+    vc.view.hidden = NO;
+}
 #pragma mark - Progress View delegate
 -(void)progressViewClosed:(MRCProgressView*)progressView
 {

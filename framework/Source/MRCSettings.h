@@ -28,9 +28,10 @@ typedef enum : NSUInteger {
 @property (nonatomic) NSString *userEmail;
 @property (nonatomic) NSString *sourceCurrency;
 @property (nonatomic,readonly) NSString *destinationCurrency;
+@property (nonatomic) NSString *quickTransferCode;
 
 // Temporary data
-@property (nonatomic) NSArray *sourceCurrencies;
+//@property (nonatomic) NSArray *sourceCurrencies;
 
 // Documents
 @property (nonatomic) NSString *websiteURL;

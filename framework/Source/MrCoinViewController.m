@@ -33,35 +33,39 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [[MrCoin settings] addObserver:self forKeyPath:@"userConfiguration" options:(NSKeyValueObservingOptionInitial | NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld) context:nil];
 }
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context
+{
+    [self showView:[change[NSKeyValueChangeNewKey] unsignedIntegerValue]];
+}
+
 - (void)showView:(MRCUserConfigurationMode)configured
 {
     if(configured == MRCUserConfigured){
-        if(_unconfigured){
-            [_unconfigured removeFromParentViewController];
-            [_unconfigured.view removeFromSuperview];
-            _unconfigured = nil;
-        }
         if(!_page){
+            if(_unconfigured){
+                [_unconfigured removeFromParentViewController];
+                [_unconfigured.view removeFromSuperview];
+                _unconfigured = nil;
+            }
             [self showTransferView];
         }
-    }else{
+    }else if(configured <= MRCUserUnconfigured){
         if(!_unconfigured){
             if(_page){
                 [_page removeFromParentViewController];
                 [_page.view removeFromSuperview];
                 _page = nil;
             }
-            if(!_unconfigured){
-                [self showUnconfigured];
-            }
+            [self showUnconfigured];
         }
     }
 }
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [self showView:[[MrCoin settings] userConfiguration]];
 }
 - (MRCEmptyViewController*) emptyViewController
 {
@@ -74,7 +78,7 @@
 
 - (void)showTransferView
 {
-    _page = [MrCoin viewController:@"Transfer"];
+    _page = (MRCTransferViewController*)[MrCoin viewController:@"Transfer"];
     _page.view.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
     [[self view] addSubview:_page.view];
     [self addChildViewController:_page];
@@ -86,14 +90,14 @@
             [[[MrCoin sharedController] delegate] quickTransferWillSetup];
         }
     }
-    _page = [MrCoin viewController:@"Form"];
+    _page = (MRCTransferViewController*)[MrCoin viewController:@"Form"];
     _page.view.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
     [[self view] addSubview:_page.view];
     [self addChildViewController:_page];
 }
 - (void)showUnconfigured
 {
-    _unconfigured = [MrCoin viewController:@"Unconfigured"];
+    _unconfigured = (MRCEmptyViewController*)[MrCoin viewController:@"Unconfigured"];
     _unconfigured.view.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
     [[self view] addSubview:_unconfigured.view];
     [self addChildViewController:_unconfigured];
@@ -103,6 +107,12 @@
     UIViewController *form = [MrCoin viewController:@"Form"];
     if(!sender) sender = [[[[UIApplication sharedApplication] delegate] window] rootViewController];
     
+    UIViewController *vc = [[[[UIApplication sharedApplication] delegate] window] rootViewController];
+    UIViewController *vc2 = (UIViewController*)sender;
+    
+    if(vc != vc2.navigationController){
+        vc.view.hidden = YES;
+    }
     [sender presentViewController:form animated:YES completion:^{
     }];
 }
