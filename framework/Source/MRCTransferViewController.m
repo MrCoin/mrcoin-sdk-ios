@@ -137,8 +137,6 @@
     return priceString;
 }
 
-
-
 -(void) _loadQuicktransfer:(NSString*)currency
 {
     if([[MrCoin settings] userConfiguration] < MRCUserConfigured) return;

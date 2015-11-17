@@ -102,9 +102,11 @@
     [[self view] addSubview:_unconfigured.view];
     [self addChildViewController:_unconfigured];
 }
-- (IBAction) showForm:(id)sender;
+- (IBAction) showForm:(id)sender complete:(void (^)(void))complete cancel:(void (^)(void))cancel
 {
-    UIViewController *form = [MrCoin viewController:@"Form"];
+    MRCFormViewController *form = (MRCFormViewController*)[MrCoin viewController:@"Form"];
+    form.onComplete = complete;
+    form.onCancel = cancel;
     if(!sender) sender = [[[[UIApplication sharedApplication] delegate] window] rootViewController];
     
     UIViewController *vc = [[[[UIApplication sharedApplication] delegate] window] rootViewController];

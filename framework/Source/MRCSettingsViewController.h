@@ -10,6 +10,9 @@
 
 @interface MRCSettingsViewController : UITableViewController
 
+@property (nonatomic,copy) void (^onSetupComplete)(void);
+@property (nonatomic,copy) void (^onSetupCancel)(void);
+
 @property (nonatomic) BOOL showTerms;
 @property (nonatomic) BOOL showHeaders;
 

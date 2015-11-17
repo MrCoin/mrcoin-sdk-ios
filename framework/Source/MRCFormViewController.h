@@ -10,7 +10,13 @@
 #import "MRCProgressView.h"
 #import "MRCAPI.h"
 
+//typedef void (^MRCFormComplete)();
+//typedef void (^MRCFormCancel)();
+//
 @interface MRCFormViewController : UIViewController <MRCProgressViewDelegate>
+
+@property (nonatomic,copy) void (^onComplete)(void);
+@property (nonatomic,copy) void (^onCancel)(void);
 
 @property (strong, nonatomic) NSArray *pages;
 

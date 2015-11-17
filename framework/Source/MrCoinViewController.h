@@ -12,7 +12,7 @@
 
 @interface MrCoinViewController : UIViewController
 
-- (IBAction) showForm:(id)sender;
+- (IBAction) showForm:(id)sender complete:(void (^)(void))complete cancel:(void (^)(void))cancel;
 - (IBAction) showSettings:(id)sender;
 
 - (MRCEmptyViewController*) emptyViewController;

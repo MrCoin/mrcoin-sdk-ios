@@ -293,7 +293,7 @@
 #pragma mark - Progress View delegate
 -(void)progressViewClosed:(MRCProgressView*)progressView
 {
-    [self _closeForm];
+    [self cancel:progressView];
 }
 #pragma mark - Handle pages
 - (void) _showPage:(id)object reverse:(BOOL)reverse
@@ -462,23 +462,19 @@
 #pragma mark - Cancel / Done
 - (IBAction)cancel:(id)sender
 {
-    [self _closeForm];
+    [self dismissViewControllerAnimated:YES completion:^{
+        if(self.onCancel) self.onCancel();
+    }];
 }
 - (IBAction)done:(id)sender
 {
-    [self _closeForm];
-    if([[MrCoin sharedController] delegate]){
-        if([[[MrCoin sharedController] delegate] respondsToSelector:@selector(quickTransferDidSetup)]){
-            [[[MrCoin sharedController] delegate] quickTransferDidSetup];
-        }
-    }
-}
-
-- (void) _closeForm
-{
     [self dismissViewControllerAnimated:YES completion:^{
-        
+        if(self.onComplete) self.onComplete();
+        if([[MrCoin sharedController] delegate]){
+            if([[[MrCoin sharedController] delegate] respondsToSelector:@selector(quickTransferDidSetup)]){
+                [[[MrCoin sharedController] delegate] quickTransferDidSetup];
+            }
+        }
     }];
 }
-
 @end

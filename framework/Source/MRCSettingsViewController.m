@@ -153,7 +153,7 @@
 //                vc.view.backgroundColor = [UIColor whiteColor];
             [self.navigationController pushViewController:vc animated:YES];
         }else if(indexPath.row == 3){
-            [MrCoin setupQuickTransfer:self];
+            [MrCoin setupQuickTransfer:self complete:self.onSetupComplete cancel:self.onSetupCancel];
         }
     }
 }

@@ -66,8 +66,8 @@
 
 + (MRCAPI *)api;
 
-+ (void) setupQuickTransfer:(id)sender;
-+ (void) resetQuickTransfer:(id)sender;
++ (void) setupQuickTransfer:(id)sender complete:(void (^)(void))complete cancel:(void (^)(void))cancel;
++ (void) resetQuickTransfer:(id)sender complete:(void (^)(void))complete cancel:(void (^)(void))cancel;
 
 - (void) openURL:(NSURL*)url;
 - (void) sendMail:(NSString*)to subject:(NSString*)subject;

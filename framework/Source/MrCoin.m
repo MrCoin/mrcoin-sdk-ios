@@ -24,16 +24,16 @@
 @implementation MrCoin
 
 
-+ (void) setupQuickTransfer:(id)sender
++ (void) setupQuickTransfer:(id)sender complete:(void (^)(void))complete cancel:(void (^)(void))cancel
 {
     if([[MrCoin settings] userConfiguration] == MRCUserConfigured){
-        [MrCoin resetQuickTransfer:sender];
+        [MrCoin resetQuickTransfer:sender complete:complete cancel:cancel];
         return;
     }else{
-        [[MrCoin rootController] showForm:sender];
+        [[MrCoin rootController] showForm:sender complete:complete cancel:cancel];
     }
 }
-+ (void) resetQuickTransfer:(id)sender
++ (void) resetQuickTransfer:(id)sender complete:(void (^)(void))complete cancel:(void (^)(void))cancel
 {
     [[MrCoin settings] resetSettings];
     if([[MrCoin sharedController] delegate]){
@@ -41,7 +41,7 @@
             [[[MrCoin sharedController] delegate] quickTransferReset];
         }
     }
-    [[MrCoin rootController] showForm:sender];
+    [[MrCoin rootController] showForm:sender complete:complete cancel:cancel];
 }
 
 
