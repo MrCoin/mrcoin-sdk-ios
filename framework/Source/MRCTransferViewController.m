@@ -142,7 +142,7 @@
     if([[MrCoin settings] userConfiguration] < MRCUserConfigured) return;
     NSString *publicKey = [[[MrCoin sharedController] delegate] requestPublicKey];
     
-    [[MrCoin api] quickDeposits:publicKey currency:[[MrCoin settings]destinationCurrency] resellerID:[[MrCoin settings]resellerKey] success:^(NSDictionary *dictionary) {
+    [[MrCoin api] quickDeposits:publicKey currency:[[MrCoin settings]destinationCurrency] resellerID:[[MrCoin settings]resellerID] success:^(NSDictionary *dictionary) {
         [self setupView:dictionary currency:currency]; //HUF
     } error:nil];
 }
@@ -176,7 +176,7 @@
         swiftTxt = @"";
         self.swiftLabel.hidden = YES;
         self.messageTopConstraint.constant = -16;
-        transferInfo = NSLocalizedString(@"Whatever amount you transfer (up to 300,000 HUF), it will be converted to Bitcoin and sent directly into your wallet.\nPlease allow 12-48 banking hours for the transfer to clear in the Plan Old Banking system.",nil);
+        transferInfo = NSLocalizedString(@"Whatever amount you transfer (up to 300,000 HUF), it will be converted to Bitcoin and sent directly into your wallet.\nPlease allow several banking hours for the transfer to clear in the Plan Old Banking system.",nil);
     }else{
         self.swiftLabel.hidden = NO;
         self.messageTopConstraint.constant = 8;
