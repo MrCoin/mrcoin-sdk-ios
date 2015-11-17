@@ -78,8 +78,8 @@ Additionally, this is an ARC-enabled framework, so if you want to use this withi
 
 First, configure the SDK, somewhere in your application delegate file:
 
-	// Setup your reseller key
-    [[MrCoin settings] setResellerKey:@"9b85a53c-88fb-4a56-b4b0-4088153e4b7e"];
+	// Setup your reseller uuid
+    [[MrCoin settings] setResellerID:@"9b85a53c-88fb-4a56-b4b0-4088153e4b7e"];
 
 and then check user configuration details via me api call.
 

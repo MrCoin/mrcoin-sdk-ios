@@ -48,7 +48,7 @@ typedef enum : NSUInteger {
 // Framework settings
 @property (nonatomic) UIColor *formBackgroundColor;
 @property (nonatomic) UIImage *formBackgroundImage;
-@property (nonatomic) NSString *resellerKey;
+@property (nonatomic) NSString *resellerID;
 @property (nonatomic) BOOL showPopupOnError;
 @property (nonatomic) BOOL showActivityPopupOnLoading;
 @property (nonatomic) BOOL showErrorOnTextField;

@@ -29,7 +29,6 @@
 - (void) loadSettings
 {
     [[MrCoin api] getUserDetails:^(id result) {
-        
         NSDictionary *attribs = [result objectForKey:@"attributes"];
         if(attribs){
             [self setSourceCurrency:attribs[@"currency"]];
