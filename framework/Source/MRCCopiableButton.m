@@ -23,12 +23,21 @@
 #pragma mark - Configuration
 -(void)setLabel:(NSString *)label copyTitle:(NSString*)copyTitle copyLabel:(NSString*)copyLabel value:(NSString*)value
 {
+    self.titleLabel.numberOfLines = 1;
+    self.titleLabel.adjustsFontSizeToFitWidth = YES;
+    self.titleLabel.lineBreakMode = NSLineBreakByClipping;
+
     _buttonLabel = label;
     [self setTitle:label forState:UIControlStateNormal];
     [self addTarget:self action:@selector(copyValue:) forControlEvents:UIControlEventTouchUpInside];
+
     _alertLabel = copyLabel;
     _alertTitle = copyTitle;
     _value = value;
+}
+-(void)setTitle:(NSString *)title forState:(UIControlState)state
+{
+    [super setTitle:title forState:state];
 }
 
 #pragma mark - Copy to clipboard
