@@ -17,28 +17,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MrCoinDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         window?.backgroundColor = UIColor.grayColor()
+        MrCoin.sharedController().delegate = self;
 
         let settings = MrCoin.settings()
 
         // Framework Settings
-        settings.showErrorOnTextField = true
         settings.formBackgroundColor = UIColor ( red: 0.9725, green: 0.9608, blue: 0.9412, alpha: 1.0 )
         settings.formBackgroundImage = UIImage(named: "wallpaper-default")
-//        settings.showPopupOnError = false
         
         // Setup your reseller key
-//        settings.resellerKey = "9b85a53c-88fb-4a56-b4b0-4088153e4b7e"
-//        settings.configured = true
-//        settings.sourceCurrencies = ["HUF","EUR"]
-//        settings.sourceCurrency = settings.sourceCurrencies[0] as! String
-
-        MrCoin.sharedController().delegate = self;
-//        MrCoin.sharedController().needsAcceptTerms = false;
-//        MrCoin.api().authenticate({ (result) -> Void in
-//            print(result);
-//            }) { (errors, type) -> Void in
-//                print(errors);
-//        }
+        settings.resellerID = "9b85a53c-88fb-4a56-b4b0-4088153e4b7e"
 
         return true
     }

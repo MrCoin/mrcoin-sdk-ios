@@ -62,7 +62,12 @@
 }
 - (void) updateUserDetails:(NSString*)currency timezone:(NSTimeZone*)timezone locale:(NSLocale*)locale terms:(BOOL)terms success:(APIResponse)responseBlock error:(APIResponseError)errorBlock
 {
-    NSDictionary *parameters = [self dictionaryForMethod:@"me" parameters:@{@"locale":[locale objectForKey:NSLocaleLanguageCode],@"timezone":[timezone name],@"currency":currency,@"terms":@(terms)}];
+    NSDictionary *parameters;
+    if(currency){
+        parameters = [self dictionaryForMethod:@"me" parameters:@{@"locale":[locale objectForKey:NSLocaleLanguageCode],@"timezone":[timezone name],@"currency":currency,@"terms":@(terms)}];
+    }else{
+        parameters = [self dictionaryForMethod:@"me" parameters:@{@"locale":[locale objectForKey:NSLocaleLanguageCode],@"timezone":[timezone name],@"terms":@(terms)}];
+    }
     [self callMethod:@"me" parameters:parameters HTTPMethod:@"PATCH" response:responseBlock error:errorBlock];
 }
 - (void) phone:(NSString*)number country:(NSString*)countryCode success:(APIResponse)responseBlock error:(APIResponseError)errorBlock

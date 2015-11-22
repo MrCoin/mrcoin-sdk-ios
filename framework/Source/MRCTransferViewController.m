@@ -58,6 +58,14 @@
 
     [[MrCoin settings] addObserver:self forKeyPath:@"sourceCurrency" options:(NSKeyValueObservingOptionInitial | NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld) context:nil];
 }
+-(void)dealloc
+{
+    [[MrCoin settings] removeObserver:self forKeyPath:@"sourceCurrency"];
+}
+- (void)didReceiveMemoryWarning {
+    [[MrCoin settings] removeObserver:self forKeyPath:@"sourceCurrency"];
+    [super didReceiveMemoryWarning];
+}
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context
 {
@@ -163,9 +171,6 @@
     NSString *copyTxt = NSLocalizedString(@"Copy %@ (%@)",nil);
     NSString *copyClipTxt = NSLocalizedString(@"Copy %@ to clipboard",nil);
     NSString *nameTxt = NSLocalizedString(@"name",nil);
-    
-//    Barnabas DebreczeniToday at 1:56pm
-//    HUF eseten pl. Account nr. van asszem (2x8 szamjegy), es nincs BIC Code... EUR eseten BIC + IBAN van.
     NSString *ibanTxt = NSLocalizedString(@"IBAN",nil);
     NSString *swiftTxt = NSLocalizedString(@"BIC",nil);
     NSString *transferInfo;
@@ -211,12 +216,7 @@
     // Setup documents
     [[MrCoin settings] setSupportEmail:[dictionary valueForKeyPath:@"attributes.support.email"]];
     [[MrCoin settings] setSupportURL:[dictionary valueForKeyPath:@"attributes.support.web"]];
-//    [[MrCoin settings] setTermsURL:[dictionary valueForKeyPath:@"attributes.terms.full_terms"]];
-//    [[MrCoin settings] setShortTermsURL:[dictionary valueForKeyPath:@"attributes.terms.short_terms"]];
 
-}
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
 }
 
 #pragma mark - Button Actions

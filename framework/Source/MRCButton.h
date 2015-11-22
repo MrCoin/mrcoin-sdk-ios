@@ -12,6 +12,7 @@
 
 @property (nonatomic) IBInspectable BOOL stroke;
 @property (nonatomic) IBInspectable BOOL fill;
+@property (nonatomic) IBInspectable BOOL contentHeightIsZeroWhenHidden;
 @property (nonatomic) IBInspectable CGFloat cornerRadius;
 
 - (void) setupControl;

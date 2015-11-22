@@ -18,7 +18,8 @@
 
 - (void) resetSettings
 {
-    self.userConfiguration = MRCUserConfigurationUnknown;
+    self.showActivityPopupOnLoading = YES;
+    self.userConfiguration = MRCUserUnconfigured;
     self.userPhone = nil;
     self.userEmail = nil;
     self.userCountryCode = nil;
@@ -28,6 +29,9 @@
 }
 - (void) loadSettings
 {
+    self.showActivityPopupOnLoading = YES;
+    self.sourceCurrency = @"EUR";
+    //
     [[MrCoin api] getUserDetails:^(id result) {
         NSDictionary *attribs = [result objectForKey:@"attributes"];
         if(attribs){

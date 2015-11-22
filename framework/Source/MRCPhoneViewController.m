@@ -31,11 +31,15 @@
         _phoneTextInput.text = [self.object objectForKey:@"phone"];
     }
     // Load country list
-    if([[MrCoin api] countries]){
-        [self configureDropdown:[[MrCoin api] countries]];
-    }else{
-        [[MrCoin api] addObserver:self forKeyPath:@"countries" options:(NSKeyValueObservingOptionInitial | NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld) context:nil];
-    }
+    [[MrCoin api] addObserver:self forKeyPath:@"countries" options:(NSKeyValueObservingOptionInitial | NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld) context:nil];
+}
+-(void)dealloc
+{
+    [[MrCoin api] removeObserver:self forKeyPath:@"countries"];
+}
+- (void)didReceiveMemoryWarning {
+    [[MrCoin api] removeObserver:self forKeyPath:@"countries"];
+    [super didReceiveMemoryWarning];
 }
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context
 {
@@ -46,10 +50,6 @@
     }
     //
 }
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-}
-
 
 #pragma mark - Country selector
 - (IBAction)countrySelectorChanged:(id)sender

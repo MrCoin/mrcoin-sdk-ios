@@ -53,7 +53,7 @@
 - (CGSize)intrinsicContentSize
 {
     CGSize s = [super intrinsicContentSize];
-    if(self.hidden){
+    if(self.hidden && self.contentHeightIsZeroWhenHidden){
         s.height = 0;
         return s;
     }

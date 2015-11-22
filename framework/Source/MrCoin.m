@@ -117,16 +117,19 @@ static UIStoryboard *_sharedStoryboard;
     [vc setMode:MRCShowDocuments];
     if(type == MrCoinDocumentTerms){
         [vc setTitle:@"Terms"];
+        [[MrCoin sharedController] showActivityIndicator:NSLocalizedString(@"Loading...", NULL)];
         [[MrCoin api] getTerms:^(id result) {
             [vc parseHTML:result];
         } error:nil];
     }else if(type == MrCoinDocumentShortTerms){
         [vc setTitle:@"Terms"];
+        [[MrCoin sharedController] showActivityIndicator:NSLocalizedString(@"Loading...", NULL)];
         [[MrCoin api] getTerms:^(id result) {
             [vc parseHTML:result];
         } error:nil];
     }else if(type == MrCoinDocumentSupport){
         [vc setTitle:@"Support"];
+        [[MrCoin sharedController] showActivityIndicator:NSLocalizedString(@"Loading...", NULL)];
         [vc loadHTML:[[self settings] supportURL]];
     }
     return vc;

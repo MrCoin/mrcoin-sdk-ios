@@ -26,8 +26,6 @@
     self.textView.dataDetectorTypes = UIDataDetectorTypeLink;
     self.textView.delegate = self;
     self.textView.scrollsToTop = YES;
-    _declineButton.hidden = YES;
-    _acceptButton.hidden = YES;
 }
 - (BOOL)textView:(UITextView *)textView shouldInteractWithURL:(NSURL *)URL inRange:(NSRange)characterRange
 {
@@ -50,17 +48,13 @@
             _overlayView.topGradientSize = 20;
             _overlayView.bottomGradientSize = 95;
             _overlayView.hidden = NO;
-            _declineButton.hidden = NO;
-            _acceptButton.hidden = NO;
             break;
         case MRCShowDocuments:
-//            _textView.backgroundColor = [UIColor redColor];
+            //            _textView.backgroundColor = [UIColor redColor];
             _overlayView.backgroundColor = [UIColor clearColor];
             _overlayView.bottomGradientSize = 0;
             _overlayView.topGradientSize = 0;
             _overlayView.hidden = YES;
-            _declineButton.hidden = YES;
-            _acceptButton.hidden = YES;
             break;
     }
     [self.view sendSubviewToBack:_overlayView];
@@ -107,6 +101,7 @@
 
 - (void)parseHTML:(NSString*)htmlString
 {
+    [[MrCoin sharedController] hideActivityIndicator];
     htmlString = [htmlString stringByAppendingString:@"<style>body{font-family: 'HelveticaNeue-Light'; font-size:14px;} h1{font-weight:normal;font-size:22px;} h2{font-size:18px;font-weight:normal;}</style>"];
 //
     NSMutableAttributedString *txt = [[NSMutableAttributedString alloc] initWithData:[htmlString dataUsingEncoding:NSUTF8StringEncoding]
@@ -114,20 +109,25 @@
                                                                                        NSCharacterEncodingDocumentAttribute: @(NSUTF8StringEncoding)}
                                                                   documentAttributes:nil
                                                                                error:nil];
-    switch (_mode) {
+    
+    switch (self.mode) {
         default:
-        case MRCTermsUserNeedsAcceptForm:
         case MRCTermsUserNeedsAccept:
-            _textView.textContainerInset = UIEdgeInsetsMake(25, 20, 100, 20);
-            _textView.scrollIndicatorInsets = UIEdgeInsetsMake(10, 0, 90, 4);
+        case MRCTermsUserNeedsAcceptForm:
+            self.textView.textContainerInset = UIEdgeInsetsMake(25, 20, 100, 20);
+            self.textView.scrollIndicatorInsets = UIEdgeInsetsMake(10, 0, 90, 4);
+            self.declineButton.hidden = NO;
+            self.acceptButton.hidden = NO;
             break;
         case MRCShowDocuments:
-            _textView.textContainerInset = UIEdgeInsetsMake(10, 20, 10, 20);
-            _textView.scrollIndicatorInsets = UIEdgeInsetsMake(10, 0, 10, 4);
+            self.textView.textContainerInset = UIEdgeInsetsMake(10, 20, 10, 20);
+            self.textView.scrollIndicatorInsets = UIEdgeInsetsMake(10, 0, 10, 4);
+            self.declineButton.hidden = YES;
+            self.acceptButton.hidden = YES;
             break;
     }
-    _textView.attributedText = txt;
-    [_textView setContentOffset:CGPointZero animated:NO];
+    self.textView.attributedText = txt;
+    [self.textView setContentOffset:CGPointZero animated:NO];
 
 }
 -(void)viewDidLayoutSubviews

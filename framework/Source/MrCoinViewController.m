@@ -35,6 +35,21 @@
     [super viewDidLoad];
     [[MrCoin settings] addObserver:self forKeyPath:@"userConfiguration" options:(NSKeyValueObservingOptionInitial | NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld) context:nil];
 }
+- (void)viewWillAppear:(BOOL)animated
+{
+    if([[MrCoin settings] userConfiguration] == MRCUserConfigurationUnknown){
+        [[MrCoin sharedController] showActivityIndicator:NSLocalizedString(@"Fetching...", NULL)];
+    }
+    [super viewWillAppear:animated];
+}
+-(void)dealloc
+{
+    [[MrCoin settings] removeObserver:self forKeyPath:@"userConfiguration"];
+}
+- (void)didReceiveMemoryWarning {
+    [[MrCoin settings] removeObserver:self forKeyPath:@"userConfiguration"];
+    [super didReceiveMemoryWarning];
+}
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context
 {
@@ -43,6 +58,7 @@
 
 - (void)showView:(MRCUserConfigurationMode)configured
 {
+    [[MrCoin sharedController] hideActivityIndicator];
     if(configured == MRCUserConfigured){
         if(!_page){
             if(_unconfigured){
@@ -52,7 +68,7 @@
             }
             [self showTransferView];
         }
-    }else if(configured <= MRCUserUnconfigured){
+    }else if(configured >= MRCUserUnconfigured){
         if(!_unconfigured){
             if(_page){
                 [_page removeFromParentViewController];
@@ -62,10 +78,6 @@
             [self showUnconfigured];
         }
     }
-}
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
 }
 - (MRCEmptyViewController*) emptyViewController
 {
@@ -125,22 +137,7 @@
     if(self.navigationController){
         [self.navigationController pushViewController:settings animated:YES];
     }
-//    [self presentViewController:form animated:YES completion:^{
-//    }];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-}
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end
