@@ -464,12 +464,14 @@
 {
     [self dismissViewControllerAnimated:YES completion:^{
         if(self.onCancel) self.onCancel();
+        self.onCancel = nil;
     }];
 }
 - (IBAction)done:(id)sender
 {
     [self dismissViewControllerAnimated:YES completion:^{
         if(self.onComplete) self.onComplete();
+        self.onComplete = nil;
         if([[MrCoin sharedController] delegate]){
             if([[[MrCoin sharedController] delegate] respondsToSelector:@selector(quickTransferDidSetup)]){
                 [[[MrCoin sharedController] delegate] quickTransferDidSetup];
